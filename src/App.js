@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import Dropdown from "./smallComponents/Dropdown/Dropdown";
+import Home from "./main.js";
+import PromptPage from "./pages/PromptPage/PromptPage";
 
 function App() {
   return (
-    <>
-      <Dropdown />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/prompt" element={<PromptPage />} />
+    </Routes>
   );
 }
 
