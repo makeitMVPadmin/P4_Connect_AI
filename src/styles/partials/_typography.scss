@@ -1,22 +1,20 @@
-@use "./variables" as *;
-
 @font-face {
-  font-family: "Corben-Bold";
-  src: url("../../fonts/Corben-Bold.ttf");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "Corben-Regular";
-  src: url("../../fonts/Corben-Regular.ttf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Gilroy-ExtraBold";
-  src: url("../../fonts/Gilroy-ExtraBold.otf");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "Gilroy-Light";
-  src: url("../../fonts/Gilroy-Light.otf");
-  font-weight: 400;
-}
+    font-family: "Corben-Bold";
+    src: url("../../fonts/Corben-Bold.ttf");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Corben-Regular";
+    src: url("../../fonts/Corben-Regular.ttf");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "Gilroy-ExtraBold";
+    src: url("../../fonts/Gilroy-ExtraBold.otf");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Gilroy-Light";
+    src: url("../../fonts/Gilroy-Light.otf");
+    font-weight: 400;
+  }
