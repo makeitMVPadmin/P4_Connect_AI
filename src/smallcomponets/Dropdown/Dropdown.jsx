@@ -16,7 +16,7 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
-    console.log(event.target.innerHTML);
+
     setIsActive(!isActive);
   };
   const handledummyvalue = () => {
