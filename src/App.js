@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./main.js";
 import PromptPage from "./pages/PromptPage/PromptPage";
-import Dropdown from "./smallcomponets/Dropdown/Dropdown.jsx";
+import Dropdown from "./components/Dropdown/Dropdown.jsx";
 
 function App() {
   return (
