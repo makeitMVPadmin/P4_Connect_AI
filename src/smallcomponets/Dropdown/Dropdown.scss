@@ -1,64 +1,71 @@
 @use "../../styles/partials/typography" as *;
-@use "../../styles/partials/global" as*;
+@use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .dropdown {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  background-color: aliceblue;
+  background-color: $MVP-White;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  &__label {
+    font-family: "Corben-bold";
+  }
   &_wrapper {
- 
     &_select {
-      position: relative;
       display: flex;
       flex-direction: column;
       border-width: 0 2px 0 2px;
       border-style: solid;
-      border-color: #394a6d;
+      border-color: $MVP-Dark-Blue;
       &_trigger {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 22px;
-        font-size: 20px;
+        font-family: "Corben-Regular";
         font-weight: 300;
-        color: #3b3b3b;
+        color: $MVP-black;
         line-height: 60px;
-        background: #ffffff;
+        background: $MVP-White;
         cursor: pointer;
         border-width: 2px 0 1px 0;
         border-style: solid;
-        border-color: #394a6d;
-        
+        border-color: $MVP-Dark-Blue;
+        .arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 35px;
+          transition: all 0.5s;
+        }
+        .arrow-up-icon {
+          transform: rotate(180deg);
+        }
       }
       &_option {
         border-width: 0px 0px 1px 0;
         border-style: solid;
-        border-color: #394a6d;
-        background: #fff;
+        border-color: $MVP-Dark-Blue;
+        background: $MVP-White;
         transition: all 0.5s;
-    
       }
-    
+
       .custom-option {
         display: block;
         padding: 0 22px 0 22px;
         border-width: 0px 0 1px 0;
         border-style: solid;
-        border-color: #394a6d;
-        font-size: 22px;
+        border-color: $MVP-Dark-Blue;
+        font-family: "Corben-Regular";
         font-weight: 300;
-        color: #3b3b3b;
+        color: $MVP-black;
         line-height: 60px;
         cursor: pointer;
         transition: all 0.5s;
       }
-    
     }
   }
 }

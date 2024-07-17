@@ -30,14 +30,19 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
   return (
     <div className="dropdown">
       <label className="dropdown__label" htmlFor="labelName">
-        Hi{labelName}
+        What areas would you Like to improve {labelName}
       </label>
       <section className="dropdown_wrapper">
         <article className="dropdown_wrapper_select">
           <div className="dropdown_wrapper_select_trigger">
             <span>{updatedValue ? updatedValue : dummyValue}</span>
-            <span class="arrow">
-              <ArrowDropDownIcon onClick={handledropdownclick} />
+            <span>
+              <ArrowDropDownIcon
+                onClick={handledropdownclick}
+                className={`arrow ${
+                  isActive ? "arrow-up-icon" : "arrow-down-icon"
+                }`}
+              />
             </span>
           </div>
           {isActive && (
@@ -49,18 +54,20 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
               >
                 Please select an option
               </span>
-              {dropDownInfo.map((item, index) => {
-                return (
-                  <span
-                    key={index}
-                    className="custom-option"
-                    data-value={item}
-                    onClick={handleupdatedvalue}
-                  >
-                    {item}
-                  </span>
-                );
-              })}
+              {dropDownInfo
+                .filter((item) => item !== updatedValue)
+                .map((item, index) => {
+                  return (
+                    <span
+                      key={index}
+                      className="custom-option"
+                      data-value={item}
+                      onClick={handleupdatedvalue}
+                    >
+                      {item}
+                    </span>
+                  );
+                })}
             </div>
           )}
         </article>
