@@ -34,12 +34,13 @@
         border-width: 2px 0 1px 0;
         border-style: solid;
         border-color: $MVP-Dark-Blue;
+  
         .arrow {
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 35px;
-          transition: all 0.5s;
+          transition: all 1s ease;
         }
         .arrow-up-icon {
           transform: rotate(180deg);
@@ -50,7 +51,7 @@
         border-style: solid;
         border-color: $MVP-Dark-Blue;
         background: $MVP-White;
-        transition: all 0.5s;
+     
       }
 
       .custom-option {
@@ -63,7 +64,6 @@
         color: $MVP-black;
         line-height: 60px;
         cursor: pointer;
-        transition: all 0.5s;
       }
     }
   }
