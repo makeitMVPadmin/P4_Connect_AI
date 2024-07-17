@@ -7,6 +7,7 @@ const PromptPage = () => {
         I am a prompt page
         <p className="promptpage">Hello</p>
       </div>
+
     </div>
   );
 };
