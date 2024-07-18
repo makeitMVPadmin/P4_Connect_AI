@@ -1,4 +1,5 @@
 import "./PromptPage.scss";
+import QuizPage from "../QuizPage/QuizPage";
 
 const PromptPage = () => {
   return (
@@ -6,8 +7,8 @@ const PromptPage = () => {
       <div className="promptpage">
         I am a prompt page
         <p className="promptpage">Hello</p>
+        <QuizPage />
       </div>
-
     </div>
   );
 };
