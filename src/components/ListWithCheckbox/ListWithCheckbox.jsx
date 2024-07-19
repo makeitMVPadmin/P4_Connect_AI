@@ -13,12 +13,9 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
       return arr;
     }, {})
   );
-  const [active, setActive] = useState(false);
-  console.log(checked);
+
   const handleChange = (option) => {
     setChecked({ ...checked, [option]: !checked[option] });
-    if (checked[option]) setActive(true);
-    //else setActive(false);
   };
   return (
     <div className="listwithcheckbox">
@@ -30,9 +27,11 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
               type="checkbox"
               checked={checked[option]}
               onChange={() => handleChange(option)}
-              className={active===true ? "option_active" : "option_inactive"}
+              className={checked[option] ? "option_active" : "option_inactive"}
             />
-            <span className={active===true ? "option_active" : "option_inactive"}>
+            <span
+              className={checked[option] ? "option_active" : "option_inactive"}
+            >
               {option}
             </span>
           </label>
