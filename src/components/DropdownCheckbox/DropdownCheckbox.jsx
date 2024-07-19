@@ -4,7 +4,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const DropdownCheckbox = ({ title, labelName, options1 }) => {
   const [selectedValues, setSelectedValues] = useState([]);
-  const [isActive, setIsActive] = useState(false);
+  //const [isActive, setIsActive] = useState(false);
 
   const options = [
     { value: "programming", label: "Programming Languages )" },
@@ -14,9 +14,9 @@ const DropdownCheckbox = ({ title, labelName, options1 }) => {
     { value: "mlai", label: "Machine Learning and AI" },
   ];
 
-  const handleDropdownClick = () => {
-    setIsActive(!isActive);
-  };
+  // const handleDropdownClick = () => {
+  //   setIsActive(!isActive);
+  // };
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
@@ -30,15 +30,15 @@ const DropdownCheckbox = ({ title, labelName, options1 }) => {
 
   return (
     <div className="dropdown-checkbox">
-      <div className="dropdown-checkbox__title" onClick={handleDropdownClick}>
+      {/* <div className="dropdown-checkbox__title" onClick={handleDropdownClick}>
       Technical Skills {title}
         <ArrowDropDownIcon
           className={`dropdown-checkbox__arrow ${
             isActive ? "arrow-up-icon" : "arrow-down-icon"
           }`}
         />
-      </div>
-      {isActive && (
+      </div> */}
+    
         <div className="dropdown-checkbox__block">
           <div className="dropdown-checkbox__details">
             <label className="dropdown-checkbox__label">
@@ -60,7 +60,7 @@ const DropdownCheckbox = ({ title, labelName, options1 }) => {
             </div>
           </div>
         </div>
-      )}
+      
     </div>
   );
 };
