@@ -2,9 +2,9 @@ import "./Button.scss";
 
 const Button = ({ text, color, eventListener }) => {
   return (
-    <div className={`button button--${color}`}>
+    <button className={`button button--${color}`} onClick={eventListener}>
       <h3 className="button__text">{text}</h3>
-    </div>
+    </button>
   );
 };
 

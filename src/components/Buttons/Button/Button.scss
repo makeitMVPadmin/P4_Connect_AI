@@ -1,4 +1,21 @@
-@use "../../styles/partials/typography" as *;
-@use "../../styles/partials/global" as *;
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/variables" as *;
+@use "../../../styles/partials/typography" as *;
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.button {
+  display: flex;
+  width: 13.5rem;
+  height: 3.75rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+
+  &--blue:hover {
+    background-color: $MVP-Light-Blue;
+  }
+
+  &--yellow:hover {
+    background-color: $MVP-Yellow;
+  }
+}
