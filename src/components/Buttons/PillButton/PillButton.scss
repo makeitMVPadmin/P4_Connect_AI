@@ -1,0 +1,25 @@
+@use "../../../styles/partials/typography" as *;
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.pillbutton {
+  display: flex;
+  width: 9.375rem;
+  height: 2.8125rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3125rem;
+  border: 2px solid #000;
+  background-color: $MVP-White;
+
+  &--blue:hover {
+    background-color: $MVP-Light-Blue;
+    color: $MVP-White;
+  }
+
+  &--yellow:hover {
+    background-color: $MVP-Yellow;
+  }
+}

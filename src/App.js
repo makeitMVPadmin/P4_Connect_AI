@@ -3,6 +3,7 @@ import Home from "./main.js";
 import PromptPage from "./pages/PromptPage/PromptPage";
 
 import Button from "./components/Buttons/Button/Button.jsx";
+import PillButton from "./components/Buttons/PillButton/PillButton.jsx";
 
 function App() {
   const ev = (x) => {
@@ -22,7 +23,7 @@ function App() {
           ev("helo");
         }}
       />
-      <Button text="hello there hello there hello there" color="blue" />
+      <PillButton text="hello there hello there hello there" color="blue" />
     </>
   );
 }
