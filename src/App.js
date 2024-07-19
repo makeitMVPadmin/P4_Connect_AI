@@ -22,7 +22,7 @@ function App() {
           ev("helo");
         }}
       />
-      <Button text="hello there" color="blue" />
+      <Button text="hello there hello there hello there" color="blue" />
     </>
   );
 }
