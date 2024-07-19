@@ -7,7 +7,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
     "Attend 3 accountability meeting",
     "Attend all Accountability meeting",
   ];
-  const [checked, setChecked] = useState(
+  const [selectedValues, setselectedValues] = useState(
     options1.reduce((arr, option) => {
       arr[option] = false;
       return arr;
@@ -15,7 +15,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
   );
 
   const handleChange = (option) => {
-    setChecked({ ...checked, [option]: !checked[option] });
+    setselectedValues({ ...selectedValues, [option]: !selectedValues[option] });
   };
   return (
     <div className="listwithcheckbox">
@@ -25,12 +25,16 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
           <label key={index}>
             <input
               type="checkbox"
-              checked={checked[option]}
+              checked={selectedValues[option]}
               onChange={() => handleChange(option)}
-              className={checked[option] ? "option_active" : "option_inactive"}
+              className={
+                selectedValues[option] ? "option_active" : "option_inactive"
+              }
             />
             <span
-              className={checked[option] ? "option_active" : "option_inactive"}
+              className={
+                selectedValues[option] ? "option_active" : "option_inactive"
+              }
             >
               {option}
             </span>
