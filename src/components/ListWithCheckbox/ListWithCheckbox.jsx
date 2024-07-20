@@ -13,7 +13,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
       return arr;
     }, {})
   );
-
+  console.log(selectedValues);
   const handleChange = (option) => {
     setSelectedValues({ ...selectedValues, [option]: !selectedValues[option] });
   };
@@ -21,6 +21,9 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
     if (index === 0) return true; // The first checkbox is always enabled
     return selectedValues[options1[index - 1]];
   };
+  const allChecked = Object.values(selectedValues).filter(
+    (value) => value == false
+  );
   return (
     <div className="listwithcheckbox">
       <h2>ListWithCheckbox{label}</h2>
@@ -43,6 +46,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
             </span>
           </label>
         ))}
+        {allChecked.length === 0 && <p>All accountability tasks completed!</p>}
       </div>
     </div>
   );
