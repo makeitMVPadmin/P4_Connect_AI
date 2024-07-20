@@ -1,6 +1,8 @@
 import "./PromptPage.scss";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import QuizPage from "../QuizPage/QuizPage";
+import ListWithCheckbox from "../../components/ListWithCheckbox/ListWithCheckbox";
+import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 
 const PromptPage = () => {
   return (
@@ -8,7 +10,8 @@ const PromptPage = () => {
       <div className="promptpage">
         I am a prompt page
         <Dropdown />
-        {/* once PromptPage is setup, the QuizPage can be conditionally shown */}
+        <DropdownCheckbox />
+        <ListWithCheckbox />
         <QuizPage />
       </div>
     </div>
