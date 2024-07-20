@@ -13,9 +13,9 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
       return arr;
     }, {})
   );
-  console.log(selectedValues);
+
   const handleChange = (option) => {
-    setSelectedValues({ ...selectedValues, [option]: !selectedValues[option] });
+    setSelectedValues({ ...selectedValues, [option]: true });
   };
   const isPreviousChecked = (index) => {
     if (index === 0) return true; // The first checkbox is always enabled
@@ -26,7 +26,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
   );
   return (
     <div className="listwithcheckbox">
-      <h2>ListWithCheckbox{label}</h2>
+      <h2>Goal BreakDown{label}</h2>
       <div className="listwithcheckbox_options">
         {options1.map((option, index) => (
           <label key={index}>
@@ -46,7 +46,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
             </span>
           </label>
         ))}
-        {allChecked.length === 0 && <p>All accountability tasks completed!</p>}
+        {allChecked.length === 0 && <p className="statement--last">All accountability tasks completed!</p>}
       </div>
     </div>
   );

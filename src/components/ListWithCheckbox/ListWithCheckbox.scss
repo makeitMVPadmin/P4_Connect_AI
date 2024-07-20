@@ -4,15 +4,23 @@
 @use "../../styles/partials/variables" as *;
 
 .listwithcheckbox {
+  font-family: "Gilroy-ExtraBold";
+  margin-bottom: 1rem;
+h2{
+  margin-bottom: 1.5rem;
+}
   &_options {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     &--checkboxescustom {
       width: 20px;
     }
+
     .option_active {
       color: $MVP-black;
     }
+
     .option_inactive {
       color: $MVP-faded;
     }
