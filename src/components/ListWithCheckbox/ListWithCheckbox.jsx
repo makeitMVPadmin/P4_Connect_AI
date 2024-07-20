@@ -7,7 +7,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
     "Attend 3 accountability meeting",
     "Attend all Accountability meeting",
   ];
-  const [checked, setChecked] = useState(
+  const [selectedValues, setSelectedValues] = useState(
     options1.reduce((arr, option) => {
       arr[option] = false;
       return arr;
@@ -15,11 +15,11 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
   );
 
   const handleChange = (option) => {
-    setChecked({ ...checked, [option]: !checked[option] });
+    setSelectedValues({ ...selectedValues, [option]: !selectedValues[option] });
   };
   const isPreviousChecked = (index) => {
     if (index === 0) return true; // The first checkbox is always enabled
-    return checked[options1[index - 1]];
+    return selectedValues[options1[index - 1]];
   };
   return (
     <div className="listwithcheckbox">
@@ -29,7 +29,7 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
           <label key={index}>
             <input
               type="checkbox"
-              checked={checked[option]}
+              checked={selectedValues[option]}
               onChange={() => handleChange(option)}
               disabled={!isPreviousChecked(index)}
               className="listwithcheckbox_options--checkboxescustom"
