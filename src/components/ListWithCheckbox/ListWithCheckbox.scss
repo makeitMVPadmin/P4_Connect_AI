@@ -7,6 +7,10 @@
   &_options {
     display: flex;
     flex-direction: column;
+    &--checkboxescustom {
+      width: 20px;
+      color: black;
+    }
     .option_active {
       color: $MVP-black;
     }

@@ -31,12 +31,13 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
               type="checkbox"
               checked={checked[option]}
               onChange={() => handleChange(option)}
-             
               disabled={!isPreviousChecked(index)}
+              className="listwithcheckbox_options--checkboxescustom"
             />
             <span
-              className={checked[option] ? "option_active" : "option_inactive"}
-   
+              className={
+                isPreviousChecked(index) ? "option_active" : "option_inactive"
+              }
             >
               {option}
             </span>
