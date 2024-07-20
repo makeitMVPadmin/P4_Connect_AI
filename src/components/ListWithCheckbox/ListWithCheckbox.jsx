@@ -17,6 +17,10 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
   const handleChange = (option) => {
     setChecked({ ...checked, [option]: !checked[option] });
   };
+  const isPreviousChecked = (index) => {
+    if (index === 0) return true; // The first checkbox is always enabled
+    return checked[options1[index - 1]];
+  };
   return (
     <div className="listwithcheckbox">
       <h2>ListWithCheckbox{label}</h2>
@@ -27,10 +31,12 @@ const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
               type="checkbox"
               checked={checked[option]}
               onChange={() => handleChange(option)}
-              className={checked[option] ? "option_active" : "option_inactive"}
+             
+              disabled={!isPreviousChecked(index)}
             />
             <span
               className={checked[option] ? "option_active" : "option_inactive"}
+   
             >
               {option}
             </span>
