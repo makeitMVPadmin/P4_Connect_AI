@@ -17,11 +17,11 @@ const PromptPage = () => {
     <div className="promptpage">
       <div className="promptpage__container">
         <div className="promptpage__top-bar" />
-        <div className="promptpage__middle-container" />
+        <div className="promptpage__middle-container">
+          Place some Content here...
+        </div>
         <div className="promptpage__bottom-bar" />
       </div>
-       {/* <div className="groupItem" /> */}
-       {/* <div className="groupInner" />  */}
     </div>
   );
 };
