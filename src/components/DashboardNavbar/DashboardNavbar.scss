@@ -1,0 +1,120 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.dashboard-navbar {
+  background-color: $MVP-White;
+  font-family: Gilroy;
+  height: 10%;
+  display: flex;
+  width: 100%;
+  padding: 0px 1.5rem;
+
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #000;
+
+  @include Desktop {
+    padding: 2rem 1.5rem;
+    height: 10%;
+  }
+
+  &__left {
+    display: flex;
+    height: 100%;
+
+    align-items: flex-end;
+  }
+  &__right {
+    display: flex;
+    height: 100%;
+  }
+  &__logo {
+    width: 24vw;
+
+    @include Desktop {
+      width: 16vw;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0 1rem;
+
+    @include Desktop {
+      margin: 0 1rem;
+    }
+
+    &.active {
+      & p {
+        color: $MVP-Dark-Blue;
+        border-bottom: 0.25rem solid $MVP-Dark-Blue;
+      }
+      & img {
+        filter: brightness(1.5);
+        &.dashboard-navbar__img--home {
+          content: url("../../assets/images/homeIconBlue.svg"); // Adjust for each icon
+        }
+        &.dashboard-navbar__img--communities {
+          content: url("../../assets/images/communitiesIconBlue.svg"); // Adjust for each icon
+        }
+        &.dashboard-navbar__img--calendar {
+          content: url("../../assets/images/calendarIconBlue.svg"); // Adjust for each icon
+        }
+        &.dashboard-navbar__img--chat {
+          content: url("../../assets/images/chatIconBlue.svg"); // Adjust for each icon
+        }
+      }
+    }
+    & p {
+      color: $MVP-black;
+      text-align: center;
+      font-family: Gilroy;
+      font-size: 1.5vw;
+      line-height: 115.645%;
+      padding-bottom: 0.2rem;
+
+      @include Desktop {
+        font-size: 20px;
+      }
+    }
+  }
+  &__img {
+    width: 2.3vw;
+    @include Desktop {
+      width: 1.5vw;
+    }
+
+    &--profile {
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    & img {
+      width: 2vw;
+
+      @include Desktop {
+        width: 3vw;
+      }
+    }
+  }
+}
+
+.log-out {
+  position: absolute;
+  top: 6%;
+  right: 1.5%;
+}
