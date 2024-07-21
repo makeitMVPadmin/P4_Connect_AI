@@ -7,6 +7,7 @@ import coffeeChatIcon from "../../assets/images/coffeeChatIcon.svg";
 import LogoIcon from "../../assets/logos/communiti2.svg";
 import profilePic from "../../assets/images/profilePic.svg";
 import DropDownArrow from "../../assets/images/drop-down-arrow.svg";
+import connectAiIcon from "../../assets/images/connectAiIcon.svg";
 import { useNavigate } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -81,7 +82,11 @@ function DashboardNavbar() {
             className="dashboard-navbar__logo"
           />
         </Link>
-        <NavLink
+        
+      </div>
+
+      <div className="dashboard-navbar__right">
+      <NavLink
           to="/dashboard"
           className={(navData) =>
             navData.isActive
@@ -156,8 +161,21 @@ function DashboardNavbar() {
           />
           <p className="dashboard-navbar__text">Chat</p>
         </NavLink> */}
-      </div>
-      <div className="dashboard-navbar__right">
+        <NavLink
+          to="/prompt"
+          className={(navData) =>
+            navData.isActive
+              ? "dashboard-navbar__link active"
+              : "dashboard-navbar__link"
+          }
+        >
+          <img
+            src={connectAiIcon}
+            alt="connectAI icon"
+            className="dashboard-navbar__img dashboard-navbar__img--connectAi"
+          />
+          <p className="dashboard-navbar__text">ConnectAI</p>
+        </NavLink>
         <Link to="/profile" className="dashboard-navbar__link">
           <img
             src={profilePhoto || profilePic}
@@ -165,7 +183,7 @@ function DashboardNavbar() {
             className="dashboard-navbar__img dashboard-navbar__img--profile"
           />
         </Link>
-        <button className="dashboard-navbar__button" onClick={handleDropdown}>
+        {/* <button className="dashboard-navbar__button" onClick={handleDropdown}>
           <img src={DropDownArrow} alt="DropDownArrow icon" />
         </button>
         {dropdownButton && ( // Render logout button if dropdownButton is true
@@ -175,7 +193,7 @@ function DashboardNavbar() {
           >
             Logout
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
