@@ -1,0 +1,33 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.button {
+  font-family: "Gilroy-ExtraBold";
+  font-size: 1.1rem;
+  display: flex;
+  width: 13.5rem;
+  height: 3.75rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3125rem;
+  border: 2px solid #000;
+
+  &--blue {
+    color: $MVP-White;
+    background-color: $MVP-Light-Blue;
+    &:hover {
+      background-color: $Faded-Blue;
+    }
+  }
+
+  &--white {
+    background-color: $MVP-White;
+    color: $MVP-black;
+    &:hover {
+      background-color: $MVP-Cream;
+    }
+  }
+}
