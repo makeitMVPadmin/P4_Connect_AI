@@ -6,7 +6,10 @@ import user2 from "../../assets/images/user2.png";
 const MatchedUsers = () => {
   return (
     <div className="matched">
-      <h2 className="matched__title">Congratulations! You have an 88% match!</h2>
+      <h2 className="matched__title">
+        {/* need to insert logic to retrieve the match percentage */}
+        {`Congratulations! You have an 88% match!`}
+      </h2>
       <div className="matched__images">
         {/* need to insert logic to retrieve and display user1's profile picture */}
         <img src={user1} alt="user1 avatar " className="matched__user" />
