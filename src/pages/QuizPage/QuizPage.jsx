@@ -1,5 +1,6 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import Textarea from "../../components/Textarea/Textarea";
 
 const QuizPage = () => {
   return (
@@ -8,7 +9,9 @@ const QuizPage = () => {
         <div className="quizpage__side-area">
           <ProgressBar />
         </div>
-        <div className="quizpage__main"></div>
+        <div className="quizpage__main">
+          <Textarea />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,16 @@
+.textarea {
+  display: flex;
+  flex-direction: column;
+  width: 570px;
+  margin: auto;
+  gap: 10px;
+  margin-top: 45px;
+  &__question {
+    //TODO:: adjust the font family after
+  }
+
+  &__input {
+    height: 150px;
+    resize: none;
+  }
+}

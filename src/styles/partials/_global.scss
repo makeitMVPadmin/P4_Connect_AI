@@ -3,9 +3,14 @@
 @use "./typography" as *;
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   // background-color: $Powder-Blue;
+}
+
+body {
+  font-family: "Corben-Regular";
 }
 
 a {
