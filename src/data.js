@@ -85,7 +85,7 @@
     question_id: "004",
     question_content:
       "Select the technical skills you excel in from the list below:",
-    question_type: "radio",
+    question_type: "checkbox",
     answers: [
       {
         answer_id: "004001",
@@ -140,7 +140,7 @@
   {
     question_id: "005",
     question_content: "What attributes describe you best?",
-    question_type: "radio",
+    question_type: "checkbox",
     answers: [
       {
         answer_id: "005001",
@@ -387,7 +387,7 @@
     question_id: "012",
     question_content:
       "Is there anything else you would like up to consider when setting your goal?",
-    question_type: "textbox",
+    question_type: "textarea",
   },
 ];
 export default QA;
