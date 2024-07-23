@@ -1,0 +1,23 @@
+@import "../../styles/partials/mixins.scss";
+@import "../../styles/partials/variables.scss";
+@import "../../styles/partials/typography.scss";
+
+.loading-bar {
+  display: flex;
+  width: 35.625rem;
+  height: 2rem;
+  padding: 0.33331rem 0.44444rem;
+  align-items: center;
+  gap: 0.88888rem;
+  border-radius: 0.11113rem;
+  border: 3.556px solid #000;
+  background: #fff;
+
+  &__box {
+    width: 0.88888rem;
+    height: 1.22225rem;
+    flex-shrink: 0;
+    border: 3.556px solid #000;
+    background: #0954b0;
+  }
+}
