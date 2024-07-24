@@ -21,24 +21,28 @@ const QuizPage = () => {
     console.log("Form Data:", formData);
   };
 
-  const handleInputChange = (value) => {
-    let updatedValue = [];
-    console.log("value", value);
-    if (Array.isArray(value)) {
-      updatedValue = value.flatMap((item) => {
-        const answer_id = QA.map((data) =>
-          data.answers
-            ?.filter((answer) => answer.answer_content === item)
-            .map((answer) => answer.answer_id)
-        );
+  const handleInputChange = (question_type, question_content, value) => {
+    let updatedValue;
+
+    if (question_type === "checkbox") {
+      const QuestionItem = QA.filter(
+        (data) => data.question_content === question_content
+      );
+      const allAns = QuestionItem.flatMap((item) => item.answers);
+       updatedValue = value.flatMap((eachAns) => {
+        const ansIds = allAns
+          .filter((answer) => answer.answer_content === eachAns)
+          .map((answer) => answer.answer_id);
+        return ansIds;
+      });
+ 
+    } else if(question_type==="dropdown"){
+      updatedValue = QA.flatMap((item) => {
+        const answer_id = item.answers
+          ?.filter((answer) => answer.answer_content === value)
+          .map((answer) => answer.answer_id);
         return answer_id;
       });
-    } else {
-      updatedValue = QA.flatMap((item) =>
-        item.answers
-          ?.filter((answer) => answer.answer_content === value)
-          .map((answer) => answer.answer_id)
-      );
     }
     console.log("ppk", updatedValue);
     setFormData([...formData, updatedValue]);
@@ -53,7 +57,13 @@ const QuizPage = () => {
           <Dropdown
             labelName={item.question_content}
             dropDownInfo1={answers}
-            onChangeDropdown={(value) => handleInputChange(value)}
+            onChangeDropdown={(value) =>
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
+            }
           />
         );
       case "checkbox":
@@ -61,14 +71,26 @@ const QuizPage = () => {
           <DropdownCheckbox
             labelName={item.question_content}
             options1={answers}
-            onChangeDropdownCheckbox={(value) => handleInputChange(value)}
+            onChangeDropdownCheckbox={(value) =>
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
+            }
           />
         );
       case "textarea":
         return (
           <Textarea
             labelName={item.question_content}
-            handleTextarea={(value) => handleInputChange(value)}
+            handleTextarea={(value) =>
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
+            }
           />
         );
       default:
