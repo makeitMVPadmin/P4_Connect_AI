@@ -9,6 +9,9 @@ const LoadingPage = () => {
       <DashboardNavbar />
       <div className="loading-page">
         <div className="loading-page__container">
+          <h2 className="loading-page__text">
+            Hold on, we’re looking for your perfect partner...
+          </h2>
           <LoadingBar />
           <img
             src={connectAiIcon}
