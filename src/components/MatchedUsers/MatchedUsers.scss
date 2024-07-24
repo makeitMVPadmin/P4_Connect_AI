@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
   &__title {
     font-size: 30px;
     font-weight: 700;
@@ -39,9 +40,11 @@
     transition: ease-in 0.3s;
     &:hover {
       background-color: $Faded-Blue !important;
+      cursor: pointer;
     }
   }
   &__button--right {
     background-color: $MVP-Dark-Blue !important;
+    cursor: pointer;
   }
 }

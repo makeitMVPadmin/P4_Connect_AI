@@ -1,20 +1,37 @@
 import "./MatchedUsers.scss";
 import Button from "../Button/Button.jsx";
+import { useEffect, useState } from "react";
+// temporary user1 and user2 pictures as placeholders:
 import user1 from "../../assets/images/user1.png";
 import user2 from "../../assets/images/user2.png";
+//need to import function to retrieve matches from firebase:
+//ex. import {getMatches} from "../../utils/firebaseMatches";
 
-const MatchedUsers = () => {
+//need to define props on main single page: need "handleBackToQuiz" function, "handleGoToGoal" function and pass to MatchedUsers component
+const MatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
+  const [user1Pic, setUser1Pic] = useState(user1); //replace user1 with null instead of image placeholder
+  const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
+  const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
+
+  //grab user1 and user 2's pictures, and match percentage from backend:
+  //for example:
+  //   useEffect(()=>{
+  // async function fetchMatches (){
+  //   const matches = await getMatches();
+  //setUser1Pic(matches.user_id1_pic);
+  //setUser2Pic(matches.user_id2_pic);
+  //setMatchPercentage(matches.match_percentage)
+  // }
+  //   fetchMatches()}, [])
+
   return (
     <div className="matched">
       <h2 className="matched__title">
-        {/* need to insert logic to retrieve the match percentage */}
-        {`Congratulations! You have an 88% match!`}
+        {`Congratulations! You have a ${matchPercentage}% match!`}
       </h2>
       <div className="matched__images">
-        {/* need to insert logic to retrieve and display user1's profile picture */}
-        <img src={user1} alt="user1 avatar " className="matched__user" />
-        {/* need to insert logic to retrieve and display user2's profile picture */}
-        <img src={user2} alt="user2 avatar " className="matched__user" />
+        <img src={user1Pic} alt="user1 avatar " className="matched__user" />
+        <img src={user2Pic} alt="user2 avatar " className="matched__user" />
       </div>
 
       <p className="matched__text">
@@ -22,10 +39,19 @@ const MatchedUsers = () => {
         towards your shared goals.
       </p>
       <div className="matched__button-div">
-        {/* need to insert logic for handling onClick */}
-        <Button text="Retake the Quiz" color="white" className="matched__button--left" />
-        {/* need to insert logic for handling onClick */}
-        <Button text="Set Goal" color="blue" className="matched__button--right" />
+        <Button
+          text="Retake the Quiz"
+          color="white"
+          className="matched__button--left"
+          eventListener={handleBackToQuiz}
+        />
+
+        <Button
+          text="Set Goal"
+          color="blue"
+          className="matched__button--right"
+          eventListener={handleGoToGoal}
+        />
       </div>
     </div>
   );

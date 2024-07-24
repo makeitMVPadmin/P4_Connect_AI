@@ -11,6 +11,7 @@ const QuizPage = () => {
           <ProgressBar />
         </div>
         <div className="quizpage__main">
+          {/* <Textarea/> */}
           <MatchedUsers />
         </div>
       </div>
