@@ -13,11 +13,12 @@
   padding: 0.3rem 0.5rem;
 
   &__box-container {
+    width: 0rem;
     height: 2rem;
-    width: 5.25rem;
     overflow: hidden;
     display: flex;
     align-items: center;
+    animation: loading 1s steps(21, end) infinite;
   }
 
   &__box {
@@ -26,7 +27,13 @@
     height: 1.5rem;
     flex-shrink: 0;
     margin-right: 0.5rem;
-    border: 0.2rem solid #000; // 0.375rem
+    border: 0.2rem solid #000;
     background: #0954b0;
+  }
+}
+
+@keyframes loading {
+  to {
+    width: 36.75rem;
   }
 }
