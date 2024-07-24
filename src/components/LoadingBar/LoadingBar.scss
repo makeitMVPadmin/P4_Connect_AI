@@ -3,14 +3,22 @@
 @import "../../styles/partials/typography.scss";
 
 .loading-bar {
-  width: 36rem;
+  width: 15rem;
   height: 2.1rem;
   display: flex;
   align-items: center;
-  border-radius: 0.11113rem;
+  border-radius: 0.3rem;
   border: 0.2rem solid #000;
   background: #fff;
   padding: 0.3rem 0.5rem;
+
+  @include Tablet {
+    width: 22rem;
+  }
+
+  @include Desktop {
+    width: 36rem;
+  }
 
   &__box-container {
     width: 0rem;
@@ -18,7 +26,15 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    animation: loading 1s steps(21, end) infinite;
+    animation: loading_mobile 1s steps(9, end) infinite;
+
+    @include Tablet {
+      animation: loading_tablet 1s steps(13, end) infinite;
+    }
+
+    @include Desktop {
+      animation: loading_desktop 1s steps(21, end) infinite;
+    }
   }
 
   &__box {
@@ -32,8 +48,56 @@
   }
 }
 
-@keyframes loading {
+@keyframes loading_mobile {
+  to {
+    width: 15.75rem;
+  }
+}
+
+@keyframes loading_tablet {
+  to {
+    width: 22.75rem;
+  }
+}
+
+@keyframes loading_desktop {
   to {
     width: 36.75rem;
   }
 }
+
+// .loading-bar {
+//   width: 36rem;
+//   height: 2.1rem;
+//   display: flex;
+//   align-items: center;
+//   border-radius: 0.3rem;
+//   border: 0.2rem solid #000;
+//   background: #fff;
+//   padding: 0.3rem 0.5rem;
+
+//   &__box-container {
+//     width: 0rem;
+//     height: 2rem;
+//     overflow: hidden;
+//     display: flex;
+//     align-items: center;
+//     animation: loading 1s steps(21, end) infinite;
+//   }
+
+//   &__box {
+//     // 1.75rem per box
+//     width: 1.25rem;
+//     height: 1.5rem;
+//     flex-shrink: 0;
+//     margin-right: 0.5rem;
+//     border: 0.2rem solid #000;
+//     background: #0954b0;
+//   }
+// }
+
+// @keyframes loading {
+//   to {
+//     width: 36.75rem;
+//   }
+// }

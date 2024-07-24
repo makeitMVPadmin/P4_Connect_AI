@@ -14,7 +14,7 @@
   z-index: -1;
 
   &__container {
-    background-color: $MVP-White;
+    background-color: $MVP-Yellow;
     border-radius: 20px;
     border: 4px solid #000;
     box-sizing: border-box;
@@ -22,5 +22,15 @@
     height: 64.1vh;
     position: absolute;
     top: 9.5514rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    margin-top: 2.94rem;
+    width: 11.62525rem;
+    height: 11.18863rem;
   }
 }
