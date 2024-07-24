@@ -18,36 +18,34 @@ const QuizPage = () => {
   const [formData, setFormData] = React.useState([]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    console.log("Form Data:", formData.flat());
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-    let updatedValue;
+    let updatedValue = new Set(formData);
+    const QuestionItem = QA.filter(
+      (data) => data.question_content === question_content
+    );
+    const allAns = QuestionItem.flatMap((item) => item.answers);
 
     if (question_type === "checkbox") {
-      const QuestionItem = QA.filter(
-        (data) => data.question_content === question_content
-      );
-      const allAns = QuestionItem.flatMap((item) => item.answers);
-       updatedValue = value.flatMap((eachAns) => {
+      value.flatMap((eachAns) => {
         const ansIds = allAns
           .filter((answer) => answer.answer_content === eachAns)
           .map((answer) => answer.answer_id);
-        return ansIds;
+        ansIds.forEach((id) => updatedValue.add(id));
       });
- 
-    } else if(question_type==="dropdown"){
-      updatedValue = QA.flatMap((item) => {
-        const answer_id = item.answers
-          ?.filter((answer) => answer.answer_content === value)
-          .map((answer) => answer.answer_id);
-        return answer_id;
-      });
+    } else if (question_type === "dropdown") {
+      const ansIds = allAns
+        .filter((answer) => answer.answer_content === value)
+        .map((answer) => answer.answer_id);
+      ansIds.forEach((id) => updatedValue.add(id));
     }
-    console.log("ppk", updatedValue);
-    setFormData([...formData, updatedValue]);
+    setFormData(updatedValue)
   };
-
+  const handleTextareaChange = (value) => {
+    setFormData([...formData, value]);
+  };
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
 
@@ -84,13 +82,7 @@ const QuizPage = () => {
         return (
           <Textarea
             labelName={item.question_content}
-            handleTextarea={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
-            }
+            handleTextarea={(value) => handleTextareaChange(value)}
           />
         );
       default:
