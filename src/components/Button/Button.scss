@@ -1,5 +1,5 @@
 @use "../../styles/partials/typography" as *;
-@use "../../styles/partials/global" as *;
+// @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
@@ -20,6 +20,13 @@
     background-color: $MVP-Light-Blue;
     &:hover {
       background-color: $Faded-Blue;
+    }
+  }
+  &--dark-blue {
+    color: $MVP-White;
+    background-color: $MVP-Dark-Blue;
+    &:hover {
+      background-color: $MVP-Dark-Blue-faded;
     }
   }
 
