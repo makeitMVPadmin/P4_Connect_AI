@@ -1,3 +1,26 @@
 @import "../../styles/partials/mixins.scss";
 @import "../../styles/partials/variables.scss";
 @import "../../styles/partials/typography.scss";
+
+.loading-page {
+  background-color: $Powder-Blue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+
+  &__container {
+    background-color: $MVP-White;
+    border-radius: 20px;
+    border: 4px solid #000;
+    box-sizing: border-box;
+    width: 70%;
+    height: 64.1vh;
+    position: absolute;
+    top: 9.5514rem;
+  }
+}
