@@ -13,8 +13,8 @@ const MatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
 
-  //grab user1 and user 2's pictures, and match percentage from backend:
-  //for example:
+  //grab matches.user_id1_pic and matches.user_id2_pic, and matches.match_percentage from backend:
+  //for example - simulating a fetch from backend:
   //   useEffect(()=>{
   // async function fetchMatches (){
   //   const matches = await getMatches();

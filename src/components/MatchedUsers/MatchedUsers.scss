@@ -5,38 +5,47 @@
 
 .matched {
   height: 69%;
-  width: 570px;
+  width: 35.6rem;
   //   border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  // @include Tablet {
+  //   width: 20rem;
+  // }
 
   &__title {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 700;
   }
   &__images {
-    padding: 30px 0;
+    padding: 1.875rem 0;
   }
   &__user {
-    width: 151px;
-    height: 151px;
+    width: 9.44rem;
+    height: 9.44rem;
     border-radius: 50%;
+    // @include Tablet {
+    //   width: 7rem;
+    //height: 7rem;
+    // }
   }
   &__text {
-    font-size: 15px;
-    line-height: 23px;
+    font-size: 0.938rem;
+    line-height: 1.438rem;
     font-weight: 700;
   }
   &__button-div {
     display: flex;
-    padding: 45px 0 0;
-    align-items: space-between;
+    padding: 2.813rem 0 0;
+    // @include Tablet {
+    //   flex-direction: column;
+    // }
   }
   &__button--left {
-    margin: 0 30px 0 0;
+    margin: 0 1.875rem 0 0;
     transition: ease-in 0.3s;
     &:hover {
       background-color: $Faded-Blue !important;
