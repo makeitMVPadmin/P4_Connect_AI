@@ -9,13 +9,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-
-
         <Route path="/prompt" element={<PromptPage />} />
         <Route path="/test" element={<TestPage />} />
 
       </Routes>
-      <QuizPage />
     </>
   );
 }

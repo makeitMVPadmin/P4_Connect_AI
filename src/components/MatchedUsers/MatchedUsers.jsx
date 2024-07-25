@@ -25,6 +25,7 @@ const MatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   //   fetchMatches()}, [])
 
   return (
+    <section className="matchedusers">
     <div className="matched">
       <h2 className="matched__title">
         {`Congratulations! You have a ${matchPercentage}% match!`}
@@ -54,6 +55,7 @@ const MatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
         />
       </div>
     </div>
+    </section>
   );
 };
 export default MatchedUsers;

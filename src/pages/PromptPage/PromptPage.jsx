@@ -2,7 +2,19 @@ import "./PromptPage.scss";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
+import { useState } from "react";
+import QuizPage from "../QuizPage/QuizPage";
+import Home from "../../main";
 const PromptPage = () => {
+  const [currentPage, setCurrentPage] = useState("prompt");
+
+  const handleClick = () => {
+    setCurrentPage("quiz");
+  };
+
+  if (currentPage === "quiz") {
+    return <QuizPage />;
+  }
   return (
     <div>
       <div className="promptpage__navbar">
@@ -36,7 +48,14 @@ const PromptPage = () => {
               </div>
               <div className="button-container">
                 <Button text="Back" color="white" className="back" />
-                <Button text="Next" color="dark-blue" className="next" />
+
+                <Button
+                  text="Next"
+                  color="dark-blue"
+                  className="next"
+                  eventListener={handleClick}
+                />
+
               </div>
             </div>
           </div>
