@@ -15,11 +15,15 @@ const QuizQuestions = () => {
   //   return initialFormData;
   // });
   const [formData, setFormData] = React.useState([]);
+  const [textAreaValue, setTextAreaValue] = React.useState("");
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    if (textAreaValue) {
+      setFormData([...formData, textAreaValue]);
+      setTextAreaValue("");
+    }
   };
-
 
   const handleInputChange = (question_type, question_content, value) => {
     let updatedValue = new Set(formData);
@@ -40,11 +44,15 @@ const QuizQuestions = () => {
         .filter((answer) => answer.answer_content === value)
         .map((answer) => answer.answer_id);
       ansIds.forEach((id) => updatedValue.add(id));
-    } else {
-      updatedValue.add(value);
     }
-    setFormData(updatedValue);
+
+    setFormData(Array.from(updatedValue));// transform Set to Array for updating state
   };
+
+  const handleTextareaChange = (value) => {
+    setTextAreaValue(value);
+  };
+
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
 
@@ -81,13 +89,7 @@ const QuizQuestions = () => {
         return (
           <Textarea
             labelName={item.question_content}
-            handleTextarea={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
-            }
+            handleTextarea={(value) => handleTextareaChange(value)}
           />
         );
       default:
@@ -95,6 +97,7 @@ const QuizQuestions = () => {
   };
   return (
     <div className="quizquestions">
+      {console.log("formdata", formData)}
       <form onSubmit={handleFormSubmit}>
         <section className="quizquestions_section">
           {QA.map((item, index) => (
