@@ -4,7 +4,6 @@ import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
-import Home from "../../main";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
 
 const PromptPage = () => {
@@ -16,9 +15,7 @@ const PromptPage = () => {
 
   return (
     <div>
-      <div className="promptpage__navbar">
-        <DashboardNavbar />
-      </div>
+      <DashboardNavbar />
       <div className="promptpage">
         <div className="promptpage__container">
           {currentPage === "prompt" && (
