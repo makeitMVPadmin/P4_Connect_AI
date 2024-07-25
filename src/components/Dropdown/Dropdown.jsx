@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Dropdown = ({ dropDownInfo1, labelName }) => {
+const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown }) => {
   const dropDownInfo = [
     "Design",
     "Engineering",
@@ -16,7 +16,7 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
-
+    onChangeDropdown(event.target.innerHTML);
     setIsActive(!isActive);
   };
   const handledummyvalue = () => {
@@ -30,7 +30,7 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
   return (
     <div className="dropdown">
       <label className="dropdown__label" htmlFor="labelName">
-        What areas would you Like to improve {labelName}
+        {labelName}
       </label>
       <section className="dropdown_wrapper">
         <article className="dropdown_wrapper_select">
@@ -54,7 +54,7 @@ const Dropdown = ({ dropDownInfo1, labelName }) => {
               >
                 Please select an option
               </span>
-              {dropDownInfo
+              {dropDownInfo1
                 .filter((item) => item !== updatedValue)
                 .map((item, index) => {
                   return (

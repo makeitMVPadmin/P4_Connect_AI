@@ -1,13 +1,24 @@
+import React from "react";
 import "./Textarea.scss";
 
-const Textarea = () => {
+const Textarea = ({ labelName, handleTextarea }) => {
+  const [value, setValue] = React.useState("");
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    handleTextarea(e.target.value);
+  };
   return (
     <div className="textarea">
       <label className="textarea__question" htmlFor="input">
-        Is there anything else you would like us to consider when setting your
-        goal?
+        {labelName}
       </label>
-      <textarea className="textarea__input" name="" id="input"></textarea>
+      <textarea
+        className="textarea__input"
+        name=""
+        id="input"
+        value={value}
+        onChange={handleChange}
+      ></textarea>
     </div>
   );
 };

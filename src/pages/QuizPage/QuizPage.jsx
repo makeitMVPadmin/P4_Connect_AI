@@ -1,8 +1,8 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import Textarea from "../../components/Textarea/Textarea";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
-
+import React from "react";
+import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 const QuizPage = () => {
   return (
     <div className="quizpage">
@@ -11,7 +11,7 @@ const QuizPage = () => {
           <ProgressBar />
         </div>
         <div className="quizpage__main">
-          {/* <Textarea/> */}
+          <QuizQuestions />
           <MatchedUsers />
         </div>
       </div>
