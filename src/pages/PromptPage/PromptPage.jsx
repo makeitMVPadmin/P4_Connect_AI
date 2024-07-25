@@ -5,6 +5,8 @@ import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.s
 import { useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Home from "../../main";
+import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
+
 const PromptPage = () => {
   const [currentPage, setCurrentPage] = useState("prompt");
 
@@ -19,7 +21,6 @@ const PromptPage = () => {
       </div>
       <div className="promptpage">
         <div className="promptpage__container">
-          {/*inside container*/}
           {currentPage === "prompt" && (
             <>
               <div className="promptpage__top-bar" />
@@ -61,8 +62,17 @@ const PromptPage = () => {
               <div className="promptpage__bottom-bar" />
             </>
           )}
-          {currentPage === "quiz" && <QuizPage />}
-          {/* proptpage container */}
+          {/* other pages */}
+          {currentPage === "quiz" && (
+            <QuizPage setCurrentPage={setCurrentPage} />
+          )}
+          {currentPage === "match" && (
+            <MatchedUsers
+              handleBackToQuiz={
+                () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
+              }
+            />
+          )}
         </div>
       </div>
     </div>
