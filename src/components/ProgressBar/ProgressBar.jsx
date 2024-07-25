@@ -36,21 +36,20 @@ const ProgressBar = () => {
     </div>
   );
 };
-
 export default ProgressBar;
-
 // const ProgressBar = ({ currentStep, onNext, onBack }) => {
-//     const maxSteps = 4;
-//     const boxesPerStep = 2;
+//   const maxSteps = 4;
+//   const boxesPerStep = 2;
 
-//     return (
-//       <div className="progress-bar">
-//         {[...Array(currentStep * boxesPerStep)].map((_, index) => (
-//           <div key={index} className="progress-bar__box" />
-//         ))}
-//       </div>
-//     );
-//   };
+//   return (
+//     <div className="progress-bar">
+//       {[...Array(currentStep * boxesPerStep)].map((_, index) => (
+//         <div key={index} className="progress-bar__box" />
+//       ))}
+//     </div>
+//   );
+// };
+
 /* <ProgressBar 
   currentStep={currentStep} 
   onNext={handleNext} 
