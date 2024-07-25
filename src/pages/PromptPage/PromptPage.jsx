@@ -20,7 +20,6 @@ const PromptPage = () => {
       <div className="promptpage__navbar">
         <DashboardNavbar />
       </div>
-
       <div className="promptpage">
         <div className="promptpage__container">
           <div className="promptpage__top-bar" />
@@ -49,12 +48,14 @@ const PromptPage = () => {
               </div>
               <div className="button-container">
                 <Button text="Back" color="white" className="back" />
+
                 <Button
                   text="Next"
                   color="dark-blue"
                   className="next"
                   eventListener={handleClick}
                 />
+
               </div>
             </div>
           </div>
