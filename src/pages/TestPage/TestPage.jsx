@@ -4,6 +4,7 @@ import QuizPage from "../QuizPage/QuizPage";
 import ListWithCheckbox from "../../components/ListWithCheckbox/ListWithCheckbox";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import PromptPage from "../PromptPage/PromptPage";
+import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
 
 const TestPage = () => {
   return (
@@ -13,6 +14,7 @@ const TestPage = () => {
       <ListWithCheckbox />
       <QuizPage />
       <PromptPage />
+      <MatchedUsers/>
     </div>
   );
 };

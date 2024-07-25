@@ -2,13 +2,18 @@ import "./PromptPage.scss";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
+import { useState } from "react";
 const PromptPage = () => {
+  const [setQuizPage, setQuizPageActive] = useState(false);
+  const handleNextButton = () => {
+    setQuizPageActive(true); //
+  }
   return (
-    <div>
+    <>
       <div className="promptpage__navbar">
         <DashboardNavbar />
       </div>
-
+      {/* prompt page start */}
       <div className="promptpage">
         <div className="promptpage__container">
           <div className="promptpage__top-bar" />
@@ -24,14 +29,16 @@ const PromptPage = () => {
               </div>
               <div className="button-container">
                 <Button text="Back" color="white" className="back"/>
-                <Button text="Next" color="dark-blue" className="next"/>
+                <Button text="Next" color="dark-blue" className="next" eventListener={handleNextButton}/>
               </div>
             </div>
           </div>
           <div className="promptpage__bottom-bar" />
         </div>
       </div>
-    </div>
+      {/* prompt page end */}
+      
+    </>
   );
 };
 
