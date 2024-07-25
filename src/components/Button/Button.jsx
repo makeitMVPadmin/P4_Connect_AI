@@ -1,7 +1,7 @@
 import "./Button.scss";
 
 const Button = ({ text, color, eventListener, className }) => {
-  console.log(eventListener);
+
   return (
     <button
       className={` button button--${color} ${className}`}
