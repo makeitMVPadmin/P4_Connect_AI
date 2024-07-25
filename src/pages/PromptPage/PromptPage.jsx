@@ -4,14 +4,16 @@ import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { useState } from "react";
 import QuizPage from "../QuizPage/QuizPage";
+import Home from "../../main";
 const PromptPage = () => {
   const [currentPage, setCurrentPage] = useState("prompt");
 
   const handleClick = () => {
     setCurrentPage("quiz");
   };
+
   if (currentPage === "quiz") {
-     return <QuizPage />;
+    return <QuizPage />;
   }
   return (
     <div>
