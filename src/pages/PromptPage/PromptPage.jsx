@@ -2,9 +2,10 @@ import "./PromptPage.scss";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
+import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const [currentPage, setCurrentPage] = useState("prompt");
@@ -64,11 +65,13 @@ const PromptPage = () => {
             <QuizPage setCurrentPage={setCurrentPage} />
           )}
           {currentPage === "match" && (
-            <MatchedUsers
-              handleBackToQuiz={
-                () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
-              }
-            />
+            <Suspense fallback={<LoadingPage />}>
+              <MatchedUsers
+                handleBackToQuiz={
+                  () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
+                }
+              />
+            </Suspense>
           )}
         </div>
       </div>

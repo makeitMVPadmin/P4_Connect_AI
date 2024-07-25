@@ -26,35 +26,35 @@ const MatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
 
   return (
     <section className="matchedusers">
-    <div className="matched">
-      <h2 className="matched__title">
-        {`Congratulations! You have a ${matchPercentage}% match!`}
-      </h2>
-      <div className="matched__images">
-        <img src={user1Pic} alt="user1 avatar " className="matched__user" />
-        <img src={user2Pic} alt="user2 avatar " className="matched__user" />
-      </div>
+      <div className="matched">
+        <h2 className="matched__title">
+          {`Congratulations! You have a ${matchPercentage}% match!`}
+        </h2>
+        <div className="matched__images">
+          <img src={user1Pic} alt="user1 avatar " className="matched__user" />
+          <img src={user2Pic} alt="user2 avatar " className="matched__user" />
+        </div>
 
-      <p className="matched__text">
-        Ready to start collaborating? Connect with your partner now and begin working
-        towards your shared goals.
-      </p>
-      <div className="matched__button-div">
-        <Button
-          text="Retake the Quiz"
-          color="white"
-          className="matched__button--left"
-          eventListener={handleBackToQuiz}
-        />
+        <p className="matched__text">
+          Ready to start collaborating? Connect with your partner now and begin
+          working towards your shared goals.
+        </p>
+        <div className="matched__button-div">
+          <Button
+            text="Retake the Quiz"
+            color="white"
+            className="matched__button--left"
+            eventListener={handleBackToQuiz}
+          />
 
-        <Button
-          text="Set Goal"
-          color="blue"
-          className="matched__button--right"
-          eventListener={handleGoToGoal}
-        />
+          <Button
+            text="Set Goal"
+            color="blue"
+            className="matched__button--right"
+            eventListener={handleGoToGoal}
+          />
+        </div>
       </div>
-    </div>
     </section>
   );
 };
