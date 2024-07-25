@@ -1,11 +1,12 @@
 import React from "react";
+import  { useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
-const QuizQuestions = () => {
+const QuizQuestions = ({onProgressChange}) => {
   // const [formData, setFormData] = React.useState(() => {
   //   const initialFormData = {};
   //   QA.forEach((item) => {
@@ -14,8 +15,9 @@ const QuizQuestions = () => {
   //   });
   //   return initialFormData;
   // });
-  const [formData, setFormData] = React.useState([]);
+  const [formData, setFormData] =  React.useState([]); 
   const [textAreaValue, setTextAreaValue] = React.useState("");
+  const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -46,12 +48,23 @@ const QuizQuestions = () => {
       ansIds.forEach((id) => updatedValue.add(id));
     }
 
+    setAnsweredQuestions((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(question_content);
+      return newSet;
+    });
+
     setFormData(Array.from(updatedValue));// transform Set to Array for updating state
+    //setFormData(updatedValue);
   };
 
   const handleTextareaChange = (value) => {
     setTextAreaValue(value);
   };
+
+  useEffect(() => {
+    onProgressChange(answeredQuestions.size);
+  }, [answeredQuestions, onProgressChange]);
 
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
