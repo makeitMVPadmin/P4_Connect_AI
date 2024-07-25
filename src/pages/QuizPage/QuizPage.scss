@@ -1,38 +1,38 @@
-@import "../../styles/partials/mixins.scss";
-@import "../../styles/partials/variables.scss";
-@import "../../styles/partials/typography.scss";
+// @import "../../styles/partials/mixins.scss";
+// @import "../../styles/partials/variables.scss";
+// @import "../../styles/partials/typography.scss";
 
-.quizpage {
-  background-color: $Powder-Blue;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  &__container {
-    margin: 76px auto 93px;
-    display: flex;
-    flex-direction: row;
-    border: 4px black solid;
-    border-radius: 20px;
-    width: 76%;
-    height: 71%;
-  }
-  &__side-area {
-    background-color: $MVP-Yellow;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 34%;
-    border-radius: 20px 0 0 20px;
-    border-right: 4px solid black;
-  }
-  &__main {
-    background-color: $MVP-White;
-    height: 100%;
-    width: 66%;
-    border-radius: 0 20px 20px 0;
+// .quizpage {
+//   background-color: $Powder-Blue;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   &__container {
+//     margin: 76px auto 93px;
+//     display: flex;
+//     flex-direction: row;
+//     border: 4px black solid;
+//     border-radius: 20px;
+//     width: 76%;
+//     height: 71%;
+//   }
+//   &__side-area {
+//     background-color: $MVP-Yellow;
+//     display: flex;
+//     justify-content: center;
+//     height: 100%;
+//     width: 34%;
+//     border-radius: 20px 0 0 20px;
+//     border-right: 4px solid black;
+//   }
+//   &__main {
+//     background-color: $MVP-White;
+//     height: 100%;
+//     width: 66%;
+//     border-radius: 0 20px 20px 0;
 
-    scroll-behavior: smooth;
-    overflow-y: auto;
+//     scroll-behavior: smooth;
+//     overflow-y: auto;
 
-  }
-}
+//   }
+// }

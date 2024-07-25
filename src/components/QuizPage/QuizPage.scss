@@ -1,0 +1,36 @@
+@import "../../styles/partials/mixins.scss";
+@import "../../styles/partials/variables.scss";
+@import "../../styles/partials/typography.scss";
+
+.quizpage {
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+
+  &__side-area {
+    background-color: $MVP-Yellow;
+    display: flex;
+    justify-content: center;
+    height: 64.1vh;
+    width: 34%;
+    // border-radius: 20px 0 0 20px;
+    border-right: 4px solid black;
+  }
+  &__main {
+    background-color: $MVP-White;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 20px 20px 0;
+
+    scroll-behavior: smooth;
+    overflow-y: auto;
+  }
+
+  &__main-container {
+    max-height: 64.1vh;
+    width: 66%;
+    overflow: hidden;
+  }
+}

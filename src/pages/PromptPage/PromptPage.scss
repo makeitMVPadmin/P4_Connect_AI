@@ -2,7 +2,6 @@
 @import "../../styles/partials/variables.scss";
 @import "../../styles/partials/typography.scss";
 
-
 .promptpage {
   // font-family: "Corben-Regular";
   background-color: #c9e5fe;
@@ -21,9 +20,10 @@
     border-radius: 20px;
     border: 4px solid #000;
     box-sizing: border-box;
-    width: 70%;
+    max-width: 70%;
     min-height: 64.1vh;
     flex-direction: column;
+    overflow: hidden;
   }
 
   &__top-bar {
@@ -57,7 +57,7 @@
     font-size: 30px;
   }
 
-  .text-container>* {
+  .text-container > * {
     padding-top: 25px;
   }
 
