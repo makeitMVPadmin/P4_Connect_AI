@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { Suspense, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
+import Roadmap from "../../components/Roadmap/Roadmap";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
@@ -64,12 +65,14 @@ const PromptPage = () => {
           {currentPage === "quiz" && (
             <QuizPage setCurrentPage={setCurrentPage} />
           )}
+          {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "match" && (
             <Suspense fallback={<LoadingPage />}>
               <MatchedUsers
                 handleBackToQuiz={
                   () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
                 }
+                handleGoToGoal={() => setCurrentPage("roadmap")}
               />
             </Suspense>
           )}
