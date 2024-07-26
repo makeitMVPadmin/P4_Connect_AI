@@ -5,7 +5,7 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
-const QuizQuestions = () => {
+const QuizQuestions = ({ setCurrentPage }) => {
   // const [formData, setFormData] = React.useState(() => {
   //   const initialFormData = {};
   //   QA.forEach((item) => {
@@ -23,6 +23,8 @@ const QuizQuestions = () => {
       setFormData([...formData, textAreaValue]);
       setTextAreaValue("");
     }
+
+    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -46,7 +48,7 @@ const QuizQuestions = () => {
       ansIds.forEach((id) => updatedValue.add(id));
     }
 
-    setFormData(Array.from(updatedValue));// transform Set to Array for updating state
+    setFormData(Array.from(updatedValue)); // transform Set to Array for updating state
   };
 
   const handleTextareaChange = (value) => {
@@ -106,7 +108,7 @@ const QuizQuestions = () => {
             </div>
           ))}
           <div className="quizquestions_section--field">
-            <Button text="Next" color="blue" />
+            <Button text="Next" color="blue" type="submit" />
           </div>
         </section>
       </form>
