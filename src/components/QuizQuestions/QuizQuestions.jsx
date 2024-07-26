@@ -25,13 +25,17 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       setFormData([...formData, textAreaValue]);
       setTextAreaValue("");
     }
-
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
+  useEffect(() => {
+    console.log("formData", formData);
+  }, [formData, textAreaValue]);
 
   const handleInputChange = (question_type, question_content, value) => {
     let updatedValue = new Set(formData);
-    const QuestionItem = QA.filter((data) => data.question_content === question_content);
+    const QuestionItem = QA.filter(
+      (data) => data.question_content === question_content
+    );
     const allAns = QuestionItem.flatMap((item) => item.answers);
 
     if (question_type === "checkbox") {
@@ -75,7 +79,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             dropDownInfo1={answers}
             onChangeDropdown={(value) =>
-              handleInputChange(item.question_type, item.question_content, value)
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
             }
           />
         );
@@ -85,7 +93,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             options1={answers}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(item.question_type, item.question_content, value)
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
             }
           />
         );
@@ -101,7 +113,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
-      {console.log("formdata", formData)}
       <form onSubmit={handleFormSubmit}>
         <section className="quizquestions_section">
           {QA.map((item, index) => (
