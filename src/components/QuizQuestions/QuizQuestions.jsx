@@ -1,12 +1,12 @@
 import React from "react";
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
-const QuizQuestions = ({onProgressChange}) => {
+const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   // const [formData, setFormData] = React.useState(() => {
   //   const initialFormData = {};
   //   QA.forEach((item) => {
@@ -15,7 +15,7 @@ const QuizQuestions = ({onProgressChange}) => {
   //   });
   //   return initialFormData;
   // });
-  const [formData, setFormData] =  React.useState([]); 
+  const [formData, setFormData] = React.useState([]);
   const [textAreaValue, setTextAreaValue] = React.useState("");
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
 
@@ -25,13 +25,13 @@ const QuizQuestions = ({onProgressChange}) => {
       setFormData([...formData, textAreaValue]);
       setTextAreaValue("");
     }
+
+    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
   const handleInputChange = (question_type, question_content, value) => {
     let updatedValue = new Set(formData);
-    const QuestionItem = QA.filter(
-      (data) => data.question_content === question_content
-    );
+    const QuestionItem = QA.filter((data) => data.question_content === question_content);
     const allAns = QuestionItem.flatMap((item) => item.answers);
 
     if (question_type === "checkbox") {
@@ -54,8 +54,7 @@ const QuizQuestions = ({onProgressChange}) => {
       return newSet;
     });
 
-    setFormData(Array.from(updatedValue));// transform Set to Array for updating state
-    //setFormData(updatedValue);
+    setFormData(Array.from(updatedValue)); // transform Set to Array for updating state
   };
 
   const handleTextareaChange = (value) => {
@@ -76,11 +75,7 @@ const QuizQuestions = ({onProgressChange}) => {
             labelName={item.question_content}
             dropDownInfo1={answers}
             onChangeDropdown={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -90,11 +85,7 @@ const QuizQuestions = ({onProgressChange}) => {
             labelName={item.question_content}
             options1={answers}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -119,7 +110,7 @@ const QuizQuestions = ({onProgressChange}) => {
             </div>
           ))}
           <div className="quizquestions_section--field">
-            <Button text="Next" color="blue" />
+            <Button text="Next" color="blue" type="submit" />
           </div>
         </section>
       </form>

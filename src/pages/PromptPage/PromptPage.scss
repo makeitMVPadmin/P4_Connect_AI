@@ -2,28 +2,34 @@
 @import "../../styles/partials/variables.scss";
 @import "../../styles/partials/typography.scss";
 
-
 .promptpage {
   // font-family: "Corben-Regular";
-  background-color: #c9e5fe;
+  background-color: $Powder-Blue;
   min-width: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: -1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 95vh;
+  height: 100vh;
 
   &__container {
     background-color: $MVP-White;
-    position: relative;
+    position: absolute;
+    top: 9.5514rem;
     // top: 75px;
     border-radius: 20px;
     border: 4px solid #000;
     box-sizing: border-box;
     width: 70%;
-    min-height: 64.1vh;
+    min-height: 70vh;
     flex-direction: column;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__top-bar {
@@ -57,7 +63,7 @@
     font-size: 30px;
   }
 
-  .text-container>* {
+  .text-container > * {
     padding-top: 25px;
   }
 
