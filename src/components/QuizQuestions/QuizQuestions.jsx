@@ -33,7 +33,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       (data) => data.question_content === question_content
     );
     const allAns = questionItem.answers;
-    let newSelelectedAnswerIds = [...selectedAnswerIds];
+    let newSelectedAnswerIds = [...selectedAnswerIds];
 
     if (question_type == "checkbox") {
       const answerIds = value.map((each) => {
@@ -41,26 +41,35 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         return found[0]?.answer_id;
       });
       console.log(answerIds);
-      newSelelectedAnswerIds = [
-        ...newSelelectedAnswerIds.filter(
-          (id) => !allAns.some((answer) => answer.answer_id === id)
-        ).flat(),
-        ...answerIds,
-      ];
-    } else if (question_type == "dropdown") {
+
+      newSelectedAnswerIds = newSelectedAnswerIds.filter(
+        (id) => !answerIds.includes(id)
+      );
+      newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
+    } 
+    
+    
+    
+    else if (question_type == "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
-      newSelelectedAnswerIds = [
-        ...newSelelectedAnswerIds.filter(
-          (id) => !allAns.some((answer) => answer.answer_id === id)
-        ).flat(),
-        answerIds,
-      ];
-    } else {
-      newSelelectedAnswerIds = [...newSelelectedAnswerIds, value];
+
+      const currentAnswerIds = allAns.map((answer) => answer.answer_id);
+      newSelectedAnswerIds.filter(id=>!currentAnswerIds.includes(id));
+
+      newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
     }
-    setSelectedAnswerIds(newSelelectedAnswerIds);
+    
+
+
+
+
+
+    else {
+      newSelectedAnswerIds = [...newSelectedAnswerIds, value];
+    }
+    setSelectedAnswerIds(newSelectedAnswerIds);
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       newSet.add(question_content);
