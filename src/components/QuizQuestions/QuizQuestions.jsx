@@ -41,10 +41,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         return found[0]?.answer_id;
       });
       console.log(answerIds);
-
+      const currentAnswerIds = allAns.map((answer) => answer.answer_id);
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
-        (id) => !answerIds.includes(id)
-      );
+        (id) => !currentAnswerIds.includes(id)
+      ).flat();
+      console.log("newSelectedAnswerIds in checkbox", newSelectedAnswerIds);
       newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
     } 
     
