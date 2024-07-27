@@ -26,6 +26,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       setTextAreaValue("");
     }
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    if (!textAreaValue) {
+      setCurrentPage("no-match"); //this is also temporary and logic needs to be implemented here for when there is no-match
+    }
   };
   useEffect(() => {
     console.log("formData", formData);
@@ -33,9 +36,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
   const handleInputChange = (question_type, question_content, value) => {
     let updatedValue = new Set(formData);
-    const QuestionItem = QA.filter(
-      (data) => data.question_content === question_content
-    );
+    const QuestionItem = QA.filter((data) => data.question_content === question_content);
     const allAns = QuestionItem.flatMap((item) => item.answers);
 
     if (question_type === "checkbox") {
@@ -79,11 +80,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             dropDownInfo1={answers}
             onChangeDropdown={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -93,11 +90,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             options1={answers}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
