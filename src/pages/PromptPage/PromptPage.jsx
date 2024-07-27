@@ -62,29 +62,12 @@ const PromptPage = () => {
             </>
           )}
           {/* other pages */}
-          {currentPage === "quiz" && (
+          {(currentPage === "quiz" ||
+            currentPage === "match" ||
+            currentPage === "no-match") && (
             <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
           )}
           {currentPage === "roadmap" && <Roadmap />}
-          {currentPage === "match" && (
-            <Suspense fallback={<LoadingPage />}>
-              <MatchedUsers
-                handleBackToQuiz={
-                  () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
-                }
-                handleGoToGoal={() => setCurrentPage("roadmap")}
-              />
-            </Suspense>
-          )}
-          {currentPage === "no-match" && (
-            <Suspense fallback={<LoadingPage />}>
-              <NoMatch
-                handleBackToQuiz={
-                  () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
-                }
-              />
-            </Suspense>
-          )}
         </div>
       </div>
     </div>
