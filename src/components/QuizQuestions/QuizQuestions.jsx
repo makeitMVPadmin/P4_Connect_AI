@@ -15,7 +15,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     });
     return initialFormData;
   });
-  // const [formData, setFormData] = React.useState([]);
+
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
 
@@ -52,7 +52,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       );
 
       console.log("newSelectedAnswerIds in checkbox", newSelectedAnswerIds);
-      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds.flat()];
+      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds.flat()];
     } else if (question_type == "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
@@ -61,9 +61,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
       newSelectedAnswerIds = newSelectedAnswerIds
         .filter((id) => !allAns.some((ans) => ans.answer_id === id))
-        .flat();
+      
 
-      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds];
+      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds];
     } else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
