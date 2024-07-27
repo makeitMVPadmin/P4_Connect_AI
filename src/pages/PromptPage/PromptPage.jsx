@@ -62,7 +62,9 @@ const PromptPage = () => {
             </>
           )}
           {/* other pages */}
-          {currentPage === "quiz" && <QuizPage setCurrentPage={setCurrentPage} />}
+          {currentPage === "quiz" && (
+            <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
+          )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "match" && (
             <Suspense fallback={<LoadingPage />}>

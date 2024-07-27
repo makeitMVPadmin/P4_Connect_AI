@@ -3,7 +3,7 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import React, { useState } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 
-const QuizPage = ({ setCurrentPage }) => {
+const QuizPage = ({ currentPage, setCurrentPage }) => {
   const step = 1;
   const [progress, setProgress] = useState(0);
   const onProgressChange = (answeredQuestionsCount) => {
@@ -15,7 +15,7 @@ const QuizPage = ({ setCurrentPage }) => {
   return (
     <div className="quizpage">
       <div className="quizpage__side-area">
-        <ProgressBar step={progress} />
+        <ProgressBar step={progress} currentPage={currentPage} />
       </div>
       <div className="quizpage__main-container">
         <div className="quizpage__main">
