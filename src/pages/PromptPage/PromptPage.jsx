@@ -66,17 +66,21 @@ const PromptPage = () => {
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "match" && (
             <Suspense fallback={<LoadingPage />}>
+              <MatchedUsers
+                handleBackToQuiz={
+                  () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
+                }
+                handleGoToGoal={() => setCurrentPage("roadmap")}
+              />
+            </Suspense>
+          )}
+          {currentPage === "no-match" && (
+            <Suspense fallback={<LoadingPage />}>
               <NoMatch
                 handleBackToQuiz={
                   () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
                 }
               />
-              {/* <MatchedUsers
-                handleBackToQuiz={
-                  () => setCurrentPage("quiz") //this line of code is temporary and is only used to demonstrate page flow, it doesn't actually properly reset the quiz
-                }
-                handleGoToGoal={() => setCurrentPage("roadmap")}
-              /> */}
             </Suspense>
           )}
         </div>
