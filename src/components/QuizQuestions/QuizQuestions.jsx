@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
@@ -7,62 +7,65 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-  // const [formData, setFormData] = React.useState(() => {
-  //   const initialFormData = {};
-  //   QA.forEach((item) => {
-  //     initialFormData[item.question_content] =
-  //       item.question_type == "checkbox" ? [] : "";
-  //   });
-  //   return initialFormData;
-  // });
-  const [formData, setFormData] = React.useState([]);
-  const [textAreaValue, setTextAreaValue] = React.useState("");
+  const [formData, setFormData] = React.useState(() => {
+    const initialFormData = {};
+    QA.forEach((item) => {
+      initialFormData[item.question_content] =
+        item.question_type == "checkbox" ? [] : "";
+    });
+    return initialFormData;
+  });
+  // const [formData, setFormData] = React.useState([]);
+  const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (textAreaValue) {
-      setFormData([...formData, textAreaValue]);
-      setTextAreaValue("");
-    }
+    console.log("formData", formData);
+    console.log("Selected Answer IDs:", selectedAnswerIds);
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
-  useEffect(() => {
-    console.log("formData", formData);
-  }, [formData, textAreaValue]);
 
   const handleInputChange = (question_type, question_content, value) => {
-    let updatedValue = new Set(formData);
-    const QuestionItem = QA.filter(
+    setFormData({ ...formData, [question_content]: value });
+
+    const questionItem = QA.find(
       (data) => data.question_content === question_content
     );
-    const allAns = QuestionItem.flatMap((item) => item.answers);
+    const allAns = questionItem.answers;
+    let newSelelectedAnswerIds = [...selectedAnswerIds];
 
-    if (question_type === "checkbox") {
-      value.flatMap((eachAns) => {
-        const ansIds = allAns
-          .filter((answer) => answer.answer_content === eachAns)
-          .map((answer) => answer.answer_id);
-        ansIds.forEach((id) => updatedValue.add(id));
+    if (question_type == "checkbox") {
+      const answerIds = value.map((each) => {
+        const found = allAns.filter((data) => data.answer_content == each);
+        return found[0]?.answer_id;
       });
-    } else if (question_type === "dropdown") {
-      const ansIds = allAns
-        .filter((answer) => answer.answer_content === value)
-        .map((answer) => answer.answer_id);
-      ansIds.forEach((id) => updatedValue.add(id));
+      console.log(answerIds);
+      newSelelectedAnswerIds = [
+        ...newSelelectedAnswerIds.filter(
+          (id) => !allAns.some((answer) => answer.answer_id === id)
+        ).flat(),
+        ...answerIds,
+      ];
+    } else if (question_type == "dropdown") {
+      const answerIds = allAns
+        .filter((item) => item.answer_content === value)
+        .map((data) => data.answer_id);
+      newSelelectedAnswerIds = [
+        ...newSelelectedAnswerIds.filter(
+          (id) => !allAns.some((answer) => answer.answer_id === id)
+        ).flat(),
+        answerIds,
+      ];
+    } else {
+      newSelelectedAnswerIds = [...newSelelectedAnswerIds, value];
     }
-
+    setSelectedAnswerIds(newSelelectedAnswerIds);
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       newSet.add(question_content);
       return newSet;
     });
-
-    setFormData(Array.from(updatedValue)); // transform Set to Array for updating state
-  };
-
-  const handleTextareaChange = (value) => {
-    setTextAreaValue(value);
   };
 
   useEffect(() => {
@@ -105,7 +108,13 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         return (
           <Textarea
             labelName={item.question_content}
-            handleTextarea={(value) => handleTextareaChange(value)}
+            handleTextarea={(value) =>
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
+            }
           />
         );
       default:
