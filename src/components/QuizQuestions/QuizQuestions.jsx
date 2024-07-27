@@ -26,7 +26,12 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
-  const handleInputChange = (question_type, question_content, value) => {
+  const handleInputChange = (
+    question_type,
+    question_id,
+    question_content,
+    value
+  ) => {
     setFormData({ ...formData, [question_content]: value });
 
     const questionItem = QA.find(
@@ -40,14 +45,16 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         const found = allAns.filter((data) => data.answer_content == each);
         return found[0]?.answer_id;
       });
-      console.log(answerIds);
-      const currentAnswerIds = allAns.map((answer) => answer.answer_id);
-      newSelectedAnswerIds = newSelectedAnswerIds.filter(
-        (id) => !currentAnswerIds.includes(id)
-      ).flat();
+      console.log("answerIds in checkbox", answerIds);
+
+      newSelectedAnswerIds = newSelectedAnswerIds
+        .filter((id) => !id.startsWith(question_id))
+        .flat();
+
       console.log("newSelectedAnswerIds in checkbox", newSelectedAnswerIds);
       newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
     } 
+    
     
     
     
@@ -55,18 +62,17 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
+      console.log("answerIds in dropdown", answerIds);
 
-      const currentAnswerIds = allAns.map((answer) => answer.answer_id);
-      newSelectedAnswerIds.filter(id=>!currentAnswerIds.includes(id));
+      newSelectedAnswerIds = newSelectedAnswerIds
+        .filter((id) => !id.startsWith(question_id))
+        .flat();
 
       newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
     }
     
-
-
-
-
-
+    
+    
     else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
@@ -108,6 +114,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             onChangeDropdownCheckbox={(value) =>
               handleInputChange(
                 item.question_type,
+                item.question_id,
                 item.question_content,
                 value
               )
@@ -121,6 +128,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             handleTextarea={(value) =>
               handleInputChange(
                 item.question_type,
+                item.question_id,
                 item.question_content,
                 value
               )
