@@ -38,6 +38,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       (data) => data.question_content === question_content
     );
     const allAns = questionItem.answers;
+
     let newSelectedAnswerIds = [...selectedAnswerIds];
 
     if (question_type == "checkbox") {
@@ -47,36 +48,27 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       });
       console.log("answerIds in checkbox", answerIds);
 
-      newSelectedAnswerIds = newSelectedAnswerIds
-        .filter((id) => !id.startsWith(question_id))
-        .flat();
+      newSelectedAnswerIds = newSelectedAnswerIds.filter(
+        (id) => !allAns.some((ans) => ans.answer_id === id)
+      );
 
       console.log("newSelectedAnswerIds in checkbox", newSelectedAnswerIds);
-      newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
-    } 
-    
-    
-    
-    
-    else if (question_type == "dropdown") {
+      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds.flat()];
+    } else if (question_type == "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
       console.log("answerIds in dropdown", answerIds);
 
       newSelectedAnswerIds = newSelectedAnswerIds
-        .filter((id) => !id.startsWith(question_id))
+        .filter((id) => !allAns.some((ans) => ans.answer_id === id))
         .flat();
 
-      newSelectedAnswerIds = [...newSelectedAnswerIds.flat(), answerIds];
-    }
-    
-    
-    
-    else {
+      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds];
+    } else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
-    setSelectedAnswerIds(newSelectedAnswerIds);
+    setSelectedAnswerIds(newSelectedAnswerIds.flat());
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       newSet.add(question_content);
@@ -100,6 +92,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             onChangeDropdown={(value) =>
               handleInputChange(
                 item.question_type,
+                item.question_id,
                 item.question_content,
                 value
               )
