@@ -28,7 +28,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
   const handleInputChange = (
     question_type,
-    question_id,
     question_content,
     value
   ) => {
@@ -92,7 +91,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             onChangeDropdown={(value) =>
               handleInputChange(
                 item.question_type,
-                item.question_id,
                 item.question_content,
                 value
               )
@@ -107,7 +105,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             onChangeDropdownCheckbox={(value) =>
               handleInputChange(
                 item.question_type,
-                item.question_id,
                 item.question_content,
                 value
               )
@@ -121,7 +118,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             handleTextarea={(value) =>
               handleInputChange(
                 item.question_type,
-                item.question_id,
                 item.question_content,
                 value
               )
