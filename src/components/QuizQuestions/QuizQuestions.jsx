@@ -15,10 +15,12 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     });
     return initialFormData;
   });
+  const requiredQuestionIds = ["001", "002", "004", "006", "008"];
+  
 
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
-
+const[isRequired, setIsRequired] = useState([]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("formData", formData);
@@ -26,11 +28,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
-  const handleInputChange = (
-    question_type,
-    question_content,
-    value
-  ) => {
+  const handleInputChange = (question_type, question_content, value) => {
     setFormData({ ...formData, [question_content]: value });
 
     const questionItem = QA.find(
@@ -51,7 +49,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
 
-      console.log("newSelectedAnswerIds in checkbox", newSelectedAnswerIds);
+      console.log("newSelectedAnswerIds", newSelectedAnswerIds);
       newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds.flat()];
     } else if (question_type == "dropdown") {
       const answerIds = allAns
@@ -59,20 +57,28 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         .map((data) => data.answer_id);
       console.log("answerIds in dropdown", answerIds);
 
-      newSelectedAnswerIds = newSelectedAnswerIds
-        .filter((id) => !allAns.some((ans) => ans.answer_id === id))
-      
-
+      newSelectedAnswerIds = newSelectedAnswerIds.filter(
+        (id) => !allAns.some((ans) => ans.answer_id === id)
+      );
+      console.log("newSelectedAnswerIds", newSelectedAnswerIds);
       newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds];
     } else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
     setSelectedAnswerIds(newSelectedAnswerIds.flat());
+
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       newSet.add(question_content);
       return newSet;
     });
+
+const k=Array.from(answeredQuestions).map((ans)=>{
+  const p=QA.filter(data=>data.question_content===ans)
+  console.log("p",p)
+  return p;
+})
+
   };
 
   useEffect(() => {
@@ -85,23 +91,27 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     switch (item.question_type) {
       case "dropdown":
         return (
-          <Dropdown
-            labelName={item.question_content}
-            dropDownInfo1={answers}
-            onChangeDropdown={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
-            }
-          />
+          <>
+            <Dropdown
+              labelName={item.question_content}
+              dropDownInfo1={answers}
+              question_id={item.question_id}
+              onChangeDropdown={(value) =>
+                handleInputChange(
+                  item.question_type,
+                  item.question_content,
+                  value
+                )
+              }
+            />
+          </>
         );
       case "checkbox":
         return (
           <DropdownCheckbox
             labelName={item.question_content}
             options1={answers}
+            question_id={item.question_id}
             onChangeDropdownCheckbox={(value) =>
               handleInputChange(
                 item.question_type,

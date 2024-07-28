@@ -1,21 +1,15 @@
 import React from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown }) => {
-  const dropDownInfo = [
-    "Design",
-    "Engineering",
-    "Finance",
-    "Marketing",
-    "HR",
-    "Sales",
-  ];
+const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown,question_id }) => {
+
   const [updatedValue, setUpdatedValue] = React.useState();
   const [dummyValue, setDummyValue] = React.useState("Please select an option");
   const [isActive, setIsActive] = React.useState(false);
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
+   
     onChangeDropdown(event.target.innerHTML);
     setIsActive(!isActive);
   };
