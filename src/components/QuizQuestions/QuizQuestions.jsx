@@ -22,7 +22,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("formData", formData);
-    console.log("Selected Answer IDs:", selectedAnswerIds);
+    console.log("Selected Answer IDs:", selectedAnswerIds.sort());
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
@@ -71,8 +71,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     });
   };
 
-
-
   const arequestionAnswered = () => {
     const k = Array.from(answeredQuestions).map((ans) => {
       const p = QA.find((data) => data.question_content === ans).question_id;
@@ -85,8 +83,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     return answeredQuest;
   };
 
-
-  
   useEffect(() => {
     onProgressChange(answeredQuestions.size);
   }, [answeredQuestions, onProgressChange]);
@@ -157,7 +153,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               text="Next"
               color={arequestionAnswered() ? "blue" : "grey"}
               type="submit"
-              data={!arequestionAnswered()}
+              disabled={!arequestionAnswered()}
             />
           </div>
         </section>

@@ -9,18 +9,16 @@
   display: flex;
   flex-direction: column;
   font-family: "Gilroy-ExtraBold";
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   &__title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 16px 22px;
-    // font-family: "Corben-Regular";
     font-weight: 300;
     color: $MVP-black;
     cursor: pointer;
-
     background: $MVP-White;
   }
 
@@ -35,30 +33,33 @@
   }
 
   &__label {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     display: block;
   }
 
   &__group {
     display: flex;
     gap: 5px;
+ 
     &.one-coloums {
       flex-direction: column;
+      row-gap: 15px;
     }
     &.three-columns {
       flex-wrap: wrap;
+      row-gap:15px;
       .dropdown-checkbox__item {
-        width: calc(33.33333333% - 7px); // Adjust as necessary for spacing
+        width: calc(33.33333333% - 10px); // Adjust as necessary for spacing
       }
     }
   }
 
   &__item {
-    font-family: "Corben-Regular";
+    font-family: "Gilroy-ExtraBold";
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 1.2rem;
 
     input {
       display: none;
@@ -66,7 +67,7 @@
     .checkbox-custom {
       width: 18px;
       height: 18px;
-      border: 2px solid $MVP-black;
+      border: 3px solid $MVP-black;
       border-radius: 50%;
       margin-right: 8px;
       position: relative;
