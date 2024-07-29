@@ -6,12 +6,13 @@ const Button = ({
   eventListener,
   className = "",
   type = "button",
+  data
 }) => {
   return (
     <button
       className={`button button--${color} ${className}`}
       onClick={eventListener}
-      type={type}
+      type={type} disabled={data}
     >
       <h3 className="button__text">{text}</h3>
     </button>

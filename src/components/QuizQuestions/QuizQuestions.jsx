@@ -16,11 +16,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     return initialFormData;
   });
   const requiredQuestionIds = ["001", "002", "004", "006", "008"];
-  
-
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
-const[isRequired, setIsRequired] = useState([]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("formData", formData);
@@ -43,13 +41,11 @@ const[isRequired, setIsRequired] = useState([]);
         const found = allAns.filter((data) => data.answer_content == each);
         return found[0]?.answer_id;
       });
-      console.log("answerIds in checkbox", answerIds);
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
 
-      console.log("newSelectedAnswerIds", newSelectedAnswerIds);
       newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds.flat()];
     } else if (question_type == "dropdown") {
       const answerIds = allAns
@@ -60,11 +56,12 @@ const[isRequired, setIsRequired] = useState([]);
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-      console.log("newSelectedAnswerIds", newSelectedAnswerIds);
+
       newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds];
     } else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
+
     setSelectedAnswerIds(newSelectedAnswerIds.flat());
 
     setAnsweredQuestions((prev) => {
@@ -72,15 +69,24 @@ const[isRequired, setIsRequired] = useState([]);
       newSet.add(question_content);
       return newSet;
     });
-
-const k=Array.from(answeredQuestions).map((ans)=>{
-  const p=QA.filter(data=>data.question_content===ans)
-  console.log("p",p)
-  return p;
-})
-
   };
 
+
+
+  const arequestionAnswered = () => {
+    const k = Array.from(answeredQuestions).map((ans) => {
+      const p = QA.find((data) => data.question_content === ans).question_id;
+      return p;
+    });
+
+    const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
+    const answeredQuest = answeredQuestArray.every((quest) => quest === true);
+    console.log("answeredQuest", answeredQuest);
+    return answeredQuest;
+  };
+
+
+  
   useEffect(() => {
     onProgressChange(answeredQuestions.size);
   }, [answeredQuestions, onProgressChange]);
@@ -147,7 +153,12 @@ const k=Array.from(answeredQuestions).map((ans)=>{
             </div>
           ))}
           <div className="quizquestions_section--field">
-            <Button text="Next" color="blue" type="submit" />
+            <Button
+              text="Next"
+              color={arequestionAnswered() ? "blue" : "grey"}
+              type="submit"
+              data={!arequestionAnswered()}
+            />
           </div>
         </section>
       </form>
