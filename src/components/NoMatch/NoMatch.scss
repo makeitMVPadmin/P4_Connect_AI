@@ -2,12 +2,12 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-.matchedusers {
+.no-matches {
   margin: 1rem;
   display: flex;
 
   justify-content: center;
-  .matched {
+  .no-match {
     margin: 6.654rem 0 0;
     height: 69%;
     width: 35.6rem;
