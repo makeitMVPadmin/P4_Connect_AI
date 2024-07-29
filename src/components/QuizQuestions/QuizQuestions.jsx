@@ -24,9 +24,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
     setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    
   };
 
   const handleInputChange = (question_type, question_content, value) => {
+
     setFormData({ ...formData, [question_content]: value });
 
     const questionItem = QA.find(
@@ -40,6 +42,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       const answerIds = value.map((each) => {
         const found = allAns.filter((data) => data.answer_content == each);
         return found[0]?.answer_id;
+
       });
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
@@ -93,6 +96,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     switch (item.question_type) {
       case "dropdown":
         return (
+
           <>
             <Dropdown
               labelName={item.question_content}
@@ -107,6 +111,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               }
             />
           </>
+
         );
       case "checkbox":
         return (
@@ -115,11 +120,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             options1={answers}
             question_id={item.question_id}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );

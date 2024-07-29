@@ -1,9 +1,12 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
+import LoadingPage from "../LoadingPage/LoadingPage";
+import NoMatch from "../NoMatch/NoMatch";
+import MatchedUsers from "../MatchedUsers/MatchedUsers";
 
-const QuizPage = ({ setCurrentPage }) => {
+const QuizPage = ({ currentPage, setCurrentPage }) => {
   const step = 1;
   const [progress, setProgress] = useState(0);
   const onProgressChange = (answeredQuestionsCount) => {
@@ -15,14 +18,29 @@ const QuizPage = ({ setCurrentPage }) => {
   return (
     <div className="quizpage">
       <div className="quizpage__side-area">
-        <ProgressBar step={progress} />
+        <ProgressBar step={progress} currentPage={currentPage} />
       </div>
       <div className="quizpage__main-container">
         <div className="quizpage__main">
-          <QuizQuestions
-            setCurrentPage={setCurrentPage}
-            onProgressChange={onProgressChange}
-          />
+          {currentPage === "quiz" && (
+            <QuizQuestions
+              setCurrentPage={setCurrentPage}
+              onProgressChange={onProgressChange}
+            />
+          )}
+          {currentPage === "match" && (
+            <Suspense fallback={<LoadingPage />}>
+              <MatchedUsers
+                handleBackToQuiz={() => setCurrentPage("quiz")}
+                handleGoToGoal={() => setCurrentPage("roadmap")}
+              />
+            </Suspense>
+          )}
+          {currentPage === "no-match" && (
+            <Suspense fallback={<LoadingPage />}>
+              <NoMatch handleBackToQuiz={() => setCurrentPage("quiz")} />
+            </Suspense>
+          )}
         </div>
       </div>
     </div>
