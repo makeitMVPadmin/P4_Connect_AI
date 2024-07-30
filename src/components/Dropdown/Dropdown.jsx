@@ -1,15 +1,19 @@
 import React from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown,question_id }) => {
-
+const Dropdown = ({
+  dropDownInfo1,
+  labelName,
+  onChangeDropdown,
+  question_id,
+}) => {
   const [updatedValue, setUpdatedValue] = React.useState();
   const [dummyValue, setDummyValue] = React.useState("Please select an option");
   const [isActive, setIsActive] = React.useState(false);
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
-   
+
     onChangeDropdown(event.target.innerHTML);
     setIsActive(!isActive);
   };
@@ -41,13 +45,17 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown,question_id }) =>
           </div>
           {isActive && (
             <div className="dropdown_wrapper_select_option">
-              <span
-                className="custom-option"
-                data-value="Please Select an Option"
-                onClick={handledummyvalue}
-              >
-                Please select an option
-              </span>
+              {updatedValue ? (
+                <span
+                  className="custom-option"
+                  data-value="Please Select an Option"
+                  onClick={handledummyvalue}
+                >
+                  Please select an option
+                </span>
+              ) : (
+                ""
+              )}
               {dropDownInfo1
                 .filter((item) => item !== updatedValue)
                 .map((item, index) => {
