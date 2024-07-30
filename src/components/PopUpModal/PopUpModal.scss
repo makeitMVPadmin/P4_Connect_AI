@@ -1,18 +1,20 @@
 @import '../../styles/partials/variables.scss';
 
 
-.children > button{
-    margin: 20px auto; /* Adjust margin to center vertically */
-    display: flex; /* Use flexbox */
-    border: none;
-    cursor: pointer;
-}
-.children{
-    width: 100%;
-}
+// .children > button{
+//     margin: 20px auto; /* Adjust margin to center vertically */
+//     display: flex; /* Use flexbox */
+//     border: none;
+//     cursor: pointer;
+// }
+// .children{
+//     width: 100%;
+// }
 .close-btn {
-    margin: 10px auto; /* Adjust margin to center vertically */
-    padding: 10px;
+    // margin: 10px auto; /* Adjust margin to center vertically */
+    // padding: 10px;
+	height: fit-content;
+	width: fit-content;
     display: flex; /* Use flexbox */
     color: $MVP-Dark-Blue;
     background-color: white;
@@ -25,24 +27,24 @@
     
 }
 
-.iconBodyTitle {
-  	width: 24px;
-  	position: relative;
-  	height: 24px;
-}
+// .iconBodyTitle {
+//   	width: 24px;
+//   	position: relative;
+//   	height: 24px;
+// }
 
-.titleBodyTitle {
-  	position: relative;
-  	font-weight: 800;
-}
+// .titleBodyTitle {
+//   	position: relative;
+//   	font-weight: 800;
+// }
 
-.bodyTitleOutput {
-  	display: flex;
-  	flex-direction: row;
-  	align-items: flex-start;
-  	justify-content: flex-start;
-  	gap: 8px;
-}
+// .bodyTitleOutput {
+//   	display: flex;
+//   	flex-direction: row;
+//   	align-items: flex-start;
+//   	justify-content: flex-start;
+//   	gap: 8px;
+// }
 
 .header {
   	display: flex;
@@ -89,34 +91,34 @@
   	color: #fff;
 }
 
-.cancel {
-  	position: relative;
-  	font-weight: 300;
-}
+// .cancel {
+//   	position: relative;
+//   	font-weight: 300;
+// }
 
-.cancelWrapper {
-  	width: 216px;
-  	height: 64px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 8px 16px;
-  	box-sizing: border-box;
-}
+// .cancelWrapper {
+//   	width: 216px;
+//   	height: 64px;
+//   	display: flex;
+//   	flex-direction: row;
+//   	align-items: center;
+//   	justify-content: center;
+//   	padding: 8px 16px;
+//   	box-sizing: border-box;
+// }
 
-.buttonCancel {
-  	width: auto;
-  	background-color: rgba(255, 255, 255, 0);
-  	height: 50px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 8px 16px;
-  	box-sizing: border-box;
-  	font-size: 20px;
-}
+// .buttonCancel {
+//   	width: auto;
+//   	background-color: rgba(255, 255, 255, 0);
+//   	height: 50px;
+//   	display: flex;
+//   	flex-direction: row;
+//   	align-items: center;
+//   	justify-content: center;
+//   	padding: 8px 16px;
+//   	box-sizing: border-box;
+//   	font-size: 20px;
+// }
 
 .popUpModal {
   	width: 100%;

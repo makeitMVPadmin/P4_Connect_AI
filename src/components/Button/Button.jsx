@@ -6,7 +6,8 @@ const Button = ({
   eventListener,
   className = "",
   type = "button",
-  disabled
+  disabled,
+  children
 }) => {
   return (
     <button
@@ -15,6 +16,7 @@ const Button = ({
       type={type} disabled={disabled}
     >
       <h3 className="button__text">{text}</h3>
+      {children}
     </button>
   );
 };

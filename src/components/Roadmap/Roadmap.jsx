@@ -10,6 +10,7 @@ import Goal1Component from "../Goal1Component/Goal1Component";
 import Goal2Component from "../Goal2Component/Goal2Component";
 import Modal from 'react-modal';
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
+import Button from "../../components/Button/Button";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -48,11 +49,11 @@ const Roadmap = () => {
         <>
           <PopUpModal
             title={{ title: "goal breakdown" }}
-            closeButtonName="Close"
+            closeButtonName="X"
           >
             hello this is the goal breakdown
             {/* <Button className="successMessage__linkedin-btn" onClick={handleCloseGoalClickModal}>
-            Close
+            X
           </Button> */}
           </PopUpModal>
         </>

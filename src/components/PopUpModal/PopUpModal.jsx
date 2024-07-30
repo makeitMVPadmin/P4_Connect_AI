@@ -1,6 +1,6 @@
 import './PopUpModal.scss';
 import Button from '../Button/Button';
-
+import ExitButton from '../../assets/images/exit.svg';
 //to be passed in to the style prop of Modal component
 const PopUpStyle = {
     overlay: {
@@ -35,6 +35,12 @@ const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => 
             <div className="modal">
                 <div className="content">
                     <div className="popUpModal">
+                        <div className="buttonCancel">
+                            <Button text={closeButtonName} color="white" className="close-btn" eventListener={closeButtonAction}>
+                            <img src={ExitButton}/>
+                            </Button>
+                        </div>
+
                         <div className="header">
                             <div className="bodyTitleOutput">
                                 {title.icon && <img className="iconBodyTitle" alt="" src={title.icon} />}
@@ -44,13 +50,7 @@ const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => 
                         <div className="children">
                             {children}
                         </div>
-                        {closeButtonAction &&
-                        <div className="buttonCancel">
-                            <Button className="close-btn" onClick={closeButtonAction}>
-                                {closeButtonName}
-                            </Button>
-                        </div>
-                        }
+
                     </div>
                 </div>
             </div>
