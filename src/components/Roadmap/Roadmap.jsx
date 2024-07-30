@@ -49,7 +49,7 @@ const Roadmap = () => {
         <>
           <PopUpModal
             title={{ title: "goal breakdown" }}
-            closeButtonName="X"
+            closeButtonAction={handleCloseGoalClickModal}
           >
             hello this is the goal breakdown
             {/* <Button className="successMessage__linkedin-btn" onClick={handleCloseGoalClickModal}>

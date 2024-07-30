@@ -1,6 +1,97 @@
 @import '../../styles/partials/variables.scss';
 
 
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	width: 600px;
+	max-width: calc(100% - 80px);
+	max-height: calc(100% - 80px);
+
+	.content {
+		overflow: auto;
+		max-height: calc(100vh - 125px);
+	}
+
+	.popUpModal {
+		width: 100%;
+		position: relative;
+		border-radius: 20px;
+		background-color: #ffffff;
+		border: 4px solid #000000;
+		box-sizing: border-box;
+		height: 100%;
+		overflow: hidden;
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding: 32px;
+		// gap: 24px 32px;
+		text-align: left;
+		font-size: 24px;
+		color: #0954b0;
+		font-family: Gilroy;
+
+
+		&__buttonCancel {
+			position:absolute;
+			width: 50px;
+			background-color: rgba(162, 158, 158, 0);
+			height: 50px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			box-sizing: border-box;
+			line-height: 12px;
+			margin-top: 1px;
+			margin-right: 2px;
+			top:0;
+			right:0;
+		}
+
+		&__close-btn {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			/* Use flexbox */
+			color: $MVP-Dark-Blue;
+			background-color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 20px;
+			position: relative;
+			font-weight: 800;
+
+		}
+		img.close-icon {
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+
+
+
+}
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(230, 238, 247, 0.85);
+}
+
 // .children > button{
 //     margin: 20px auto; /* Adjust margin to center vertically */
 //     display: flex; /* Use flexbox */
@@ -10,22 +101,7 @@
 // .children{
 //     width: 100%;
 // }
-.close-btn {
-    // margin: 10px auto; /* Adjust margin to center vertically */
-    // padding: 10px;
-	height: fit-content;
-	width: fit-content;
-    display: flex; /* Use flexbox */
-    color: $MVP-Dark-Blue;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    position: relative;
-  	font-weight: 800;
-    
-}
+
 
 // .iconBodyTitle {
 //   	width: 24px;
@@ -47,48 +123,48 @@
 // }
 
 .header {
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-  	justify-content: flex-start;
-  	padding: 18px 0px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 18px 0px;
 }
 
 .buttonHifi {
-  	border-radius: 8px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 8px 16px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 16px;
 }
 
 .colorButton {
-  	border-radius: 8px;
-  	background-color: #0954b0;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-start;
-  	padding: 8px 16px;
-  	box-sizing: border-box;
+	border-radius: 8px;
+	background-color: #0954b0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 8px 16px;
+	box-sizing: border-box;
 }
 
 .buttonContinue {
-  	height: 64px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: flex-start;
-  	justify-content: flex-start;
+	height: 64px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
 }
 
 .buttonSignIn {
-  	display: flex;
-  	flex-direction: row;
-  	align-items: flex-start;
-  	justify-content: flex-start;
-  	text-align: center;
-  	color: #fff;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: center;
+	color: #fff;
 }
 
 // .cancel {
@@ -106,64 +182,3 @@
 //   	padding: 8px 16px;
 //   	box-sizing: border-box;
 // }
-
-// .buttonCancel {
-//   	width: auto;
-//   	background-color: rgba(255, 255, 255, 0);
-//   	height: 50px;
-//   	display: flex;
-//   	flex-direction: row;
-//   	align-items: center;
-//   	justify-content: center;
-//   	padding: 8px 16px;
-//   	box-sizing: border-box;
-//   	font-size: 20px;
-// }
-
-.popUpModal {
-  	width: 100%;
-  	position: relative;
-  	border-radius: 15px;
-  	background-color: #ffffff;
-  	border: 1px solid #c9d4df;
-  	box-sizing: border-box;
-  	height: 100%;
-  	overflow: hidden;
-  	flex-shrink: 0;
-  	display: flex;
-  	flex-direction: row;
-  	flex-wrap: wrap;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 32px;
-  	// gap: 24px 32px;
-  	text-align: left;
-  	font-size: 24px;
-  	color: #0954b0;
-  	font-family: Gilroy;
-}
-
-.modal {
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    box-sizing:border-box;
-    width:600px;
-    max-width:calc(100% - 80px);
-    max-height:calc(100% - 80px);
-  }
- 
-  .modal .content {
-    overflow:auto;
-    max-height:calc(100vh - 125px);
-  }
-
-  .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(230, 238, 247, 0.85);
-  }
