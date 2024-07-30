@@ -6,6 +6,7 @@ import { ReactComponent as Goal2Icon } from "../../assets/icons/roadmapIcon2.svg
 import { ReactComponent as Goal3Icon } from "../../assets/icons/roadmapIcon3.svg";
 import { ReactComponent as Goal4Icon } from "../../assets/icons/roadmapIcon4.svg";
 import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg";
+import GoalComponent from "../GoalComponent/GoalComponent";
 import Goal1Component from "../Goal1Component/Goal1Component";
 import Goal2Component from "../Goal2Component/Goal2Component";
 import Modal from 'react-modal';
@@ -48,13 +49,10 @@ const Roadmap = () => {
       >
         <>
           <PopUpModal
-            title={{ title: "goal breakdown" }}
+            title={{}}
             closeButtonAction={handleCloseGoalClickModal}
           >
-            hello this is the goal breakdown
-            {/* <Button className="successMessage__linkedin-btn" onClick={handleCloseGoalClickModal}>
-            X
-          </Button> */}
+            <GoalComponent />
           </PopUpModal>
         </>
       </Modal>

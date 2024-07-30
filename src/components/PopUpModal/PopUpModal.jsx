@@ -43,7 +43,7 @@ const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => 
                         <div className="header">
                             <div className="bodyTitleOutput">
                                 {title.icon && <img className="iconBodyTitle" alt="" src={title.icon} />}
-                                <div className="titleBodyTitle">{title.title}</div>
+                                {title.title && <div className="titleBodyTitle">{title.title}</div>}
                             </div>
                         </div>
                         <div className="children">

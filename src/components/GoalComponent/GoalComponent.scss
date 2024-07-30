@@ -1,0 +1,67 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.goalComponent {
+    //   margin: 1rem;
+    display: flex;
+
+    //   justify-content: center;
+    .matched {
+        // margin: 6.654rem 0 0;
+        // height: 69%;
+        width: 100%;
+        //   border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        // @include Tablet {
+        //   width: 20rem;
+        // }
+
+        // &__title {
+        //   font-size: 1.875rem;
+        //   font-weight: 700;
+        // }
+        &__images {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            padding: 2% 0;
+            width: 100%;
+        }
+
+        &__user {
+            height: 100px;
+            border-radius: 50%;
+            width: 100px;
+
+        }
+
+        // &__text {
+        //   font-size: 0.938rem;
+        //   line-height: 1.438rem;
+        //   font-weight: 700;
+        // }
+        // &__button-div {
+        //   display: flex;
+        //   padding: 2.813rem 0 0;
+
+        // }
+        // &__button--left {
+        //   margin: 0 1.875rem 0 0;
+        //   transition: ease-in 0.3s;
+        //   &:hover {
+        //     background-color: $Faded-Blue !important;
+        //     cursor: pointer;
+        //   }
+        // }
+        // &__button--right {
+        //   background-color: $MVP-Dark-Blue !important;
+        //   cursor: pointer;
+        // }
+    }
+}
