@@ -23,12 +23,10 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     e.preventDefault();
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
-    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-    
+    //setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-
     setFormData({ ...formData, [question_content]: value });
 
     const questionItem = QA.find(
@@ -36,25 +34,26 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     );
     const allAns = questionItem.answers;
 
-    let newSelectedAnswerIds = [...selectedAnswerIds];
+    let newSelectedAnswerIds = selectedAnswerIds;
 
     if (question_type == "checkbox") {
       const answerIds = value.map((each) => {
         const found = allAns.filter((data) => data.answer_content == each);
         return found[0]?.answer_id;
-
       });
-
+      console.log("answerIds for checkbox", answerIds);
+      console.log("previously selected ids for checkbox", newSelectedAnswerIds);
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-
-      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds.flat()];
+console.log("After discarding all ids from checkbox for a particular question",newSelectedAnswerIds);
+      newSelectedAnswerIds = [newSelectedAnswerIds, answerIds.flat()];
+    
     } else if (question_type == "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
-      console.log("answerIds in dropdown", answerIds);
+     // console.log("answerIds in dropdown", answerIds);
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
@@ -82,7 +81,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
     const answeredQuest = answeredQuestArray.every((quest) => quest === true);
-    console.log("answeredQuest", answeredQuest);
+    //console.log("answeredQuest", answeredQuest);
     return answeredQuest;
   };
 
@@ -96,7 +95,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     switch (item.question_type) {
       case "dropdown":
         return (
-
           <>
             <Dropdown
               labelName={item.question_content}
@@ -111,7 +109,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               }
             />
           </>
-
         );
       case "checkbox":
         return (
@@ -120,7 +117,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             options1={answers}
             question_id={item.question_id}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(item.question_type, item.question_content, value)
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
             }
           />
         );
