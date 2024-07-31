@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DropdownCheckbox.scss";
 
-const DropdownCheckbox = ({
-  onChangeDropdownCheckbox,
-  labelName,
-  options1,
-}) => {
+const DropdownCheckbox = ({ onChangeDropdownCheckbox, labelName, options1, values }) => {
   const [selectedValues, setSelectedValues] = useState([]);
+
+  useEffect(() => {
+    setSelectedValues(values);
+  }, [values]);
 
   const isMoreThanSix = options1.length > 6;
 
