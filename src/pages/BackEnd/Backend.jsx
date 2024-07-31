@@ -1,6 +1,6 @@
 // src/components/SomeComponent.js
 import React, { useState, useEffect } from 'react';
-import { createData, readData, updateData, deleteData } from '../../components/Functions/functions';
+import { createData, readData, updateData, deleteData } from '../../utils/Functions/functions';
 
 const BackEndTest = () => {
   const [data, setData] = useState([]);
