@@ -3,15 +3,15 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .dropdown {
-  width: 100%;
-  max-width: 400px;
   margin: 0 auto;
   background-color: $MVP-White;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   &__label {
-    font-family: "Corben-bold";
+    font-family: "Gilroy-ExtraBold";
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
   }
   &_wrapper {
     &_select {
@@ -19,22 +19,21 @@
       flex-direction: column;
       border-width: 0 2px 0 2px;
       border-style: solid;
-      border-color: $MVP-Dark-Blue;
+      border-color: $MVP-black;
       &_trigger {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 22px;
-        font-family: "Corben-Regular";
-        font-weight: 300;
+        font-family: "Gilroy";
         color: $MVP-black;
         line-height: 60px;
         background: $MVP-White;
         cursor: pointer;
         border-width: 2px 0 1px 0;
         border-style: solid;
-        border-color: $MVP-Dark-Blue;
-  
+        border-color: $MVP-black;
+
         .arrow {
           display: flex;
           align-items: center;
@@ -49,9 +48,9 @@
       &_option {
         border-width: 0px 0px 1px 0;
         border-style: solid;
-        border-color: $MVP-Dark-Blue;
+        border-color: $MVP-black;
         background: $MVP-White;
-     
+
       }
 
       .custom-option {
@@ -59,11 +58,12 @@
         padding: 0 22px 0 22px;
         border-width: 0px 0 1px 0;
         border-style: solid;
-        border-color: $MVP-Dark-Blue;
-        font-family: "Corben-Regular";
+        border-color: $MVP-black;
+        font-family: "Gilroy-ExtraBold";
         color: $MVP-black;
         line-height: 60px;
         cursor: pointer;
+     
       }
     }
   }

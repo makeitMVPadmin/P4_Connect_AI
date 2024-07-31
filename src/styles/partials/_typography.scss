@@ -18,3 +18,15 @@
     src: url("../../assets/fonts/Gilroy-Light.otf");
     font-weight: 400;
   }
+  @font-face {
+    font-family: "Corben";
+    src: url("../../assets/fonts/Corben-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Gilroy";
+    src: url("../../assets/fonts/Gilroy-ExtraBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
