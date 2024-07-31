@@ -84,7 +84,7 @@
   {
     question_id: "004",
     question_content:
-      "Select the technical skills you excel in from the list below:",
+      "Select the technical skills you excel in from the list below(select atleast two options)",
     question_type: "checkbox",
     answers: [
       {

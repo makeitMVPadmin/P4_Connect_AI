@@ -32,11 +32,10 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_
       </label>
       <section className="dropdown_wrapper">
         <article className="dropdown_wrapper_select">
-          <div className="dropdown_wrapper_select_trigger">
+          <div className="dropdown_wrapper_select_trigger" onClick={handledropdownclick}>
             <span>{updatedValue ? updatedValue : dummyValue}</span>
             <span>
               <ArrowDropDownIcon
-                onClick={handledropdownclick}
                 className={`arrow ${isActive ? "arrow-up-icon" : "arrow-down-icon"}`}
               />
             </span>
