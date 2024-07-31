@@ -23,7 +23,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     e.preventDefault();
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
-    //setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
   };
 
   const handleInputChange = (question_type, question_content, value) => {
