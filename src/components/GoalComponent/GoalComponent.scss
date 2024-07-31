@@ -6,26 +6,20 @@
 .goalComponent {
     //   margin: 1rem;
     display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
 
-    //   justify-content: center;
     .matched {
-        // margin: 6.654rem 0 0;
-        // height: 69%;
         width: 100%;
-        //   border: 1px solid black;
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        // @include Tablet {
-        //   width: 20rem;
-        // }
+        padding: 10px;
 
-        // &__title {
-        //   font-size: 1.875rem;
-        //   font-weight: 700;
-        // }
         &__images {
             display: flex;
             gap: 60px;
@@ -38,30 +32,21 @@
             height: 100px;
             border-radius: 50%;
             width: 100px;
+        }
+       
+    }
+    .goalHeadingContainer {
+        position: relative;
+        text-align: center;
 
+        &__goalTitle {
+            padding: 10px;
+            font-size: 30px;
+            height: 56px;
+        }
+        &__goalPrompt{
+            font-size: 15px;
         }
 
-        // &__text {
-        //   font-size: 0.938rem;
-        //   line-height: 1.438rem;
-        //   font-weight: 700;
-        // }
-        // &__button-div {
-        //   display: flex;
-        //   padding: 2.813rem 0 0;
-
-        // }
-        // &__button--left {
-        //   margin: 0 1.875rem 0 0;
-        //   transition: ease-in 0.3s;
-        //   &:hover {
-        //     background-color: $Faded-Blue !important;
-        //     cursor: pointer;
-        //   }
-        // }
-        // &__button--right {
-        //   background-color: $MVP-Dark-Blue !important;
-        //   cursor: pointer;
-        // }
     }
 }

@@ -40,16 +40,18 @@ const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => 
                                 <img className="close-icon" src={ExitButton} />
                             </Button>
                         </div>
-                        <div className="header">
-                            <div className="bodyTitleOutput">
-                                {title.icon && <img className="iconBodyTitle" alt="" src={title.icon} />}
-                                {title.title && <div className="titleBodyTitle">{title.title}</div>}
+                        <div className="popUpModal__container">
+
+                            <div className="popUpModal__header">
+                                <div className="bodyTitleOutput">
+                                    {title.icon && <img className="iconBodyTitle" alt="" src={title.icon} />}
+                                    {title.title && <div className="titleBodyTitle">{title.title}</div>}
+                                </div>
+                            </div>
+                            <div className="popUpModal__container__children">
+                                {children}
                             </div>
                         </div>
-                        <div className="children">
-                            {children}
-                        </div>
-
                     </div>
                 </div>
             </div>

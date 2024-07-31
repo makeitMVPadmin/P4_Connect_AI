@@ -6,12 +6,12 @@ import { ReactComponent as Goal2Icon } from "../../assets/icons/roadmapIcon2.svg
 import { ReactComponent as Goal3Icon } from "../../assets/icons/roadmapIcon3.svg";
 import { ReactComponent as Goal4Icon } from "../../assets/icons/roadmapIcon4.svg";
 import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg";
-import GoalComponent from "../GoalComponent/GoalComponent";
 import Goal1Component from "../Goal1Component/Goal1Component";
 import Goal2Component from "../Goal2Component/Goal2Component";
 import Modal from 'react-modal';
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import Button from "../../components/Button/Button";
+import GoalComponent from "../GoalComponent/GoalComponent";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -52,7 +52,16 @@ const Roadmap = () => {
             title={{}}
             closeButtonAction={handleCloseGoalClickModal}
           >
-            <GoalComponent />
+            <GoalComponent
+              goalNumber={activeGoal}
+              goalPrompt={"We recommend setting up an initial meeting to get to know each other and plan your first steps."}
+              goals={{goalBreakdownLabel:{"meetings1":""},
+                goalLabel:"meeting"}
+              }
+            >
+
+            </GoalComponent>
+
           </PopUpModal>
         </>
       </Modal>
@@ -66,7 +75,7 @@ const Roadmap = () => {
         {renderModalComponent()}
         <button
           className="goal-button goal1"
-          onClick={() => handleGoalClickModal()}
+          onClick={() => handleGoalClickModal(1)}
         >
           <Goal1Icon />
         </button>
@@ -95,7 +104,7 @@ const Roadmap = () => {
           <Goal5Icon />
         </button>
       </div>
-      <div className="active-goal-container">{renderActiveComponent()}</div>
+      {/* <div className="active-goal-container">{renderActiveComponent()}</div> */}
     </div>
   );
 };

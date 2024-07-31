@@ -36,12 +36,11 @@
 		// gap: 24px 32px;
 		text-align: left;
 		font-size: 24px;
-		color: #0954b0;
+		// color: #0954b0;
 		font-family: Gilroy;
 
-
 		&__buttonCancel {
-			position:absolute;
+			position: absolute;
 			width: 50px;
 			background-color: rgba(162, 158, 158, 0);
 			height: 50px;
@@ -53,8 +52,13 @@
 			line-height: 12px;
 			margin-top: 1px;
 			margin-right: 2px;
-			top:0;
-			right:0;
+			top: 0;
+			right: 0;
+		}
+
+		img.close-icon {
+			width: 30px;
+			height: 30px;
 		}
 
 		&__close-btn {
@@ -72,10 +76,28 @@
 			font-weight: 800;
 
 		}
-		img.close-icon {
-			width: 30px;
-			height: 30px;
+
+
+		&__container {
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+			display: flex;
+			flex-direction: column; // Ensures children are stacked vertically
+	
+			&__header {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+				padding: 18px 0;
+			}
+	
+			&__children {
+				width: 100%;
+			}
 		}
+
 	}
 
 
@@ -98,9 +120,7 @@
 //     border: none;
 //     cursor: pointer;
 // }
-// .children{
-//     width: 100%;
-// }
+
 
 
 // .iconBodyTitle {
@@ -122,13 +142,7 @@
 //   	gap: 8px;
 // }
 
-.header {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-	padding: 18px 0px;
-}
+
 
 .buttonHifi {
 	border-radius: 8px;
