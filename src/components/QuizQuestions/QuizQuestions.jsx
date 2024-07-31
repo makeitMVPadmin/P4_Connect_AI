@@ -13,7 +13,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     return savedData ? JSON.parse(savedData) : {};
   };
 
-  const [formData, setFormData] = React.useState(() => {
+  const [formData, setFormData] = useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
       initialFormData[item.question_content] = item.question_type == "checkbox" ? [] : "";
@@ -36,13 +36,24 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     "011",
   ];
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
-  const [answeredQuestions, setAnsweredQuestions] = useState(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState(() => {
+    const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
+    return savedAnsweredQuestions
+      ? new Set(JSON.parse(savedAnsweredQuestions))
+      : new Set();
+  });
 
-  //try to set formData to session storage
+  //try to save formData to session storage
   useEffect(() => {
     const formDataJSON = JSON.stringify(formData);
     sessionStorage.setItem("formData", formDataJSON);
   }, [formData]);
+
+  //save answeredQuestions to session storage
+  useEffect(() => {
+    const answeredQuestionsArray = Array.from(answeredQuestions);
+    sessionStorage.setItem("answeredQuestions", JSON.stringify(answeredQuestionsArray));
+  }, [answeredQuestions]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -74,23 +85,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds];
     }
 
-    // if (question_type == "checkbox") {
-    //   const answerIds = value.map((each) => {
-    //     const found = allAns.filter((data) => data.answer_content == each);
-    //     return found[0]?.answer_id;
-    //   });
-    //   console.log("answerIds for checkbox", answerIds);
-    //   console.log("previously selected ids for checkbox", newSelectedAnswerIds);
-    //   newSelectedAnswerIds = newSelectedAnswerIds.filter(
-    //     (id) => !allAns.some((ans) => ans.answer_id === id)
-    //   );
-    //   console.log(
-    //     "After discarding all ids from checkbox for a particular question",
-    //     newSelectedAnswerIds
-    //   );
-    //   newSelectedAnswerIds = [newSelectedAnswerIds, answerIds.flat()];
-    // }
-
     if (question_type === "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
@@ -103,21 +97,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       newSelectedAnswerIds = newSelectedAnswerIds.filter((id) => id !== value);
     }
 
-    // else if (question_type == "dropdown") {
-    //   const answerIds = allAns
-    //     .filter((item) => item.answer_content === value)
-    //     .map((data) => data.answer_id);
-    //   // console.log("answerIds in dropdown", answerIds);
-
-    //   newSelectedAnswerIds = newSelectedAnswerIds.filter(
-    //     (id) => !allAns.some((ans) => ans.answer_id === id)
-    //   );
-
-    //   newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds];
-    // } else {
-    //   newSelectedAnswerIds = [...newSelectedAnswerIds, value];
-    // }
-
     setSelectedAnswerIds(newSelectedAnswerIds.flat());
 
     setAnsweredQuestions((prev) => {
@@ -127,14 +106,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       } else {
         newSet.delete(question_content);
       }
+      sessionStorage.setItem("answeredQuestions", JSON.stringify(Array.from(newSet)));
       return newSet;
     });
-
-    // setAnsweredQuestions((prev) => {
-    //   const newSet = new Set(prev);
-    //   newSet.add(question_content);
-    //   return newSet;
-    // });
   };
 
   const arequestionAnswered = () => {
@@ -148,18 +122,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     });
   };
 
-  // const arequestionAnswered = () => {
-  //   const k = Array.from(answeredQuestions).map((ans) => {
-  //     const p = QA.find((data) => data.question_content === ans).question_id;
-  //     return p;
-  //   });
-
-  //   const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
-  //   const answeredQuest = answeredQuestArray.every((quest) => quest === true);
-  //   //console.log("answeredQuest", answeredQuest);
-  //   return answeredQuest;
-  // };
-
   useEffect(() => {
     onProgressChange(answeredQuestions.size);
   }, [formData, answeredQuestions, onProgressChange]);
@@ -169,7 +131,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     //set value to formData value retrieved from session storage
     const currentValue = formData[item.question_content];
-    //console.log(currentValue);
 
     switch (item.question_type) {
       case "dropdown":
@@ -179,7 +140,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               labelName={item.question_content}
               dropDownInfo1={answers}
               question_id={item.question_id}
-              //add saved value
               value={currentValue}
               onChangeDropdown={(value) =>
                 handleInputChange(item.question_type, item.question_content, value)
