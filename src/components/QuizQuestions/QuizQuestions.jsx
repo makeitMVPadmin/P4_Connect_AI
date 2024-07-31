@@ -21,13 +21,13 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     //get from session storage
     return { ...initialFormData, ...getSessionData() };
   });
+  //all answers required except Q12
   const requiredQuestionIds = [
     "001",
     "002",
     "003",
     "004",
     "005",
-    "006",
     "006",
     "007",
     "008",
@@ -36,7 +36,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     "011",
   ];
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
-  const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState(new Set());
 
   //try to set formData to session storage
   useEffect(() => {

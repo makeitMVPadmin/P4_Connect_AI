@@ -116,7 +116,7 @@ const QuizPage = () => {
             </section>
           
           </form> */}
-          <QuizQuestions/>
+          <QuizQuestions />
         </div>
       </div>
     </div>
@@ -124,4 +124,3 @@ const QuizPage = () => {
 };
 
 export default QuizPage;
-
