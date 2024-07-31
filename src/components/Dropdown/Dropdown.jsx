@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Dropdown = ({
-  dropDownInfo1,
-  labelName,
-  onChangeDropdown,
-  question_id,
-}) => {
-  const [updatedValue, setUpdatedValue] = React.useState();
+const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_id }) => {
+  const [updatedValue, setUpdatedValue] = React.useState(value);
   const [dummyValue, setDummyValue] = React.useState("Please select an option");
   const [isActive, setIsActive] = React.useState(false);
+
+  //add updatedValue if Session Storage has it
+  useEffect(() => {
+    setUpdatedValue(value);
+  }, [value]);
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
@@ -37,9 +37,7 @@ const Dropdown = ({
             <span>
               <ArrowDropDownIcon
                 onClick={handledropdownclick}
-                className={`arrow ${
-                  isActive ? "arrow-up-icon" : "arrow-down-icon"
-                }`}
+                className={`arrow ${isActive ? "arrow-up-icon" : "arrow-down-icon"}`}
               />
             </span>
           </div>

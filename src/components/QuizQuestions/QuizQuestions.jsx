@@ -1,23 +1,35 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
+
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
+  //get the saved answers from session storage
+  const getSessionData = () => {
+    const savedData = sessionStorage.getItem("formData");
+    return savedData ? JSON.parse(savedData) : {};
+  };
+
   const [formData, setFormData] = React.useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
+      initialFormData[item.question_content] = item.question_type == "checkbox" ? [] : "";
     });
-    return initialFormData;
+    //get from session storage
+    return { ...initialFormData, ...getSessionData() };
   });
   const requiredQuestionIds = ["001", "002", "004", "006", "008"];
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
+
+  //try to set formData to session storage
+  useEffect(() => {
+    const formDataJSON = JSON.stringify(formData);
+    sessionStorage.setItem("formData", formDataJSON);
+  }, [formData]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -29,9 +41,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const handleInputChange = (question_type, question_content, value) => {
     setFormData({ ...formData, [question_content]: value });
 
-    const questionItem = QA.find(
-      (data) => data.question_content === question_content
-    );
+    const questionItem = QA.find((data) => data.question_content === question_content);
     const allAns = questionItem.answers;
 
     let newSelectedAnswerIds = selectedAnswerIds;
@@ -46,14 +56,16 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-console.log("After discarding all ids from checkbox for a particular question",newSelectedAnswerIds);
+      console.log(
+        "After discarding all ids from checkbox for a particular question",
+        newSelectedAnswerIds
+      );
       newSelectedAnswerIds = [newSelectedAnswerIds, answerIds.flat()];
-    
     } else if (question_type == "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
-     // console.log("answerIds in dropdown", answerIds);
+      // console.log("answerIds in dropdown", answerIds);
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
@@ -92,6 +104,10 @@ console.log("After discarding all ids from checkbox for a particular question",n
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
 
+    //set value to formData value retrieved from session storage
+    const currentValue = formData[item.question_content];
+    console.log(currentValue);
+
     switch (item.question_type) {
       case "dropdown":
         return (
@@ -100,12 +116,10 @@ console.log("After discarding all ids from checkbox for a particular question",n
               labelName={item.question_content}
               dropDownInfo1={answers}
               question_id={item.question_id}
+              //add saved value
+              value={currentValue}
               onChangeDropdown={(value) =>
-                handleInputChange(
-                  item.question_type,
-                  item.question_content,
-                  value
-                )
+                handleInputChange(item.question_type, item.question_content, value)
               }
             />
           </>
@@ -117,11 +131,7 @@ console.log("After discarding all ids from checkbox for a particular question",n
             options1={answers}
             question_id={item.question_id}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -130,11 +140,7 @@ console.log("After discarding all ids from checkbox for a particular question",n
           <Textarea
             labelName={item.question_content}
             handleTextarea={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
