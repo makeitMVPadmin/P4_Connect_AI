@@ -9,10 +9,15 @@ import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg
 import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
+import GoalPopup from "../GoalPopup/GoalPopup";
+import user1Picture from "../../assets/images/user1.png";
+import user2Picture from "../../assets/images/user2.png";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setmodalOpen] = useState(false);
+
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
@@ -57,15 +62,33 @@ const Roadmap = () => {
         <RoadmapSvg />
         {renderModalComponent()}
         <button
+          onMouseEnter={() => {
+            setIsHovering(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovering(true);
+          }}
           className="goal-button goal1"
           onClick={() => handleGoalClickModal(1)}
         >
-          <Goal1Icon />
+          {isHovering && (
+            <GoalPopup
+              offsetX={"8.4rem"}
+              offsetY={"8.4rem"}
+              number={"1"}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal1Icon />
+          </div>
         </button>
         <button
           className="goal-button goal2"
           onClick={() => handleGoalClickModal(2)}
         >
+          <GoalPopup offsetX={"10rem"} offsetY={"10rem"} />
           <Goal2Icon />
         </button>
         <button
