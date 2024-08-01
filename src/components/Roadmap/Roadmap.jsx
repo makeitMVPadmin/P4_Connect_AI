@@ -8,11 +8,22 @@ import { ReactComponent as Goal4Icon } from "../../assets/icons/roadmapIcon4.svg
 import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg";
 import Goal1Component from "../Goal1Component/Goal1Component";
 import Goal2Component from "../Goal2Component/Goal2Component";
+import Modal from 'react-modal';
+import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
+import Button from "../../components/Button/Button";
+import GoalComponent from "../GoalComponent/GoalComponent";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
-  const handleGoalClick = (goalNumber) => {
+  const [isModalOpen, setmodalOpen] = useState(false);
+
+  const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
+    setmodalOpen(true);
+  };
+
+  const handleCloseGoalClickModal = () => {
+    setmodalOpen(false);
   };
 
   const renderActiveComponent = () => {
@@ -25,43 +36,75 @@ const Roadmap = () => {
         return null;
     }
   };
+  const renderModalComponent = () => {
+    return (
+      <Modal
+        id="promptpage__linkedinpost-modal"
+        isOpen={isModalOpen}
+        onRequestClose={handleCloseGoalClickModal}
+        ariaHideApp={false}
+        className="modalStyle"
+        overlayClassName="modalOverlay"
+        shouldCloseOnOverlayClick={false}
+      >
+        <>
+          <PopUpModal
+            title={{}}
+            closeButtonAction={handleCloseGoalClickModal}
+          >
+            <GoalComponent
+              goalNumber={activeGoal}
+              goalPrompt={"We recommend setting up an initial meeting to get to know each other and plan your first steps."}
+              goals={{goalBreakdownLabel:{"meetings1":""},
+                goalLabel:"meeting"}
+              }
+            >
 
+            </GoalComponent>
+
+          </PopUpModal>
+        </>
+      </Modal>
+    );
+  }
   return (
     <div className="roadmap-container">
       <div className="svg-container">
+
         <RoadmapSvg />
+        {renderModalComponent()}
         <button
           className="goal-button goal1"
-          onClick={() => handleGoalClick(1)}
+          onClick={() => handleGoalClickModal(1)}
         >
           <Goal1Icon />
         </button>
         <button
           className="goal-button goal2"
-          onClick={() => handleGoalClick(2)}
+          onClick={() => handleGoalClickModal(2)}
         >
           <Goal2Icon />
         </button>
         <button
           className="goal-button goal3"
-          onClick={() => handleGoalClick(3)}
+          onClick={() => handleGoalClickModal(3)}
         >
           <Goal3Icon />
         </button>
         <button
           className="goal-button goal4"
-          onClick={() => handleGoalClick(4)}
+          onClick={() => handleGoalClickModal(4)}
         >
           <Goal4Icon />
         </button>
         <button
           className="goal-button goal5"
-          onClick={() => handleGoalClick(5)}
+          onClick={() => handleGoalClickModal(5)}
         >
           <Goal5Icon />
         </button>
       </div>
-      <div className="active-goal-container">{renderActiveComponent()}</div>
+      {/* <div className="active-goal-container">{renderActiveComponent()}</div> */}
     </div>
   );
 };
