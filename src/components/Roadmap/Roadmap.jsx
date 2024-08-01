@@ -9,10 +9,26 @@ import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg
 import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
+import GoalPopup from "../GoalPopup/GoalPopup";
+import user1Picture from "../../assets/images/user1.png";
+import user2Picture from "../../assets/images/user2.png";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setmodalOpen] = useState(false);
+
+  const [hovering, setHovering] = useState(null);
+
+  // This object is temporary and only here to provide mock data to show the functionality of the popup
+  const mockMatchData = {
+    goal1Task: "Goal 1 task",
+    goal2Task: "Goal 2 task",
+    goal3Task: "Goal 3 task",
+    goal4Task: "Goal 4 task",
+    goal5Task: "Goal 5 task",
+    user1Picture: user1Picture,
+    user2Picture: user2Picture,
+  };
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
@@ -57,34 +73,139 @@ const Roadmap = () => {
         <RoadmapSvg />
         {renderModalComponent()}
         <button
+          onMouseEnter={() => {
+            setHovering(1);
+          }}
+          onMouseLeave={() => {
+            setHovering(null);
+          }}
           className="goal-button goal1"
           onClick={() => handleGoalClickModal(1)}
         >
-          <Goal1Icon />
+          {hovering === 1 && (
+            <GoalPopup
+              offsetX={"8.4rem"}
+              offsetY={"8.4rem"}
+              number={1}
+              task={mockMatchData.goal1Task}
+              locked={false}
+              user1Complete={true}
+              user2Complete={false}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal1Icon />
+          </div>
         </button>
         <button
+          onMouseEnter={() => {
+            setHovering(2);
+          }}
+          onMouseLeave={() => {
+            setHovering(null);
+          }}
           className="goal-button goal2"
           onClick={() => handleGoalClickModal(2)}
         >
-          <Goal2Icon />
+          {hovering === 2 && (
+            <GoalPopup
+              offsetX={"7.3rem"}
+              offsetY={"7.3rem"}
+              number={2}
+              task={mockMatchData.goal2Task}
+              locked={true}
+              user1Complete={false}
+              user2Complete={false}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal2Icon />
+          </div>
         </button>
         <button
+          onMouseEnter={() => {
+            setHovering(3);
+          }}
+          onMouseLeave={() => {
+            setHovering(null);
+          }}
           className="goal-button goal3"
           onClick={() => handleGoalClickModal(3)}
         >
-          <Goal3Icon />
+          {hovering === 3 && (
+            <GoalPopup
+              offsetX={"6.1rem"}
+              offsetY={"6.1rem"}
+              number={3}
+              task={mockMatchData.goal3Task}
+              locked={true}
+              user1Complete={false}
+              user2Complete={false}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal3Icon />
+          </div>
         </button>
         <button
+          onMouseEnter={() => {
+            setHovering(4);
+          }}
+          onMouseLeave={() => {
+            setHovering(null);
+          }}
           className="goal-button goal4"
           onClick={() => handleGoalClickModal(4)}
         >
-          <Goal4Icon />
+          {hovering === 4 && (
+            <GoalPopup
+              offsetX={"4.95rem"}
+              offsetY={"4.95rem"}
+              number={34}
+              task={mockMatchData.goal4Task}
+              locked={true}
+              user1Complete={false}
+              user2Complete={false}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal4Icon />
+          </div>
         </button>
         <button
+          onMouseEnter={() => {
+            setHovering(5);
+          }}
+          onMouseLeave={() => {
+            setHovering(null);
+          }}
           className="goal-button goal5"
           onClick={() => handleGoalClickModal(5)}
         >
-          <Goal5Icon />
+          {hovering === 5 && (
+            <GoalPopup
+              offsetX={"3.7rem"}
+              offsetY={"3.7rem"}
+              number={5}
+              task={mockMatchData.goal5Task}
+              locked={true}
+              user1Complete={false}
+              user2Complete={false}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
+            />
+          )}
+          <div className="goal-icon-container">
+            <Goal5Icon />
+          </div>
         </button>
       </div>
       {/* <div className="active-goal-container">{renderActiveComponent()}</div> */}
