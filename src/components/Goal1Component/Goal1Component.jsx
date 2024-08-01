@@ -1,7 +1,7 @@
 import React from "react";
 
-const Goal1Component = () => {
+const GoalComponent = () => {
   return <div>Hello 1</div>;
 };
 
-export default Goal1Component;
+export default GoalComponent;
