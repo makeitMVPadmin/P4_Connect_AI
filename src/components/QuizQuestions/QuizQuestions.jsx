@@ -1,23 +1,63 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
+
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-  const [formData, setFormData] = React.useState(() => {
+  //get the saved answers from session storage
+  const getSessionData = () => {
+    const savedData = sessionStorage.getItem("formData");
+    return savedData ? JSON.parse(savedData) : {};
+  };
+
+  const [formData, setFormData] = useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
       initialFormData[item.question_content] =
         item.question_type == "checkbox" ? [] : "";
     });
-    return initialFormData;
+    //get from session storage
+    return { ...initialFormData, ...getSessionData() };
   });
-  const requiredQuestionIds = ["001", "002", "004", "006", "008"];
+  //all answers required except Q12
+  const requiredQuestionIds = [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+  ];
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
-  const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState(() => {
+    const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
+    return savedAnsweredQuestions
+      ? new Set(JSON.parse(savedAnsweredQuestions))
+      : new Set();
+  });
+
+  //try to save formData to session storage
+  useEffect(() => {
+    const formDataJSON = JSON.stringify(formData);
+    sessionStorage.setItem("formData", formDataJSON);
+  }, [formData]);
+
+  //save answeredQuestions to session storage
+  useEffect(() => {
+    const answeredQuestionsArray = Array.from(answeredQuestions);
+    sessionStorage.setItem(
+      "answeredQuestions",
+      JSON.stringify(answeredQuestionsArray)
+    );
+  }, [answeredQuestions]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -27,70 +67,79 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-    setFormData({ ...formData, [question_content]: value });
+    // Update formData state
+    setFormData((prevFormData) => {
+      const updatedFormData = { ...prevFormData, [question_content]: value };
+      sessionStorage.setItem("formData", JSON.stringify(updatedFormData));
+      return updatedFormData;
+    });
 
     const questionItem = QA.find(
       (data) => data.question_content === question_content
     );
     const allAns = questionItem.answers;
-
     let newSelectedAnswerIds = selectedAnswerIds;
 
-    if (question_type == "checkbox") {
+    if (question_type === "checkbox") {
       const answerIds = value.map((each) => {
-        const found = allAns.filter((data) => data.answer_content == each);
+        const found = allAns.filter((data) => data.answer_content === each);
         return found[0]?.answer_id;
       });
-      console.log("answerIds for checkbox", answerIds);
-      console.log("previously selected ids for checkbox", newSelectedAnswerIds);
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-console.log("After discarding all ids from checkbox for a particular question",newSelectedAnswerIds);
-      newSelectedAnswerIds = [newSelectedAnswerIds, answerIds.flat()];
-    
-    } else if (question_type == "dropdown") {
+      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds];
+    }
+
+    if (question_type === "dropdown") {
       const answerIds = allAns
         .filter((item) => item.answer_content === value)
         .map((data) => data.answer_id);
-     // console.log("answerIds in dropdown", answerIds);
-
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-
-      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds];
+      newSelectedAnswerIds = [...newSelectedAnswerIds, ...answerIds];
     } else {
-      newSelectedAnswerIds = [...newSelectedAnswerIds, value];
+      newSelectedAnswerIds = newSelectedAnswerIds.filter((id) => id !== value);
     }
 
     setSelectedAnswerIds(newSelectedAnswerIds.flat());
 
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
-      newSet.add(question_content);
+      (value != "Please select an option" && question_type === "dropdown") ||
+      (value.length > 0 && question_type == "checkbox")
+        ? newSet.add(question_content)
+        : newSet.delete(question_content);
+
+      sessionStorage.setItem(
+        "answeredQuestions",
+        JSON.stringify(Array.from(newSet))
+      );
       return newSet;
     });
   };
 
   const arequestionAnswered = () => {
-    const k = Array.from(answeredQuestions).map((ans) => {
-      const p = QA.find((data) => data.question_content === ans).question_id;
+    const k = Array.from(answeredQuestions).map((quest) => {
+      const p = QA.find((data) => data.question_content === quest).question_id;
       return p;
     });
 
     const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
     const answeredQuest = answeredQuestArray.every((quest) => quest === true);
-    //console.log("answeredQuest", answeredQuest);
     return answeredQuest;
   };
 
   useEffect(() => {
     onProgressChange(answeredQuestions.size);
-  }, [answeredQuestions, onProgressChange]);
+  }, [formData, answeredQuestions, onProgressChange]);
 
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
+
+    //set value to formData value retrieved from session storage
+    const currentValue = formData[item.question_content];
 
     switch (item.question_type) {
       case "dropdown":
@@ -100,6 +149,7 @@ console.log("After discarding all ids from checkbox for a particular question",n
               labelName={item.question_content}
               dropDownInfo1={answers}
               question_id={item.question_id}
+              value={currentValue}
               onChangeDropdown={(value) =>
                 handleInputChange(
                   item.question_type,
@@ -116,6 +166,7 @@ console.log("After discarding all ids from checkbox for a particular question",n
             labelName={item.question_content}
             options1={answers}
             question_id={item.question_id}
+            values={currentValue}
             onChangeDropdownCheckbox={(value) =>
               handleInputChange(
                 item.question_type,
@@ -129,6 +180,7 @@ console.log("After discarding all ids from checkbox for a particular question",n
         return (
           <Textarea
             labelName={item.question_content}
+            value={currentValue}
             handleTextarea={(value) =>
               handleInputChange(
                 item.question_type,

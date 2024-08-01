@@ -1,10 +1,15 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./Textarea.scss";
 
-const Textarea = ({ labelName, handleTextarea }) => {
-  const [value, setValue] = React.useState("");
+const Textarea = ({ labelName, handleTextarea, value }) => {
+  const [textValue, setTextValue] = useState("");
+
+  useEffect(() => {
+    setTextValue(value);
+  }, [value]);
+
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setTextValue(e.target.value);
     handleTextarea(e.target.value);
   };
   return (
@@ -16,7 +21,7 @@ const Textarea = ({ labelName, handleTextarea }) => {
         className="textarea__input"
         name=""
         id="input"
-        value={value}
+        value={textValue}
         onChange={handleChange}
       ></textarea>
     </div>

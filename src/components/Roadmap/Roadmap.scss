@@ -1,75 +1,76 @@
 .roadmap-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  
-    .svg-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%; 
-      height: 100%; 
-  
-      svg {
-        width: 100%;
-        height: 100%;
-      }
+  position: relative;
+  width: 100%;
+  height: 641px;
+  overflow: hidden;
+
+  .svg-container {
+    position: absolute;
+    justify-content: center;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    width: 100%; 
+    height: 100%; 
+
+    svg {
+      width: 100%;
+      height: 641px;
     }
-  
-    .goal-button {
-      position: absolute;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      
-      transition: transform 0.2s ease-in-out;
-  
-      &:hover {
-        transform: scale(1.2);
-      }
-  
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  
-    .goal1 {
-    width: 150px; 
-    height: 150px; 
-      top: 68%;
-      left: 25%;
-    }
-  
-    .goal2 {
-    width: 130px; 
-      height: 130px; 
-      top: 60%;
-      left: 55%;
-    }
-  
-    .goal3 {
-        width: 110px; 
-      height: 110px; 
-      top: 40%;
-      left: 71%;
-    }
-  
-    .goal4 {
-        width: 90px; 
-      height: 90px; 
-      top: 40%;
-      left: 50%;
-    }
-  
-    .goal5 {
-        width: 70px; 
-      height: 70px; 
-      top: 35%;
-      left: 30%;
-    }
-  
   }
+
+  .goal-button {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .goal1 {
+    width: 150px;
+    height: 150px;
+    top: 68%;
+    left: 25%;
+  }
+
+  .goal2 {
+    width: 130px;
+    height: 130px;
+    top: 60%;
+    left: 55%;
+  }
+
+  .goal3 {
+    width: 110px;
+    height: 110px;
+    top: 40%;
+    left: 71%;
+  }
+
+  .goal4 {
+    width: 90px;
+    height: 90px;
+    top: 40%;
+    left: 50%;
+  }
+
+  .goal5 {
+    width: 70px;
+    height: 70px;
+    top: 35%;
+    left: 30%;
+  }
+
+}

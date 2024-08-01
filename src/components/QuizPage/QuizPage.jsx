@@ -1,18 +1,30 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NoMatch from "../NoMatch/NoMatch";
 import MatchedUsers from "../MatchedUsers/MatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
+  useEffect(() => {
+    console.log("QuizPage mounted");
+    return () => {
+      console.log("QuizPage unmounted");
+    };
+  }, []);
+
   const step = 1;
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(() => {
+    const savedProgress = sessionStorage.getItem("progress");
+    return savedProgress ? Number(savedProgress) : 0;
+  });
   const onProgressChange = (answeredQuestionsCount) => {
-    //console.log("Answered Questions Count:", answeredQuestionsCount);
+    console.log("Answered Questions Count:", answeredQuestionsCount);
     // Update progress based on the number of answered questions
     setProgress(answeredQuestionsCount);
+    //store progress in session storage
+    sessionStorage.setItem("progress", answeredQuestionsCount);
   };
 
   return (
