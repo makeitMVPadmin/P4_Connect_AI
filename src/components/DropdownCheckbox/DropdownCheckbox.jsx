@@ -37,8 +37,16 @@ const DropdownCheckbox = ({ onChangeDropdownCheckbox, labelName, options1, value
                   checked={selectedValues.includes(option)}
                   onChange={handleCheckboxChange}
                 />
-                <span className="checkbox-custom"></span>
-                {option}
+                <span className="checkbox-wrapper">
+                  <div className="checkbox-custom">
+                    <div className="checkbox-custom__circle"></div>
+                  </div>
+                  <div className="checkbox-text">
+                  {option}
+                  </div>
+               
+                  
+                </span>
               </label>
             ))}
           </div>

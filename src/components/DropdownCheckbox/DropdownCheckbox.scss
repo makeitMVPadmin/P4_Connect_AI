@@ -28,7 +28,7 @@
   }
 
   &__details {
-    padding: 16px;
+   
     background: $MVP-White;
   }
 
@@ -38,8 +38,13 @@
   }
 
   &__group {
-    display: flex;
+  
     gap: 5px;
+    display: grid;
+    grid-template-columns: 33.33% 33.3% 33.3%;
+   
+    align-items: center;
+    justify-items: start;
 
     &.one-coloums {
       flex-direction: column;
@@ -49,7 +54,8 @@
       flex-wrap: wrap;
       row-gap: 15px;
       .dropdown-checkbox__item {
-        width: calc(33.33333333% - 10px); // Adjust as necessary for spacing
+      width:calc(100% - 10px); 
+       height: 40px;
       }
     }
   }
@@ -64,24 +70,48 @@
     input {
       display: none;
     }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
     .checkbox-custom {
-      width: 18px;
+      position: relative;
+      cursor: pointer;
+      margin-right: 0px;
+
+      &__circle{
+         width: 18px;
       height: 18px;
       border: 3px solid $MVP-black;
       border-radius: 50%;
-      margin-right: 8px;
-      position: relative;
-      cursor: pointer;
+
+      }
     }
 
-    input:checked + .checkbox-custom::after {
+    input:checked + .checkbox-wrapper .checkbox-custom .checkbox-custom__circle::after {
       content: "";
-      width: 18px;
-      height: 18px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
+      border: 3px solid $MVP-black;
       background: $MVP-Light-Blue;
       position: absolute;
       transform: translate(-15%, -15%);
     }
+
+    .checkbox-text {
+      display: inline-block;
+    }
   }
+}
+
+.test{
+  width: 18px;
+      height: 18px;
+      border: 3px solid $MVP-black;
+      border-radius: 50%;
+
 }
