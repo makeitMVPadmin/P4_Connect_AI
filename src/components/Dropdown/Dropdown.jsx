@@ -20,6 +20,7 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_
   const handledummyvalue = () => {
     setUpdatedValue("");
     setDummyValue("Please select an option");
+    onChangeDropdown("Please select an option");
     setIsActive(!isActive);
   };
   const handledropdownclick = () => {
