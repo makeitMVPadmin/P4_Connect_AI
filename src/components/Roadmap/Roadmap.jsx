@@ -76,6 +76,11 @@ const Roadmap = () => {
               offsetX={"8.4rem"}
               offsetY={"8.4rem"}
               number={"1"}
+              task={
+                "Do some stuffs because that is the stuff you are supposed to do "
+              }
+              user1Complete={true}
+              user2Complete={false}
               user1Picture={user1Picture}
               user2Picture={user2Picture}
             />
