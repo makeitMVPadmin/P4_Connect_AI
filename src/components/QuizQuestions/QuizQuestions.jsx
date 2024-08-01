@@ -128,7 +128,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
     const answeredQuest = answeredQuestArray.every((quest) => quest === true);
-    console.log("answeredQuest", answeredQuest);
     return answeredQuest;
   };
 
