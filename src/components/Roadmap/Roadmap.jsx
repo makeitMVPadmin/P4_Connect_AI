@@ -19,6 +19,17 @@ const Roadmap = () => {
 
   const [isHovering, setIsHovering] = useState(false);
 
+  // This object is temporary and only here to provide mock data to show the functionality of the popup
+  const mockMatchData = {
+    goal1Task: "Goal 1 task",
+    goal2Task: "Goal 2 task",
+    goal3Task: "Goal 3 task",
+    goal4Task: "Goal 4 task",
+    goal5Task: "Goal 5 task",
+    user1Picture: user1Picture,
+    user2Picture: user2Picture,
+  };
+
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
     setmodalOpen(true);
@@ -66,7 +77,7 @@ const Roadmap = () => {
             setIsHovering(true);
           }}
           onMouseLeave={() => {
-            setIsHovering(true);
+            setIsHovering(false);
           }}
           className="goal-button goal1"
           onClick={() => handleGoalClickModal(1)}
@@ -76,13 +87,12 @@ const Roadmap = () => {
               offsetX={"8.4rem"}
               offsetY={"8.4rem"}
               number={"1"}
-              task={
-                "Do some stuffs because that is the stuff you are supposed to do "
-              }
+              task={mockMatchData.goal1Task}
+              locked={false}
               user1Complete={true}
               user2Complete={false}
-              user1Picture={user1Picture}
-              user2Picture={user2Picture}
+              user1Picture={mockMatchData.user1Picture}
+              user2Picture={mockMatchData.user2Picture}
             />
           )}
           <div className="goal-icon-container">

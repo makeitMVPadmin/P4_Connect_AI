@@ -17,6 +17,10 @@
   bottom: var(--y-offset, 0);
   padding: 1rem;
 
+  &--locked {
+    background-color: $Light-Gray;
+  }
+
   &__title {
     color: $MVP-White;
     font-family: "Corben-Bold";
@@ -25,9 +29,13 @@
 
   &__task {
     padding: 0 1rem;
-    margin: 0 0 2rem;
+    margin-bottom: 2rem;
     color: $MVP-White;
     font-size: 1rem;
+
+    &--locked {
+      margin-bottom: 1rem;
+    }
   }
 
   &__users-container {
