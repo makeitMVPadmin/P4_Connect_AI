@@ -6,11 +6,8 @@ import { ReactComponent as Goal2Icon } from "../../assets/icons/roadmapIcon2.svg
 import { ReactComponent as Goal3Icon } from "../../assets/icons/roadmapIcon3.svg";
 import { ReactComponent as Goal4Icon } from "../../assets/icons/roadmapIcon4.svg";
 import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg";
-import Goal1Component from "../Goal1Component/Goal1Component";
-import Goal2Component from "../Goal2Component/Goal2Component";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import Button from "../../components/Button/Button";
 import GoalComponent from "../GoalComponent/GoalComponent";
 
 const Roadmap = () => {
@@ -26,16 +23,6 @@ const Roadmap = () => {
     setmodalOpen(false);
   };
 
-  const renderActiveComponent = () => {
-    switch (activeGoal) {
-      case 1:
-        return <Goal1Component />;
-      case 2:
-        return <Goal2Component />;
-      default:
-        return null;
-    }
-  };
   const renderModalComponent = () => {
     return (
       <Modal
@@ -48,29 +35,25 @@ const Roadmap = () => {
         shouldCloseOnOverlayClick={false}
       >
         <>
-          <PopUpModal
-            title={{}}
-            closeButtonAction={handleCloseGoalClickModal}
-          >
+          <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
             <GoalComponent
               goalNumber={activeGoal}
-              goalPrompt={"We recommend setting up an initial meeting to get to know each other and plan your first steps."}
-              goals={{goalBreakdownLabel:{"meetings1":""},
-                goalLabel:"meeting"}
+              goalPrompt={
+                "We recommend setting up an initial meeting to get to know each other and plan your first steps."
               }
-            >
-
-            </GoalComponent>
-
+              goals={{
+                goalBreakdownLabel: { meetings1: "" },
+                goalLabel: "meeting",
+              }}
+            ></GoalComponent>
           </PopUpModal>
         </>
       </Modal>
     );
-  }
+  };
   return (
     <div className="roadmap-container">
       <div className="svg-container">
-
         <RoadmapSvg />
         {renderModalComponent()}
         <button
