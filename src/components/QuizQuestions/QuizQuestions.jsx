@@ -121,17 +121,15 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
 
   const arequestionAnswered = () => {
-    return requiredQuestionIds.every((id) => {
-      const questionContent = QA.find(
-        (item) => item.question_id === id
-      )?.question_content;
-      const answer = formData[questionContent];
-
-      return (
-        answer &&
-        (Array.isArray(answer) ? answer.length > 0 : answer.trim() !== "")
-      );
+    const k = Array.from(answeredQuestions).map((ans) => {
+      const p = QA.find((data) => data.question_content === ans).question_id;
+      return p;
     });
+
+    const answeredQuestArray = requiredQuestionIds.map((id) => k.includes(id));
+    const answeredQuest = answeredQuestArray.every((quest) => quest === true);
+    console.log("answeredQuest", answeredQuest);
+    return answeredQuest;
   };
 
   useEffect(() => {
