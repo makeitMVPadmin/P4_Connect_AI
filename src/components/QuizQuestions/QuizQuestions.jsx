@@ -121,8 +121,8 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
 
   const arequestionAnswered = () => {
-    const k = Array.from(answeredQuestions).map((ans) => {
-      const p = QA.find((data) => data.question_content === ans).question_id;
+    const k = Array.from(answeredQuestions).map((quest) => {
+      const p = QA.find((data) => data.question_content === quest).question_id;
       return p;
     });
 
