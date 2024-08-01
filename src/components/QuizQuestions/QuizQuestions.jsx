@@ -7,7 +7,18 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-  const [formData, setFormData] = React.useState([]);
+  const [formData, setFormData] = React.useState(() => {
+    const initialFormData = {};
+    QA.forEach((item) => {
+      initialFormData[item.question_content] =
+        item.question_type == "checkbox"
+          ? []
+          : item.question_type == "dropdown"
+          ? {}
+          : "";
+    });
+    return initialFormData;
+  });
   const requiredQuestionIds = ["001", "002", "004", "006", "008"];
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
@@ -22,77 +33,68 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const handleInputChange = (question_type, question_content, value) => {
     //setFormData({ ...formData, [question_content]: value });
 
-    const questionItem = QA.find((data) => data.question_content === question_content);
+    const questionItem = QA.find(
+      (data) => data.question_content === question_content
+    );
     const allAns = questionItem.answers;
 
-    let newSelectedAnswerIds = [...selectedAnswerIds];
-    let newFormData = [...formData];
-
+    let newSelectedAnswerIds = selectedAnswerIds;
+    let newFormData = formData ;
 
     if (question_type == "checkbox") {
-      const answerIds = value.map((each) => {
+      const ansDetails = value.map((each) => {
         const found = allAns.filter((data) => data.answer_content == each);
         return {
-          question_content,
           answer_id: found[0].answer_id,
           answer_content: found[0].answer_content,
         };
       });
-      console.log("answerIds for checkbox", answerIds);
-      console.log("previously selected ids for checkbox", newSelectedAnswerIds);
+   
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-      console.log(
-        "After discarding all ids from checkbox for a particular question",
-        newSelectedAnswerIds
-      );
-      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds.answer_id];
-      newFormData = newFormData.filter(
-        (item) => item.question_content !== question_content
-      );
-      newFormData = [...newFormData, answerIds.flat()];
-    } 
     
-    else if (question_type == "dropdown")
-      
-      {
-      const answerIds = allAns
+      newSelectedAnswerIds = [
+        ...newSelectedAnswerIds,
+        ansDetails.map((id) => id.answer_id),
+      ];
+    
+      newFormData = { ...newFormData, [question_content]:ansDetails };
+    } else if (question_type == "dropdown") {
+      const ansDetails = allAns
         .filter((item) => {
           return item.answer_content === value;
         })
         .map((ans) => {
           return {
-            question_content,
             answer_id: ans.answer_id,
             answer_content: ans.answer_content,
           };
         });
 
-      console.log("answerIds in dropdown", answerIds);
+      console.log("answerDetails in dropdown", ansDetails);
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
 
-      newSelectedAnswerIds = [...newSelectedAnswerIds, answerIds[0].answer_id];
+      newSelectedAnswerIds = [
+        ...newSelectedAnswerIds,
+        ansDetails.map((id) => id.answer_id)[0],
+      ];
       console.log("newSelectedAnswerIds in dropdown", newSelectedAnswerIds);
 
-      newFormData = newFormData.filter(
-        (data) => data.question_content !== question_content
-      );
-      newFormData = [...newFormData, answerIds[0]];
+    
+      newFormData = { ...newFormData, [question_content]: ansDetails };
       console.log("newFormData in dropdown", newFormData);
     } 
-    
     else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
 
     setSelectedAnswerIds(newSelectedAnswerIds.flat());
     setFormData(newFormData);
-
 
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
