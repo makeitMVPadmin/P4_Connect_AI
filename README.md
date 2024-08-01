@@ -1,13 +1,13 @@
-# MakeItMVP Launch Academy Starter Repository
+# MakeItMVP Launch Academy Phase 4: Connect AI (README.md in progress)
 
-Welcome to the MakeItMVP Launch Academy Starter Repository! This repository is designed to provide new junior developers with a structured starting point for their assigned projects. It's built using React and Sass to help you get up and running quickly.
+Welcome to the MakeItMVP Launch Academy Phase 4 - Project Connect AI! Our project is built using React and Sass. 
 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Technologies](#technologies)
-- [Contributing](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## Getting Started
@@ -20,12 +20,12 @@ To begin working on your project, follow these steps:
    git clone https://github.com/makeitMVPadmin/P4_Connect_AI.git
    ```
 
-````
+
 
 2. Change your working directory to the cloned repository:
 
    ```bash
-   cd LaunchAcademyStarter
+   cd P4_Connect_AI
    ```
 
 3. Install the project dependencies:
@@ -34,13 +34,25 @@ To begin working on your project, follow these steps:
    npm install
    ```
 
-4. Start the development server:
+4. Create a .env file with the necessary environment variables for Firebase
+
+   ```bash
+   REACT_APP_FIREBASE_API_KEY=
+   REACT_APP_FIREBASE_AUTH_DOMAIN=
+   REACT_APP_FIREBASE_PROJECT_ID=
+   REACT_APP_FIREBASE_STORAGE_BUCKET=
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+   REACT_APP_FIREBASE_APP_ID=
+   REACT_APP_FIREBASE_MEASUREMENT_ID=
+```
+
+6. Start the development server:
 
    ```bash
    npm start
    ```
 
-5. Open your web browser and navigate to `http://localhost:3000` to see your project running.
+7. Open your web browser and navigate to `http://localhost:3000` to see your project running.
 
 Now you're ready to start building your project using the provided structure!
 
@@ -72,16 +84,36 @@ Feel free to customize the project structure to fit your specific project requir
 
 ## Technologies
 
-This starter repository uses the following technologies:
+This repository uses the following technologies:
 
 - React: A JavaScript library for building user interfaces.
 - Sass: A CSS extension language that adds features like variables, nesting, and more.
 
 You can expand upon these technologies as needed for your project.
 
-## Contributing
-
-We welcome contributions from the community. If you have suggestions or improvements for this starter repository, please open an issue or create a pull request. For more information on how to contribute, check our [CONTRIBUTING.md](CONTRIBUTING.md) file.
+## Contributors
+Our team comprises two sub-teams - "Project Connect AI" and "Project Infrastructure".
+Project Connect AI handled the front-end designs and code, and Project Infrastructure handled the back-end code and database.
+### Designers (Project Connect AI)
+- Anna Ryzha
+- Helena Dinh
+- Isha Umaima
+### Front-end Developers (Project Connect AI)
+- Aparna Dhara
+- Gloria Lau
+- Jack Henriksen
+- Jagadeep Avula
+- Madhuja Mitra
+- Mohan Krishna Hasti
+### Back-end Developers (Project Infrastructure)
+- Andrea Matos
+- Avi Brar
+- Masoud Arefi
+### Product Manager
+- Alberto Borgonovo (Project Infrastructure)
+### Team Lead
+- Dinne Kopelevich (Project Connect AI)
+- Scott Schwab (Project Infrastructure)
 
 ## License
 
