@@ -28,7 +28,7 @@
   }
 
   &__details {
-    //padding: 16px;
+   
     background: $MVP-White;
   }
 
@@ -38,7 +38,7 @@
   }
 
   &__group {
-    //display: flex;
+  
     gap: 5px;
     display: grid;
     grid-template-columns: 33.33% 33.3% 33.3%;
@@ -54,7 +54,7 @@
       flex-wrap: wrap;
       row-gap: 15px;
       .dropdown-checkbox__item {
-      width:calc(100% - 10px); // Adjust as necessary for spacing
+      width:calc(100% - 10px); 
        height: 40px;
       }
     }
