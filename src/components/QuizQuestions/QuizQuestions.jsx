@@ -67,7 +67,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-    console.log("value", value);
     // Update formData state
     setFormData((prevFormData) => {
       const updatedFormData = { ...prevFormData, [question_content]: value };
@@ -108,7 +107,8 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
-      value!="Please select an option" && question_type === "dropdown"
+      (value != "Please select an option" && question_type === "dropdown") ||
+      (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -127,7 +127,10 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       )?.question_content;
       const answer = formData[questionContent];
 
-      return answer && (Array.isArray(answer) ? answer.length > 0 : answer.trim() !== "");
+      return (
+        answer &&
+        (Array.isArray(answer) ? answer.length > 0 : answer.trim() !== "")
+      );
     });
   };
 
