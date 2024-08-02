@@ -16,7 +16,8 @@ const runTest = async () => {
   try {
     console.log("Testing callOpenAiApi...");
     const result = await callOpenAiApi(userA, userB, project);
-    console.log("Test result:", result);
+    // Use console.dir to print nested objects or arrays
+    console.dir(result, { depth: null });
   } catch (error) {
     console.error("Test failed:", error);
   }
