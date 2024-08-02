@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Roadmap.scss";
 import { ReactComponent as RoadmapSvg } from "../../assets/images/roadmapBackground.svg";
 import { ReactComponent as Goal1Icon } from "../../assets/icons/roadmapIcon1.svg";
@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
+
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 
@@ -19,6 +20,12 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
+  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
+  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
+
+  const [user1Name, setUser1Name] = useState("User1");
+  const [user2Name, setUser2Name] = useState("User2");
+  const [completionPercentage, setCompletionPercentage] = useState(0);
   // This object is temporary and only here to provide mock data to show the functionality of the popup
   const mockMatchData = {
     goal1Task: "Goal 1 task",
@@ -29,6 +36,15 @@ const Roadmap = () => {
     user1Picture: user1Picture,
     user2Picture: user2Picture,
   };
+
+  useEffect(() => {
+    // Simulating data fetch from backend
+    setTimeout(() => {
+      setUser1Name("Diana");
+      setUser2Name("Kerry");
+      setCompletionPercentage(20);
+    }, 1000);
+  }, []);
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
@@ -69,8 +85,33 @@ const Roadmap = () => {
   };
   return (
     <div className="roadmap-container">
+      <div className="goals-progress-box">
+        <div className="goals-progress-content">
+          {user1Name}'s and {user2Name}'s partnership:
+        </div>
+        <div className="goals-progress-percentage">
+          {completionPercentage}% completed
+        </div>
+      </div>
+
       <div className="svg-container">
         <RoadmapSvg />
+
+        <div className="svg-container__matched">
+          <div className="svg-container__matched__images">
+            <img
+              src={user1Pic}
+              alt="user1 avatar "
+              className="svg-container__matched__user"
+            />
+            <img
+              src={user2Pic}
+              alt="user2 avatar "
+              className="svg-container__matched__user"
+            />
+          </div>
+        </div>
+
         {renderModalComponent()}
         <button
           onMouseEnter={() => {
