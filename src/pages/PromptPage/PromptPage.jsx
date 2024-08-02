@@ -10,10 +10,10 @@ import LoadingPage from "../../components/LoadingPage/LoadingPage";
 import NoMatch from "../../components/NoMatch/NoMatch";
 
 const PromptPage = () => {
-  const [currentPage, setCurrentPage] = useState("roadmap");
+  const [currentPage, setCurrentPage] = useState("prompt");
 
   useEffect(() => {
-    setCurrentPage("roadmap");
+    setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
   }, []);
