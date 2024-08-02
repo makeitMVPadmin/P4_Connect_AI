@@ -2,7 +2,7 @@ import "./NewMatchedUsers.scss";
 import Button from "../Button/Button.jsx";
 import { useEffect, useState } from "react";
 // temporary user2 picture as placeholders:
-import user2kerry from "../../assets/images/user2kerry.svg";
+import user2 from "../../assets/images/user2.png";
 import email from "../../assets/icons/mage_email.svg";
 import linkedin from "../../assets/icons/linkedin.svg";
 //need to import function to retrieve matches from firebase:
@@ -12,7 +12,7 @@ import linkedin from "../../assets/icons/linkedin.svg";
 const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState("UX/UI Designer in training");
-  const [user2Pic, setUser2Pic] = useState(user2kerry); //replace user2 with null instead of image placeholder
+  const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
 
   //grab matches.user_id2_name, matches.user_id2_titlematches,user_id2_pic, and matches.match_percentage from backend:
