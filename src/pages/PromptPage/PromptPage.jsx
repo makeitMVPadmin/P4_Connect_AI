@@ -8,12 +8,13 @@ import Roadmap from "../../components/Roadmap/Roadmap";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 import NoMatch from "../../components/NoMatch/NoMatch";
+import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
-  const [currentPage, setCurrentPage] = useState("prompt");
+  const [currentPage, setCurrentPage] = useState("goalachieved");
 
   useEffect(() => {
-    setCurrentPage("prompt");
+    setCurrentPage("goalachieved");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
   }, []);
@@ -78,6 +79,7 @@ const PromptPage = () => {
             />
           )}
           {currentPage === "roadmap" && <Roadmap />}
+          {currentPage === "goalachieved" && <GoalAchieved />}
         </div>
       </div>
     </div>
