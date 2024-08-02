@@ -30,12 +30,13 @@
       width: 21.75rem;
       height: 7rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
     &__user {
       width: 6.25rem;
       height: 6.25rem;
       border-radius: 50%;
+      margin: 0 1.25rem 0 0;
     }
     &__user-area {
       display: flex;
@@ -47,6 +48,8 @@
       flex-direction: column;
       align-items: flex-start;
       padding: 0 0 1.25rem;
+      width: 14.25rem;
+      height: 7rem;
     }
     &__user-title-text {
       font-family: Corben;
@@ -59,6 +62,13 @@
     }
     &__user-social-icon {
       width: 1.875rem;
+      padding: 0.313rem;
+      border: solid 1px $MVP-black;
+      border-radius: 0.156rem;
+      background-color: $MVP-Dark-Blue;
+      &--left {
+        margin: 0 0.625rem 0 0;
+      }
     }
     &__text {
       font-size: 0.938rem;
@@ -67,10 +77,7 @@
     }
     &__button-div {
       display: flex;
-      padding: 2.813rem 0 0;
-      // @include Tablet {
-      //   flex-direction: column;
-      // }
+      padding: 5rem 0 0;
     }
     &__button--left {
       margin: 0 1.875rem 0 0;
