@@ -58,3 +58,18 @@ export const deleteData = async (collectionName, id) => {
     throw e;
   }
 };
+
+//Get all questions
+export const getAllQuestions = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "questions"));
+    const dataList = [];
+    querySnapshot.forEach((doc) => {
+      dataList.push({ id: doc.id, ...doc.data() });
+    });
+    return dataList;
+  } catch (e) {
+    console.error("Error reading documents: ", e);
+    throw e;
+  }
+}
