@@ -21,7 +21,6 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
     return savedProgress ? Number(savedProgress) : 0;
   });
   const onProgressChange = (answeredQuestionsCount) => {
-    console.log("Answered Questions Count:", answeredQuestionsCount);
     // Update progress based on the number of answered questions
     setProgress(answeredQuestionsCount);
     //store progress in session storage
