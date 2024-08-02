@@ -1,10 +1,11 @@
 // src/utils/Functions/openaiFunctions.js
-import { OpenAI } from "openai";
-import openaiConfig from "../../config/openaiConfig";
+require("dotenv").config(); // Add this line to load .env file
+const OpenAI = require("openai").OpenAI;
+const openaiConfig = require("../../config/openaiConfig");
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: openaiConfig.apiKey,
+  apiKey: process.env.OPENAI_API_KEY || openaiConfig.apiKey,
   dangerouslyAllowBrowser: true,
 });
 
@@ -58,9 +59,7 @@ const callOpenAiApi = async (userA, userB, project) => {
       temperature: 0.5,
     });
 
-    const data = JSON.parse(
-      response.choices[0].message.function_call.arguments
-    );
+    const data = JSON.parse(response.choices[0].message.function_call.arguments);
 
     return data;
   } catch (error) {
@@ -69,4 +68,4 @@ const callOpenAiApi = async (userA, userB, project) => {
   }
 };
 
-export { callOpenAiApi };
+module.exports = { callOpenAiApi };
