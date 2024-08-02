@@ -18,7 +18,6 @@ const PromptPage = () => {
     sessionStorage.removeItem("answeredQuestions");
   }, []);
 
-
   const handleClick = () => {
     setCurrentPage("quiz");
   };
