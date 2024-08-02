@@ -25,17 +25,40 @@
       font-size: 1.875rem;
       font-weight: 700;
     }
-    &__images {
-      padding: 1.875rem 0;
+    &__user-info {
+      margin: 2.5rem 0;
+      width: 21.75rem;
+      height: 7rem;
+      display: flex;
+      justify-content: space-between;
     }
     &__user {
-      width: 9.44rem;
-      height: 9.44rem;
+      width: 6.25rem;
+      height: 6.25rem;
       border-radius: 50%;
-      // @include Tablet {
-      //   width: 7rem;
-      //height: 7rem;
-      // }
+    }
+    &__user-area {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__user-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 0 1.25rem;
+    }
+    &__user-title-text {
+      font-family: Corben;
+      font-size: 1.25rem;
+      line-height: 2.313rem;
+    }
+    &__user-social {
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__user-social-icon {
+      width: 1.875rem;
     }
     &__text {
       font-size: 0.938rem;
