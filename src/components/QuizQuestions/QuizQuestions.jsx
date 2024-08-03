@@ -8,38 +8,53 @@ import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const [formData, setFormData] = React.useState(() => {
-    const initialFormData = {};
+    const storedFormData = sessionStorage.getItem("formDataSession");
+
+    const initialFormData = storedFormData ? JSON.parse(storedFormData) : [];
     QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox"
-          ? []
-          : item.question_type == "dropdown"
-          ? {}
-          : "";
+      if (!initialFormData[item.question_content]) {
+        initialFormData[item.question_content] = [];
+      }
     });
     return initialFormData;
   });
   const requiredQuestionIds = ["001", "002", "004", "006", "008"];
-  const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
-  const [answeredQuestions, setAnsweredQuestions] = React.useState(new Set());
+
+
+  const [selectedAnswerIds, setSelectedAnswerIds] = useState(()=>{
+    const storedSelectedAnswerIds=sessionStorage.getItem("selectedAnswerIds");
+    return storedSelectedAnswerIds? JSON.parse(storedSelectedAnswerIds) : [];
+  });
+
+
+  const [answeredQuestions, setAnsweredQuestions] = React.useState(() => {
+    const storedAnsweredQuestions = sessionStorage.getItem("aqSession");
+    return storedAnsweredQuestions
+      ? new Set(JSON.parse(storedAnsweredQuestions))
+      : new Set();
+  });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
-    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    setCurrentPage("match");
   };
 
-  const handleInputChange = (question_type, question_content, value) => {
-    //setFormData({ ...formData, [question_content]: value });
+  useEffect(() => {
+    sessionStorage.setItem("formDataSession", JSON.stringify({ ...formData }));
+    sessionStorage.setItem("aqSession", JSON.stringify([...answeredQuestions]));
+    sessionStorage.setItem("selectedAnswerIds", JSON.stringify([...selectedAnswerIds]))
+  }, [formData, answeredQuestions,selectedAnswerIds]);
 
+  const handleInputChange = (question_type, question_content, value) => {
     const questionItem = QA.find(
       (data) => data.question_content === question_content
     );
     const allAns = questionItem.answers;
 
     let newSelectedAnswerIds = selectedAnswerIds;
-    let newFormData = formData ;
+    let newFormData = formData;
 
     if (question_type == "checkbox") {
       const ansDetails = value.map((each) => {
@@ -49,18 +64,17 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
           answer_content: found[0].answer_content,
         };
       });
-   
 
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
-    
+
       newSelectedAnswerIds = [
         ...newSelectedAnswerIds,
         ansDetails.map((id) => id.answer_id),
       ];
-    
-      newFormData = { ...newFormData, [question_content]:ansDetails };
+
+      newFormData = { ...newFormData, [question_content]: ansDetails };
     } else if (question_type == "dropdown") {
       const ansDetails = allAns
         .filter((item) => {
@@ -75,21 +89,20 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
       console.log("answerDetails in dropdown", ansDetails);
 
-      newSelectedAnswerIds = newSelectedAnswerIds.filter(
-        (id) => !allAns.some((ans) => ans.answer_id === id)
-      );
+      newSelectedAnswerIds = newSelectedAnswerIds.filter((id) => {
+        return !allAns.some((ans) => ans.answer_id === id);
+      });
 
       newSelectedAnswerIds = [
         ...newSelectedAnswerIds,
-        ansDetails.map((id) => id.answer_id)[0],
+        ansDetails.length > 0 ? ansDetails.map((id) => id.answer_id)[0] : "",
       ];
+      newSelectedAnswerIds = newSelectedAnswerIds.filter((id) => id !== "");
       console.log("newSelectedAnswerIds in dropdown", newSelectedAnswerIds);
 
-    
       newFormData = { ...newFormData, [question_content]: ansDetails };
       console.log("newFormData in dropdown", newFormData);
-    } 
-    else {
+    } else {
       newSelectedAnswerIds = [...newSelectedAnswerIds, value];
     }
 
@@ -98,7 +111,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
-      newSet.add(question_content);
+      (value.length > 0 && question_type === "checkbox") ||
+      (value !== "Please select an option" && question_type == "dropdown")
+        ? newSet.add(question_content)
+        : newSet.delete(question_content);
+
       return newSet;
     });
   };
@@ -121,7 +138,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
   const renderedQuestions = (item, index) => {
     const answers = item.answers?.map((answer) => answer.answer_content);
-
+    const currentValue = formData[item.question_content].map(
+      (answer) => answer.answer_content
+    );
     switch (item.question_type) {
       case "dropdown":
         return (
@@ -130,6 +149,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               labelName={item.question_content}
               dropDownInfo1={answers}
               question_id={item.question_id}
+              existingValue={currentValue}
               onChangeDropdown={(value) =>
                 handleInputChange(
                   item.question_type,
@@ -146,6 +166,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             options1={answers}
             question_id={item.question_id}
+            existingValue={currentValue}
             onChangeDropdownCheckbox={(value) =>
               handleInputChange(
                 item.question_type,

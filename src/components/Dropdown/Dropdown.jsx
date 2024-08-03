@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 const Dropdown = ({
   dropDownInfo1,
+  existingValue,
   labelName,
   onChangeDropdown,
   question_id,
@@ -13,13 +14,17 @@ const Dropdown = ({
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
-
     onChangeDropdown(event.target.innerHTML);
     setIsActive(!isActive);
   };
+  useEffect(() => {
+    existingValue.length ? setUpdatedValue(existingValue) : setUpdatedValue("");
+  }, [existingValue]);
+
   const handledummyvalue = () => {
     setUpdatedValue("");
     setDummyValue("Please select an option");
+    onChangeDropdown("Please select an option");
     setIsActive(!isActive);
   };
   const handledropdownclick = () => {

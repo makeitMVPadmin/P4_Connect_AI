@@ -75,29 +75,7 @@ const ProgressBar = ({ step, currentPage }) => {
     </div>
   );
 
-  // return (
-  //   <div className="progress-container">
-  //     <div className="progress-bar">
-  //       {[...Array(displaySteps * boxesPerStep)].map((_, index) => (
-  //         <div key={index} className="progress-bar__box" />
-  //       ))}
-  //     </div>
-  //     <div>
-  //       <p className="progress-container__para1">Let’s learn a little bit about you...</p>
-  //       <p className="progress-container__para2">
-  //         {" "}
-  //         Please take a moment to answer the following questions.
-  //       </p>
-  //       <div className="progress-container__image">
-  //         <img
-  //           src={CoffeeMugWithHat_happy}
-  //           alt="Coffee Mug With Hat Happy"
-  //           className="progress-container__mascot"
-  //         />
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
+
 };
 
 export default ProgressBar;

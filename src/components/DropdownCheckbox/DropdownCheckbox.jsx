@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DropdownCheckbox.scss";
 
 const DropdownCheckbox = ({
   onChangeDropdownCheckbox,
   labelName,
   options1,
+  existingValue,
 }) => {
   const [selectedValues, setSelectedValues] = useState([]);
 
   const isMoreThanSix = options1.length > 6;
+  useEffect(() => {
+    setSelectedValues(existingValue);
+  }, [existingValue]);
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;

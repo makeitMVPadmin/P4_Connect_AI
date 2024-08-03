@@ -7,11 +7,10 @@ import NoMatch from "../NoMatch/NoMatch";
 import MatchedUsers from "../MatchedUsers/MatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
-  const step = 1;
+  //const step = 1;
   const [progress, setProgress] = useState(0);
   const onProgressChange = (answeredQuestionsCount) => {
-    //console.log("Answered Questions Count:", answeredQuestionsCount);
-    // Update progress based on the number of answered questions
+ 
     setProgress(answeredQuestionsCount);
   };
 
