@@ -15,6 +15,10 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
 
+  const openInNewTab = (url) => {
+    window.open(url, "_blank", "noreferrer");
+  };
+
   //grab matches.user_id2_name, matches.user_id2_titlematches,user_id2_pic, and matches.match_percentage from backend:
   //for example - simulating a fetch from backend:
   //   useEffect(()=>{
@@ -49,11 +53,13 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
                 className="
                 new-matched__user-social-icon
                 new-matched__user-social-icon--left"
+                onClick={() => openInNewTab("https://mail.google.com/mail/u/0/#inbox")}
               />
               <img
                 src={linkedin}
                 alt="linkedin icon"
                 className="new-matched__user-social-icon"
+                onClick={() => openInNewTab("https://www.linkedin.com/")}
               />
             </div>
           </div>
