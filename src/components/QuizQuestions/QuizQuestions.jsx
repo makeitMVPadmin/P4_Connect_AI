@@ -16,8 +16,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const [formData, setFormData] = useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
+      initialFormData[item.question_content] = item.question_type == "checkbox" ? [] : "";
     });
     //get from session storage
     return { ...initialFormData, ...getSessionData() };
@@ -53,17 +52,15 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //save answeredQuestions to session storage
   useEffect(() => {
     const answeredQuestionsArray = Array.from(answeredQuestions);
-    sessionStorage.setItem(
-      "answeredQuestions",
-      JSON.stringify(answeredQuestionsArray)
-    );
+    sessionStorage.setItem("answeredQuestions", JSON.stringify(answeredQuestionsArray));
   }, [answeredQuestions]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
-    setCurrentPage("match"); //this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    setCurrentPage("new-match");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -74,9 +71,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       return updatedFormData;
     });
 
-    const questionItem = QA.find(
-      (data) => data.question_content === question_content
-    );
+    const questionItem = QA.find((data) => data.question_content === question_content);
     const allAns = questionItem.answers;
     let newSelectedAnswerIds = selectedAnswerIds;
 
@@ -112,10 +107,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
-      sessionStorage.setItem(
-        "answeredQuestions",
-        JSON.stringify(Array.from(newSet))
-      );
+      sessionStorage.setItem("answeredQuestions", JSON.stringify(Array.from(newSet)));
       return newSet;
     });
   };
@@ -151,11 +143,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               question_id={item.question_id}
               value={currentValue}
               onChangeDropdown={(value) =>
-                handleInputChange(
-                  item.question_type,
-                  item.question_content,
-                  value
-                )
+                handleInputChange(item.question_type, item.question_content, value)
               }
             />
           </>
@@ -168,11 +156,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             question_id={item.question_id}
             values={currentValue}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -182,11 +166,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             value={currentValue}
             handleTextarea={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );

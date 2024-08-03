@@ -42,11 +42,10 @@ const PromptPage = () => {
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">Welcome to ConnectAI</div>
                     <div className="welcome-text">
-                      Our AI feature empowers you to achieve your professional
-                      goals through personalized accountability partnerships. By
-                      taking our quick matching quiz, you’ll be paired with a
-                      peer who complements your skills, and you both will work
-                      towards a common goal.
+                      Our AI feature empowers you to achieve your professional goals
+                      through personalized accountability partnerships. By taking our
+                      quick matching quiz, you’ll be paired with a peer who complements
+                      your skills, and you both will work towards a common goal.
                     </div>
                     <div className="welcome-text">
                       Click "Next" to get started on your journey to effective
@@ -71,11 +70,9 @@ const PromptPage = () => {
           {/* other pages */}
           {(currentPage === "quiz" ||
             currentPage === "match" ||
+            currentPage === "new-match" ||
             currentPage === "no-match") && (
-            <QuizPage
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
+            <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
           )}
           {currentPage === "roadmap" && <Roadmap />}
         </div>

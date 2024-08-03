@@ -35,25 +35,26 @@ const ProgressBar = ({ step, currentPage }) => {
           </div>
         </div>
       )}
-      {currentPage === "match" && (
-        <div className="progress-container">
-          <div>
-            <p className="progress-container__para1">We found your peer match!</p>
-            <p className="progress-container__para2">
-              {" "}
-              You can either proceed to set a goal or redo the matching quiz to find a new
-              partner.
-            </p>
-            <div className="progress-container__image">
-              <img
-                src={CoffeeMugWithHat_happy}
-                alt="Coffee Mug With Hat Happy"
-                className="progress-container__mascot"
-              />
+      {currentPage === "match" ||
+        (currentPage === "new-match" && (
+          <div className="progress-container">
+            <div>
+              <p className="progress-container__para1">We found your peer match!</p>
+              <p className="progress-container__para2">
+                {" "}
+                You can either proceed to set a goal or redo the matching quiz to find a
+                new partner.
+              </p>
+              <div className="progress-container__image">
+                <img
+                  src={CoffeeMugWithHat_happy}
+                  alt="Coffee Mug With Hat Happy"
+                  className="progress-container__mascot"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        ))}
       {currentPage === "no-match" && (
         <div className="progress-container">
           <div>
