@@ -8,6 +8,7 @@ import Roadmap from "../../components/Roadmap/Roadmap";
 import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 import NoMatch from "../../components/NoMatch/NoMatch";
+import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
   const [currentPage, setCurrentPage] = useState("prompt");
@@ -75,6 +76,7 @@ const PromptPage = () => {
             <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
           )}
           {currentPage === "roadmap" && <Roadmap />}
+          {currentPage === "goalachieved" && <GoalAchieved />}
         </div>
       </div>
     </div>
