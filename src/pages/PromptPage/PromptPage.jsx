@@ -11,10 +11,10 @@ import NoMatch from "../../components/NoMatch/NoMatch";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
-  const [currentPage, setCurrentPage] = useState("goalachieved");
+  const [currentPage, setCurrentPage] = useState("prompt");
 
   useEffect(() => {
-    setCurrentPage("goalachieved");
+    setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
   }, []);
