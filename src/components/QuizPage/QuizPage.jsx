@@ -7,6 +7,7 @@ import NoMatch from "../NoMatch/NoMatch";
 import MatchedUsers from "../MatchedUsers/MatchedUsers";
 import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
+
 const QuizPage = ({ currentPage, setCurrentPage }) => {
   useEffect(() => {
     console.log("QuizPage mounted");
@@ -60,6 +61,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               <NoMatch handleBackToQuiz={() => setCurrentPage("quiz")} />
             </Suspense>
           )}
+    
         </div>
       </div>
     </div>

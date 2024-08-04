@@ -1,4 +1,5 @@
 import "./PromptPage.scss";
+import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
@@ -11,6 +12,7 @@ import NoMatch from "../../components/NoMatch/NoMatch";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("prompt");
 
   useEffect(() => {
@@ -22,7 +24,9 @@ const PromptPage = () => {
   const handleClick = () => {
     setCurrentPage("quiz");
   };
-
+  const handleBack = () => {
+    navigate("/");
+  };
   return (
     <div>
       <DashboardNavbar />
@@ -43,10 +47,11 @@ const PromptPage = () => {
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">Welcome to ConnectAI</div>
                     <div className="welcome-text">
-                      Our AI feature empowers you to achieve your professional goals
-                      through personalized accountability partnerships. By taking our
-                      quick matching quiz, you’ll be paired with a peer who complements
-                      your skills, and you both will work towards a common goal.
+                      Our AI feature empowers you to achieve your professional
+                      goals through personalized accountability partnerships. By
+                      taking our quick matching quiz, you’ll be paired with a
+                      peer who complements your skills, and you both will work
+                      towards a common goal.
                     </div>
                     <div className="welcome-text">
                       Click "Next" to get started on your journey to effective
@@ -54,7 +59,12 @@ const PromptPage = () => {
                     </div>
                   </div>
                   <div className="button-container">
-                    <Button text="Back" color="white" className="back" />
+                    <Button
+                      text="Back"
+                      color="white"
+                      className="back"
+                      eventListener={handleBack}
+                    />
 
                     <Button
                       text="Next"
@@ -73,7 +83,10 @@ const PromptPage = () => {
             currentPage === "match" ||
             currentPage === "new-match" ||
             currentPage === "no-match") && (
-            <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
+            <QuizPage
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+            />
           )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "goalachieved" && <GoalAchieved />}
