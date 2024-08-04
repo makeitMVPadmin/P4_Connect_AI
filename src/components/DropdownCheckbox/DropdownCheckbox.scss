@@ -39,29 +39,29 @@
 
   &__group {
   
-    gap: 5px;
+    gap: 3px;
     display: grid;
     grid-template-columns: 33.33% 33.3% 33.3%;
-   
     align-items: center;
     justify-items: start;
 
     &.one-coloums {
+      grid-template-columns:auto;
       flex-direction: column;
       row-gap: 15px;
     }
     &.three-columns {
       flex-wrap: wrap;
-      row-gap: 15px;
+      row-gap: 5px;
       .dropdown-checkbox__item {
-      width:calc(100% - 10px); 
+      width:calc(100% - 5px); 
        height: 40px;
       }
     }
   }
 
   &__item {
-    font-family: "Gilroy-ExtraBold";
+    font-family: "Gilroy-Light";
     cursor: pointer;
     display: flex;
     align-items: center;
