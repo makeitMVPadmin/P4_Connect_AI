@@ -37,6 +37,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
           {currentPage === "quiz" && (
             <QuizQuestions
               setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
               onProgressChange={onProgressChange}
             />
           )}

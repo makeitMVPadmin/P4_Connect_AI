@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import Modal from 'react-modal';
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
+import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const style = {
   position: 'absolute',
@@ -45,7 +46,7 @@ const TestPage = () => {
       {/* <ListWithCheckbox /> */}
       {/* <PromptPage />
       <NoMatch /> */}
-
+<LoadingPage/>
       <Modal
         id="promptpage__linkedinpost-modal"
         isOpen={isModalOpen}
