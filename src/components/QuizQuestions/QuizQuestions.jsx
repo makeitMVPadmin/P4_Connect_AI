@@ -22,7 +22,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         item.question_type == "checkbox" ? [] : "";
     });
     //get from session storage
-    return {...initialFormData,...getSessionData() };
+    return { ...initialFormData, ...getSessionData() };
   });
   //all answers required except Q12
   const requiredQuestionIds = [
@@ -72,13 +72,10 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       return;
     }
 
-
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
-    setTimeout(() => {
-      setCurrentPage("new-match");
-    }, 0);
+    setCurrentPage("new-match");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -126,10 +123,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
-      sessionStorage.setItem(
-        "answeredQuestions",
-        JSON.stringify(Array.from(newSet))
-      );
       return newSet;
     });
   };
