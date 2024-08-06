@@ -7,8 +7,9 @@ import NoMatch from "../NoMatch/NoMatch";
 import MatchedUsers from "../MatchedUsers/MatchedUsers";
 import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
-
 const QuizPage = ({ currentPage, setCurrentPage }) => {
+  // ADD match response prop if match algo happens after sending questions
+
   useEffect(() => {
     console.log("QuizPage mounted");
     return () => {
@@ -61,7 +62,6 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               <NoMatch handleBackToQuiz={() => setCurrentPage("quiz")} />
             </Suspense>
           )}
-    
         </div>
       </div>
     </div>
