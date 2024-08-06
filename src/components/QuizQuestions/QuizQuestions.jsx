@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
@@ -6,8 +6,9 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 
+const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
+  // ADD match response prop if match algo happens after sending questions
 
-const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
   //get the saved answers from session storage
   const getSessionData = () => {
     const savedData = sessionStorage.getItem("formData");
@@ -64,6 +65,8 @@ const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
     e.preventDefault();
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
+
+    // CALL BACKEND FUNCTION HERE: Send quiz questions & answers
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
     setTimeout(() => {
@@ -200,25 +203,23 @@ const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
- 
-        <form onSubmit={handleFormSubmit}>
-          <section className="quizquestions_section">
-            {QA.map((item, index) => (
-              <div className="quizquestions_section--field">
-                {renderedQuestions(item, index)}
-              </div>
-            ))}
+      <form onSubmit={handleFormSubmit}>
+        <section className="quizquestions_section">
+          {QA.map((item, index) => (
             <div className="quizquestions_section--field">
-              <Button
-                text="Next"
-                color={arequestionAnswered() ? "blue" : "grey"}
-                type="submit"
-                disabled={!arequestionAnswered()}
-              />
+              {renderedQuestions(item, index)}
             </div>
-          </section>
-        </form>
-       
+          ))}
+          <div className="quizquestions_section--field">
+            <Button
+              text="Next"
+              color={arequestionAnswered() ? "blue" : "grey"}
+              type="submit"
+              disabled={!arequestionAnswered()}
+            />
+          </div>
+        </section>
+      </form>
     </div>
   );
 };
