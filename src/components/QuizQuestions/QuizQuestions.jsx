@@ -22,7 +22,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         item.question_type == "checkbox" ? [] : "";
     });
     //get from session storage
-    return { ...initialFormData, ...getSessionData() };
+    return {...initialFormData,...getSessionData() };
   });
   //all answers required except Q12
   const requiredQuestionIds = [
@@ -84,7 +84,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const handleInputChange = (question_type, question_content, value) => {
     setFormData((prevFormData) => {
       const updatedFormData = { ...prevFormData, [question_content]: value };
-      sessionStorage.setItem("formData", JSON.stringify(updatedFormData));
       return updatedFormData;
     });
 
