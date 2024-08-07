@@ -4,7 +4,7 @@ import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.s
 import CoffeeMugWithHat_sad from "../../assets/images/coffeeMugWithHat_sad.svg";
 
 const ProgressBar = ({ step, currentPage }) => {
-  const maxSteps = 10;
+  const maxSteps = 11;
   const boxesPerStep = 1;
   const displaySteps = Math.min(step, maxSteps);
 

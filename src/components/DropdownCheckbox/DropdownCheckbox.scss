@@ -93,14 +93,14 @@
 
     input:checked + .checkbox-wrapper .checkbox-custom .checkbox-custom__circle::after {
       content: "";
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       border: 3px solid $MVP-black;
       background: $MVP-Light-Blue;
       position: absolute;
       transform: translate(-15%, -15%);
-    }
+      }
 
     .checkbox-text {
       display: inline-block;
