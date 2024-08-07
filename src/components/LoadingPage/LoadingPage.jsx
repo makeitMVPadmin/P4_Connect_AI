@@ -6,7 +6,7 @@ const LoadingPage = () => {
   return (
     <div className="loading-page">
       <h2 className="loading-page__text">
-        Hold on, we’re looking for your perfect partner...
+        Give us a couple of seconds, we are nearly there...
       </h2>
       <LoadingBar />
       <img
