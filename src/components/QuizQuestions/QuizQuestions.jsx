@@ -63,22 +63,24 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const questionContent004 = QA.find(
+      (q) => q.question_id === "004"
+    ).question_content;
+    const selectedOptions = formData[questionContent004];
+    if (selectedOptions.length < 2) {
+      alert(` ${questionContent004}`);
+      return;
+    }
+
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
-    // CALL BACKEND FUNCTION HERE: Send quiz questions & answers
-
-    // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-    setTimeout(() => {
-      setCurrentPage("new-match");
-    }, 0);
+    setCurrentPage("new-match");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-    // Update formData state
     setFormData((prevFormData) => {
       const updatedFormData = { ...prevFormData, [question_content]: value };
-      sessionStorage.setItem("formData", JSON.stringify(updatedFormData));
       return updatedFormData;
     });
 
@@ -93,6 +95,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         const found = allAns.filter((data) => data.answer_content === each);
         return found[0]?.answer_id;
       });
+
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
@@ -120,10 +123,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
-      sessionStorage.setItem(
-        "answeredQuestions",
-        JSON.stringify(Array.from(newSet))
-      );
       return newSet;
     });
   };
