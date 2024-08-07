@@ -1,0 +1,67 @@
+//retrieving users:
+import { getAllUserAnswers } from "./functions";
+
+const usersForMatching = getAllUserAnswers();
+
+// Define weighted questions and their weights
+const weightedQuestions = new Map([
+    ["001", 1.0],
+    ["002", 1.0],
+    ["003", 0.5],
+    ["004", 1.0],
+    ["005", 0.5],
+    ["006", 1.0],
+    ["007", 0.5],
+    ["008", 1.0],
+    ["009", 0.5],
+    ["010", 0.5],
+    ["011", 0.5]
+]);
+
+function weightedJaccardSimilarity(X, Y) {
+    // Convert responses to Maps for easier access
+    const mapX = new Map(X.map(({ id, answer, weight }) => [id, { answer, weight }]));
+    const mapY = new Map(Y.map(({ id, answer, weight }) => [id, { answer, weight }]));
+
+    // Compute weighted intersection
+    let weightedIntersection = 0;
+    mapX.forEach(({ answer: answerX, weight: weightX }, id) => {
+        if (mapY.has(id)) {
+            const { answer: answerY, weight: weightY } = mapY.get(id);
+            if (answerX === answerY) {
+                const weight = weightedQuestions.get(id) || 0; // Use weight if it's in the weighted questions map
+                weightedIntersection += Math.min(weightX * weight, weightY * weight);
+            }
+        }
+    });
+
+    // Compute weighted union
+    let weightedUnion = 0;
+    const allKeys = new Set([...mapX.keys(), ...mapY.keys()]);
+    allKeys.forEach(id => {
+        const { weight: weightX = 0 } = mapX.get(id) || {};
+        const { weight: weightY = 0 } = mapY.get(id) || {};
+        const weight = weightedQuestions.get(id) || 0;
+        weightedUnion += Math.max(weightX * weight, weightY * weight);
+    });
+
+    return weightedIntersection / weightedUnion;
+}
+
+export function findBestMatch(newUser) {
+    let bestMatch = null;
+    let highestSimilarity = 0;
+
+    usersForMatching.forEach(user => {
+        if (user.user_id !== newUser.user_id) {
+            const similarity = weightedJaccardSimilarity(newUser.answers, user.answers);
+            if (similarity > highestSimilarity) {
+                highestSimilarity = similarity;
+                bestMatch = user;
+            }
+        }
+    });
+
+    return { bestMatch, highestSimilarity };
+}
+

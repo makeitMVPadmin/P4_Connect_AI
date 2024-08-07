@@ -73,3 +73,18 @@ export const getAllQuestions = async () => {
     throw e;
   }
 }
+
+//Get all UserAnswers
+export const getAllUserAnswers = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "UserAnswers"));
+    const dataList = [];
+    querySnapshot.forEach((doc) => {
+      dataList.push({ id: doc.id, ...doc.data() });
+    });
+    return dataList;
+  } catch (e) {
+    console.error("Error reading documents: ", e);
+    throw e;
+  }
+}
