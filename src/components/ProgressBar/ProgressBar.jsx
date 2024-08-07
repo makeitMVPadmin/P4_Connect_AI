@@ -35,8 +35,7 @@ const ProgressBar = ({ step, currentPage }) => {
           </div>
         </div>
       )}
-      {currentPage === "match" ||
-        (currentPage === "new-match" && (
+      {        (currentPage === "new-match" && (
           <div className="progress-container">
             <div>
               <p className="progress-container__para1">We found your peer match!</p>

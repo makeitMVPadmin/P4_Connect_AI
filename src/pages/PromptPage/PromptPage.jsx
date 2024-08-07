@@ -3,12 +3,9 @@ import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
-import { Suspense, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
-import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
-import NoMatch from "../../components/NoMatch/NoMatch";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
@@ -82,7 +79,6 @@ const PromptPage = () => {
           )}
           {/* other pages */}
           {(currentPage === "quiz" ||
-            currentPage === "match" ||
             currentPage === "new-match" ||
             currentPage === "no-match") && (
             <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
