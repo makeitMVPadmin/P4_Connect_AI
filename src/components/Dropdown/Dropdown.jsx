@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import "./Dropdown.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_id }) => {
+const Dropdown = ({
+  dropDownInfo1,
+  labelName,
+  onChangeDropdown,
+  value,
+  question_id,
+}) => {
   const [updatedValue, setUpdatedValue] = React.useState(value);
   const [dummyValue, setDummyValue] = React.useState("Please select an option");
   const [isActive, setIsActive] = React.useState(false);
@@ -13,7 +19,7 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_
 
   const handleupdatedvalue = (event) => {
     setUpdatedValue(event.target.innerHTML);
-
+    setDummyValue("");
     onChangeDropdown(event.target.innerHTML);
     setIsActive(!isActive);
   };
@@ -33,17 +39,24 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_
       </label>
       <section className="dropdown_wrapper">
         <article className="dropdown_wrapper_select">
-          <div className="dropdown_wrapper_select_trigger" onClick={handledropdownclick}>
+          <div
+            className="dropdown_wrapper_select_trigger"
+            onClick={handledropdownclick}
+          >
             <span>{updatedValue ? updatedValue : dummyValue}</span>
             <span>
               <ArrowDropDownIcon
-                className={`arrow ${isActive ? "arrow-up-icon" : "arrow-down-icon"}`}
+                className={`arrow ${
+                  isActive ? "arrow-up-icon" : "arrow-down-icon"
+                }`}
               />
             </span>
           </div>
           {isActive && (
             <div className="dropdown_wrapper_select_option">
-              {updatedValue ? (
+              {updatedValue === "Please select an option" ? (
+                ""
+              ) : !dummyValue ? (
                 <span
                   className="custom-option"
                   data-value="Please Select an Option"
@@ -54,6 +67,7 @@ const Dropdown = ({ dropDownInfo1, labelName, onChangeDropdown, value, question_
               ) : (
                 ""
               )}
+
               {dropDownInfo1
                 .filter((item) => item !== updatedValue)
                 .map((item, index) => {
