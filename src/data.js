@@ -83,7 +83,7 @@ const QA = [
   {
     question_id: "004",
     question_content:
-      "Select the technical skills you excel in from the list below(select at least two options)",
+      "Select the technical skills you excel in from the list below (select at least two options)",
     question_type: "checkbox",
     answers: [
       {
@@ -296,7 +296,7 @@ const QA = [
   {
     question_id: "009",
     question_content:
-      "How do you prefer to be held accountable? Select the method that work best for you.",
+      "How do you prefer to be held accountable? Select the method that works best for you.",
     question_type: "dropdown",
     answers: [
       {
@@ -383,7 +383,7 @@ const QA = [
   {
     question_id: "012",
     question_content:
-      "Is there anything else you would like up to consider when setting your goal? (Optional)",
+      "Is there anything else you would like us to consider when setting your goal? (Optional)",
     question_type: "textarea",
   },
 ];
