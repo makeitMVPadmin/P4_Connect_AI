@@ -60,7 +60,15 @@
   }
 
   .welcome-message {
-    font-size: 30px;
+    font-family: Corben-Bold;
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+  .welcome-text {
+    font-family: Gilroy;
+    &--main {
+      font-size: 1.25rem;
+    }
   }
 
   .text-container > * {
