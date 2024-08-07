@@ -1,4 +1,4 @@
- const QA = [
+const QA = [
   {
     question_id: "001",
     question_content: "What is your field of expertise?",
@@ -64,8 +64,7 @@
       },
       {
         answer_id: "003002",
-        answer_content:
-          "Document Collaboration (Google Docs, Microsoft Office 365)",
+        answer_content: "Document Collaboration (Google Docs, Microsoft Office 365)",
       },
       {
         answer_id: "003003",
@@ -84,7 +83,7 @@
   {
     question_id: "004",
     question_content:
-      "Select the technical skills you excel in from the list below(select atleast two options)",
+      "Select the technical skills you excel in from the list below(select at least two options)",
     question_type: "checkbox",
     answers: [
       {
@@ -265,8 +264,7 @@
   },
   {
     question_id: "008",
-    question_content:
-      "When are you available for meetings? Select all the apply.",
+    question_content: "When are you available for meetings? Select all the apply.",
     question_type: "checkbox",
     answers: [
       {
@@ -325,8 +323,7 @@
   },
   {
     question_id: "010",
-    question_content:
-      "How do you prefer to collaborate? Select all that apply.",
+    question_content: "How do you prefer to collaborate? Select all that apply.",
     question_type: "checkbox",
     answers: [
       {
@@ -386,7 +383,7 @@
   {
     question_id: "012",
     question_content:
-      "Is there anything else you would like up to consider when setting your goal?(Optional)",
+      "Is there anything else you would like up to consider when setting your goal? (Optional)",
     question_type: "textarea",
   },
 ];
