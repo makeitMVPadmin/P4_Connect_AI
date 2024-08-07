@@ -54,6 +54,8 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               <NewMatchedUsers
                 handleBackToQuiz={() => setCurrentPage("quiz")}
                 handleGoToGoal={() => setCurrentPage("roadmap")}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
               />
             </Suspense>
           )}

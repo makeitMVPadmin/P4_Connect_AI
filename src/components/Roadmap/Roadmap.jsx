@@ -12,6 +12,8 @@ import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
+import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -25,6 +27,36 @@ const Roadmap = () => {
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
+
+  const [goals, setGoals] = useState(null);
+  const [loadingPage, setLoadingPage] = useState(true);
+
+  // if (goals){
+  //   setLoadingPage(true);
+  // }
+  useEffect(() => { 
+    console.log("aicall");
+    const aiApiCallData = async () => {
+      console.log("aicall111");
+
+      const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
+      const userB = { firstName: "Bob", skills: ["Python", "Django"] };
+      const project = "building a web application";
+
+      try {
+        console.log("aicall122");
+
+        const data = await callOpenAiApi(userA, userB, project);
+        console.log(data.goals);
+        setGoals(data.goals);
+        setLoadingPage(false);
+        // console.log("loading");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    aiApiCallData();
+  }, []);
 
   // CALL BACKEND FUNCTION: Get Matches
   // Use the data of only the most recent match
@@ -101,9 +133,19 @@ const Roadmap = () => {
       </Modal>
     );
   };
+
+  if (loadingPage){
+    return (
+      <div className="roadmap-container">
+        <LoadingPage/>
+      </div>
+    )
+  }
   return (
     <div className="roadmap-container">
-      <div className="goals-progress-box">
+      <div className="svg-container">
+        <RoadmapSvg />
+        <div className="goals-progress-box">
         <div className="goals-progress-content">
           {user1Name}'s and {user2Name}'s partnership:
         </div>
@@ -111,9 +153,6 @@ const Roadmap = () => {
           {completionPercentage}% completed
         </div>
       </div>
-
-      <div className="svg-container">
-        <RoadmapSvg />
 
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">

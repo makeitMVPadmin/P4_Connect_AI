@@ -9,7 +9,7 @@ import linkedin from "../../assets/icons/linkedin.svg";
 //ex. import {getMatches} from "../../utils/firebaseMatches";
 
 //need to define props on main single page: need "handleBackToQuiz" function, "handleGoToGoal" function and pass to MatchedUsers component
-const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
+const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal, currentPage, setCurrentPage }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState("UX/UI Designer in training");
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
@@ -30,6 +30,15 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   //setMatchPercentage(matches.match_percentage)
   // }
   //   fetchMatches()}, [])
+  // const userNameA = "Dianna";
+  // const userNameB = "Kerry";
+  // const handleGoToGoalapi = async () => {
+  //   const userA = { firstName: userNameA, skills: ["JavaScript", "React"] };
+  //   const userB = { firstName: userNameB, skills: ["Python", "Django"] };
+  //   const project = "building a web application";
+  //   setCurrentPage("roadmap");
+  // };
+
 
   return (
     <section className="new-matched-users">
