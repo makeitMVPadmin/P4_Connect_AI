@@ -1,6 +1,6 @@
 import "./LoadingPage.scss";
 import LoadingBar from "../LoadingBar/LoadingBar";
-import connectAiIcon from "../../assets/images/connectAiIcon.svg";
+import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 
 const LoadingPage = () => {
   return (
@@ -10,7 +10,7 @@ const LoadingPage = () => {
       </h2>
       <LoadingBar />
       <img
-        src={connectAiIcon}
+        src={CoffeeMugWithHat_happy}
         alt="communiti icon"
         className="loading-page__icon"
       />
