@@ -18,19 +18,26 @@ const weightedQuestions = new Map([
     ["011", 0.5]
 ]);
 
+function parseAnswers(answers) {
+    return answers.map(answer => {
+        const id = answer.slice(0, 3);
+        const value = answer.slice(3);
+        return { id, value };
+    });
+}
+
 function weightedJaccardSimilarity(X, Y) {
-    // Convert responses to Maps for easier access
-    const mapX = new Map(X.map(({ id, answer, weight }) => [id, { answer, weight }]));
-    const mapY = new Map(Y.map(({ id, answer, weight }) => [id, { answer, weight }]));
+    const mapX = new Map(parseAnswers(X).map(({ id, value }) => [id, value]));
+    const mapY = new Map(parseAnswers(Y).map(({ id, value }) => [id, value]));
 
     // Compute weighted intersection
     let weightedIntersection = 0;
-    mapX.forEach(({ answer: answerX, weight: weightX }, id) => {
+    mapX.forEach((valueX, id) => {
         if (mapY.has(id)) {
-            const { answer: answerY, weight: weightY } = mapY.get(id);
-            if (answerX === answerY) {
+            const valueY = mapY.get(id);
+            if (valueX === valueY) {
                 const weight = weightedQuestions.get(id) || 0; // Use weight if it's in the weighted questions map
-                weightedIntersection += Math.min(weightX * weight, weightY * weight);
+                weightedIntersection += weight;
             }
         }
     });
@@ -39,10 +46,8 @@ function weightedJaccardSimilarity(X, Y) {
     let weightedUnion = 0;
     const allKeys = new Set([...mapX.keys(), ...mapY.keys()]);
     allKeys.forEach(id => {
-        const { weight: weightX = 0 } = mapX.get(id) || {};
-        const { weight: weightY = 0 } = mapY.get(id) || {};
         const weight = weightedQuestions.get(id) || 0;
-        weightedUnion += Math.max(weightX * weight, weightY * weight);
+        weightedUnion += weight;
     });
 
     return weightedIntersection / weightedUnion;
