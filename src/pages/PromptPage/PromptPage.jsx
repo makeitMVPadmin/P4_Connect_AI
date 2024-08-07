@@ -48,7 +48,7 @@ const PromptPage = () => {
                     />
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
-                    <div className="welcome-message">Welcome to AccountaBuddy</div>
+                    <div className="welcome-message">Welcome to Accountabuddy</div>
                     <div className="welcome-text welcome-text--main">
                       Our AI feature empowers you to achieve your professional goals
                       through personalized accountability partnerships. By taking our
