@@ -5,21 +5,20 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
-import { readData } from "../../utils/Functions/functions";
+// import { readData } from "../../utils/Functions/functions";
 
-import { findBestMatch } from "../../utils/Functions/matching";
+// import { findBestMatch } from "../../utils/Functions/matching";
 
-//This is only here to generate an ID for the matching algo; to be deleted
-function generateUID() {
-  // Generate a random 10-digit number
-  const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+// //This is only here to generate an ID for the matching algo; to be deleted
+// function generateUID() {
+//   // Generate a random 10-digit number
+//   const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
 
-  // Convert the number to a string and append it to "UID"
-  const uid = `UID${randomNumber}`;
+//   // Convert the number to a string and append it to "UID"
+//   const uid = `UID${randomNumber}`;
 
-  return uid;
-}
-
+//   return uid;
+// }
 
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //get the saved answers from session storage
@@ -31,8 +30,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const [formData, setFormData] = useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
+      initialFormData[item.question_content] = item.question_type == "checkbox" ? [] : "";
     });
     //get from session storage
     return { ...initialFormData, ...getSessionData() };
@@ -68,17 +66,12 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //save answeredQuestions to session storage
   useEffect(() => {
     const answeredQuestionsArray = Array.from(answeredQuestions);
-    sessionStorage.setItem(
-      "answeredQuestions",
-      JSON.stringify(answeredQuestionsArray)
-    );
+    sessionStorage.setItem("answeredQuestions", JSON.stringify(answeredQuestionsArray));
   }, [answeredQuestions]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const questionContent004 = QA.find(
-      (q) => q.question_id === "004"
-    ).question_content;
+    const questionContent004 = QA.find((q) => q.question_id === "004").question_content;
     const selectedOptions = formData[questionContent004];
     if (selectedOptions.length < 2) {
       alert(` ${questionContent004}`);
@@ -88,15 +81,15 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
-    //Generate an ID for the current user; to be deleted
-    const newUID = generateUID();
+    // //Generate an ID for the current user; to be deleted
+    // const newUID = generateUID();
 
-    //send to matching function
-    const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
-    console.log(result)
+    // //send to matching function
+    // const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
+    // console.log(result);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-   setCurrentPage("loading")
+    setCurrentPage("loading");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -105,9 +98,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       return updatedFormData;
     });
 
-    const questionItem = QA.find(
-      (data) => data.question_content === question_content
-    );
+    const questionItem = QA.find((data) => data.question_content === question_content);
     const allAns = questionItem.answers;
     let newSelectedAnswerIds = selectedAnswerIds;
 
@@ -140,7 +131,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-        (value.length > 0 && question_type == "checkbox")
+      (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -179,11 +170,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               question_id={item.question_id}
               value={currentValue}
               onChangeDropdown={(value) =>
-                handleInputChange(
-                  item.question_type,
-                  item.question_content,
-                  value
-                )
+                handleInputChange(item.question_type, item.question_content, value)
               }
             />
           </>
@@ -196,11 +183,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             question_id={item.question_id}
             values={currentValue}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -210,11 +193,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             value={currentValue}
             handleTextarea={(value) =>
-              handleInputChange(
-                item.question_type,
-                item.question_content,
-                value
-              )
+              handleInputChange(item.question_type, item.question_content, value)
             }
           />
         );
@@ -223,7 +202,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
-
       <form onSubmit={handleFormSubmit}>
         <section className="quizquestions_section">
           {QA.map((item, index) => (
@@ -241,7 +219,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
           </div>
         </section>
       </form>
-
     </div>
   );
 };
