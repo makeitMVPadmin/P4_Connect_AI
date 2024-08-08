@@ -18,29 +18,12 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   );
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
-  //const [loading, setLoading] = useState(true);
+
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // Simulate a network request
-  //      await new Promise((resolve) => setTimeout(resolve, 1000));
-       
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
 
-  // if (loading) {
-  //   return <LoadingPage />;
-  // }
   return (
     <section className="new-matched-users">
       <div className="new-matched">

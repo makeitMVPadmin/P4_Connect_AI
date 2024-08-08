@@ -19,9 +19,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
     //store progress in session storage
     sessionStorage.setItem("progress", answeredQuestionsCount);
   };
-  // if (currentPage === "loading") {
-  //   return <LoadingPage />; // ADD loading component here if needed
-  // }
+
   return (
     <div className="quizpage">
       <div className="quizpage__side-area">
