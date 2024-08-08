@@ -34,29 +34,29 @@ const Roadmap = () => {
   // if (goals){
   //   setLoadingPage(true);
   // }
-  useEffect(() => { 
-    console.log("aicall");
-    const aiApiCallData = async () => {
-      console.log("aicall111");
+  // useEffect(() => {
+  //   console.log("aicall");
+  //   const aiApiCallData = async () => {
+  //     console.log("aicall111");
 
-      const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
-      const userB = { firstName: "Bob", skills: ["Python", "Django"] };
-      const project = "building a web application";
+  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
+  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
+  //     const project = "building a web application";
 
-      try {
-        console.log("aicall122");
+  //     try {
+  //       console.log("aicall122");
 
-        const data = await callOpenAiApi(userA, userB, project);
-        console.log(data.goals);
-        setGoals(data.goals);
-        setLoadingPage(false);
-        // console.log("loading");
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    aiApiCallData();
-  }, []);
+  //       const data = await callOpenAiApi(userA, userB, project);
+  //       console.log(data.goals);
+  //       setGoals(data.goals);
+  //       setLoadingPage(false);
+  //       // console.log("loading");
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   }
+  //   aiApiCallData();
+  // }, []);
 
   // CALL BACKEND FUNCTION: Get Matches
   // Use the data of only the most recent match
@@ -76,6 +76,47 @@ const Roadmap = () => {
   // CALL BACKEND FUNCTION: Get Subtasks
   // Get Goals from UserSubtaskCompletion subtask id
 
+  //mock roadmap data
+  const goalsData = [
+    {
+      "goal": "Design and implement the frontend of the web application using JavaScript and React",
+      "subtasks": [
+        "Discuss and finalize the UI/UX design for the application",
+        "Break down the design into reusable React components",
+        "Implement the React components using JavaScript",
+        "Test the components individually and as a whole to ensure they work as expected"
+      ]
+    },
+    {
+      "goal": "Design and implement the frontend of the web application using JavaScript and React",
+      "subtasks": [
+        "Discuss and finalize the UI/UX design for the application",
+        "Break down the design into reusable React components",
+        "Implement the React components using JavaScript",
+        "Test the components individually and as a whole to ensure they work as expected"
+      ]
+    },
+    {
+      "goal": "Develop the backend of the web application using Python and Django",
+      "subtasks": [
+        "Design the database schema and establish the necessary Django models",
+        "Implement the necessary views and templates in Django",
+        "Integrate the Django backend with the React frontend",
+        "Test the backend functionality and ensure it works with the frontend"
+      ]
+    },
+    {
+      "goal": "Deploy the web application",
+      "subtasks": [
+        "Choose a suitable hosting platform for the application",
+        "Configure the deployment settings for both frontend and backend",
+        "Deploy the application and test it in the production environment",
+        "Monitor the application performance and fix any issues that arise"
+      ]
+    }
+  ];
+
+  setGoals(goalsData);
   // This object is temporary and only here to provide mock data to show the functionality of the popup
   const mockMatchData = {
     goal1Task: "Goal 1 task",
@@ -134,10 +175,10 @@ const Roadmap = () => {
     );
   };
 
-  if (loadingPage){
+  if (loadingPage) {
     return (
       <div className="roadmap-container">
-        <LoadingPage/>
+        <LoadingPage />
       </div>
     )
   }
@@ -146,13 +187,13 @@ const Roadmap = () => {
       <div className="svg-container">
         <RoadmapSvg />
         <div className="goals-progress-box">
-        <div className="goals-progress-content">
-          {user1Name}'s and {user2Name}'s partnership:
+          <div className="goals-progress-content">
+            {user1Name}'s and {user2Name}'s partnership:
+          </div>
+          <div className="goals-progress-percentage">
+            {completionPercentage}% completed
+          </div>
         </div>
-        <div className="goals-progress-percentage">
-          {completionPercentage}% completed
-        </div>
-      </div>
 
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">

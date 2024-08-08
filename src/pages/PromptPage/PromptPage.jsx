@@ -13,13 +13,13 @@ import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 
 const PromptPage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("prompt");
+  const [currentPage, setCurrentPage] = useState("roadmap");
 
   // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
   const [matchResults, setMatchResults] = useState(null);
 
   useEffect(() => {
-    setCurrentPage("prompt");
+    setCurrentPage("roadmap");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
   }, []);
@@ -48,7 +48,7 @@ const PromptPage = () => {
                     />
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
-                    <div className="welcome-message">Welcome to ConnectAI</div>
+                    <div className="welcome-message">Welcome to Accountabuddy!</div>
                     <div className="welcome-text">
                       Our AI feature empowers you to achieve your professional
                       goals through personalized accountability partnerships. By
