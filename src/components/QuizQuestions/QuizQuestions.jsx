@@ -5,6 +5,7 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
+import { readData } from "../../utils/Functions/functions";
 
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   // ADD match response prop if match algo happens after sending questions
@@ -61,7 +62,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     );
   }, [answeredQuestions]);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async(e) => {
     e.preventDefault();
     const questionContent004 = QA.find(
       (q) => q.question_id === "004"
@@ -74,7 +75,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
+    // const result = await readData('Users');
 
+
+    // const skills=result.map((item)=>item.skills)
+    // console.log(skills);
     setCurrentPage("new-match");
   };
 
