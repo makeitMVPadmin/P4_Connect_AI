@@ -4,6 +4,7 @@ import PromptPage from "./pages/PromptPage/PromptPage";
 import BackEndTest from "./pages/BackEnd/Backend.jsx";
 import AiBackendTest from "./pages/BackEnd/AiBackendTest.js";
 import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
+import TestPage from "./pages/TestPage/TestPage.jsx";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/prompt" element={<PromptPage />} />
         <Route path="/test" element={<BackEndTest />} />
+        <Route path="/testing" element={<TestPage />} />
         <Route path="/aitest" element={<AiBackendTest />} />
-        <Route path="/Testa" element={<LoadingPage/>}/>
+        <Route path="/Testa" element={<LoadingPage />} />
       </Routes>
     </>
   );
