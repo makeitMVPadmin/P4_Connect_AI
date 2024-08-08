@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import user2 from "../../assets/images/user2.png";
 import email from "../../assets/icons/mage_email.svg";
 import linkedin from "../../assets/icons/linkedin.svg";
+import { readData } from "../../utils/Functions/functions.js";
 //need to import function to retrieve matches from firebase:
 //ex. import {getMatches} from "../../utils/firebaseMatches";
 
@@ -14,7 +15,7 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   const [matchedUserTitle, setMatchedUserTitle] = useState("UX/UI Designer in training");
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
-
+const[data,setData]=useState([]);
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
@@ -30,7 +31,14 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   //setMatchPercentage(matches.match_percentage)
   // }
   //   fetchMatches()}, [])
-
+useEffect(()=>{
+  const fetchData = async () => {
+    const result = await readData('Users');
+    setData(result);
+  };
+  fetchData(); 
+})
+console.log(data)
   return (
     <section className="new-matched-users">
       <div className="new-matched">
