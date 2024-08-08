@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./ListWithCheckbox.scss";
-const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
-  const options1 = [
-    "Scheduled & attend one Accountability Meeting",
-    "Attend 2 accountability meeting",
-    "Attend 3 accountability meeting",
-    "Attend all Accountability meeting",
-  ];
+const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
+  // const options1 = [
+  //   "Scheduled & attend one Accountability Meeting",
+  //   "Attend 2 accountability meeting",
+  //   "Attend 3 accountability meeting",
+  //   "Attend all Accountability meeting",
+  // ];
   const [selectedValues, setSelectedValues] = useState(
     options1.reduce((arr, option) => {
       arr[option] = false;
