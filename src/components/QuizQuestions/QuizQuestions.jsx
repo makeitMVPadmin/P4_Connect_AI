@@ -96,9 +96,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     console.log(result)
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-    setTimeout(() => {
-      setCurrentPage("new-match");
-    }, 0);
+   setCurrentPage("loading")
   };
 
   const handleInputChange = (question_type, question_content, value) => {
