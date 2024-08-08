@@ -7,9 +7,21 @@ import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 import { readData } from "../../utils/Functions/functions";
 
-const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-  // ADD match response prop if match algo happens after sending questions
+import { findBestMatch } from "../../utils/Functions/matching";
 
+//This is only here to generate an ID for the matching algo; to be deleted
+function generateUID() {
+  // Generate a random 10-digit number
+  const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  // Convert the number to a string and append it to "UID"
+  const uid = `UID${randomNumber}`;
+
+  return uid;
+}
+
+
+const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //get the saved answers from session storage
   const getSessionData = () => {
     const savedData = sessionStorage.getItem("formData");
@@ -62,7 +74,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     );
   }, [answeredQuestions]);
 
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const questionContent004 = QA.find(
       (q) => q.question_id === "004"
@@ -75,12 +87,18 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
-    // const result = await readData('Users');
 
+    //Generate an ID for the current user; to be deleted
+    const newUID = generateUID();
 
-    // const skills=result.map((item)=>item.skills)
-    // console.log(skills);
-    setCurrentPage("loading");
+    //send to matching function
+    const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
+    console.log(result)
+
+    // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
+    setTimeout(() => {
+      setCurrentPage("new-match");
+    }, 0);
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -124,7 +142,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-      (value.length > 0 && question_type == "checkbox")
+        (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -207,6 +225,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
+
       <form onSubmit={handleFormSubmit}>
         <section className="quizquestions_section">
           {QA.map((item, index) => (
@@ -224,6 +243,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
           </div>
         </section>
       </form>
+
     </div>
   );
 };
