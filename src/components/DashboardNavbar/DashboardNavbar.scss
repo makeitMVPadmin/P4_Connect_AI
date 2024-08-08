@@ -2,7 +2,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .dashboard-navbar {
   background-color: $MVP-White;
   font-family: Gilroy;
@@ -70,7 +69,7 @@
           content: url("../../assets/images/chatIconBlue.svg"); // Adjust for each icon
         }
         &.dashboard-navbar__img--connectAi {
-          content: url("../../assets/images/connectAiIcon.svg"); // Adjust for each icon
+          content: url("../../assets/images/coffeeMugWithHat_happy.svg"); // Adjust for each icon
         }
       }
     }

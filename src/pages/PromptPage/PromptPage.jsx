@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
@@ -46,7 +46,7 @@ const PromptPage = () => {
                     />
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
-                    <div className="welcome-message">Welcome to Accountabuddy</div>
+                    <div className="welcome-message">Welcome to AccountaBuddy</div>
                     <div className="welcome-text welcome-text--main">
                       Our AI feature empowers you to achieve your professional goals
                       through personalized accountability partnerships. By taking our
@@ -86,7 +86,9 @@ const PromptPage = () => {
           )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "goalachieved" && <GoalAchieved />}
-          {currentPage==="loading" && <LoadingPage currentPage={currentPage} setCurrentPage={setCurrentPage}/>}
+          {currentPage === "loading" && (
+            <LoadingPage currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          )}
         </div>
       </div>
     </div>

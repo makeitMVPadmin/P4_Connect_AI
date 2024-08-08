@@ -7,7 +7,7 @@ import coffeeChatIcon from "../../assets/images/coffeeChatIcon.svg";
 import LogoIcon from "../../assets/logos/communiti2.svg";
 import profilePic from "../../assets/images/profilePic.svg";
 import DropDownArrow from "../../assets/images/drop-down-arrow.svg";
-import connectAiIcon from "../../assets/images/connectAiIcon.svg";
+import connectAiIcon from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { useNavigate } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -76,22 +76,15 @@ function DashboardNavbar() {
     <div className="dashboard-navbar">
       <div className="dashboard-navbar__left">
         <Link to="/dashboard" className="dashboard-navbar__link">
-          <img
-            src={LogoIcon}
-            alt="Logo Icon"
-            className="dashboard-navbar__logo"
-          />
+          <img src={LogoIcon} alt="Logo Icon" className="dashboard-navbar__logo" />
         </Link>
-        
       </div>
 
       <div className="dashboard-navbar__right">
-      <NavLink
+        <NavLink
           to="/dashboard"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -104,9 +97,7 @@ function DashboardNavbar() {
         <NavLink
           to="/communities"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -119,9 +110,7 @@ function DashboardNavbar() {
         <NavLink
           to="/events"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -134,9 +123,7 @@ function DashboardNavbar() {
         <NavLink
           to="/coffeechat"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -164,9 +151,7 @@ function DashboardNavbar() {
         <NavLink
           to="/prompt"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
