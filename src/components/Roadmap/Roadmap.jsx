@@ -28,8 +28,8 @@ const Roadmap = () => {
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
 
-  const [goals, setGoals] = useState(null);
-  const [loadingPage, setLoadingPage] = useState(true);
+  // const [goals, setGoals] = useState(null);
+  // const [loadingPage, setLoadingPage] = useState(true);
 
   // if (goals){
   //   setLoadingPage(true);
@@ -79,12 +79,12 @@ const Roadmap = () => {
   //mock roadmap data
   const goalsData = [
     {
-      "goal": "Design and implement the frontend of the web application using JavaScript and React",
+      "goal": "Attend 4 meetings",
       "subtasks": [
-        "Discuss and finalize the UI/UX design for the application",
-        "Break down the design into reusable React components",
-        "Implement the React components using JavaScript",
-        "Test the components individually and as a whole to ensure they work as expected"
+        "Schedule & attend 1 accountability meeting",
+        "Attend 2 accountability meetings",
+        "Attend 3 accountability meetings",
+        "Attend all 4 accountability meetings"
       ]
     },
     {
@@ -113,10 +113,19 @@ const Roadmap = () => {
         "Deploy the application and test it in the production environment",
         "Monitor the application performance and fix any issues that arise"
       ]
+    },
+    {
+      "goal": "Attend 4 meetings to go over what you’ve learned",
+      "subtasks": [
+        "Schedule & attend 1 accountability meeting",
+        "Attend 2 accountability meetings",
+        "Attend 3 accountability meetings",
+        "Attend all 4 accountability meetings"
+      ]
     }
   ];
+  console.log(goalsData[0].subtasks);
 
-  setGoals(goalsData);
   // This object is temporary and only here to provide mock data to show the functionality of the popup
   const mockMatchData = {
     goal1Task: "Goal 1 task",
@@ -128,14 +137,14 @@ const Roadmap = () => {
     user2Picture: user2Picture,
   };
 
-  useEffect(() => {
-    // Simulating data fetch from backend
-    setTimeout(() => {
-      setUser1Name("Diana");
-      setUser2Name("Kerry");
-      setCompletionPercentage(20);
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   // Simulating data fetch from backend
+  //   setTimeout(() => {
+  //     setUser1Name("Diana");
+  //     setUser2Name("Kerry");
+  //     setCompletionPercentage(20);
+  //   }, 1000);
+  // }, []);
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
@@ -161,13 +170,8 @@ const Roadmap = () => {
           <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
             <GoalComponent
               goalNumber={activeGoal}
-              goalPrompt={
-                "We recommend setting up an initial meeting to get to know each other and plan your first steps."
-              }
-              goals={{
-                goalBreakdownLabel: { meetings1: "" },
-                goalLabel: "meeting",
-              }}
+              goalPrompt={activeGoal&&goalsData[activeGoal-1].goal}
+              subtasks={activeGoal&&goalsData[activeGoal-1].subtasks}
             ></GoalComponent>
           </PopUpModal>
         </>
@@ -175,13 +179,13 @@ const Roadmap = () => {
     );
   };
 
-  if (loadingPage) {
-    return (
-      <div className="roadmap-container">
-        <LoadingPage />
-      </div>
-    )
-  }
+  // if (loadingPage) {
+  //   return (
+  //     <div className="roadmap-container">
+  //       <LoadingPage />
+  //     </div>
+  //   )
+  // }
   return (
     <div className="roadmap-container">
       <div className="svg-container">
