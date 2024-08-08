@@ -1,8 +1,6 @@
 //retrieving users:
 import { getAllUserAnswers } from "./functions";
 
-const usersForMatching = getAllUserAnswers();
-
 // Define weighted questions and their weights
 const weightedQuestions = new Map([
     ["001", 1.0],
@@ -53,20 +51,29 @@ function weightedJaccardSimilarity(X, Y) {
     return weightedIntersection / weightedUnion;
 }
 
-export function findBestMatch(newUser) {
-    let bestMatch = null;
-    let highestSimilarity = 0;
+export async function findBestMatch(newUser) {
 
-    usersForMatching.forEach(user => {
-        if (user.user_id !== newUser.user_id) {
-            const similarity = weightedJaccardSimilarity(newUser.answers, user.answers);
-            if (similarity > highestSimilarity) {
-                highestSimilarity = similarity;
-                bestMatch = user;
+    try {
+        let bestMatch = null;
+        let highestSimilarity = 0;
+        const usersForMatching = await getAllUserAnswers();
+
+        usersForMatching.forEach(user => {
+            if (user.user_id !== newUser.user_id) {
+                const similarity = weightedJaccardSimilarity(newUser.answers, user.answers);
+                if (similarity > highestSimilarity) {
+                    highestSimilarity = similarity;
+                    bestMatch = user;
+                }
             }
-        }
-    });
+        });
+        console.log(usersForMatching)
 
-    return { bestMatch, highestSimilarity };
+        return { bestMatch, highestSimilarity };
+
+    } catch (error) {
+        console.error("Error fetching user answers: ", error);
+    }
+
 }
 

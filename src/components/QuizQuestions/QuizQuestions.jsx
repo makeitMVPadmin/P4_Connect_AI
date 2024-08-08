@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import QA from "../../data";
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
@@ -6,8 +6,21 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 
+import { findBestMatch } from "../../utils/Functions/matching";
 
-const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
+//This is only here to generate an ID for the matching algo; to be deleted
+function generateUID() {
+  // Generate a random 10-digit number
+  const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  // Convert the number to a string and append it to "UID"
+  const uid = `UID${randomNumber}`;
+
+  return uid;
+}
+
+
+const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //get the saved answers from session storage
   const getSessionData = () => {
     const savedData = sessionStorage.getItem("formData");
@@ -65,6 +78,13 @@ const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
+    //Generate an ID for the current user; to be deleted
+    const newUID = generateUID();
+
+    //send to matching function
+    const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
+    console.log(result)
+
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
     setTimeout(() => {
       setCurrentPage("new-match");
@@ -113,7 +133,7 @@ const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-      (value.length > 0 && question_type == "checkbox")
+        (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -200,25 +220,25 @@ const QuizQuestions = ({  setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
- 
-        <form onSubmit={handleFormSubmit}>
-          <section className="quizquestions_section">
-            {QA.map((item, index) => (
-              <div className="quizquestions_section--field">
-                {renderedQuestions(item, index)}
-              </div>
-            ))}
+
+      <form onSubmit={handleFormSubmit}>
+        <section className="quizquestions_section">
+          {QA.map((item, index) => (
             <div className="quizquestions_section--field">
-              <Button
-                text="Next"
-                color={arequestionAnswered() ? "blue" : "grey"}
-                type="submit"
-                disabled={!arequestionAnswered()}
-              />
+              {renderedQuestions(item, index)}
             </div>
-          </section>
-        </form>
-       
+          ))}
+          <div className="quizquestions_section--field">
+            <Button
+              text="Next"
+              color={arequestionAnswered() ? "blue" : "grey"}
+              type="submit"
+              disabled={!arequestionAnswered()}
+            />
+          </div>
+        </section>
+      </form>
+
     </div>
   );
 };
