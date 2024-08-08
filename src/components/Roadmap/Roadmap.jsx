@@ -25,6 +25,25 @@ const Roadmap = () => {
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
+
+  // CALL BACKEND FUNCTION: Get Matches
+  // Use the data of only the most recent match
+
+  // CALL BACKEND FUNCTION: Get User
+  // Get both users based on user id from the match table
+
+  // CALL BACKEND FUNCTION: Get UserGoalCompletion
+  // Get UserGoalCompletion data with match id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Goals
+  // Get Goals from UserGoalCompletion goal id
+
+  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
+  // Get UserSubtaskCompletion data with goal id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Subtasks
+  // Get Goals from UserSubtaskCompletion subtask id
+
   // This object is temporary and only here to provide mock data to show the functionality of the popup
   const mockMatchData = {
     goal1Task: "Goal 1 task",
@@ -88,9 +107,7 @@ const Roadmap = () => {
         <div className="goals-progress-content">
           {user1Name}'s and {user2Name}'s partnership:
         </div>
-        <div className="goals-progress-percentage">
-          {completionPercentage}% completed
-        </div>
+        <div className="goals-progress-percentage">{completionPercentage}% completed</div>
       </div>
 
       <div className="svg-container">
@@ -207,7 +224,7 @@ const Roadmap = () => {
             <GoalPopup
               offsetX={"4.95rem"}
               offsetY={"4.95rem"}
-              number={34}
+              number={4}
               task={mockMatchData.goal4Task}
               locked={true}
               user1Complete={false}
