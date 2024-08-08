@@ -8,7 +8,7 @@ import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
   // ADD match response prop if match algo happens after sending questions
- 
+
   const [progress, setProgress] = useState(() => {
     const savedProgress = sessionStorage.getItem("progress");
     return savedProgress ? Number(savedProgress) : 0;
@@ -19,7 +19,9 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
     //store progress in session storage
     sessionStorage.setItem("progress", answeredQuestionsCount);
   };
-
+  // if (currentPage === "loading") {
+  //   return <LoadingPage />; // ADD loading component here if needed
+  // }
   return (
     <div className="quizpage">
       <div className="quizpage__side-area">

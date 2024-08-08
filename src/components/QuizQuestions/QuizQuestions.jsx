@@ -80,7 +80,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     // const skills=result.map((item)=>item.skills)
     // console.log(skills);
-    setCurrentPage("new-match");
+    setCurrentPage("loading");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
