@@ -7,6 +7,7 @@ import {  useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
+import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const navigate = useNavigate();
@@ -85,6 +86,7 @@ const PromptPage = () => {
           )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "goalachieved" && <GoalAchieved />}
+          {currentPage==="loading" && <LoadingPage currentPage={currentPage} setCurrentPage={setCurrentPage}/>}
         </div>
       </div>
     </div>

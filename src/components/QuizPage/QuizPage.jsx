@@ -8,7 +8,7 @@ import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
   // ADD match response prop if match algo happens after sending questions
- 
+
   const [progress, setProgress] = useState(() => {
     const savedProgress = sessionStorage.getItem("progress");
     return savedProgress ? Number(savedProgress) : 0;
