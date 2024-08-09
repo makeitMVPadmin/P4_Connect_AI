@@ -11,7 +11,11 @@ import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 //ex. import {getMatches} from "../../utils/firebaseMatches";
 
 //need to define props on main single page: need "handleBackToQuiz" function, "handleGoToGoal" function and pass to MatchedUsers component
-const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
+const NewMatchedUsers = ({
+  handleBackToQuiz,
+  handleGoToGoal,
+  matchResults,
+}) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState(
     "UX/UI Designer in training"
@@ -22,7 +26,6 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
-
 
   return (
     <section className="new-matched-users">

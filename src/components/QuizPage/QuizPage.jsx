@@ -20,6 +20,9 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
     sessionStorage.setItem("progress", answeredQuestionsCount);
   };
 
+  // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
+  const [matchResults, setMatchResults] = useState(null);
+
   return (
     <div className="quizpage">
       <div className="quizpage__side-area">
@@ -32,6 +35,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
               onProgressChange={onProgressChange}
+              setMatchResults={setMatchResults}
             />
           )}
           {currentPage === "new-match" && (
@@ -39,6 +43,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               <NewMatchedUsers
                 handleBackToQuiz={() => setCurrentPage("quiz")}
                 handleGoToGoal={() => setCurrentPage("roadmap")}
+                matchResults={matchResults}
               />
             </Suspense>
           )}

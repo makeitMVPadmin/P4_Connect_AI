@@ -20,8 +20,11 @@ function generateUID() {
   return uid;
 }
 
-
-const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
+const QuizQuestions = ({
+  setCurrentPage,
+  onProgressChange,
+  setMatchResults,
+}) => {
   //get the saved answers from session storage
   const getSessionData = () => {
     const savedData = sessionStorage.getItem("formData");
@@ -92,11 +95,15 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     const newUID = generateUID();
 
     //send to matching function
-    const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
-    console.log(result)
+    const result = findBestMatch({
+      user_id: newUID,
+      answers: selectedAnswerIds,
+    });
+    setMatchResults(result);
+    console.log(result);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-   setCurrentPage("loading")
+    setCurrentPage("loading");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -140,7 +147,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-        (value.length > 0 && question_type == "checkbox")
+      (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -223,7 +230,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   };
   return (
     <div className="quizquestions">
-
       <form onSubmit={handleFormSubmit}>
         <section className="quizquestions_section">
           {QA.map((item, index) => (
@@ -241,7 +247,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
           </div>
         </section>
       </form>
-
     </div>
   );
 };

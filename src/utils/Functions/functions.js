@@ -12,6 +12,7 @@ import { db } from "../../firebase";
 // Create
 export const createData = async (collectionName, data) => {
   try {
+    console.log("creating data from" + collectionName);
     const docRef = await addDoc(collection(db, collectionName), data);
     return docRef.id;
   } catch (e) {
@@ -23,6 +24,7 @@ export const createData = async (collectionName, data) => {
 // Read
 export const readData = async (collectionName) => {
   try {
+    console.log("reading data from" + collectionName);
     const querySnapshot = await getDocs(collection(db, collectionName));
     const dataList = [];
     querySnapshot.forEach((doc) => {
@@ -38,6 +40,7 @@ export const readData = async (collectionName) => {
 // Update
 export const updateData = async (collectionName, id, newData) => {
   try {
+    console.log("updating data from" + collectionName);
     const docRef = doc(db, collectionName, id);
     await updateDoc(docRef, newData);
     return true;
@@ -72,7 +75,7 @@ export const getAllQuestions = async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}
+};
 
 //Get all UserAnswers
 export const getAllUserAnswers = async () => {
@@ -87,4 +90,4 @@ export const getAllUserAnswers = async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}
+};
