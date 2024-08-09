@@ -32,7 +32,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem; // This creates space between the buttons
+        gap: 2rem;
         margin-top: 2rem;
         padding-top: 20px;
         width: 100%;
@@ -45,7 +45,6 @@
         padding: 10px 20px;
         font-size: 1rem;
         cursor: pointer;
-        // Remove margin-top from here as it's now applied to the container
     }
 
 

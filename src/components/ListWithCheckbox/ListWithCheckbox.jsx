@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./ListWithCheckbox.scss";
-import Button from "../Button/Button";
 
 const ListWithCheckbox = ({ options1, onChange, savedCheckedState }) => {
   const [selectedValues, setSelectedValues] = useState(savedCheckedState || {});

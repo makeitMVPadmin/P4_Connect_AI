@@ -12,11 +12,11 @@ const GoalAchieved = ({ onClose, onRetakeQuiz }) => {
   const [user2Pic, setUser2Pic] = useState(user2Picture);
 
   const handleClose = () => {
-    console.log("Close button clicked"); // Add this line
+    console.log("Close button clicked");
     if (onClose) {
       onClose();
     } else {
-      console.log("onClose function is not defined"); // Add this line
+      console.log("onClose function is not defined");
     }
   };
 
