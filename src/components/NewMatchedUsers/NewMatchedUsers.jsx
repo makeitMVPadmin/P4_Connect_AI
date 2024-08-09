@@ -15,13 +15,25 @@ const NewMatchedUsers = ({
   handleBackToQuiz,
   handleGoToGoal,
   matchResults,
+  matchedUser,
 }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
+
+  // There is no user title in users data, this can either be removed or set to a placeholder value
   const [matchedUserTitle, setMatchedUserTitle] = useState(
     "UX/UI Designer in training"
   );
+
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
+
+  useEffect(() => {
+    setMatchPercentage(matchResults.highestSimilarity * 100);
+  }, [matchResults]);
+
+  useEffect(() => {
+    setMatchedUsername(matchedUser.username);
+  }, [matchedUser]);
 
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");

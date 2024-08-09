@@ -9,26 +9,30 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { readData2 } from "../../utils/Functions/functions";
+import {
+  readData2,
+  readData,
+  getAllUserAnswers,
+} from "../../utils/Functions/functions";
 
 const TestPage = () => {
   const [data, setData] = useState([]);
   const collectionName = "Users";
 
-  const readData = async (collectionName) => {
-    try {
-      console.log("reading data from" + collectionName);
-      const querySnapshot = await getDocs(collection(db, collectionName));
-      const dataList = [];
-      querySnapshot.forEach((doc) => {
-        dataList.push({ id: doc.id, ...doc.data() });
-      });
-      return dataList;
-    } catch (e) {
-      console.error("Error reading documents: ", e);
-      throw e;
-    }
-  };
+  // const readData = async (collectionName) => {
+  //   try {
+  //     console.log("reading data from" + collectionName);
+  //     const querySnapshot = await getDocs(collection(db, collectionName));
+  //     const dataList = [];
+  //     querySnapshot.forEach((doc) => {
+  //       dataList.push({ id: doc.id, ...doc.data() });
+  //     });
+  //     return dataList;
+  //   } catch (e) {
+  //     console.error("Error reading documents: ", e);
+  //     throw e;
+  //   }
+  // };
 
   const debouncedGetAllUserAnswers = debounce(async () => {
     try {
@@ -53,7 +57,7 @@ const TestPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let result = await readData2("Users");
+      let result = await getAllUserAnswers();
       setData(result);
     };
     fetchData();

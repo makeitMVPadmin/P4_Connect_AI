@@ -7,6 +7,7 @@ import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 
 import { findBestMatch } from "../../utils/Functions/matching";
+import { readData } from "../../utils/Functions/functions";
 
 //This is only here to generate an ID for the matching algo; to be deleted
 function generateUID() {
@@ -23,6 +24,7 @@ const QuizQuestions = ({
   setCurrentPage,
   onProgressChange,
   setMatchResults,
+  setMatchedUser,
 }) => {
   const requiredQuestionIds = [
     "001",
@@ -103,12 +105,23 @@ const QuizQuestions = ({
     const newUID = generateUID();
 
     //send to matching function
-    const result = findBestMatch({
+    const result = await findBestMatch({
       user_id: newUID,
       answers: selectedAnswerIds,
     });
+
+    // Store response as a state
     setMatchResults(result);
-    console.log(result);
+
+    // Get users
+    let users = await readData("Users");
+
+    // Find the user that matches the user_id given in the match result
+    let user = users.find((user) => user.user_id === result.bestMatch.user_id);
+
+    console.log(user);
+
+    setMatchedUser(user);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
     setCurrentPage("loading");

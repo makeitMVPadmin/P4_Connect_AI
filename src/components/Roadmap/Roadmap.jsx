@@ -13,7 +13,7 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 
-const Roadmap = () => {
+const Roadmap = ({ matchedUser }) => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setmodalOpen] = useState(false);
 
@@ -107,7 +107,9 @@ const Roadmap = () => {
         <div className="goals-progress-content">
           {user1Name}'s and {user2Name}'s partnership:
         </div>
-        <div className="goals-progress-percentage">{completionPercentage}% completed</div>
+        <div className="goals-progress-percentage">
+          {completionPercentage}% completed
+        </div>
       </div>
 
       <div className="svg-container">

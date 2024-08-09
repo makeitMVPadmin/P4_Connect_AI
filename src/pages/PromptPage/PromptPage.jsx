@@ -13,11 +13,15 @@ const PromptPage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("prompt");
 
+  // These need to be on PromptPage instead of QuizPage because quiz page re-renders every time the currentPage state is changed, even if it is to a value that results in the same page such as changing from "quiz" to "new-match"
+  const [matchResults, setMatchResults] = useState(null);
+  const [matchedUser, setMatchedUser] = useState(null);
+
   useEffect(() => {
     setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
-    sessionStorage.removeItem("selectedAnswerIdsJSON")
+    sessionStorage.removeItem("selectedAnswerIdsJSON");
   }, []);
 
   const handleClick = () => {
@@ -86,9 +90,13 @@ const PromptPage = () => {
             <QuizPage
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              matchResults={matchResults}
+              setMatchResults={setMatchResults}
+              matchedUser={matchedUser}
+              setMatchedUser={setMatchedUser}
             />
           )}
-          {currentPage === "roadmap" && <Roadmap />}
+          {currentPage === "roadmap" && <Roadmap matchedUser={matchedUser} />}
           {currentPage === "goalachieved" && <GoalAchieved />}
           {currentPage === "loading" && (
             <LoadingPage

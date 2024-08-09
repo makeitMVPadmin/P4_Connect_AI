@@ -1,12 +1,19 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NoMatch from "../NoMatch/NoMatch";
 import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
-const QuizPage = ({ currentPage, setCurrentPage }) => {
+const QuizPage = ({
+  currentPage,
+  setCurrentPage,
+  matchResults,
+  setMatchResults,
+  matchedUser,
+  setMatchedUser,
+}) => {
   // ADD match response prop if match algo happens after sending questions
 
   const [progress, setProgress] = useState(() => {
@@ -21,7 +28,6 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
   };
 
   // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
-  const [matchResults, setMatchResults] = useState(null);
 
   return (
     <div className="quizpage">
@@ -36,6 +42,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               currentPage={currentPage}
               onProgressChange={onProgressChange}
               setMatchResults={setMatchResults}
+              setMatchedUser={setMatchedUser}
             />
           )}
           {currentPage === "new-match" && (
@@ -44,6 +51,8 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
                 handleBackToQuiz={() => setCurrentPage("quiz")}
                 handleGoToGoal={() => setCurrentPage("roadmap")}
                 matchResults={matchResults}
+                setMatchResults={setMatchResults}
+                matchedUser={matchedUser}
               />
             </Suspense>
           )}
