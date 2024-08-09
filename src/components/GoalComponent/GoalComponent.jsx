@@ -2,6 +2,7 @@ import "./GoalComponent.scss";
 import React, { useState, useEffect } from "react";
 import user1 from "../../assets/images/user1.svg";
 import user2 from "../../assets/images/user2.svg";
+import hat from "../../assets/images/makeitMVP-hat.svg";
 // import DropdownCheckbox from "../DropdownCheckbox/DropdownCheckbox";
 import ListWithCheckbox from "../ListWithCheckbox/ListWithCheckbox";
 import Button from "../Button/Button";
@@ -35,7 +36,9 @@ const GoalComponent = ({
       {/* matched users icons */}
       <div className="matched">
         <div className="matched__images">
+          <img className="matched__hat matched__hat--1" src={hat} alt="makeitMVP hat" />
           <img src={user1Pic} alt="user1 avatar " className="matched__user" />
+          <img className="matched__hat matched__hat--2" src={hat} alt="makeitMVP hat" />
           <img src={user2Pic} alt="user2 avatar " className="matched__user" />
         </div>
       </div>

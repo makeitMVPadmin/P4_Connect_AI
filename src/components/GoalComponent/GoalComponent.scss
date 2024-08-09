@@ -12,6 +12,7 @@
   &__buttons {
     display: flex;
     justify-content: center;
+    margin-top: 45px;
   }
 
   .matched {
@@ -30,12 +31,25 @@
       justify-content: center;
       padding: 2% 0;
       width: 100%;
+      position: relative;
     }
 
     &__user {
       height: 100px;
       border-radius: 50%;
       width: 100px;
+    }
+    &__hat {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: 0;
+      &--1 {
+        left: 9rem;
+      }
+      &--2 {
+        right: 9rem;
+      }
     }
   }
   .goalHeadingContainer {
