@@ -23,6 +23,8 @@
 
     &--checkboxescustom {
       width: 20px;
+
+      cursor: pointer;
     }
 
     &--checkboxesgoals {
@@ -37,7 +39,8 @@
 
     .option_active,
     .option_inactive {
-      margin-left: 15px; // Ensure space between checkbox and text
+      margin-left: 15px;
+      cursor: pointer;
     }
 
     .option_active {

@@ -249,6 +249,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               color={arequestionAnswered() ? "blue" : "grey"}
               type="submit"
               disabled={!arequestionAnswered()}
+              className="quizquestions__button"
             />
           </div>
         </section>
