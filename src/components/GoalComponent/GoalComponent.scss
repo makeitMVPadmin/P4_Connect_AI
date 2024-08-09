@@ -9,6 +9,10 @@
   position: relative;
   justify-content: center;
   flex-direction: column;
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
 
   .matched {
     width: 100%;
