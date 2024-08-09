@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ListWithCheckbox.scss";
 
-const ListWithCheckbox = ({ options1, onChange, savedCheckedState, className }) => {
+const ListWithCheckbox = ({
+  options1,
+  onChange,
+  savedCheckedState,
+  spanClassName,
+  checkboxClassName,
+  goaldivClassName,
+}) => {
   const [selectedValues, setSelectedValues] = useState(savedCheckedState || {});
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const ListWithCheckbox = ({ options1, onChange, savedCheckedState, className }) 
   };
 
   return (
-    <div className="listwithcheckbox">
+    <div className={`listwithcheckbox ${goaldivClassName || ""}`}>
       <div className="listwithcheckbox_options">
         {options1.map((option, index) => (
           <label key={index}>
@@ -32,13 +39,15 @@ const ListWithCheckbox = ({ options1, onChange, savedCheckedState, className }) 
               checked={selectedValues[option] || false}
               onChange={() => handleChange(option)}
               disabled={!isPreviousChecked(index)}
-              className="listwithcheckbox_options--checkboxescustom"
+              className={`listwithcheckbox_options--checkboxescustom ${
+                checkboxClassName || ""
+              }`}
             />
             <span
               className={
                 isPreviousChecked(index)
-                  ? "option_active option_goal"
-                  : "option_inactive option_goal"
+                  ? `option_active ${spanClassName || ""}`
+                  : `option_inactive ${spanClassName || ""} `
               }
             >
               {option}

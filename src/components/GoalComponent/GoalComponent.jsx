@@ -50,6 +50,9 @@ const GoalComponent = ({
           options1={subtasks}
           onChange={handleSubtaskChange}
           savedCheckedState={selectedSubtasks}
+          spanClassName="option_goal"
+          checkboxClassName="listwithcheckbox_options--checkboxesgoals"
+          goaldivClassName="listwithcheckbox--goaldiv"
         />
       </div>
       <div className="goalComponent__buttons">
