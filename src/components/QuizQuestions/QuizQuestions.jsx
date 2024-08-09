@@ -6,7 +6,6 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 
-
 import { findBestMatch } from "../../utils/Functions/matching";
 
 //This is only here to generate an ID for the matching algo; to be deleted
@@ -22,21 +21,6 @@ function generateUID() {
 
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
-  const getSessionData = () => {
-    const savedData = sessionStorage.getItem("formData");
-    return savedData ? JSON.parse(savedData) : {};
-  };
-
-  const [formData, setFormData] = useState(() => {
-    const initialFormData = {};
-    QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
-    });
-    //get from session storage
-    return { ...initialFormData, ...getSessionData() };
-  });
-  //all answers required except Q12
   const requiredQuestionIds = [
     "001",
     "002",
@@ -50,13 +34,25 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     "010",
     "011",
   ];
+  const [formData, setFormData] = useState(() => {
+    const initialFormData = {};
+    const formDataJson = sessionStorage.getItem("formData");
+    if (formDataJson) {
+      return JSON.parse(formDataJson);
+    } else {
+      QA.forEach((item) => {
+        initialFormData[item.question_content] =
+          item.question_type == "checkbox" ? [] : "";
+      });
+      return initialFormData;
+    }
+  });
   const [selectedAnswerIds, setSelectedAnswerIds] = useState(() => {
     const savedSelectedAnswerIds = sessionStorage.getItem(
       "selectedAnswerIdsJSON"
     );
-    return savedSelectedAnswerIds ? JSON.parse(savedSelectedAnswerIds) :[];
+    return savedSelectedAnswerIds ? JSON.parse(savedSelectedAnswerIds) : [];
   });
-
 
   const [answeredQuestions, setAnsweredQuestions] = useState(() => {
     const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
@@ -85,7 +81,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       JSON.stringify(selectedAnswerIds)
     );
   }, [selectedAnswerIds]);
-
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
