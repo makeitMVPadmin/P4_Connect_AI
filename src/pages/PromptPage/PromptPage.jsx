@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
-import { Suspense, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
-import MatchedUsers from "../../components/MatchedUsers/MatchedUsers";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
-import NoMatch from "../../components/NoMatch/NoMatch";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
+import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const navigate = useNavigate();
@@ -22,6 +20,7 @@ const PromptPage = () => {
     setCurrentPage("roadmap");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
+    sessionStorage.removeItem("selectedAnswerIdsJSON")
   }, []);
 
   const handleClick = () => {
@@ -48,13 +47,15 @@ const PromptPage = () => {
                     />
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
-                    <div className="welcome-message">Welcome to Accountabuddy!</div>
+
+                    <div className="welcome-message">Welcome to AccountaBuddy!</div>
                     <div className="welcome-text">
                       Our AI feature empowers you to achieve your professional
                       goals through personalized accountability partnerships. By
                       taking our quick matching quiz, you’ll be paired with a
                       peer who complements your skills, and you both will work
                       towards a common goal.
+
                     </div>
                     <div className="welcome-text">
                       Click "Next" to get started on your journey to effective
@@ -83,16 +84,13 @@ const PromptPage = () => {
           )}
           {/* other pages */}
           {(currentPage === "quiz" ||
-            currentPage === "match" ||
             currentPage === "new-match" ||
             currentPage === "no-match") && (
-            <QuizPage
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
+            <QuizPage setCurrentPage={setCurrentPage} currentPage={currentPage} />
           )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "goalachieved" && <GoalAchieved />}
+          {currentPage==="loading" && <LoadingPage currentPage={currentPage} setCurrentPage={setCurrentPage}/>}
         </div>
       </div>
     </div>

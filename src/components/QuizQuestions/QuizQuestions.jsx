@@ -6,25 +6,21 @@ import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
 
+import { findBestMatch } from "../../utils/Functions/matching";
+
+//This is only here to generate an ID for the matching algo; to be deleted
+function generateUID() {
+  // Generate a random 10-digit number
+  const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  // Convert the number to a string and append it to "UID"
+  const uid = `UID${randomNumber}`;
+
+  return uid;
+}
+
 const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-  // ADD match response prop if match algo happens after sending questions
 
-  //get the saved answers from session storage
-  const getSessionData = () => {
-    const savedData = sessionStorage.getItem("formData");
-    return savedData ? JSON.parse(savedData) : {};
-  };
-
-  const [formData, setFormData] = useState(() => {
-    const initialFormData = {};
-    QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
-    });
-    //get from session storage
-    return { ...initialFormData, ...getSessionData() };
-  });
-  //all answers required except Q12
   const requiredQuestionIds = [
     "001",
     "002",
@@ -38,7 +34,26 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     "010",
     "011",
   ];
-  const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
+  const [formData, setFormData] = useState(() => {
+    const initialFormData = {};
+    const formDataJson = sessionStorage.getItem("formData");
+    if (formDataJson) {
+      return JSON.parse(formDataJson);
+    } else {
+      QA.forEach((item) => {
+        initialFormData[item.question_content] =
+          item.question_type == "checkbox" ? [] : "";
+      });
+      return initialFormData;
+    }
+  });
+  const [selectedAnswerIds, setSelectedAnswerIds] = useState(() => {
+    const savedSelectedAnswerIds = sessionStorage.getItem(
+      "selectedAnswerIdsJSON"
+    );
+    return savedSelectedAnswerIds ? JSON.parse(savedSelectedAnswerIds) : [];
+  });
+
   const [answeredQuestions, setAnsweredQuestions] = useState(() => {
     const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
     return savedAnsweredQuestions
@@ -46,7 +61,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       : new Set();
   });
 
-  //try to save formData to session storage
   useEffect(() => {
     const formDataJSON = JSON.stringify(formData);
     sessionStorage.setItem("formData", formDataJSON);
@@ -61,24 +75,44 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     );
   }, [answeredQuestions]);
 
-  const handleFormSubmit = (e) => {
+  useEffect(() => {
+    sessionStorage.setItem(
+      "selectedAnswerIdsJSON",
+      JSON.stringify(selectedAnswerIds)
+    );
+  }, [selectedAnswerIds]);
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const questionContent004 = QA.find(
+      (q) => q.question_id === "004"
+    ).question_content;
+    const selectedOptions = formData[questionContent004];
+    if (selectedOptions.length < 2) {
+      alert(` ${questionContent004}`);
+      return;
+    }
+
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
-    // CALL BACKEND FUNCTION HERE: Send quiz questions & answers
+    //Generate an ID for the current user; to be deleted
+    const newUID = generateUID();
+
+    //send to matching function
+    const result = findBestMatch({
+      user_id: newUID,
+      answers: selectedAnswerIds,
+    });
+    console.log(result);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-    setTimeout(() => {
-      setCurrentPage("new-match");
-    }, 0);
+    setCurrentPage("loading");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
-    // Update formData state
     setFormData((prevFormData) => {
       const updatedFormData = { ...prevFormData, [question_content]: value };
-      sessionStorage.setItem("formData", JSON.stringify(updatedFormData));
       return updatedFormData;
     });
 
@@ -93,6 +127,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         const found = allAns.filter((data) => data.answer_content === each);
         return found[0]?.answer_id;
       });
+
       newSelectedAnswerIds = newSelectedAnswerIds.filter(
         (id) => !allAns.some((ans) => ans.answer_id === id)
       );
@@ -120,10 +155,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
-      sessionStorage.setItem(
-        "answeredQuestions",
-        JSON.stringify(Array.from(newSet))
-      );
       return newSet;
     });
   };

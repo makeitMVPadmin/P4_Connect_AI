@@ -4,7 +4,7 @@ import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.s
 import CoffeeMugWithHat_sad from "../../assets/images/coffeeMugWithHat_sad.svg";
 
 const ProgressBar = ({ step, currentPage }) => {
-  const maxSteps = 10;
+  const maxSteps = 11;
   const boxesPerStep = 1;
   const displaySteps = Math.min(step, maxSteps);
 
@@ -35,33 +35,36 @@ const ProgressBar = ({ step, currentPage }) => {
           </div>
         </div>
       )}
-      {currentPage === "match" ||
-        (currentPage === "new-match" && (
-          <div className="progress-container">
-            <div>
-              <p className="progress-container__para1">We found your peer match!</p>
-              <p className="progress-container__para2">
-                {" "}
-                You can either proceed to set a goal or redo the matching quiz to find a
-                new partner.
-              </p>
-              <div className="progress-container__image">
-                <img
-                  src={CoffeeMugWithHat_happy}
-                  alt="Coffee Mug With Hat Happy"
-                  className="progress-container__mascot"
-                />
-              </div>
+      {currentPage === "new-match" && (
+        <div className="progress-container">
+          <div>
+            <p className="progress-container__para1">
+              We found your peer match!
+            </p>
+            <p className="progress-container__para2">
+              {" "}
+              You can either proceed to set a goal or redo the matching quiz to
+              find a new partner.
+            </p>
+            <div className="progress-container__image">
+              <img
+                src={CoffeeMugWithHat_happy}
+                alt="Coffee Mug With Hat Happy"
+                className="progress-container__mascot"
+              />
             </div>
           </div>
-        ))}
+        </div>
+      )}
       {currentPage === "no-match" && (
         <div className="progress-container">
           <div>
-            <p className="progress-container__para1">We couldn't find a match...</p>
+            <p className="progress-container__para1">
+              We couldn't find a match...
+            </p>
             <p className="progress-container__para2">
-              You can either proceed to redo the matching quiz to find a partner or wait a
-              couple of days and check in with us again.
+              You can either proceed to redo the matching quiz to find a partner
+              or wait a couple of days and check in with us again.
             </p>
             <div className="progress-container__image">
               <img
@@ -73,6 +76,7 @@ const ProgressBar = ({ step, currentPage }) => {
           </div>
         </div>
       )}
+      {currentPage == "loading" && <></>}
     </div>
   );
 

@@ -1,23 +1,14 @@
 import "./QuizPage.scss";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import React, { useState, Suspense, useEffect } from "react";
+import React, { useState, Suspense } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NoMatch from "../NoMatch/NoMatch";
-import MatchedUsers from "../MatchedUsers/MatchedUsers";
 import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
   // ADD match response prop if match algo happens after sending questions
 
-  useEffect(() => {
-    console.log("QuizPage mounted");
-    return () => {
-      console.log("QuizPage unmounted");
-    };
-  }, []);
-
-  const step = 1;
   const [progress, setProgress] = useState(() => {
     const savedProgress = sessionStorage.getItem("progress");
     return savedProgress ? Number(savedProgress) : 0;
@@ -43,12 +34,6 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
               onProgressChange={onProgressChange}
             />
           )}
-          {/*{currentPage === "match" && (
-            <Suspense fallback={<LoadingPage />}>
-               <MatchedUsers
-                handleBackToQuiz={() => setCurrentPage("quiz")}
-                handleGoToGoal={() => setCurrentPage("roadmap")}
-              /> */}
           {currentPage === "new-match" && (
             <Suspense fallback={<LoadingPage />}>
               <NewMatchedUsers

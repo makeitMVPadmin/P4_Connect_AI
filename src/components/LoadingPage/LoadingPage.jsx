@@ -1,8 +1,20 @@
 import "./LoadingPage.scss";
 import LoadingBar from "../LoadingBar/LoadingBar";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
+import connectAiIcon from "../../assets/images/connectAiIcon.svg";
+import { useEffect, useState } from "react";
 
-const LoadingPage = () => {
+const LoadingPage = ({ currentPage, setCurrentPage }) => {
+  const [page, setPage] = useState(currentPage);
+  useEffect(() => {
+    if (page === "loading") {
+      setTimeout(() => {
+        setCurrentPage("new-match");
+      }, 2000);
+      setPage(currentPage);
+    }
+  }, []);
+
   return (
     <div className="loading-page">
       <h2 className="loading-page__text">

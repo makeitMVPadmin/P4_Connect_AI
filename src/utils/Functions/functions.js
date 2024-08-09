@@ -9,6 +9,27 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function (...args) {
+    const context = this;
+    if (!lastRan) {
+      func.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      if (lastFunc) clearTimeout(lastFunc);
+      lastFunc = setTimeout(function () {
+        if (Date.now() - lastRan >= limit) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+
 // Create
 export const createData = async (collectionName, data) => {
   try {
@@ -73,3 +94,18 @@ export const getAllQuestions = async () => {
     throw e;
   }
 }
+
+//Get all UserAnswers
+export const getAllUserAnswers = throttle(async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "UserAnswers"));
+    const dataList = [];
+    querySnapshot.forEach((doc) => {
+      dataList.push({ id: doc.id, ...doc.data() });
+    });
+    return dataList;
+  } catch (e) {
+    console.error("Error reading documents: ", e);
+    throw e;
+  }
+}, 1000);

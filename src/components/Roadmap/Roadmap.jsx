@@ -186,8 +186,16 @@ const Roadmap = () => {
   //     </div>
   //   )
   // }
+
   return (
     <div className="roadmap-container">
+//       <div className="goals-progress-box">
+//         <div className="goals-progress-content">
+//           {user1Name}'s and {user2Name}'s partnership:
+//         </div>
+//         <div className="goals-progress-percentage">{completionPercentage}% completed</div>
+//       </div>
+
       <div className="svg-container">
         <RoadmapSvg />
         <div className="goals-progress-box">
@@ -310,7 +318,7 @@ const Roadmap = () => {
             <GoalPopup
               offsetX={"4.95rem"}
               offsetY={"4.95rem"}
-              number={34}
+              number={4}
               task={mockMatchData.goal4Task}
               locked={true}
               user1Complete={false}
