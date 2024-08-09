@@ -6,7 +6,6 @@ import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.s
 import { useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
-import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
@@ -92,7 +91,7 @@ const PromptPage = () => {
             />
           )}
           {currentPage === "roadmap" && <Roadmap />}
-          {currentPage === "goalachieved" && <GoalAchieved />}
+
           {currentPage === "loading" && (
             <LoadingPage
               currentPage={currentPage}

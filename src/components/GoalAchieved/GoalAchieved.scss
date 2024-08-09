@@ -1,16 +1,31 @@
 @import "../../styles/partials/typography.scss";
 
+
+.goalachieved-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255); // semi-transparent background
+    z-index: 1000; // ensure it's on top of everything
+}
+
 .goalachieved {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 70vh; // Increased height
+    width: 146vh; // Increased width
+    // max-width: 1200px; // Added max-width
     padding-top: 20px;
-    padding-right: 10px;
-    padding-bottom: 0;
-    padding-left: 10px;
-    width: 100%;
+    background-color: white;
+    border-radius: 20px; // Added border-radius
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); // Added shadow
 
     &__title {
         font-size: 3rem;
@@ -26,7 +41,6 @@
         width: 100%;
         max-width: 800px;
         margin-bottom: 2rem;
-        // background-color: aliceblue;
     }
 
     &__user {
@@ -55,23 +69,34 @@
     &__svgs {
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 30vh;
+        max-height: 300px; // Maximum height for larger screens
+
     }
 
     &__svg {
-        // background-color: antiquewhite;
         position: absolute;
         width: 100%;
         height: 100%;
+        max-width: 600px; // Maximum width for the SVGs
+        max-height: 300px; // Maximum height for the SVGs
+        left: 50%;
+        transform: translateX(-50%); // Center the SVGs horizontally
+
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; // Ensure the SVG maintains its aspect ratio
+        }
 
         &--1 {
-
-            bottom: 100px;
+            bottom: 80px;
             z-index: 2;
         }
 
         &--2 {
-            top: 100px;
+            top: 80px;
             z-index: 1;
         }
     }

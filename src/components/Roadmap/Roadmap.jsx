@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
+import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 
@@ -30,6 +31,7 @@ const Roadmap = () => {
     5: {},
   });
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
+  const [showGoalAchieved, setShowGoalAchieved] = useState(false);
 
   const goalsData = [
     {
@@ -90,8 +92,10 @@ const Roadmap = () => {
   };
 
   const handleGoalClickModal = (goalNumber) => {
-    setActiveGoal(goalNumber);
-    setModalOpen(true);
+    if (isGoalClickable(goalNumber)) {
+      setActiveGoal(goalNumber);
+      setModalOpen(true);
+    }
   };
 
   const handleCloseGoalClickModal = () => {
@@ -110,12 +114,16 @@ const Roadmap = () => {
       (value) => value === true
     );
 
-    if (allSubtasksCompleted && goalNumber === activeGoalNumber) {
-      setActiveGoalNumber((prev) => Math.min(prev + 1, 5));
+    if (allSubtasksCompleted) {
+      if (goalNumber === 5) {
+        // All goals are completed
+        setShowGoalAchieved(true);
+      } else {
+        setActiveGoalNumber((prev) => Math.min(prev + 1, 5));
+      }
     }
 
-    console.log(`Saved changes for Goal ${goalNumber}:`, subtasks);
-
+    // Update completion percentage
     const totalSubtasks = Object.values(goalsData).reduce(
       (acc, goal) => acc + goal.subtasks.length,
       0
@@ -132,6 +140,10 @@ const Roadmap = () => {
     setActiveGoal(null);
   };
 
+  const handleCloseGoalAchieved = () => {
+    setShowGoalAchieved(false);
+  };
+
   const getGoalClassName = (goalNumber) => {
     if (goalNumber === activeGoalNumber) {
       return "goal-icon active";
@@ -140,6 +152,10 @@ const Roadmap = () => {
     } else {
       return "goal-icon upcoming";
     }
+  };
+
+  const isGoalClickable = (goalNumber) => {
+    return goalNumber <= activeGoalNumber;
   };
 
   const renderModalComponent = () => {
@@ -204,7 +220,9 @@ const Roadmap = () => {
             key={goalNumber}
             onMouseEnter={() => setHovering(goalNumber)}
             onMouseLeave={() => setHovering(null)}
-            className={`goal-button goal${goalNumber}`}
+            className={`goal-button goal${goalNumber} ${
+              isGoalClickable(goalNumber) ? "clickable" : "locked"
+            }`}
             onClick={() => handleGoalClickModal(goalNumber)}
           >
             {hovering === goalNumber && (
@@ -213,14 +231,16 @@ const Roadmap = () => {
                 offsetY={`${9.5 - goalNumber * 1.1}rem`}
                 number={goalNumber}
                 task={mockMatchData[`goal${goalNumber}Task`]}
-                locked={goalNumber !== activeGoalNumber}
+                locked={!isGoalClickable(goalNumber)}
                 user1Complete={goalNumber < activeGoalNumber}
                 user2Complete={goalNumber < activeGoalNumber}
                 user1Picture={mockMatchData.user1Picture}
                 user2Picture={mockMatchData.user2Picture}
               />
             )}
-            <div className={getGoalClassName(goalNumber)}>
+            <div
+              className={`goal-icon-container ${getGoalClassName(goalNumber)}`}
+            >
               {goalNumber === 1 && <Goal1Icon />}
               {goalNumber === 2 && <Goal2Icon />}
               {goalNumber === 3 && <Goal3Icon />}
@@ -230,6 +250,12 @@ const Roadmap = () => {
           </button>
         ))}
       </div>
+
+      {showGoalAchieved && (
+        <div className="goal-achieved-overlay">
+          <GoalAchieved />
+        </div>
+      )}
     </div>
   );
 };
