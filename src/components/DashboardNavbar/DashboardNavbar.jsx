@@ -174,7 +174,7 @@ function DashboardNavbar() {
             alt="connectAI icon"
             className="dashboard-navbar__img dashboard-navbar__img--connectAi"
           />
-          <p className="dashboard-navbar__text">ConnectAI</p>
+          <p className="dashboard-navbar__text">Accountabuddy</p>
         </NavLink>
         <Link to="/profile" className="dashboard-navbar__link">
           <img

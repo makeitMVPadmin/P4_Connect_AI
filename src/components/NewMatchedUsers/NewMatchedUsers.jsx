@@ -11,7 +11,7 @@ import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 //ex. import {getMatches} from "../../utils/firebaseMatches";
 
 //need to define props on main single page: need "handleBackToQuiz" function, "handleGoToGoal" function and pass to MatchedUsers component
-const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
+const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal, currentPage, setCurrentPage }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState(
     "UX/UI Designer in training"
@@ -23,6 +23,25 @@ const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal }) => {
     window.open(url, "_blank", "noreferrer");
   };
 
+  //grab matches.user_id2_name, matches.user_id2_titlematches,user_id2_pic, and matches.match_percentage from backend:
+  //for example - simulating a fetch from backend:
+  //   useEffect(()=>{
+  // async function fetchMatches (){
+  //   const matches = await getMatches();
+  //setMatchedUsername(matches.user_id2_name);
+  //setMatchedUserTitle(matches.user_id2_title);
+  //setUser2Pic(matches.user_id2_pic);
+  //setMatchPercentage(matches.match_percentage)
+  // }
+  //   fetchMatches()}, [])
+  // const userNameA = "Dianna";
+  // const userNameB = "Kerry";
+  // const handleGoToGoalapi = async () => {
+  //   const userA = { firstName: userNameA, skills: ["JavaScript", "React"] };
+  //   const userB = { firstName: userNameB, skills: ["Python", "Django"] };
+  //   const project = "building a web application";
+  //   setCurrentPage("roadmap");
+  // };
 
   return (
     <section className="new-matched-users">
