@@ -79,50 +79,50 @@ const Roadmap = () => {
   //mock roadmap data
   const goalsData = [
     {
-      "goal": "Attend 4 meetings",
-      "subtasks": [
+      goal: "Attend 4 meetings",
+      subtasks: [
         "Schedule & attend 1 accountability meeting",
         "Attend 2 accountability meetings",
         "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings"
-      ]
+        "Attend all 4 accountability meetings",
+      ],
     },
     {
-      "goal": "Design and implement the frontend of the web application using JavaScript and React",
-      "subtasks": [
+      goal: "Design and implement the frontend of the web application using JavaScript and React",
+      subtasks: [
         "Discuss and finalize the UI/UX design for the application",
         "Break down the design into reusable React components",
         "Implement the React components using JavaScript",
-        "Test the components individually and as a whole to ensure they work as expected"
-      ]
+        "Test the components individually and as a whole to ensure they work as expected",
+      ],
     },
     {
-      "goal": "Develop the backend of the web application using Python and Django",
-      "subtasks": [
+      goal: "Develop the backend of the web application using Python and Django",
+      subtasks: [
         "Design the database schema and establish the necessary Django models",
         "Implement the necessary views and templates in Django",
         "Integrate the Django backend with the React frontend",
-        "Test the backend functionality and ensure it works with the frontend"
-      ]
+        "Test the backend functionality and ensure it works with the frontend",
+      ],
     },
     {
-      "goal": "Deploy the web application",
-      "subtasks": [
+      goal: "Deploy the web application",
+      subtasks: [
         "Choose a suitable hosting platform for the application",
         "Configure the deployment settings for both frontend and backend",
         "Deploy the application and test it in the production environment",
-        "Monitor the application performance and fix any issues that arise"
-      ]
+        "Monitor the application performance and fix any issues that arise",
+      ],
     },
     {
-      "goal": "Attend 4 meetings to go over what you’ve learned",
-      "subtasks": [
+      goal: "Attend 4 meetings to go over what you’ve learned",
+      subtasks: [
         "Schedule & attend 1 accountability meeting",
         "Attend 2 accountability meetings",
         "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings"
-      ]
-    }
+        "Attend all 4 accountability meetings",
+      ],
+    },
   ];
   console.log(goalsData[0].subtasks);
 
@@ -170,8 +170,8 @@ const Roadmap = () => {
           <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
             <GoalComponent
               goalNumber={activeGoal}
-              goalPrompt={activeGoal&&goalsData[activeGoal-1].goal}
-              subtasks={activeGoal&&goalsData[activeGoal-1].subtasks}
+              goalPrompt={activeGoal && goalsData[activeGoal - 1].goal}
+              subtasks={activeGoal && goalsData[activeGoal - 1].subtasks}
             ></GoalComponent>
           </PopUpModal>
         </>
@@ -189,13 +189,6 @@ const Roadmap = () => {
 
   return (
     <div className="roadmap-container">
-//       <div className="goals-progress-box">
-//         <div className="goals-progress-content">
-//           {user1Name}'s and {user2Name}'s partnership:
-//         </div>
-//         <div className="goals-progress-percentage">{completionPercentage}% completed</div>
-//       </div>
-
       <div className="svg-container">
         <RoadmapSvg />
         <div className="goals-progress-box">
