@@ -4,6 +4,7 @@ import user1 from "../../assets/images/user1.svg";
 import user2 from "../../assets/images/user2.svg";
 // import DropdownCheckbox from "../DropdownCheckbox/DropdownCheckbox";
 import ListWithCheckbox from "../ListWithCheckbox/ListWithCheckbox";
+import Button from "../Button/Button";
 
 const GoalComponent = ({
   goalNumber,
@@ -52,9 +53,12 @@ const GoalComponent = ({
         />
       </div>
       <div className="goalComponent__buttons">
-        <button onClick={handleSave} className="saveButton">
-          Save Changes
-        </button>
+        <Button
+          text="Save Changes"
+          color="blue"
+          eventListener={handleSave}
+          className="saveButton"
+        />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { ReactComponent as GoalAchievedSVG2 } from "../../assets/images/GoalAchi
 import { ReactComponent as Confetti } from "../../assets/images/Confetti.svg";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
+import Button from "../Button/Button";
 
 const GoalAchieved = ({ onClose }) => {
   const [user1Pic, setUser1Pic] = useState(user1Picture);
@@ -44,9 +45,12 @@ const GoalAchieved = ({ onClose }) => {
         <GoalAchievedSVG1 className="goalachieved__svg goalachieved__svg--1" />
         <GoalAchievedSVG2 className="goalachieved__svg goalachieved__svg--2" />
       </div>
-      <button onClick={handleClose} className="goalachieved__close-button">
-        Return to Roadmap
-      </button>
+      <Button
+        text="Return to Roadmap"
+        color="blue" // or whatever color you prefer
+        eventListener={handleClose}
+        className="goalachieved__close-button"
+      />
     </div>
   );
 };

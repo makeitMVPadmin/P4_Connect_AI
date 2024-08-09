@@ -11,8 +11,8 @@ import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
 import GoalAchieved from "../GoalAchieved/GoalAchieved";
-import user1Picture from "../../assets/images/user1.png";
-import user2Picture from "../../assets/images/user2.png";
+import user1Picture from "../../assets/images/user1.svg";
+import user2Picture from "../../assets/images/user2.svg";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
