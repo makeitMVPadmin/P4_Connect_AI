@@ -1,6 +1,7 @@
 import "./LoadingPage.scss";
 import LoadingBar from "../LoadingBar/LoadingBar";
-import connectAiIcon from "../../assets/images/coffeeMugWithHat_happy.svg";
+import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
+import connectAiIcon from "../../assets/images/connectAiIcon.svg";
 import { useEffect, useState } from "react";
 
 const LoadingPage = ({ currentPage, setCurrentPage }) => {
@@ -20,7 +21,11 @@ const LoadingPage = ({ currentPage, setCurrentPage }) => {
         Give us a couple of seconds, we are nearly there...
       </h2>
       <LoadingBar />
-      <img src={connectAiIcon} alt="communiti icon" className="loading-page__icon" />
+      <img
+        src={CoffeeMugWithHat_happy}
+        alt="communiti icon"
+        className="loading-page__icon"
+      />
     </div>
   );
 };

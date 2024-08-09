@@ -30,7 +30,8 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   const [formData, setFormData] = useState(() => {
     const initialFormData = {};
     QA.forEach((item) => {
-      initialFormData[item.question_content] = item.question_type == "checkbox" ? [] : "";
+      initialFormData[item.question_content] =
+        item.question_type == "checkbox" ? [] : "";
     });
     //get from session storage
     return { ...initialFormData, ...getSessionData() };
@@ -49,7 +50,26 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     "010",
     "011",
   ];
-  const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
+  const [formData, setFormData] = useState(() => {
+    const initialFormData = {};
+    const formDataJson = sessionStorage.getItem("formData");
+    if (formDataJson) {
+      return JSON.parse(formDataJson);
+    } else {
+      QA.forEach((item) => {
+        initialFormData[item.question_content] =
+          item.question_type == "checkbox" ? [] : "";
+      });
+      return initialFormData;
+    }
+  });
+  const [selectedAnswerIds, setSelectedAnswerIds] = useState(() => {
+    const savedSelectedAnswerIds = sessionStorage.getItem(
+      "selectedAnswerIdsJSON"
+    );
+    return savedSelectedAnswerIds ? JSON.parse(savedSelectedAnswerIds) : [];
+  });
+
   const [answeredQuestions, setAnsweredQuestions] = useState(() => {
     const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
     return savedAnsweredQuestions
@@ -57,7 +77,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       : new Set();
   });
 
-  //try to save formData to session storage
   useEffect(() => {
     const formDataJSON = JSON.stringify(formData);
     sessionStorage.setItem("formData", formDataJSON);
@@ -66,12 +85,17 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
   //save answeredQuestions to session storage
   useEffect(() => {
     const answeredQuestionsArray = Array.from(answeredQuestions);
-    sessionStorage.setItem("answeredQuestions", JSON.stringify(answeredQuestionsArray));
+    sessionStorage.setItem(
+      "answeredQuestions",
+      JSON.stringify(answeredQuestionsArray)
+    );
   }, [answeredQuestions]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const questionContent004 = QA.find((q) => q.question_id === "004").question_content;
+    const questionContent004 = QA.find(
+      (q) => q.question_id === "004"
+    ).question_content;
     const selectedOptions = formData[questionContent004];
     if (selectedOptions.length < 2) {
       alert(` ${questionContent004}`);
@@ -90,6 +114,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
     setCurrentPage("loading");
+    setCurrentPage("loading");
   };
 
   const handleInputChange = (question_type, question_content, value) => {
@@ -98,7 +123,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       return updatedFormData;
     });
 
-    const questionItem = QA.find((data) => data.question_content === question_content);
+    const questionItem = QA.find(
+      (data) => data.question_content === question_content
+    );
     const allAns = questionItem.answers;
     let newSelectedAnswerIds = selectedAnswerIds;
 
@@ -131,7 +158,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-      (value.length > 0 && question_type == "checkbox")
+      (value.length > 0 && question_type == "checkbox")(
+        value.length > 0 && question_type == "checkbox"
+      )
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
@@ -170,7 +199,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
               question_id={item.question_id}
               value={currentValue}
               onChangeDropdown={(value) =>
-                handleInputChange(item.question_type, item.question_content, value)
+                handleInputChange(
+                  item.question_type,
+                  item.question_content,
+                  value
+                )
               }
             />
           </>
@@ -183,7 +216,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             question_id={item.question_id}
             values={currentValue}
             onChangeDropdownCheckbox={(value) =>
-              handleInputChange(item.question_type, item.question_content, value)
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
             }
           />
         );
@@ -193,7 +230,11 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
             labelName={item.question_content}
             value={currentValue}
             handleTextarea={(value) =>
-              handleInputChange(item.question_type, item.question_content, value)
+              handleInputChange(
+                item.question_type,
+                item.question_content,
+                value
+              )
             }
           />
         );
