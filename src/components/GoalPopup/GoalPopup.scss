@@ -3,7 +3,7 @@
 @import "../../styles/partials/typography.scss";
 
 .goal-popup {
-  z-index: 1;
+  z-index: 99;
   display: flex;
   width: 20rem;
   //   height: 16rem;
