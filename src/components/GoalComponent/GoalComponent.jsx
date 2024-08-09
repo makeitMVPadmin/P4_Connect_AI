@@ -4,11 +4,11 @@ import user1 from "../../assets/images/user1.png";
 import user2 from "../../assets/images/user2.png";
 import { useState } from "react";
 import DropdownCheckbox from "../DropdownCheckbox/DropdownCheckbox";
-import ListWithCheckbox from "../ListWithCheckbox/ListWithCheckbox";
 
-const GoalComponent = ({ goalNumber, goalPrompt, subtasks, children }) => {
+const GoalComponent = ({ goalNumber, goalPrompt, goals, children }) => {
   const [user1Pic, setUser1Pic] = useState(user1); //replace user1 with null instead of image placeholder
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
+
   return (
     <div className="goalComponent">
       {/* matched users icons */}
@@ -28,11 +28,14 @@ const GoalComponent = ({ goalNumber, goalPrompt, subtasks, children }) => {
         </div>
       </div>
       <div className="goalBreakdown__container">
-        {/* {subtasks} */}
-      <ListWithCheckbox
-        options1={subtasks}
-
-      />
+      {/* <DropdownCheckbox
+            labelName={item.question_content}
+            options1={answers}
+            question_id={item.question_id}
+            onChangeDropdownCheckbox={(value) =>
+              handleInputChange(item.question_type, item.question_content, value)
+            }
+          /> */}
       </div>
 
     </div >

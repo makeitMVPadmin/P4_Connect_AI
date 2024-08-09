@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./ListWithCheckbox.scss";
-import Button from "../Button/Button";
-const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
-  // const options1 = [
-  //   "Scheduled & attend one Accountability Meeting",
-  //   "Attend 2 accountability meeting",
-  //   "Attend 3 accountability meeting",
-  //   "Attend all Accountability meeting",
-  // ];
+const ListWithCheckbox = ({ options, label, onFunctionChange }) => {
+  const options1 = [
+    "Scheduled & attend one Accountability Meeting",
+    "Attend 2 accountability meeting",
+    "Attend 3 accountability meeting",
+    "Attend all Accountability meeting",
+  ];
   const [selectedValues, setSelectedValues] = useState(
     options1.reduce((arr, option) => {
       arr[option] = false;
@@ -27,7 +26,7 @@ const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
   );
   return (
     <div className="listwithcheckbox">
-      {/* <h2>Goal BreakDown{label}</h2> */}
+      <h2>Goal BreakDown{label}</h2>
       <div className="listwithcheckbox_options">
         {options1.map((option, index) => (
           <label key={index}>
@@ -47,12 +46,7 @@ const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
             </span>
           </label>
         ))}
-        {/* {allChecked.length === 0 && <p className="statement--last">All accountability tasks completed!</p>} */}
-        {allChecked.length === 0 &&
-          <Button
-            text={"Complete Goal"}
-            color={"blue"}
-          ></Button>}
+        {allChecked.length === 0 && <p className="statement--last">All accountability tasks completed!</p>}
       </div>
     </div>
   );

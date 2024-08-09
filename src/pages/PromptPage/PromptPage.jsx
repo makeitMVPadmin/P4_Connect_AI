@@ -11,13 +11,13 @@ import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("roadmap");
+  const [currentPage, setCurrentPage] = useState("prompt");
 
   // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
   const [matchResults, setMatchResults] = useState(null);
 
   useEffect(() => {
-    setCurrentPage("roadmap");
+    setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
     sessionStorage.removeItem("selectedAnswerIdsJSON")
@@ -47,15 +47,12 @@ const PromptPage = () => {
                     />
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
-
-                    <div className="welcome-message">Welcome to AccountaBuddy!</div>
-                    <div className="welcome-text">
-                      Our AI feature empowers you to achieve your professional
-                      goals through personalized accountability partnerships. By
-                      taking our quick matching quiz, you’ll be paired with a
-                      peer who complements your skills, and you both will work
-                      towards a common goal.
-
+                    <div className="welcome-message">Welcome to Accountabuddy</div>
+                    <div className="welcome-text welcome-text--main">
+                      Our AI feature empowers you to achieve your professional goals
+                      through personalized accountability partnerships. By taking our
+                      quick matching quiz, you’ll be paired with a peer who complements
+                      your skills, and you both will work towards a common goal.
                     </div>
                     <div className="welcome-text">
                       Click "Next" to get started on your journey to effective

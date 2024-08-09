@@ -1,6 +1,5 @@
 import "./LoadingPage.scss";
 import LoadingBar from "../LoadingBar/LoadingBar";
-import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import connectAiIcon from "../../assets/images/connectAiIcon.svg";
 import { useEffect, useState } from "react";
 
@@ -18,11 +17,11 @@ const LoadingPage = ({ currentPage, setCurrentPage }) => {
   return (
     <div className="loading-page">
       <h2 className="loading-page__text">
-        Give us a couple of seconds, we are nearly there...
+        Hold on, we’re looking for your perfect partner...
       </h2>
       <LoadingBar />
       <img
-        src={CoffeeMugWithHat_happy}
+        src={connectAiIcon}
         alt="communiti icon"
         className="loading-page__icon"
       />

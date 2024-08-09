@@ -10,13 +10,9 @@ const BackEndTest = () => {
     const fetchData = async () => {
       const result = await readData(collectionName);
       setData(result);
-      console.log(result);
     };
     fetchData();
   }, []);
-  if(data.length>0){
-    console.log(data);
-  }
 
   const handleCreate = async () => {
     const newData = { name: 'New Item', description: 'Description' };
