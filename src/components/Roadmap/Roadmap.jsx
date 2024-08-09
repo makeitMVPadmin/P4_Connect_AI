@@ -28,12 +28,7 @@ const Roadmap = () => {
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
 
-  // const [goals, setGoals] = useState(null);
-  // const [loadingPage, setLoadingPage] = useState(true);
 
-  // if (goals){
-  //   setLoadingPage(true);
-  // }
   // useEffect(() => {
   //   console.log("aicall");
   //   const aiApiCallData = async () => {
@@ -137,14 +132,7 @@ const Roadmap = () => {
     user2Picture: user2Picture,
   };
 
-  // useEffect(() => {
-  //   // Simulating data fetch from backend
-  //   setTimeout(() => {
-  //     setUser1Name("Diana");
-  //     setUser2Name("Kerry");
-  //     setCompletionPercentage(20);
-  //   }, 1000);
-  // }, []);
+
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);

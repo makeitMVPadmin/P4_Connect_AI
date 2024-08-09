@@ -13,6 +13,13 @@ const LoadingPage = ({ currentPage, setCurrentPage }) => {
       }, 2000);
       setPage(currentPage);
     }
+    if(page==="loading1")
+    {
+      setTimeout(() => {
+        setCurrentPage("roadmap");
+      }, 2000);
+      setPage(currentPage);
+    }
   }, []);
 
   return (

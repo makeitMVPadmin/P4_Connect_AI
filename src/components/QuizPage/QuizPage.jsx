@@ -38,7 +38,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
             <Suspense fallback={<LoadingPage />}>
               <NewMatchedUsers
                 handleBackToQuiz={() => setCurrentPage("quiz")}
-                handleGoToGoal={() => setCurrentPage("roadmap")}
+                handleGoToGoal={() => setCurrentPage("loading1")}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />
