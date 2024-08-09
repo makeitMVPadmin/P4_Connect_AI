@@ -19,7 +19,7 @@ const NewMatchedUsers = ({
 }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState(
-    "UX/UI Designer in training"
+    "Web developer and UX/UI Designer in training"
   );
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
@@ -57,11 +57,7 @@ const NewMatchedUsers = ({
           You have a ${matchPercentage}% match with ${matchedUsername}!`}
         </h2>
         <div className="new-matched__user-info">
-          <img
-            src={user2Pic}
-            alt="user2 avatar "
-            className="new-matched__user"
-          />
+          <img src={user2Pic} alt="user2 avatar " className="new-matched__user" />
           <div className="new-matched__user-area">
             <div className="new-matched__user-title">
               <h3 className="new-matched__user-title-text">{`${matchedUsername}`}</h3>
@@ -74,9 +70,7 @@ const NewMatchedUsers = ({
                 className="
                 new-matched__user-social-icon
                 new-matched__user-social-icon--left"
-                onClick={() =>
-                  openInNewTab("https://mail.google.com/mail/u/0/#inbox")
-                }
+                onClick={() => openInNewTab("https://mail.google.com/mail/u/0/#inbox")}
               />
               <img
                 src={linkedin}
@@ -89,8 +83,8 @@ const NewMatchedUsers = ({
         </div>
 
         <p className="new-matched__text">
-          Ready to start collaborating? Connect with your partner now and begin
-          working towards your shared goals.
+          Ready to start collaborating? Connect with your partner now and begin working
+          towards your shared goals.
         </p>
         <div className="new-matched__button-div">
           <Button
