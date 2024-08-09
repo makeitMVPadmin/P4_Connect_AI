@@ -14,7 +14,7 @@ import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
 
-const Roadmap = () => {
+const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [hovering, setHovering] = useState(null);
@@ -142,8 +142,14 @@ const Roadmap = () => {
   };
 
   const handleCloseGoalAchieved = () => {
-    console.log("Closing GoalAchieved overlay"); // Add this line
+    console.log("Closing GoalAchieved overlay");
     setShowGoalAchieved(false);
+  };
+
+  const handleRetakeQuiz = () => {
+    console.log("handleRetakeQuiz called");
+    setShowGoalAchieved(false);
+    setCurrentPage("quiz");
   };
 
   const getGoalClassName = (goalNumber) => {
@@ -255,7 +261,10 @@ const Roadmap = () => {
 
       {showGoalAchieved && (
         <div className="goal-achieved-overlay">
-          <GoalAchieved onClose={handleCloseGoalAchieved} />
+          <GoalAchieved
+            onClose={handleCloseGoalAchieved}
+            onRetakeQuiz={handleRetakeQuiz}
+          />
         </div>
       )}
     </div>

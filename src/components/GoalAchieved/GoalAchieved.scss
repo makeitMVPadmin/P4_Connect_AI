@@ -10,8 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255); // semi-transparent background
-    z-index: 1000; // ensure it's on top of everything
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
 }
 
 .goalachieved {
@@ -19,23 +19,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh; // Increased height
-    width: 146vh; // Increased width
-    // max-width: 1200px; // Added max-width
+    height: 70vh;
+    width: 146vh;
     padding-top: 20px;
+    padding-bottom: 20px;
     background-color: white;
-    border-radius: 20px; // Added border-radius
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); // Added shadow
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 
-    .goalachieved__close-button {
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem; // This creates space between the buttons
+        margin-top: 2rem;
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    .goalachieved__close-button,
+    .goalachieved__retake-quiz-button {
         position: relative;
         z-index: 1001;
-        margin-top: 2rem;
         padding: 10px 20px;
         font-size: 1rem;
         cursor: pointer;
-
+        // Remove margin-top from here as it's now applied to the container
     }
+
 
     &__title {
         font-size: 3rem;
@@ -79,8 +91,8 @@
     &__svgs {
         position: relative;
         width: 100%;
-        height: 30vh;
-        max-height: 300px; // Maximum height for larger screens
+        height: 40vh;
+        max-height: 400px;
 
     }
 
@@ -88,20 +100,20 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        max-width: 600px; // Maximum width for the SVGs
-        max-height: 300px; // Maximum height for the SVGs
+        max-width: 700px;
+        max-height: 400px;
         left: 50%;
-        transform: translateX(-50%); // Center the SVGs horizontally
+        transform: translateX(-50%);
 
 
         svg {
             width: 100%;
             height: 100%;
-            object-fit: contain; // Ensure the SVG maintains its aspect ratio
+            object-fit: contain;
         }
 
         &--1 {
-            bottom: 80px;
+
             z-index: 2;
         }
 
