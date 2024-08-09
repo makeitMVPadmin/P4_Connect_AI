@@ -57,7 +57,7 @@ const TestPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let result = await getAllUserAnswers();
+      let result = await readData("Matches");
       setData(result);
     };
     fetchData();

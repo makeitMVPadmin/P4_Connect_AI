@@ -26,6 +26,14 @@ const Roadmap = ({ matchedUser }) => {
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
 
+  // As the matches are not being written to the backend yet, this is a workaround to get some base data to display
+  useEffect(() => {
+    //Username is always going to be Diana in our demo
+    setUser1Name("Diana");
+
+    setUser2Name(matchedUser.username);
+  }, [matchedUser]);
+
   // CALL BACKEND FUNCTION: Get Matches
   // Use the data of only the most recent match
 
@@ -54,15 +62,6 @@ const Roadmap = ({ matchedUser }) => {
     user1Picture: user1Picture,
     user2Picture: user2Picture,
   };
-
-  useEffect(() => {
-    // Simulating data fetch from backend
-    setTimeout(() => {
-      setUser1Name("Diana");
-      setUser2Name("Kerry");
-      setCompletionPercentage(20);
-    }, 1000);
-  }, []);
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);

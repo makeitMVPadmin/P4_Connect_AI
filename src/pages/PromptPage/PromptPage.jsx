@@ -13,8 +13,10 @@ const PromptPage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("prompt");
 
-  // These need to be on PromptPage instead of QuizPage because quiz page re-renders every time the currentPage state is changed, even if it is to a value that results in the same page such as changing from "quiz" to "new-match"
+  // matchedResults needs to be on PromptPage instead of QuizPage because quiz page re-renders every time the currentPage state is changed, even if it is to a value that results in the same page such as changing from "quiz" to "new-match"
+  // every time I would navigate between the sub pages in the QuizPage it would redeclare the state variable and reset it's value to null
   const [matchResults, setMatchResults] = useState(null);
+
   const [matchedUser, setMatchedUser] = useState(null);
 
   useEffect(() => {
