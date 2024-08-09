@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Roadmap.scss";
 import { ReactComponent as RoadmapSvg } from "../../assets/images/roadmapBackground.svg";
 import { ReactComponent as Goal1Icon } from "../../assets/icons/roadmapIcon1.svg";
@@ -104,36 +104,43 @@ const Roadmap = ({ setCurrentPage }) => {
   };
 
   const handleSaveChanges = (goalNumber, subtasks) => {
-    setSavedGoals((prev) => ({
-      ...prev,
-      [goalNumber]: subtasks,
-    }));
+    setSavedGoals((prev) => {
+      const newSavedGoals = {
+        ...prev,
+        [goalNumber]: subtasks,
+      };
+      return newSavedGoals;
+    });
 
-    // Check if all subtasks are completed
-    const allSubtasksCompleted = Object.values(subtasks).every(
-      (value) => value === true
-    );
+    // Check if all subtasks for the current goal are completed
+    const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
+    const completedSubtasksForGoal =
+      Object.values(subtasks).filter(Boolean).length;
+    const allSubtasksCompleted =
+      completedSubtasksForGoal === totalSubtasksForGoal;
 
     if (allSubtasksCompleted) {
       if (goalNumber === 5) {
-        // All goals are completed
         setShowGoalAchieved(true);
       } else {
-        setActiveGoalNumber((prev) => Math.min(prev + 1, 5));
+        setActiveGoalNumber((prev) => {
+          const next = Math.min(prev + 1, 5);
+          return next;
+        });
       }
     }
 
     // Update completion percentage
-    const totalSubtasks = Object.values(goalsData).reduce(
+    const totalSubtasks = goalsData.reduce(
       (acc, goal) => acc + goal.subtasks.length,
       0
     );
-
     const completedSubtasks =
       Object.values(savedGoals).reduce(
         (acc, goal) => acc + Object.values(goal).filter(Boolean).length,
         0
-      ) + Object.values(subtasks).filter(Boolean).length;
+      ) + completedSubtasksForGoal;
+
     const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
     setCompletionPercentage(newPercentage);
 
@@ -147,7 +154,6 @@ const Roadmap = ({ setCurrentPage }) => {
   };
 
   const handleRetakeQuiz = () => {
-    console.log("handleRetakeQuiz called");
     setShowGoalAchieved(false);
     setCurrentPage("quiz");
   };
@@ -163,7 +169,8 @@ const Roadmap = ({ setCurrentPage }) => {
   };
 
   const isGoalClickable = (goalNumber) => {
-    return goalNumber <= activeGoalNumber;
+    const clickable = goalNumber <= activeGoalNumber;
+    return clickable;
   };
 
   const renderModalComponent = () => {
@@ -226,8 +233,12 @@ const Roadmap = ({ setCurrentPage }) => {
         {[1, 2, 3, 4, 5].map((goalNumber) => (
           <button
             key={goalNumber}
-            onMouseEnter={() => setHovering(goalNumber)}
-            onMouseLeave={() => setHovering(null)}
+            onMouseEnter={() => {
+              setHovering(goalNumber);
+            }}
+            onMouseLeave={() => {
+              setHovering(null);
+            }}
             className={`goal-button goal${goalNumber} ${
               isGoalClickable(goalNumber) ? "clickable" : "locked"
             }`}
