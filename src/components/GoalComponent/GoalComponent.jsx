@@ -41,7 +41,7 @@ const GoalComponent = ({
       </div>
       {/* popup title  */}
       <div className="goalHeadingContainer">
-        <div className="goalHeadingContainer__goalTitle">Goal {goalNumber}</div>
+        <div className="goalHeadingContainer__goalTitle">GOAL {goalNumber}</div>
         <div className="goalHeadingContainer__goalPrompt">{goalPrompt}</div>
       </div>
       <div className="goalBreakdown__container">

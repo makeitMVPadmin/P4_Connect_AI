@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ListWithCheckbox.scss";
 
-const ListWithCheckbox = ({ options1, onChange, savedCheckedState }) => {
+const ListWithCheckbox = ({ options1, onChange, savedCheckedState, className }) => {
   const [selectedValues, setSelectedValues] = useState(savedCheckedState || {});
 
   useEffect(() => {
@@ -36,7 +36,9 @@ const ListWithCheckbox = ({ options1, onChange, savedCheckedState }) => {
             />
             <span
               className={
-                isPreviousChecked(index) ? "option_active" : "option_inactive"
+                isPreviousChecked(index)
+                  ? "option_active option_goal"
+                  : "option_inactive option_goal"
               }
             >
               {option}

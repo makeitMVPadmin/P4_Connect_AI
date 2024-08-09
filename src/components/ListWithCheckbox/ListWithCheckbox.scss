@@ -6,9 +6,9 @@
 .listwithcheckbox {
   font-family: "Gilroy-ExtraBold";
   margin-bottom: 1rem;
-h2{
-  margin-bottom: 1.5rem;
-}
+  h2 {
+    margin-bottom: 1.5rem;
+  }
   &_options {
     display: flex;
     flex-direction: column;
@@ -19,6 +19,10 @@ h2{
 
     .option_active {
       color: $MVP-black;
+    }
+    .option_goal {
+      font-size: 15px;
+      line-height: 23px;
     }
 
     .option_inactive {
