@@ -12,12 +12,12 @@ import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
-import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
-import LoadingPage from "../LoadingPage/LoadingPage";
+// import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
+// import LoadingPage from "../LoadingPage/LoadingPage";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
-  const [isModalOpen, setmodalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const [hovering, setHovering] = useState(null);
 
@@ -27,6 +27,14 @@ const Roadmap = () => {
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
+
+  const [savedGoals, setSavedGoals] = useState({
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+  });
 
   // const [goals, setGoals] = useState(null);
   // const [loadingPage, setLoadingPage] = useState(true);
@@ -148,14 +156,40 @@ const Roadmap = () => {
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
-    setmodalOpen(true);
+    setModalOpen(true);
   };
 
   const handleCloseGoalClickModal = () => {
-    setmodalOpen(false);
+    setModalOpen(false);
+    setActiveGoal(null);
+  };
+
+  const handleSaveChanges = (goalNumber, subtasks) => {
+    setSavedGoals((prev) => ({
+      ...prev,
+      [goalNumber]: subtasks,
+    }));
+    console.log(`Saved changes for Goal ${goalNumber}:`, subtasks);
+
+    const totalSubtasks = Object.values(goalsData).reduce(
+      (acc, goal) => acc + goal.subtasks.length,
+      0
+    );
+    const completedSubtasks =
+      Object.values(savedGoals).reduce(
+        (acc, goal) => acc + Object.values(goal).filter(Boolean).length,
+        0
+      ) + Object.values(subtasks).filter(Boolean).length;
+    const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+    setCompletionPercentage(newPercentage);
+
+    setModalOpen(false);
+    setActiveGoal(null);
   };
 
   const renderModalComponent = () => {
+    if (!activeGoal) return null;
+
     return (
       <Modal
         id="promptpage__linkedinpost-modal"
@@ -172,7 +206,10 @@ const Roadmap = () => {
               goalNumber={activeGoal}
               goalPrompt={activeGoal && goalsData[activeGoal - 1].goal}
               subtasks={activeGoal && goalsData[activeGoal - 1].subtasks}
-            ></GoalComponent>
+              onSaveChanges={handleSaveChanges}
+              savedProgress={savedGoals[activeGoal]}
+              onClose={handleCloseGoalClickModal}
+            />
           </PopUpModal>
         </>
       </Modal>
@@ -216,143 +253,38 @@ const Roadmap = () => {
         </div>
 
         {renderModalComponent()}
-        <button
-          onMouseEnter={() => {
-            setHovering(1);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal1"
-          onClick={() => handleGoalClickModal(1)}
-        >
-          {hovering === 1 && (
-            <GoalPopup
-              offsetX={"8.4rem"}
-              offsetY={"8.4rem"}
-              number={1}
-              task={mockMatchData.goal1Task}
-              locked={false}
-              user1Complete={true}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal1Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(2);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal2"
-          onClick={() => handleGoalClickModal(2)}
-        >
-          {hovering === 2 && (
-            <GoalPopup
-              offsetX={"7.3rem"}
-              offsetY={"7.3rem"}
-              number={2}
-              task={mockMatchData.goal2Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal2Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(3);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal3"
-          onClick={() => handleGoalClickModal(3)}
-        >
-          {hovering === 3 && (
-            <GoalPopup
-              offsetX={"6.1rem"}
-              offsetY={"6.1rem"}
-              number={3}
-              task={mockMatchData.goal3Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal3Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(4);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal4"
-          onClick={() => handleGoalClickModal(4)}
-        >
-          {hovering === 4 && (
-            <GoalPopup
-              offsetX={"4.95rem"}
-              offsetY={"4.95rem"}
-              number={4}
-              task={mockMatchData.goal4Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal4Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(5);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal5"
-          onClick={() => handleGoalClickModal(5)}
-        >
-          {hovering === 5 && (
-            <GoalPopup
-              offsetX={"3.7rem"}
-              offsetY={"3.7rem"}
-              number={5}
-              task={mockMatchData.goal5Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal5Icon />
-          </div>
-        </button>
+
+        {[1, 2, 3, 4, 5].map((goalNumber) => (
+          <button
+            key={goalNumber}
+            onMouseEnter={() => setHovering(goalNumber)}
+            onMouseLeave={() => setHovering(null)}
+            className={`goal-button goal${goalNumber}`}
+            onClick={() => handleGoalClickModal(goalNumber)}
+          >
+            {hovering === goalNumber && (
+              <GoalPopup
+                offsetX={`${9.5 - goalNumber * 1.1}rem`}
+                offsetY={`${9.5 - goalNumber * 1.1}rem`}
+                number={goalNumber}
+                task={mockMatchData[`goal${goalNumber}Task`]}
+                locked={goalNumber !== 1}
+                user1Complete={false}
+                user2Complete={false}
+                user1Picture={mockMatchData.user1Picture}
+                user2Picture={mockMatchData.user2Picture}
+              />
+            )}
+            <div className="goal-icon-container">
+              {goalNumber === 1 && <Goal1Icon />}
+              {goalNumber === 2 && <Goal2Icon />}
+              {goalNumber === 3 && <Goal3Icon />}
+              {goalNumber === 4 && <Goal4Icon />}
+              {goalNumber === 5 && <Goal5Icon />}
+            </div>
+          </button>
+        ))}
       </div>
-      {/* <div className="active-goal-container">{renderActiveComponent()}</div> */}
     </div>
   );
 };
