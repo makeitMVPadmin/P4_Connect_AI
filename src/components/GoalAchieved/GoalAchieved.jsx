@@ -6,9 +6,18 @@ import { ReactComponent as Confetti } from "../../assets/images/Confetti.svg";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
 
-const GoalAchieved = () => {
+const GoalAchieved = ({ onClose }) => {
   const [user1Pic, setUser1Pic] = useState(user1Picture);
   const [user2Pic, setUser2Pic] = useState(user2Picture);
+
+  const handleClose = () => {
+    console.log("Close button clicked"); // Add this line
+    if (onClose) {
+      onClose();
+    } else {
+      console.log("onClose function is not defined"); // Add this line
+    }
+  };
 
   return (
     <div className="goalachieved">
@@ -16,17 +25,28 @@ const GoalAchieved = () => {
       <div className="goalachieved__users">
         <div className="goalachieved__user">
           <Confetti className="goalachieved__confetti" />
-          <img src={user1Pic} alt="user1 avatar" className="goalachieved__avatar" />
+          <img
+            src={user1Pic}
+            alt="user1 avatar"
+            className="goalachieved__avatar"
+          />
         </div>
         <div className="goalachieved__user">
           <Confetti className="goalachieved__confetti" />
-          <img src={user2Pic} alt="user2 avatar" className="goalachieved__avatar" />
+          <img
+            src={user2Pic}
+            alt="user2 avatar"
+            className="goalachieved__avatar"
+          />
         </div>
       </div>
       <div className="goalachieved__svgs">
         <GoalAchievedSVG1 className="goalachieved__svg goalachieved__svg--1" />
         <GoalAchievedSVG2 className="goalachieved__svg goalachieved__svg--2" />
       </div>
+      <button onClick={handleClose} className="goalachieved__close-button">
+        Return to Roadmap
+      </button>
     </div>
   );
 };

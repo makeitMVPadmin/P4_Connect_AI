@@ -20,8 +20,8 @@ const Roadmap = () => {
   const [hovering, setHovering] = useState(null);
   const [user1Pic] = useState(user1Picture);
   const [user2Pic] = useState(user2Picture);
-  const [user1Name] = useState("User1");
-  const [user2Name] = useState("User2");
+  const [user1Name] = useState("Diana");
+  const [user2Name] = useState("Kerry");
   const [completionPercentage, setCompletionPercentage] = useState(0);
   const [savedGoals, setSavedGoals] = useState({
     1: {},
@@ -128,6 +128,7 @@ const Roadmap = () => {
       (acc, goal) => acc + goal.subtasks.length,
       0
     );
+
     const completedSubtasks =
       Object.values(savedGoals).reduce(
         (acc, goal) => acc + Object.values(goal).filter(Boolean).length,
@@ -141,6 +142,7 @@ const Roadmap = () => {
   };
 
   const handleCloseGoalAchieved = () => {
+    console.log("Closing GoalAchieved overlay"); // Add this line
     setShowGoalAchieved(false);
   };
 
@@ -253,7 +255,7 @@ const Roadmap = () => {
 
       {showGoalAchieved && (
         <div className="goal-achieved-overlay">
-          <GoalAchieved />
+          <GoalAchieved onClose={handleCloseGoalAchieved} />
         </div>
       )}
     </div>

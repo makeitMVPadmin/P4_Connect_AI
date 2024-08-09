@@ -27,6 +27,24 @@
     border-radius: 20px; // Added border-radius
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); // Added shadow
 
+    .goalachieved__close-button {
+        position: relative;
+        z-index: 1001;
+        margin-top: 2rem;
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #0954B0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #083d8a;
+        }
+    }
+
     &__title {
         font-size: 3rem;
         text-align: center;
