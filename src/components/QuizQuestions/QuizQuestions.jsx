@@ -24,25 +24,6 @@ const QuizQuestions = ({
   onProgressChange,
   setMatchResults,
 }) => {
-  //get the saved answers from session storage
-  const getSessionData = () => {
-    const savedData = sessionStorage.getItem("formData");
-    return savedData ? JSON.parse(savedData) : {};
-  };
-
-  const [formData, setFormData] = useState(() => {
-    const initialFormData = {};
-    QA.forEach((item) => {
-      initialFormData[item.question_content] =
-        item.question_type == "checkbox" ? [] : "";
-    });
-    //get from session storage
-    return { ...initialFormData, ...getSessionData() };
-  });
-  //all answers required except Q12
-
-const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
-
   const requiredQuestionIds = [
     "001",
     "002",
@@ -128,11 +109,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     });
     setMatchResults(result);
     console.log(result);
-    const result = findBestMatch({
-      user_id: newUID,
-      answers: selectedAnswerIds,
-    });
-    console.log(result);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
     setCurrentPage("loading");
@@ -179,7 +155,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-      (value.length > 0 && question_type == "checkbox")
       (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);

@@ -29,7 +29,6 @@ function throttle(func, limit) {
   };
 }
 
-
 // Create
 export const createData = async (collectionName, data) => {
   try {
@@ -111,4 +110,20 @@ export const getAllUserAnswers = throttle(async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}
+}, 1000);
+
+export const readData2 = (collectionName) => {
+  throttle(async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, collectionName));
+      const dataList = [];
+      querySnapshot.forEach((doc) => {
+        dataList.push({ id: doc.id, ...doc.data() });
+      });
+      return dataList;
+    } catch (e) {
+      console.error("Error reading documents: ", e);
+      throw e;
+    }
+  }, 1000);
+};

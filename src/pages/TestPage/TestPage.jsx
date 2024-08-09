@@ -9,7 +9,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-// import { readData } from "../../utils/Functions/functions";
+import { readData2 } from "../../utils/Functions/functions";
 
 const TestPage = () => {
   const [data, setData] = useState([]);
@@ -53,7 +53,8 @@ const TestPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      debouncedGetAllUserAnswers();
+      let result = await readData2("Users");
+      setData(result);
     };
     fetchData();
   }, []);
