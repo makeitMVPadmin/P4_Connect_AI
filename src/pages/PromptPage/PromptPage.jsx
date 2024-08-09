@@ -17,6 +17,7 @@ const PromptPage = () => {
     setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
+    sessionStorage.removeItem("selectedAnswerIdsJSON")
   }, []);
 
   const handleClick = () => {

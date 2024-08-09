@@ -5,7 +5,6 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import Textarea from "../../components/Textarea/Textarea";
 import "./QuizQuestions.scss";
-import { readData } from "../../utils/Functions/functions";
 
 import { findBestMatch } from "../../utils/Functions/matching";
 
@@ -41,6 +40,9 @@ const QuizQuestions = ({
     return { ...initialFormData, ...getSessionData() };
   });
   //all answers required except Q12
+
+const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
+
   const requiredQuestionIds = [
     "001",
     "002",
@@ -54,7 +56,26 @@ const QuizQuestions = ({
     "010",
     "011",
   ];
-  const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
+  const [formData, setFormData] = useState(() => {
+    const initialFormData = {};
+    const formDataJson = sessionStorage.getItem("formData");
+    if (formDataJson) {
+      return JSON.parse(formDataJson);
+    } else {
+      QA.forEach((item) => {
+        initialFormData[item.question_content] =
+          item.question_type == "checkbox" ? [] : "";
+      });
+      return initialFormData;
+    }
+  });
+  const [selectedAnswerIds, setSelectedAnswerIds] = useState(() => {
+    const savedSelectedAnswerIds = sessionStorage.getItem(
+      "selectedAnswerIdsJSON"
+    );
+    return savedSelectedAnswerIds ? JSON.parse(savedSelectedAnswerIds) : [];
+  });
+
   const [answeredQuestions, setAnsweredQuestions] = useState(() => {
     const savedAnsweredQuestions = sessionStorage.getItem("answeredQuestions");
     return savedAnsweredQuestions
@@ -62,7 +83,6 @@ const QuizQuestions = ({
       : new Set();
   });
 
-  //try to save formData to session storage
   useEffect(() => {
     const formDataJSON = JSON.stringify(formData);
     sessionStorage.setItem("formData", formDataJSON);
@@ -76,6 +96,13 @@ const QuizQuestions = ({
       JSON.stringify(answeredQuestionsArray)
     );
   }, [answeredQuestions]);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "selectedAnswerIdsJSON",
+      JSON.stringify(selectedAnswerIds)
+    );
+  }, [selectedAnswerIds]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -100,6 +127,11 @@ const QuizQuestions = ({
       answers: selectedAnswerIds,
     });
     setMatchResults(result);
+    console.log(result);
+    const result = findBestMatch({
+      user_id: newUID,
+      answers: selectedAnswerIds,
+    });
     console.log(result);
 
     // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
@@ -147,6 +179,7 @@ const QuizQuestions = ({
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
+      (value.length > 0 && question_type == "checkbox")
       (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
