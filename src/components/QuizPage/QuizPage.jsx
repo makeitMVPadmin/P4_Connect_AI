@@ -14,9 +14,7 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
     return savedProgress ? Number(savedProgress) : 0;
   });
   const onProgressChange = (answeredQuestionsCount) => {
-    // Update progress based on the number of answered questions
     setProgress(answeredQuestionsCount);
-    //store progress in session storage
     sessionStorage.setItem("progress", answeredQuestionsCount);
   };
 
@@ -35,19 +33,15 @@ const QuizPage = ({ currentPage, setCurrentPage }) => {
             />
           )}
           {currentPage === "new-match" && (
-            <Suspense fallback={<LoadingPage />}>
-              <NewMatchedUsers
-                handleBackToQuiz={() => setCurrentPage("quiz")}
-                handleGoToGoal={() => setCurrentPage("loading1")}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
-            </Suspense>
+            <NewMatchedUsers
+              handleBackToQuiz={() => setCurrentPage("quiz")}
+              handleGoToGoal={() => setCurrentPage("loading1")}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           )}
           {currentPage === "no-match" && (
-            <Suspense fallback={<LoadingPage />}>
-              <NoMatch handleBackToQuiz={() => setCurrentPage("quiz")} />
-            </Suspense>
+            <NoMatch handleBackToQuiz={() => setCurrentPage("quiz")} />
           )}
         </div>
       </div>
