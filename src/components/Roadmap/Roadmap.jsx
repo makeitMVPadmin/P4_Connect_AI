@@ -167,13 +167,6 @@ const Roadmap = () => {
     );
   };
 
-  // if (loadingPage) {
-  //   return (
-  //     <div className="roadmap-container">
-  //       <LoadingPage />
-  //     </div>
-  //   )
-  // }
 
   return (
     <div className="roadmap-container">
