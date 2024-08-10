@@ -17,7 +17,8 @@
   bottom: var(--y-offset, 0);
   padding: 1rem;
 
-  &--locked {
+  &--locked,
+  &--completed {
     background-color: $Light-Gray;
   }
 

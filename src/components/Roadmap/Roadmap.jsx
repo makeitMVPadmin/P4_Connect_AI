@@ -32,6 +32,18 @@ const Roadmap = ({ setCurrentPage }) => {
   });
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
+  const isGoalCompleted = (goalNumber) => {
+    const goalSubtasks = savedGoals[goalNumber];
+    return (
+      Object.values(goalSubtasks).length ===
+        goalsData[goalNumber - 1].subtasks.length &&
+      Object.values(goalSubtasks).every((subtask) => subtask === true)
+    );
+  };
+
+  const isGoalCurrent = (goalNumber) => {
+    return goalNumber === activeGoalNumber;
+  };
 
   const goalsData = [
     {
@@ -251,6 +263,7 @@ const Roadmap = ({ setCurrentPage }) => {
                 number={goalNumber}
                 task={mockMatchData[`goal${goalNumber}Task`]}
                 locked={!isGoalClickable(goalNumber)}
+                completed={isGoalCompleted(goalNumber)}
                 user1Complete={goalNumber < activeGoalNumber}
                 user2Complete={goalNumber < activeGoalNumber}
                 user1Picture={mockMatchData.user1Picture}

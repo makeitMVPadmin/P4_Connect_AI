@@ -6,6 +6,8 @@ const GoalPopup = ({
   number,
   task,
   locked,
+  completed,
+  isCurrent,
   user1Picture,
   user2Picture,
   user1Complete,
@@ -18,9 +20,16 @@ const GoalPopup = ({
     "--y-offset": offsetY,
   };
 
+  const getPopupClassName = () => {
+    if (locked) return "goal-popup--locked";
+    if (isCurrent) return "goal-popup--current";
+    if (completed) return "goal-popup--completed";
+    return "";
+  };
+
   return (
     <div
-      className={`goal-popup ${locked ? "goal-popup--locked" : ""}`}
+      className={`goal-popup ${getPopupClassName()}`}
       style={offsetVariables}
     >
       <h2 className="goal-popup__title">{`GOAL ${number}`}</h2>
