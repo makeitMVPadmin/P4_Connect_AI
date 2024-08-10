@@ -54,11 +54,11 @@ const Roadmap = ({ setCurrentPage }) => {
   //   aiApiCallData();
   // }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     // Simulating data fetch from backend
     setTimeout(() => {
       setLoadingPage(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
   // CALL BACKEND FUNCTION: Get Matches
@@ -82,7 +82,7 @@ const Roadmap = ({ setCurrentPage }) => {
     const goalSubtasks = savedGoals[goalNumber];
     return (
       Object.values(goalSubtasks).length ===
-        goalsData[goalNumber - 1].subtasks.length &&
+      goalsData[goalNumber - 1].subtasks.length &&
       Object.values(goalSubtasks).every((subtask) => subtask === true)
     );
   };
@@ -280,15 +280,15 @@ const Roadmap = ({ setCurrentPage }) => {
             {user1Name}'s and {user2Name}'s partnership:
           </div>
           <div className="goals-progress-percentage">
-             {/* confetti explosion */}
-             {isExploding &&
+            {/* confetti explosion */}
+            {isExploding &&
               <ConfettiExplosion
                 particleCount={20}
               />}
-              {(completionPercentage >= 100) && isExploding &&
+            {/* {(completionPercentage >= 100) && isExploding &&
               <ConfettiExplosion
                 particleCount={350}
-              />}
+              />} */}
             {completionPercentage}% completed
           </div>
         </div>
@@ -319,9 +319,8 @@ const Roadmap = ({ setCurrentPage }) => {
             onMouseLeave={() => {
               setHovering(null);
             }}
-            className={`goal-button goal${goalNumber} ${
-              isGoalClickable(goalNumber) ? "clickable" : "locked"
-            }`}
+            className={`goal-button goal${goalNumber} ${isGoalClickable(goalNumber) ? "clickable" : "locked"
+              }`}
             onClick={() => handleGoalClickModal(goalNumber)}
           >
             {hovering === goalNumber && (
