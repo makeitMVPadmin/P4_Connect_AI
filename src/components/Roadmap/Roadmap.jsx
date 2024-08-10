@@ -14,6 +14,7 @@ import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -25,6 +26,7 @@ const Roadmap = ({ setCurrentPage }) => {
   const [user2Name] = useState("Kerry");
   const [completionPercentage, setCompletionPercentage] = useState(0);
   const [loadingPage, setLoadingPage] = useState(true);
+  const [isExploding, setIsExploding] = useState(false);
   const [savedGoals, setSavedGoals] = useState({
     1: {},
     2: {},
@@ -157,6 +159,7 @@ const Roadmap = ({ setCurrentPage }) => {
   const handleCloseGoalClickModal = () => {
     setModalOpen(false);
     setActiveGoal(null);
+    setIsExploding(false);
   };
 
   const handleSaveChanges = (goalNumber, subtasks) => {
@@ -198,14 +201,18 @@ const Roadmap = ({ setCurrentPage }) => {
       ) + completedSubtasksForGoal;
 
     const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+    setIsExploding(true);
     setCompletionPercentage(newPercentage);
-
     setModalOpen(false);
     setActiveGoal(null);
+    setTimeout(() => {
+      setIsExploding(false);
+    }, 1000);
   };
 
   const handleCloseGoalAchieved = () => {
     console.log("Closing GoalAchieved overlay");
+    setIsExploding(false);
     setShowGoalAchieved(false);
   };
 
@@ -273,6 +280,15 @@ const Roadmap = ({ setCurrentPage }) => {
             {user1Name}'s and {user2Name}'s partnership:
           </div>
           <div className="goals-progress-percentage">
+             {/* confetti explosion */}
+             {isExploding &&
+              <ConfettiExplosion
+                particleCount={20}
+              />}
+              {(completionPercentage >= 100) && isExploding &&
+              <ConfettiExplosion
+                particleCount={350}
+              />}
             {completionPercentage}% completed
           </div>
         </div>
