@@ -13,6 +13,7 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
+import LoadingPage from "../LoadingPage";
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -23,6 +24,7 @@ const Roadmap = ({ setCurrentPage }) => {
   const [user1Name] = useState("Diana");
   const [user2Name] = useState("Kerry");
   const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [loadingPage, setLoadingPage] = useState(true);
   const [savedGoals, setSavedGoals] = useState({
     1: {},
     2: {},
@@ -33,20 +35,28 @@ const Roadmap = ({ setCurrentPage }) => {
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
 
-  useEffect(() => {
-    const aiApiCallData = async () => {
-      // const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
-      // const userB = { firstName: "Bob", skills: ["Python", "Django"] };
-      // const project = "building a web application";
-      try {
-        // const data = await callOpenAiApi(userA, userB, project);
-        // setGoals(data.goals);
-        setLoadingPage(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    aiApiCallData();
+  // useEffect(() => {
+  //   const aiApiCallData = async () => {
+  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
+  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
+  //     const project = "building a web application";
+  //     try {
+  //       const data = await callOpenAiApi(userA, userB, project);
+  //       console.log(data.goals);
+  //       setGoals(data.goals);
+  //       setLoadingPage(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   }
+  //   aiApiCallData();
+  // }, []);
+
+    useEffect(() => {
+    // Simulating data fetch from backend
+    setTimeout(() => {
+      setLoadingPage(false);
+    }, 3000);
   }, []);
 
   // CALL BACKEND FUNCTION: Get Matches
@@ -245,6 +255,12 @@ const Roadmap = ({ setCurrentPage }) => {
       </Modal>
     );
   };
+
+  if(loadingPage){
+    return (
+      <LoadingPage/>
+    )
+  }
 
   return (
     <div className="roadmap-container">
