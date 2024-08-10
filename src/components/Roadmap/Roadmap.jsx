@@ -13,7 +13,7 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
-import LoadingPage from "../LoadingPage";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -256,9 +256,11 @@ const Roadmap = ({ setCurrentPage }) => {
     );
   };
 
-  if(loadingPage){
+  if (loadingPage) {
     return (
-      <LoadingPage/>
+      <div className="roadmap-container">
+        <LoadingPage />
+      </div>
     )
   }
 
