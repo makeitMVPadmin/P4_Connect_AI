@@ -32,6 +32,40 @@ const Roadmap = ({ setCurrentPage }) => {
   });
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
+
+  useEffect(() => {
+    const aiApiCallData = async () => {
+      // const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
+      // const userB = { firstName: "Bob", skills: ["Python", "Django"] };
+      // const project = "building a web application";
+      try {
+        // const data = await callOpenAiApi(userA, userB, project);
+        // setGoals(data.goals);
+        setLoadingPage(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    aiApiCallData();
+  }, []);
+
+  // CALL BACKEND FUNCTION: Get Matches
+  // Use the data of only the most recent match
+
+  // CALL BACKEND FUNCTION: Get User
+  // Get both users based on user id from the match table
+
+  // CALL BACKEND FUNCTION: Get UserGoalCompletion
+  // Get UserGoalCompletion data with match id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Goals
+  // Get Goals from UserGoalCompletion goal id
+
+  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
+  // Get UserSubtaskCompletion data with goal id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Subtasks
+  // Get Goals from UserSubtaskCompletion subtask id
   const isGoalCompleted = (goalNumber) => {
     const goalSubtasks = savedGoals[goalNumber];
     return (
