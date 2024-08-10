@@ -13,6 +13,8 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import GoalAchieved from "../GoalAchieved/GoalAchieved";
 import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
+import LoadingPage from "../LoadingPage/LoadingPage";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -23,6 +25,8 @@ const Roadmap = ({ setCurrentPage }) => {
   const [user1Name] = useState("Diana");
   const [user2Name] = useState("Kerry");
   const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [isExploding, setIsExploding] = useState(false);
   const [savedGoals, setSavedGoals] = useState({
     1: {},
     2: {},
@@ -32,6 +36,48 @@ const Roadmap = ({ setCurrentPage }) => {
   });
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
+
+  // useEffect(() => {
+  //   const aiApiCallData = async () => {
+  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
+  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
+  //     const project = "building a web application";
+  //     try {
+  //       const data = await callOpenAiApi(userA, userB, project);
+  //       console.log(data.goals);
+  //       setGoals(data.goals);
+  //       setLoadingPage(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   }
+  //   aiApiCallData();
+  // }, []);
+
+    useEffect(() => {
+    // Simulating data fetch from backend
+    setTimeout(() => {
+      setLoadingPage(false);
+    }, 3000);
+  }, []);
+
+  // CALL BACKEND FUNCTION: Get Matches
+  // Use the data of only the most recent match
+
+  // CALL BACKEND FUNCTION: Get User
+  // Get both users based on user id from the match table
+
+  // CALL BACKEND FUNCTION: Get UserGoalCompletion
+  // Get UserGoalCompletion data with match id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Goals
+  // Get Goals from UserGoalCompletion goal id
+
+  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
+  // Get UserSubtaskCompletion data with goal id (all 5 records)
+
+  // CALL BACKEND FUNCTION: Get Subtasks
+  // Get Goals from UserSubtaskCompletion subtask id
   const isGoalCompleted = (goalNumber) => {
     const goalSubtasks = savedGoals[goalNumber];
     return (
@@ -113,6 +159,7 @@ const Roadmap = ({ setCurrentPage }) => {
   const handleCloseGoalClickModal = () => {
     setModalOpen(false);
     setActiveGoal(null);
+    setIsExploding(false);
   };
 
   const handleSaveChanges = (goalNumber, subtasks) => {
@@ -154,14 +201,18 @@ const Roadmap = ({ setCurrentPage }) => {
       ) + completedSubtasksForGoal;
 
     const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+    setIsExploding(true);
     setCompletionPercentage(newPercentage);
-
     setModalOpen(false);
     setActiveGoal(null);
+    setTimeout(() => {
+      setIsExploding(false);
+    }, 1000);
   };
 
   const handleCloseGoalAchieved = () => {
     console.log("Closing GoalAchieved overlay");
+    setIsExploding(false);
     setShowGoalAchieved(false);
   };
 
@@ -212,6 +263,14 @@ const Roadmap = ({ setCurrentPage }) => {
     );
   };
 
+  if (loadingPage) {
+    return (
+      <div className="roadmap-container">
+        <LoadingPage />
+      </div>
+    )
+  }
+
   return (
     <div className="roadmap-container">
       <div className="svg-container">
@@ -221,6 +280,15 @@ const Roadmap = ({ setCurrentPage }) => {
             {user1Name}'s and {user2Name}'s partnership:
           </div>
           <div className="goals-progress-percentage">
+             {/* confetti explosion */}
+             {isExploding &&
+              <ConfettiExplosion
+                particleCount={20}
+              />}
+              {(completionPercentage >= 100) && isExploding &&
+              <ConfettiExplosion
+                particleCount={350}
+              />}
             {completionPercentage}% completed
           </div>
         </div>
