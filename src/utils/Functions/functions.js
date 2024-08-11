@@ -115,10 +115,29 @@ export const getAllUserAnswers = async () => {
 //Submit All answers function
 export const submitAllAnswers = async (newUserAnswers) => {
   try {
+
     const docRef = await addDoc(collection(db, "UserAnswers"), newUserAnswers);
     return docRef.id;
   } catch (e) {
     console.error("Error adding document: ", e);
     throw e;
+  }
+}
+
+//Get User info on match
+export const getUserInfoOnMatch = async (userID) => {
+  try {
+    const userRef = db.collection('Users').doc(userID);
+    const userDoc = await userRef.get();
+
+    if (!userDoc.exists) {
+      console.log('User not found.');
+      return null;
+    }
+
+    return userDoc.data();
+  } catch (error) {
+    console.error('Error getting user:', error);
+    throw error;
   }
 }
