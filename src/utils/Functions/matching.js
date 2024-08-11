@@ -67,7 +67,6 @@ export async function findBestMatch(newUser) {
                 }
             }
         });
-        console.log(usersForMatching)
 
         return { bestMatch, highestSimilarity };
 

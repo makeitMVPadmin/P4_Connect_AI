@@ -9,25 +9,25 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-function throttle(func, limit) {
-  let lastFunc;
-  let lastRan;
-  return function (...args) {
-    const context = this;
-    if (!lastRan) {
-      func.apply(context, args);
-      lastRan = Date.now();
-    } else {
-      if (lastFunc) clearTimeout(lastFunc);
-      lastFunc = setTimeout(function () {
-        if (Date.now() - lastRan >= limit) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
-    }
-  };
-}
+// function throttle(func, limit) {
+//   let lastFunc;
+//   let lastRan;
+//   return function (...args) {
+//     const context = this;
+//     if (!lastRan) {
+//       func.apply(context, args);
+//       lastRan = Date.now();
+//     } else {
+//       if (lastFunc) clearTimeout(lastFunc);
+//       lastFunc = setTimeout(function () {
+//         if (Date.now() - lastRan >= limit) {
+//           func.apply(context, args);
+//           lastRan = Date.now();
+//         }
+//       }, limit - (Date.now() - lastRan));
+//     }
+//   };
+// }
 
 
 // Create
@@ -110,3 +110,15 @@ export const getAllUserAnswers = async () => {
     throw e;
   }
 };
+
+
+//Submit All answers function
+export const submitAllAnswers = async (newUserAnswers) => {
+  try {
+    const docRef = await addDoc(collection(db, "UserAnswers"), newUserAnswers);
+    return docRef.id;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    throw e;
+  }
+}
