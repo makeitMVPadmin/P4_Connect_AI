@@ -23,7 +23,7 @@ const GoalPopup = ({
   const getPopupClassName = () => {
     if (locked) return "goal-popup--locked";
     if (isCurrent) return "goal-popup--current";
-    if (completed) return "goal-popup--completed";
+    //if (completed) return "goal-popup--completed";
     return "";
   };
 

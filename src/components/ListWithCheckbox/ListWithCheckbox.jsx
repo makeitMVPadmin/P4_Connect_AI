@@ -9,24 +9,42 @@ const ListWithCheckbox = ({
   checkboxClassName,
   goaldivClassName,
 }) => {
-  const [selectedValues, setSelectedValues] = useState(savedCheckedState || {});
+  const [selectedValues, setSelectedValues] = useState(() => {
+    if (Object.keys(savedCheckedState).length) {
+      console.log(savedCheckedState);
+      return savedCheckedState;
+    } else {
+      const newObj = options1.reduce((acc, curr) => {
+        acc[curr] = false;
+        return acc;
+      }, {});
 
-  useEffect(() => {
-    setSelectedValues(savedCheckedState || {});
-  }, [savedCheckedState]);
+      return newObj;
+    }
+  });
 
   const handleChange = (option) => {
-    const newSelectedValues = {
-      ...selectedValues,
-      [option]: !selectedValues[option],
-    };
-    setSelectedValues(newSelectedValues);
-    onChange(newSelectedValues);
+    const p = Object.entries(selectedValues).filter(
+      ([key, value]) => key === option
+    );
+    console.log(p[0][1])
+    if (!p[0][1]) {
+      const newSelectedValues = {
+        ...selectedValues,
+        [option]: !selectedValues[option],
+      };
+      onChange(newSelectedValues);
+      return setSelectedValues(newSelectedValues);
+    } 
   };
 
-  const isPreviousChecked = (index) => {
-    if (index === 0) return true; // The first checkbox is always enabled
-    return selectedValues[options1[index - 1]];
+  const isPreviousChecked = (option) => {
+    const currentIndex = options1.indexOf(option);
+    if (currentIndex === 0) return true; // The first checkbox is always enabled
+
+    // Check if the previous option in the list is checked
+    const previousOption = options1[currentIndex - 1];
+    return selectedValues[previousOption];
   };
 
   return (
@@ -36,16 +54,16 @@ const ListWithCheckbox = ({
           <label key={index}>
             <input
               type="checkbox"
-              checked={selectedValues[option] || false}
+              checked={selectedValues[option]}
               onChange={() => handleChange(option)}
-              disabled={!isPreviousChecked(index)}
+              disabled={!isPreviousChecked(option)}
               className={`listwithcheckbox_options--checkboxescustom ${
                 checkboxClassName || ""
               }`}
             />
             <span
               className={
-                isPreviousChecked(index)
+                isPreviousChecked(option)
                   ? `option_active ${spanClassName || ""}`
                   : `option_inactive ${spanClassName || ""} `
               }
