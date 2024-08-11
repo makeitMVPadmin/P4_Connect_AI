@@ -17,7 +17,6 @@ import user2Picture from "../../assets/images/user2.svg";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import ConfettiExplosion from "react-confetti-explosion";
 
-
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -37,8 +36,7 @@ const Roadmap = ({ setCurrentPage }) => {
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
   const [goalAchievedOnce, setGoalAchievedOnce] = useState({});
-const[completedSubtasks,setCompletedSubtasks]=useState();
-
+  const [completedSubtasks, setCompletedSubtasks] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
@@ -58,30 +56,37 @@ const[completedSubtasks,setCompletedSubtasks]=useState();
     setActiveGoal(null);
     setIsExploding(false);
   };
+useEffect(()=>{
+  const totalSubtasks = goalsData.reduce(
+    (acc, goal) => acc + goal.subtasks.length,
+    0
+  );
+  const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+  setCompletionPercentage(newPercentage);
+},[goalsData,completedSubtasks])
+
 
   const handleSaveChanges = (goalNumber, subtasks) => {
-
     setSavedGoals((prev) => {
       const newSavedGoals = {
         ...prev,
         [goalNumber]: subtasks,
       };
-      console.log(newSavedGoals)
-     let completedSubtasks =
-      Object.values(newSavedGoals).reduce(
-        (acc, goal) => acc + Object.values(goal).filter(value=>value===true).length,
+      console.log(newSavedGoals);
+      const theSubtask = Object.values(newSavedGoals).reduce(
+        (acc, goal) =>
+          acc + Object.values(goal).filter((value) => value === true).length,
         0
-      ) ;
-      setCompletedSubtasks(completedSubtasks);
-      console.log("completedSubtasks inside savedGoals",completedSubtasks)
+      );
+      setCompletedSubtasks(theSubtask);
+      console.log("completedSubtasks inside savedGoals", theSubtask);
       return newSavedGoals;
     });
-   // console.log("completedSubtasks outside savedgoals", completedSubtasks);
-
 
 
     const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
-    const completedSubtasksForGoal = Object.values(subtasks).filter(Boolean).length;
+    const completedSubtasksForGoal =
+      Object.values(subtasks).filter(Boolean).length;
     const allSubtasksCompleted =
       completedSubtasksForGoal === totalSubtasksForGoal;
 
@@ -98,16 +103,9 @@ const[completedSubtasks,setCompletedSubtasks]=useState();
     }
 
     // Update completion percentage
-    const totalSubtasks = goalsData.reduce(
-      (acc, goal) => acc + goal.subtasks.length,
-      0
-    );
 
-    
- 
-    const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
     setIsExploding(true);
-    setCompletionPercentage(newPercentage);
+    
     setModalOpen(false);
     setActiveGoal(null);
     setTimeout(() => {
