@@ -36,8 +36,6 @@ const Roadmap = ({ setCurrentPage }) => {
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
   const [goalAchievedOnce, setGoalAchievedOnce] = useState({});
-  const [completedSubtasks, setCompletedSubtasks] = useState(0);
-
   useEffect(() => {
     setTimeout(() => {
       setLoadingPage(false);
@@ -61,9 +59,14 @@ useEffect(()=>{
     (acc, goal) => acc + goal.subtasks.length,
     0
   );
-  const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+  const theSubtask=Object.values(savedGoals).reduce((acc,goal)=>{
+    const task=Object.values(goal).filter(item=>item===true).length;
+    acc=acc+task;
+    return acc;
+  },0)
+  const newPercentage = Math.round((theSubtask / totalSubtasks) * 100);
   setCompletionPercentage(newPercentage);
-},[goalsData,completedSubtasks])
+},[savedGoals,goalsData])
 
 
   const handleSaveChanges = (goalNumber, subtasks) => {
@@ -72,14 +75,7 @@ useEffect(()=>{
         ...prev,
         [goalNumber]: subtasks,
       };
-      console.log(newSavedGoals);
-      const theSubtask = Object.values(newSavedGoals).reduce(
-        (acc, goal) =>
-          acc + Object.values(goal).filter((value) => value === true).length,
-        0
-      );
-      setCompletedSubtasks(theSubtask);
-      console.log("completedSubtasks inside savedGoals", theSubtask);
+      
       return newSavedGoals;
     });
 
@@ -102,10 +98,7 @@ useEffect(()=>{
       }
     }
 
-    // Update completion percentage
-
     setIsExploding(true);
-    
     setModalOpen(false);
     setActiveGoal(null);
     setTimeout(() => {
