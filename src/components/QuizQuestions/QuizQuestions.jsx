@@ -81,6 +81,9 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
       JSON.stringify(answeredQuestionsArray)
     );
   }, [answeredQuestions]);
+  useEffect(()=>{
+    sessionStorage.setItem("selectedAnswerIdsJSON",JSON.stringify(selectedAnswerIds))
+  },[selectedAnswerIds])
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -96,15 +99,6 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     console.log("formData", formData);
     console.log("Selected Answer IDs:", selectedAnswerIds.sort());
 
-    // //Generate an ID for the current user; to be deleted
-    // const newUID = generateUID();
-
-    // //send to matching function
-    // const result = findBestMatch({ user_id: newUID, answers: selectedAnswerIds });
-    // console.log(result);
-
-    // setCurrentPage("match"); //old match page - this line of code is temporary and is only used to demonstrate page flow, it doesn't have any proper logic attached
-    setCurrentPage("loading");
     setCurrentPage("loading");
   };
 

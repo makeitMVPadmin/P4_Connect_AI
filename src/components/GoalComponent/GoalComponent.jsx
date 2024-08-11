@@ -13,12 +13,10 @@ const GoalComponent = ({
   subtasks,
   onSaveChanges,
   savedProgress,
-  onClose,
-}) => {
-  const [user1Pic, setUser1Pic] = useState(user1); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
-  const [selectedSubtasks, setSelectedSubtasks] = useState(savedProgress || {});
 
+}) => {
+
+  const [selectedSubtasks, setSelectedSubtasks] = useState(savedProgress || {});
 
   const handleSubtaskChange = (newSelectedValues) => {
     setSelectedSubtasks(newSelectedValues);
@@ -34,9 +32,9 @@ const GoalComponent = ({
       <div className="matched">
         <div className="matched__images">
           <img className="matched__hat matched__hat--1" src={hat} alt="makeitMVP hat" />
-          <img src={user1Pic} alt="user1 avatar " className="matched__user" />
+          <img src={user1} alt="user1 avatar " className="matched__user" />
           <img className="matched__hat matched__hat--2" src={hat} alt="makeitMVP hat" />
-          <img src={user2Pic} alt="user2 avatar " className="matched__user" />
+          <img src={user2} alt="user2 avatar " className="matched__user" />
         </div>
       </div>
       {/* popup title  */}
@@ -49,7 +47,7 @@ const GoalComponent = ({
         <ListWithCheckbox
           options1={subtasks}
           onChange={handleSubtaskChange}
-          savedCheckedState={selectedSubtasks}
+          savedCheckedState={savedProgress}
           spanClassName="option_goal"
           checkboxClassName="listwithcheckbox_options--checkboxesgoals"
           goaldivClassName="listwithcheckbox--goaldiv"
