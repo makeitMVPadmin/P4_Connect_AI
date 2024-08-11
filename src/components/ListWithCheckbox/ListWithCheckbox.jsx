@@ -27,7 +27,7 @@ const ListWithCheckbox = ({
     const p = Object.entries(selectedValues).filter(
       ([key, value]) => key === option
     );
-    console.log(p[0][1])
+  
     if (!p[0][1]) {
       const newSelectedValues = {
         ...selectedValues,

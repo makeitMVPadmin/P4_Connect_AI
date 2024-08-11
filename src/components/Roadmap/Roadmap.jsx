@@ -71,6 +71,7 @@ const Roadmap = ({ setCurrentPage }) => {
 
     // Check if all subtasks for the current goal are completed
     const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
+    console.log("totalSubtasksForGoal", totalSubtasksForGoal);
     const completedSubtasksForGoal =
       Object.values(subtasks).filter(Boolean).length;
       
