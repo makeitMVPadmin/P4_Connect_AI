@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Welcome to the MakeItMVP Launch Academy Phase 4 - Project Accountabuddy! This project is built using React and Sass, leveraging OpenAI's API to enhance its functionality.
+Welcome to the MakeItMVP Launch Academy Phase 4 - Project AccountaBuddy! This project is built using React and Sass, leveraging OpenAI's API to enhance its functionality.
 
 AccountaBuddy extends the capabilities of makeitMVP's existing Communiti platform. Our mission is to empower individuals to achieve their professional goals through meaningful peer-to-peer accountability partnerships.
 
