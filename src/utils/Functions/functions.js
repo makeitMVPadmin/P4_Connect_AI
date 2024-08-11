@@ -96,9 +96,10 @@ export const getAllQuestions = async () => {
 }
 
 //Get all UserAnswers
-export const getAllUserAnswers = throttle(async () => {
+export const getAllUserAnswers = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "UserAnswers"));
+    // console.log('LOOK HERE: ', querySnapshot)
     const dataList = [];
     querySnapshot.forEach((doc) => {
       dataList.push({ id: doc.id, ...doc.data() });
@@ -108,4 +109,4 @@ export const getAllUserAnswers = throttle(async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}, 1000);
+};

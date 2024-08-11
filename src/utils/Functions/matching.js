@@ -58,15 +58,15 @@ export async function findBestMatch(newUser) {
         let highestSimilarity = 0;
         const usersForMatching = await getAllUserAnswers();
 
-        usersForMatching.forEach(user => {
-            if (user.user_id !== newUser.user_id) {
-                const similarity = weightedJaccardSimilarity(newUser.answers, user.answers);
-                if (similarity > highestSimilarity) {
-                    highestSimilarity = similarity;
-                    bestMatch = user;
-                }
-            }
-        });
+        // usersForMatching.forEach(user => {
+        //     if (user.user_id !== newUser.user_id) {
+        //         const similarity = weightedJaccardSimilarity(newUser.answers, user.answers);
+        //         if (similarity > highestSimilarity) {
+        //             highestSimilarity = similarity;
+        //             bestMatch = user;
+        //         }
+        //     }
+        // });
         console.log(usersForMatching)
 
         return { bestMatch, highestSimilarity };
