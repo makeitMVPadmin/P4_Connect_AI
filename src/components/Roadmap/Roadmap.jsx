@@ -16,6 +16,7 @@ import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import ConfettiExplosion from "react-confetti-explosion";
+import { TrendingUp } from "@mui/icons-material";
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -35,7 +36,7 @@ const Roadmap = ({ setCurrentPage }) => {
   });
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
-
+  const [goalAchievedOnce, setGoalAchievedOnce] = useState({});
   useEffect(() => {
     // Simulating data fetch from backend
     setTimeout(() => {
@@ -43,9 +44,8 @@ const Roadmap = ({ setCurrentPage }) => {
     }, 1000);
   }, []);
 
-
   const handleGoalClickModal = (goalNumber) => {
-    if (goalNumber<=activeGoalNumber) {
+    if (goalNumber <= activeGoalNumber) {
       setActiveGoal(goalNumber);
       setModalOpen(true);
     }
@@ -58,8 +58,7 @@ const Roadmap = ({ setCurrentPage }) => {
   };
 
   const handleSaveChanges = (goalNumber, subtasks) => {
-    console.log("goal number: " + goalNumber);
-    console.log("subtasks: " +subtasks)
+   
     setSavedGoals((prev) => {
       const newSavedGoals = {
         ...prev,
@@ -71,35 +70,38 @@ const Roadmap = ({ setCurrentPage }) => {
 
     // Check if all subtasks for the current goal are completed
     const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
-    console.log("totalSubtasksForGoal", totalSubtasksForGoal);
+
     const completedSubtasksForGoal =
       Object.values(subtasks).filter(Boolean).length;
-      
-    console.log("completedSubtasksForGoal", completedSubtasksForGoal);
+
+
     const allSubtasksCompleted =
       completedSubtasksForGoal === totalSubtasksForGoal;
 
     if (allSubtasksCompleted) {
       if (goalNumber === 5) {
         setShowGoalAchieved(true);
-      } else {
-        setActiveGoalNumber(activeGoalNumber+1);
-        }
+      } else if (!goalAchievedOnce[goalNumber]) {
+        setActiveGoalNumber(activeGoalNumber + 1);
+        setGoalAchievedOnce((prev) => ({
+          ...prev,
+          [goalNumber]: true,
+        }));
       }
-    
+    }
 
     // Update completion percentage
     const totalSubtasks = goalsData.reduce(
       (acc, goal) => acc + goal.subtasks.length,
       0
     );
- 
+
     const completedSubtasks =
       Object.values(savedGoals).reduce(
         (acc, goal) => acc + Object.values(goal).filter(Boolean).length,
         0
       ) + completedSubtasksForGoal;
-console.log("completedSubtasks",completedSubtasks)
+    console.log("completedSubtasks", completedSubtasks);
     const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
     setIsExploding(true);
     setCompletionPercentage(newPercentage);
@@ -130,7 +132,6 @@ console.log("completedSubtasks",completedSubtasks)
       return "goal-icon upcoming";
     }
   };
-
 
   const renderModalComponent = () => {
     if (!activeGoal) return null;
