@@ -16,7 +16,7 @@ import user1Picture from "../../assets/images/user1.svg";
 import user2Picture from "../../assets/images/user2.svg";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import ConfettiExplosion from "react-confetti-explosion";
-import { TrendingUp } from "@mui/icons-material";
+
 
 const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -37,8 +37,10 @@ const Roadmap = ({ setCurrentPage }) => {
   const [activeGoalNumber, setActiveGoalNumber] = useState(1);
   const [showGoalAchieved, setShowGoalAchieved] = useState(false);
   const [goalAchievedOnce, setGoalAchievedOnce] = useState({});
+const[completedSubtasks,setCompletedSubtasks]=useState();
+
+
   useEffect(() => {
-    // Simulating data fetch from backend
     setTimeout(() => {
       setLoadingPage(false);
     }, 1000);
@@ -58,23 +60,28 @@ const Roadmap = ({ setCurrentPage }) => {
   };
 
   const handleSaveChanges = (goalNumber, subtasks) => {
-   
+
     setSavedGoals((prev) => {
       const newSavedGoals = {
         ...prev,
         [goalNumber]: subtasks,
       };
-      console.log(newSavedGoals);
+      console.log(newSavedGoals)
+     let completedSubtasks =
+      Object.values(newSavedGoals).reduce(
+        (acc, goal) => acc + Object.values(goal).filter(value=>value===true).length,
+        0
+      ) ;
+      setCompletedSubtasks(completedSubtasks);
+      console.log("completedSubtasks inside savedGoals",completedSubtasks)
       return newSavedGoals;
     });
+   // console.log("completedSubtasks outside savedgoals", completedSubtasks);
 
-    // Check if all subtasks for the current goal are completed
+
+
     const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
-
-    const completedSubtasksForGoal =
-      Object.values(subtasks).filter(Boolean).length;
-
-
+    const completedSubtasksForGoal = Object.values(subtasks).filter(Boolean).length;
     const allSubtasksCompleted =
       completedSubtasksForGoal === totalSubtasksForGoal;
 
@@ -96,12 +103,8 @@ const Roadmap = ({ setCurrentPage }) => {
       0
     );
 
-    const completedSubtasks =
-      Object.values(savedGoals).reduce(
-        (acc, goal) => acc + Object.values(goal).filter(Boolean).length,
-        0
-      ) + completedSubtasksForGoal;
-    console.log("completedSubtasks", completedSubtasks);
+    
+ 
     const newPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
     setIsExploding(true);
     setCompletionPercentage(newPercentage);

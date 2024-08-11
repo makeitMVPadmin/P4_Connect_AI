@@ -11,7 +11,7 @@ const ListWithCheckbox = ({
 }) => {
   const [selectedValues, setSelectedValues] = useState(() => {
     if (Object.keys(savedCheckedState).length) {
-      console.log(savedCheckedState);
+      //console.log(savedCheckedState);
       return savedCheckedState;
     } else {
       const newObj = options1.reduce((acc, curr) => {

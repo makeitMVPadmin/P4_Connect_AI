@@ -19,9 +19,6 @@ const GoalComponent = ({
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [selectedSubtasks, setSelectedSubtasks] = useState(savedProgress || {});
 
-  useEffect(() => {
-    setSelectedSubtasks(savedProgress || {});
-  }, [savedProgress, goalNumber]);
 
   const handleSubtaskChange = (newSelectedValues) => {
     setSelectedSubtasks(newSelectedValues);
