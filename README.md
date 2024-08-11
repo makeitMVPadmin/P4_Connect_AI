@@ -1,4 +1,4 @@
-# MakeItMVP Launch Academy Phase 4: Project Accountabuddy (README.md in progress)
+# MakeItMVP Launch Academy Phase 4: Project AccountaBuddy
 
 ## Project Description
 
@@ -108,39 +108,79 @@ This repository uses the following technologies:
 
 ## Contributors
 
-Our team comprises two sub-teams - "Project Accountabuddy" and "Project Infrastructure".
-Project Accountabuddy handled the front-end designs and code, and Project Infrastructure handled the back-end code and database.
+Our team comprises two sub-teams - "Project AccountaBuddy" and "Project Infrastructure".
+Project AccountaBuddy handled the front-end designs and code, and Project Infrastructure handled the back-end code and database.
 
 ### Designers (Project AccountaBuddy)
 
-- Anna Ryzha
-- Helena Dinh
-- Isha Umaima
+- [Anna Ryzha](https://www.linkedin.com/in/anna-ryzha/)
+- [Helena Dinh](https://www.linkedin.com/in/helena-thy-dinh/)
+- [Isha Umaima](https://www.linkedin.com/in/isha-umaima/)
 
 ### Front-end Developers (Project AccountaBuddy)
 
-- Aparna Dhara
-- Gloria Lau
-- Jack Henriksen
-- Jagadeep Avula
-- Madhuja Mitra
-- Mohan Krishna Hasti
+- [Aparna Dhara](https://www.linkedin.com/in/aparna-dhara/)
+- [Gloria Lau](https://www.linkedin.com/in/gloria-sm-lau/)
+- [John Henriksen](https://www.linkedin.com/in/john-henriksen/)
+- [Jagadeep Avula](https://www.linkedin.com/in/jagadeepavula/)
+- [Madhuja Mitra](https://www.linkedin.com/in/madhuja-mitra-0a083377/)
+- [Mohan Krishna Hasti](https://www.linkedin.com/in/mohankrishnahasti/)
 
 ### Back-end Developers (Project Infrastructure)
 
-- Andrea Matos
-- Avi Brar
-- Masoud Arefi
+- [Andrea Matos](https://www.linkedin.com/in/drevm/)
+- [Avi Brar](https://www.linkedin.com/in/avi-brar/)
+- [Masoud Arefi](https://www.linkedin.com/in/masoud-arefi/)
 
 ### Product Manager
 
-- Alberto Borgonovo (Project Infrastructure)
+- [Alberto Borgonovo](https://www.linkedin.com/in/alberto-borgonovo/) (Project Infrastructure)
 
-### Team Lead
+### Team Leads
 
-- Dinne Kopelevich (Project Accountabuddy)
-- Scott Schwab (Project Infrastructure)
+- [Dinne Kopelevich](https://www.linkedin.com/in/dinne-kopelevich/) (Project AccountaBuddy)
+- [Scott Schwab](https://www.linkedin.com/in/scott-p-schwab/) (Project Infrastructure)
 
 ## Screenshots
+
+### Home page
+
+![alt text](Accountabuddy1.png)
+
+### Quiz Screen
+
+![alt text](Accountabuddy2.png)
+
+### Loading Screen
+
+![alt text](AccountabuddyLoading.PNG)
+
+### Match Screen
+
+![alt text](Accountabuddy3.png)
+
+### Roadmap Landing Screen
+
+![alt text](Accountabuddy4.png)
+
+### Roadmap Hover State Active
+
+![alt text](Accountabuddy4hover.png)
+
+### Roadmap Hover State Inactive
+
+![alt text](Accountabuddy4hover2.png)
+
+### Roadmap Goal Modal
+
+![alt text](Accountabuddy5.png)
+
+### Roadmap Mid-progress Hover
+
+![alt text](Accountabuddy5hover.png)
+
+### Roadmap Goal Achieved Screen
+
+![alt text](Accountabuddy6.png)
 
 This project is licensed under the [MIT License](LICENSE).
