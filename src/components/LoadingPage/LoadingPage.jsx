@@ -1,5 +1,6 @@
 import "./LoadingPage.scss";
 import LoadingBar from "../LoadingBar/LoadingBar";
+import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import connectAiIcon from "../../assets/images/connectAiIcon.svg";
 import { useEffect, useState } from "react";
 
@@ -12,16 +13,23 @@ const LoadingPage = ({ currentPage, setCurrentPage }) => {
       }, 2000);
       setPage(currentPage);
     }
+    if(page==="loading1")
+    {
+      setTimeout(() => {
+        setCurrentPage("roadmap");
+      }, 2000);
+      setPage(currentPage);
+    }
   }, []);
 
   return (
     <div className="loading-page">
       <h2 className="loading-page__text">
-        Hold on, we’re looking for your perfect partner...
+        Give us a couple of seconds, we are nearly there...
       </h2>
       <LoadingBar />
       <img
-        src={connectAiIcon}
+        src={CoffeeMugWithHat_happy}
         alt="communiti icon"
         className="loading-page__icon"
       />

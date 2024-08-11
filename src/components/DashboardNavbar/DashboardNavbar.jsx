@@ -76,22 +76,15 @@ function DashboardNavbar() {
     <div className="dashboard-navbar">
       <div className="dashboard-navbar__left">
         <Link to="/dashboard" className="dashboard-navbar__link">
-          <img
-            src={LogoIcon}
-            alt="Logo Icon"
-            className="dashboard-navbar__logo"
-          />
+          <img src={LogoIcon} alt="Logo Icon" className="dashboard-navbar__logo" />
         </Link>
-        
       </div>
 
       <div className="dashboard-navbar__right">
-      <NavLink
+        <NavLink
           to="/dashboard"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -104,9 +97,7 @@ function DashboardNavbar() {
         <NavLink
           to="/communities"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -119,9 +110,7 @@ function DashboardNavbar() {
         <NavLink
           to="/events"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -134,9 +123,7 @@ function DashboardNavbar() {
         <NavLink
           to="/coffeechat"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -164,9 +151,7 @@ function DashboardNavbar() {
         <NavLink
           to="/prompt"
           className={(navData) =>
-            navData.isActive
-              ? "dashboard-navbar__link active"
-              : "dashboard-navbar__link"
+            navData.isActive ? "dashboard-navbar__link active" : "dashboard-navbar__link"
           }
         >
           <img
@@ -174,7 +159,7 @@ function DashboardNavbar() {
             alt="connectAI icon"
             className="dashboard-navbar__img dashboard-navbar__img--connectAi"
           />
-          <p className="dashboard-navbar__text">ConnectAI</p>
+          <p className="dashboard-navbar__text">AccountaBuddy</p>
         </NavLink>
         <Link to="/profile" className="dashboard-navbar__link">
           <img
