@@ -100,7 +100,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     const newUID = generateUID();
 
     //send to matching function
-    const result = findBestMatch({
+    const result = await findBestMatch({
       user_id: newUID,
       answers: selectedAnswerIds,
     });
@@ -151,7 +151,7 @@ const QuizQuestions = ({ setCurrentPage, onProgressChange }) => {
     setAnsweredQuestions((prev) => {
       const newSet = new Set(prev);
       (value != "Please select an option" && question_type === "dropdown") ||
-      (value.length > 0 && question_type == "checkbox")
+        (value.length > 0 && question_type == "checkbox")
         ? newSet.add(question_content)
         : newSet.delete(question_content);
 
