@@ -18,9 +18,7 @@ const NewMatchedUsers = ({
   setCurrentPage,
 }) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
-  const [matchedUserTitle, setMatchedUserTitle] = useState(
-    "Web developer and UX/UI Designer in training"
-  );
+  const [matchedUserTitle, setMatchedUserTitle] = useState("UX Engineer in training");
   const [user2Pic, setUser2Pic] = useState(user2); //replace user2 with null instead of image placeholder
   const [matchPercentage, setMatchPercentage] = useState(88); //replace 88 with null instead of int placeholder
 
