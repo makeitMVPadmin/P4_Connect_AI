@@ -154,7 +154,9 @@
     fill: #0954B0;
   }
 
-  &.completed svg path:first-of-type,
+ &.completed svg path:first-of-type{
+  fill:rgb(79, 179, 152);
+ }
   &.upcoming svg path:first-of-type {
     fill: #919191;
   }
