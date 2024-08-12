@@ -37,9 +37,6 @@ const ListWithCheckbox = ({
 
   const isPreviousChecked = (option) => {
     const currentIndex = options1.indexOf(option);
-    if (currentIndex === 0) return true; // The first checkbox is always enabled
-
-    // Check if the previous option in the list is checked
     const previousOption = options1[currentIndex - 1];
     return selectedValues[previousOption];
   };
