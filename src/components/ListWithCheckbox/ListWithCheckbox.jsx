@@ -5,8 +5,6 @@ const ListWithCheckbox = ({
   options1,
   onChange,
   savedCheckedState,
-  spanClassName,
-  checkboxClassName,
   goaldivClassName,
 }) => {
   const [selectedValues, setSelectedValues] = useState(() => {
@@ -56,15 +54,13 @@ const ListWithCheckbox = ({
               checked={selectedValues[option]}
               onChange={() => handleChange(option)}
               disabled={!isPreviousChecked(option)}
-              className={`listwithcheckbox_options--checkboxescustom ${
-                checkboxClassName || ""
-              }`}
+              className="listwithcheckbox_options--checkboxesgoals" 
             />
             <span
               className={
                 isPreviousChecked(option)
-                  ? `option_active ${spanClassName || ""}`
-                  : `option_inactive ${spanClassName || ""} `
+                  ? `option_active`
+                  : `option_inactive`
               }
             >
               {option}

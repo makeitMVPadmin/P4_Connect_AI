@@ -13,7 +13,6 @@ const GoalComponent = ({
   subtasks,
   onSaveChanges,
   savedProgress,
-
 }) => {
 
   const [selectedSubtasks, setSelectedSubtasks] = useState(savedProgress || {});
@@ -48,8 +47,6 @@ const GoalComponent = ({
           options1={subtasks}
           onChange={handleSubtaskChange}
           savedCheckedState={savedProgress}
-          spanClassName="option_goal"
-          checkboxClassName="listwithcheckbox_options--checkboxesgoals"
           goaldivClassName="listwithcheckbox--goaldiv"
         />
       </div>

@@ -21,12 +21,6 @@
     flex-direction: column;
     gap: 1rem;
 
-    &--checkboxescustom {
-      width: 20px;
-
-      cursor: pointer;
-    }
-
     &--checkboxesgoals {
       width: 30px;
       height: 30px;
@@ -45,15 +39,13 @@
 
     .option_active {
       color: $MVP-black;
+      font-size: 15px;
     }
 
-    .option_goal {
-      font-size: 15px;
-      line-height: 23px;
-    }
 
     .option_inactive {
       color: $MVP-faded;
+      font-size: 15px;
     }
   }
 }
