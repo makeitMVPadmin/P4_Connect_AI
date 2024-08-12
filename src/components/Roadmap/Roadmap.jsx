@@ -54,20 +54,20 @@ const Roadmap = ({ setCurrentPage }) => {
     setActiveGoal(null);
     setIsExploding(false);
   };
-useEffect(()=>{
-  const totalSubtasks = goalsData.reduce(
-    (acc, goal) => acc + goal.subtasks.length,
-    0
-  );
-  const theSubtask=Object.values(savedGoals).reduce((acc,goal)=>{
-    const task=Object.values(goal).filter(item=>item===true).length;
-    acc=acc+task;
-    return acc;
-  },0)
-  const newPercentage = Math.round((theSubtask / totalSubtasks) * 100);
-  setCompletionPercentage(newPercentage);
-},[savedGoals,goalsData])
+  useEffect(() => {
+    const totalSubtasks = goalsData.reduce(
+      (acc, goal) => acc + goal.subtasks.length,
+      0
+    );
+    const theSubtask = Object.values(savedGoals).reduce((acc, goal) => {
+      const task = Object.values(goal).filter((item) => item === true).length;
+      acc = acc + task;
+      return acc;
+    }, 0);
+    const newPercentage = Math.round((theSubtask / totalSubtasks) * 100);
+    setCompletionPercentage(newPercentage);
 
+  }, [savedGoals, goalsData]);
 
   const handleSaveChanges = (goalNumber, subtasks) => {
     setSavedGoals((prev) => {
@@ -75,10 +75,8 @@ useEffect(()=>{
         ...prev,
         [goalNumber]: subtasks,
       };
-      
       return newSavedGoals;
     });
-
 
     const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
     const completedSubtasksForGoal =
@@ -171,12 +169,7 @@ useEffect(()=>{
             {user1Name}'s and {user2Name}'s partnership:
           </div>
           <div className="goals-progress-percentage">
-            {/* confetti explosion */}
             {isExploding && <ConfettiExplosion particleCount={120} />}
-            {/* {(completionPercentage >= 100) && isExploding &&
-              <ConfettiExplosion
-                particleCount={350}
-              />} */}
             {completionPercentage}% completed
           </div>
         </div>
