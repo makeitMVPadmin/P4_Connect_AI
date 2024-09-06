@@ -10,13 +10,13 @@ import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("roadmap");
+  const [currentPage, setCurrentPage] = useState("prompt");
 
   // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
   const [matchResults, setMatchResults] = useState(null);
 
   useEffect(() => {
-    setCurrentPage("roadmap");
+    setCurrentPage("prompt");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
     sessionStorage.removeItem("selectedAnswerIdsJSON");
@@ -93,7 +93,7 @@ const PromptPage = () => {
           {currentPage === "roadmap" && (
             <Roadmap setCurrentPage={setCurrentPage} />
           )}
-         {(currentPage === "loading"||currentPage==="loading1") && (
+          {(currentPage === "loading" || currentPage === "loading1") && (
             <LoadingPage
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
