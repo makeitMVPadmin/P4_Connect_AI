@@ -24,7 +24,7 @@ const ListWithCheckbox = ({
     const p = Object.entries(selectedValues).filter(
       ([key, value]) => key === option
     );
-    console.log(p[0][1])
+    console.log(p[0][1]);
     if (!p[0][1]) {
       const newSelectedValues = {
         ...selectedValues,
@@ -32,11 +32,12 @@ const ListWithCheckbox = ({
       };
       onChange(newSelectedValues);
       return setSelectedValues(newSelectedValues);
-    } 
+    }
   };
 
   const isPreviousChecked = (option) => {
     const currentIndex = options1.indexOf(option);
+    if (currentIndex == 0) return true;
     const previousOption = options1[currentIndex - 1];
     return selectedValues[previousOption];
   };
@@ -51,13 +52,11 @@ const ListWithCheckbox = ({
               checked={selectedValues[option]}
               onChange={() => handleChange(option)}
               disabled={!isPreviousChecked(option)}
-              className="listwithcheckbox_options--checkboxesgoals" 
+              className="listwithcheckbox_options--checkboxesgoals"
             />
             <span
               className={
-                isPreviousChecked(option)
-                  ? `option_active`
-                  : `option_inactive`
+                isPreviousChecked(option) ? `option_active` : `option_inactive`
               }
             >
               {option}
