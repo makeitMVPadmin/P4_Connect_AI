@@ -93,7 +93,7 @@ const PromptPage = () => {
           {currentPage === "roadmap" && (
             <Roadmap setCurrentPage={setCurrentPage} />
           )}
-          {currentPage === "loading" && (
+         {(currentPage === "loading"||currentPage==="loading1") && (
             <LoadingPage
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
