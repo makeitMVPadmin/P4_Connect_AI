@@ -152,13 +152,13 @@ const Roadmap = ({ setCurrentPage }) => {
     );
   };
 
-  if (loadingPage) {
-    return (
-      <div className="roadmap-container">
-        <LoadingPage />
-      </div>
-    );
-  }
+  // if (loadingPage) {
+  //   return (
+  //     <div className="roadmap-container">
+  //       <LoadingPage />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="roadmap-container">
