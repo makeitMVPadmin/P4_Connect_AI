@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ListWithCheckbox.scss";
-import Button from "../Button/Button";
-const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
-  // const options1 = [
-  //   "Scheduled & attend one Accountability Meeting",
-  //   "Attend 2 accountability meeting",
-  //   "Attend 3 accountability meeting",
-  //   "Attend all Accountability meeting",
-  // ];
-  const [selectedValues, setSelectedValues] = useState(
-    options1.reduce((arr, option) => {
-      arr[option] = false;
-      return arr;
-    }, {})
-  );
+
+const ListWithCheckbox = ({
+  options1,
+  onChange,
+  savedCheckedState,
+  goaldivClassName,
+}) => {
+  const [selectedValues, setSelectedValues] = useState(() => {
+    if (Object.keys(savedCheckedState).length) {
+      return savedCheckedState;
+    } else {
+      const newObj = options1.reduce((acc, curr) => {
+        acc[curr] = false;
+        return acc;
+      }, {});
+
+      return newObj;
+    }
+  });
 
   const handleChange = (option) => {
-    setSelectedValues({ ...selectedValues, [option]: true });
+    const p = Object.entries(selectedValues).filter(
+      ([key, value]) => key === option
+    );
+    console.log(p[0][1])
+    if (!p[0][1]) {
+      const newSelectedValues = {
+        ...selectedValues,
+        [option]: !selectedValues[option],
+      };
+      onChange(newSelectedValues);
+      return setSelectedValues(newSelectedValues);
+    } 
   };
-  const isPreviousChecked = (index) => {
-    if (index === 0) return true; // The first checkbox is always enabled
-    return selectedValues[options1[index - 1]];
+
+  const isPreviousChecked = (option) => {
+    const currentIndex = options1.indexOf(option);
+    const previousOption = options1[currentIndex - 1];
+    return selectedValues[previousOption];
   };
-  const allChecked = Object.values(selectedValues).filter(
-    (value) => value == false
-  );
+
   return (
-    <div className="listwithcheckbox">
-      {/* <h2>Goal BreakDown{label}</h2> */}
+    <div className={`listwithcheckbox ${goaldivClassName || ""}`}>
       <div className="listwithcheckbox_options">
         {options1.map((option, index) => (
           <label key={index}>
@@ -35,24 +50,20 @@ const ListWithCheckbox = ({ options1, label, onFunctionChange }) => {
               type="checkbox"
               checked={selectedValues[option]}
               onChange={() => handleChange(option)}
-              disabled={!isPreviousChecked(index)}
-              className="listwithcheckbox_options--checkboxescustom"
+              disabled={!isPreviousChecked(option)}
+              className="listwithcheckbox_options--checkboxesgoals" 
             />
             <span
               className={
-                isPreviousChecked(index) ? "option_active" : "option_inactive"
+                isPreviousChecked(option)
+                  ? `option_active`
+                  : `option_inactive`
               }
             >
               {option}
             </span>
           </label>
         ))}
-        {/* {allChecked.length === 0 && <p className="statement--last">All accountability tasks completed!</p>} */}
-        {allChecked.length === 0 &&
-          <Button
-            text={"Complete Goal"}
-            color={"blue"}
-          ></Button>}
       </div>
     </div>
   );

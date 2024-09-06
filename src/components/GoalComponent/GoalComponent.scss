@@ -4,49 +4,68 @@
 @use "../../styles/partials/variables" as *;
 
 .goalComponent {
-    //   margin: 1rem;
+  //   margin: 1rem;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  &__buttons {
     display: flex;
-    position: relative;
     justify-content: center;
+    margin-top: 45px;
+  }
+
+  .matched {
+    width: 100%;
+    position: relative;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
 
-    .matched {
-        width: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 10px;
-
-        &__images {
-            display: flex;
-            gap: 60px;
-            justify-content: center;
-            padding: 2% 0;
-            width: 100%;
-        }
-
-        &__user {
-            height: 100px;
-            border-radius: 50%;
-            width: 100px;
-        }
-       
+    &__images {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      padding: 2% 0;
+      width: 100%;
+      position: relative;
     }
-    .goalHeadingContainer {
-        position: relative;
-        text-align: center;
 
-        &__goalTitle {
-            padding: 10px;
-            font-size: 30px;
-            height: 56px;
-        }
-        &__goalPrompt{
-            font-size: 15px;
-        }
-
+    &__user {
+      height: 100px;
+      border-radius: 50%;
+      width: 100px;
     }
+    &__hat {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: 0;
+      &--1 {
+        left: 9rem;
+      }
+      &--2 {
+        right: 9rem;
+      }
+    }
+  }
+  .goalHeadingContainer {
+    position: relative;
+    text-align: center;
+
+    &__goalTitle {
+      font-family: Corben;
+      padding: 10px;
+      font-size: 30px;
+      line-height: 56px;
+    }
+    &__goalPrompt {
+      font-size: 15px;
+      padding: 0 0 31px;
+      font-family: Gilroy-ExtraBold;
+    }
+  }
 }

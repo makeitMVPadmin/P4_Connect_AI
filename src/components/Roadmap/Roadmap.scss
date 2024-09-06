@@ -30,9 +30,6 @@
   .svg-container {
     position: absolute;
     justify-content: center;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
 
@@ -49,12 +46,12 @@
       z-index: 99;
 
       &__images {
-
         display: flex;
         gap: 20px;
         justify-content: center;
         padding: 2% 0;
         width: 100%;
+        z-index: 1;
       }
 
       &__user {
@@ -62,14 +59,27 @@
         border-radius: 50%;
         width: 100px;
       }
-
     }
-
 
     svg {
       width: 100%;
       height: 641px;
     }
+  }
+
+  .goal-achieved-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .goal-button {
@@ -82,6 +92,10 @@
     svg {
       width: 100%;
       height: 100%;
+    }
+
+    &.locked {
+      cursor: not-allowed;
     }
   }
 
@@ -123,8 +137,28 @@
 
 .goal-icon-container {
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   transition: transform 0.2s ease-in-out;
+}
+
+.goal-icon {
+  svg {
+    path:first-of-type {
+      transition: fill 0.3s ease;
+    }
+  }
+
+  &.active svg path:first-of-type {
+    fill: #0954B0;
+  }
+
+ &.completed svg path:first-of-type{
+  fill:rgb(79, 179, 152);
+ }
+  &.upcoming svg path:first-of-type {
+    fill: #919191;
+  }
+
 }

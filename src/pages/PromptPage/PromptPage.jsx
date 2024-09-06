@@ -6,18 +6,17 @@ import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.s
 import { useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
-import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const PromptPage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("prompt");
+  const [currentPage, setCurrentPage] = useState("roadmap");
 
   // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
   const [matchResults, setMatchResults] = useState(null);
 
   useEffect(() => {
-    setCurrentPage("prompt");
+    setCurrentPage("roadmap");
     sessionStorage.removeItem("formData");
     sessionStorage.removeItem("answeredQuestions");
     sessionStorage.removeItem("selectedAnswerIdsJSON");
@@ -48,9 +47,9 @@ const PromptPage = () => {
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
-                      Welcome to AccountaBuddy!
+                      Welcome to AccountaBuddy
                     </div>
-                    <div className="welcome-text">
+                    <div className="welcome-text welcome-text--main">
                       Our AI feature empowers you to achieve your professional
                       goals through personalized accountability partnerships. By
                       taking our quick matching quiz, you’ll be paired with a
@@ -91,9 +90,10 @@ const PromptPage = () => {
               currentPage={currentPage}
             />
           )}
-          {currentPage === "roadmap" && <Roadmap />}
-          {currentPage === "goalachieved" && <GoalAchieved />}
-          {(currentPage === "loading"||currentPage==="loading1") && (
+          {currentPage === "roadmap" && (
+            <Roadmap setCurrentPage={setCurrentPage} />
+          )}
+         {(currentPage === "loading"||currentPage==="loading1") && (
             <LoadingPage
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

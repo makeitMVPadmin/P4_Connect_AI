@@ -7,7 +7,7 @@ import coffeeChatIcon from "../../assets/images/coffeeChatIcon.svg";
 import LogoIcon from "../../assets/logos/communiti2.svg";
 import profilePic from "../../assets/images/profilePic.svg";
 import DropDownArrow from "../../assets/images/drop-down-arrow.svg";
-import connectAiIcon from "../../assets/images/connectAiIcon.svg";
+import connectAiIcon from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { useNavigate } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";

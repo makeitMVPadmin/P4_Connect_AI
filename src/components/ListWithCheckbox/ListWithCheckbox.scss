@@ -6,23 +6,46 @@
 .listwithcheckbox {
   font-family: "Gilroy-ExtraBold";
   margin-bottom: 1rem;
-h2{
-  margin-bottom: 1.5rem;
-}
+
+  &--goaldiv {
+    display: flex;
+    justify-content: center;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
   &_options {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    &--checkboxescustom {
-      width: 20px;
+
+    &--checkboxesgoals {
+      width: 30px;
+      height: 30px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+    }
+
+    .option_active,
+    .option_inactive {
+      margin-left: 15px;
+      cursor: pointer;
     }
 
     .option_active {
       color: $MVP-black;
+      font-size: 15px;
     }
+
 
     .option_inactive {
       color: $MVP-faded;
+      font-size: 15px;
     }
   }
 }

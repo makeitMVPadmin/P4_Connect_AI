@@ -1,18 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./GoalAchieved.scss";
 import { ReactComponent as GoalAchievedSVG1 } from "../../assets/images/GoalAchieved1.svg";
 import { ReactComponent as GoalAchievedSVG2 } from "../../assets/images/GoalAchieved2.svg";
 import { ReactComponent as Confetti } from "../../assets/images/Confetti.svg";
-import user1Picture from "../../assets/images/user1.png";
-import user2Picture from "../../assets/images/user2.png";
+import user1Picture from "../../assets/images/user1.svg";
+import user2Picture from "../../assets/images/user2.svg";
+import Button from "../Button/Button";
+import ConfettiExplosion from "react-confetti-explosion";
 
-const GoalAchieved = () => {
+const GoalAchieved = ({ onClose, onRetakeQuiz }) => {
   const [user1Pic, setUser1Pic] = useState(user1Picture);
   const [user2Pic, setUser2Pic] = useState(user2Picture);
+  const [isConfetti, setConfetti] = useState(true);
+
+  const handleClose = () => {
+    console.log("Close button clicked");
+    if (onClose) {
+      onClose();
+    } else {
+      console.log("onClose function is not defined");
+    }
+  };
+
+  useEffect(() => {
+    // Simulating data fetch from backend
+    setTimeout(() => {
+      setConfetti(false);
+    }, 2000);
+  }, []);
+
 
   return (
     <div className="goalachieved">
-      <h1 className="goalachieved__title">Goal achieved!</h1>
+      <h1 className="goalachieved__title">Goal achieved!
+      {isConfetti&& <ConfettiExplosion
+          particleCount={350}
+          duration={3000}
+          particleSize={20}
+        />}
+      </h1>
       <div className="goalachieved__users">
         <div className="goalachieved__user">
           <Confetti className="goalachieved__confetti" />
@@ -32,8 +58,22 @@ const GoalAchieved = () => {
         </div>
       </div>
       <div className="goalachieved__svgs">
-        <GoalAchievedSVG1 className="goalachieved__svg goalachieved__svg--1" />
+        <GoalAchievedSVG1 className="goalachieved__svg goalachieved__svg--1" ></GoalAchievedSVG1>
         <GoalAchievedSVG2 className="goalachieved__svg goalachieved__svg--2" />
+      </div>
+      <div className="goalachieved__buttons">
+        <Button
+          text="Return to Roadmap"
+          color="white"
+          eventListener={handleClose}
+          className="goalachieved__close-button"
+        />
+        <Button
+          text="Retake Quiz"
+          color="blue"
+          eventListener={onRetakeQuiz}
+          className="goalachieved__retake-quiz-button"
+        />
       </div>
     </div>
   );

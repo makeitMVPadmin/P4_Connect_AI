@@ -7,143 +7,127 @@ import { ReactComponent as Goal3Icon } from "../../assets/icons/roadmapIcon3.svg
 import { ReactComponent as Goal4Icon } from "../../assets/icons/roadmapIcon4.svg";
 import { ReactComponent as Goal5Icon } from "../../assets/icons/roadmapIcon5.svg";
 import Modal from "react-modal";
-import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
+import { goalsData } from "../../goalData";
+import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
 import GoalComponent from "../GoalComponent/GoalComponent";
 import GoalPopup from "../GoalPopup/GoalPopup";
-import user1Picture from "../../assets/images/user1.png";
-import user2Picture from "../../assets/images/user2.png";
-import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
+import GoalAchieved from "../GoalAchieved/GoalAchieved";
+import user1Picture from "../../assets/images/user1.svg";
+import user2Picture from "../../assets/images/user2.svg";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import ConfettiExplosion from "react-confetti-explosion";
 
-const Roadmap = () => {
+const Roadmap = ({ setCurrentPage }) => {
   const [activeGoal, setActiveGoal] = useState(null);
-  const [isModalOpen, setmodalOpen] = useState(false);
-
+  const [isModalOpen, setModalOpen] = useState(false);
   const [hovering, setHovering] = useState(null);
-
-  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
-
-  const [user1Name, setUser1Name] = useState("User1");
-  const [user2Name, setUser2Name] = useState("User2");
+  const [user1Name] = useState("Diana");
+  const [user2Name] = useState("Kerry");
   const [completionPercentage, setCompletionPercentage] = useState(0);
-
-
-  // useEffect(() => {
-  //   console.log("aicall");
-  //   const aiApiCallData = async () => {
-  //     console.log("aicall111");
-
-  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
-  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
-  //     const project = "building a web application";
-
-  //     try {
-  //       console.log("aicall122");
-
-  //       const data = await callOpenAiApi(userA, userB, project);
-  //       console.log(data.goals);
-  //       setGoals(data.goals);
-  //       setLoadingPage(false);
-  //       // console.log("loading");
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   }
-  //   aiApiCallData();
-  // }, []);
-
-  // CALL BACKEND FUNCTION: Get Matches
-  // Use the data of only the most recent match
-
-  // CALL BACKEND FUNCTION: Get User
-  // Get both users based on user id from the match table
-
-  // CALL BACKEND FUNCTION: Get UserGoalCompletion
-  // Get UserGoalCompletion data with match id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Goals
-  // Get Goals from UserGoalCompletion goal id
-
-  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
-  // Get UserSubtaskCompletion data with goal id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Subtasks
-  // Get Goals from UserSubtaskCompletion subtask id
-
-  //mock roadmap data
-  const goalsData = [
-    {
-      goal: "Attend 4 meetings",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-    {
-      goal: "Design and implement the frontend of the web application using JavaScript and React",
-      subtasks: [
-        "Discuss and finalize the UI/UX design for the application",
-        "Break down the design into reusable React components",
-        "Implement the React components using JavaScript",
-        "Test the components individually and as a whole to ensure they work as expected",
-      ],
-    },
-    {
-      goal: "Develop the backend of the web application using Python and Django",
-      subtasks: [
-        "Design the database schema and establish the necessary Django models",
-        "Implement the necessary views and templates in Django",
-        "Integrate the Django backend with the React frontend",
-        "Test the backend functionality and ensure it works with the frontend",
-      ],
-    },
-    {
-      goal: "Deploy the web application",
-      subtasks: [
-        "Choose a suitable hosting platform for the application",
-        "Configure the deployment settings for both frontend and backend",
-        "Deploy the application and test it in the production environment",
-        "Monitor the application performance and fix any issues that arise",
-      ],
-    },
-    {
-      goal: "Attend 4 meetings to go over what you’ve learned",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-  ];
-  console.log(goalsData[0].subtasks);
-
-  // This object is temporary and only here to provide mock data to show the functionality of the popup
-  const mockMatchData = {
-    goal1Task: "Goal 1 task",
-    goal2Task: "Goal 2 task",
-    goal3Task: "Goal 3 task",
-    goal4Task: "Goal 4 task",
-    goal5Task: "Goal 5 task",
-    user1Picture: user1Picture,
-    user2Picture: user2Picture,
-  };
-
-
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [isExploding, setIsExploding] = useState(false);
+  const [savedGoals, setSavedGoals] = useState({
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+  });
+  const [activeGoalNumber, setActiveGoalNumber] = useState(1);
+  const [showGoalAchieved, setShowGoalAchieved] = useState(false);
+  const [goalAchievedOnce, setGoalAchievedOnce] = useState({});
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingPage(false);
+    }, 1000);
+  }, []);
 
   const handleGoalClickModal = (goalNumber) => {
-    setActiveGoal(goalNumber);
-    setmodalOpen(true);
+    if (goalNumber <= activeGoalNumber) {
+      setActiveGoal(goalNumber);
+      setModalOpen(true);
+    }
   };
 
   const handleCloseGoalClickModal = () => {
-    setmodalOpen(false);
+    setModalOpen(false);
+    setActiveGoal(null);
+    setIsExploding(false);
+  };
+  useEffect(() => {
+    const totalSubtasks = goalsData.reduce(
+      (acc, goal) => acc + goal.subtasks.length,
+      0
+    );
+    const theSubtask = Object.values(savedGoals).reduce((acc, goal) => {
+      const task = Object.values(goal).filter((item) => item === true).length;
+      acc = acc + task;
+      return acc;
+    }, 0);
+    const newPercentage = Math.round((theSubtask / totalSubtasks) * 100);
+    setCompletionPercentage(newPercentage);
+
+  }, [savedGoals, goalsData]);
+
+  const handleSaveChanges = (goalNumber, subtasks) => {
+    setSavedGoals((prev) => {
+      const newSavedGoals = {
+        ...prev,
+        [goalNumber]: subtasks,
+      };
+      return newSavedGoals;
+    });
+
+    const totalSubtasksForGoal = goalsData[goalNumber - 1].subtasks.length;
+    const completedSubtasksForGoal =
+      Object.values(subtasks).filter(Boolean).length;
+    const allSubtasksCompleted =
+      completedSubtasksForGoal === totalSubtasksForGoal;
+
+    if (allSubtasksCompleted) {
+      if (goalNumber === 5) {
+        setShowGoalAchieved(true);
+      } else if (!goalAchievedOnce[goalNumber]) {
+        setActiveGoalNumber(activeGoalNumber + 1);
+        setGoalAchievedOnce((prev) => ({
+          ...prev,
+          [goalNumber]: true,
+        }));
+      }
+    }
+
+    setIsExploding(true);
+    setModalOpen(false);
+    setActiveGoal(null);
+    setTimeout(() => {
+      setIsExploding(false);
+    }, 1000);
+  };
+
+  const handleCloseGoalAchieved = () => {
+    console.log("Closing GoalAchieved overlay");
+    setIsExploding(false);
+    setShowGoalAchieved(false);
+  };
+
+  const handleRetakeQuiz = () => {
+    setShowGoalAchieved(false);
+    setCurrentPage("quiz");
+  };
+
+  const getGoalClassName = (goalNumber) => {
+    if (goalNumber === activeGoalNumber) {
+      return "goal-icon active";
+    } else if (goalNumber < activeGoalNumber) {
+      return "goal-icon completed";
+    } else {
+      return "goal-icon upcoming";
+    }
   };
 
   const renderModalComponent = () => {
+    if (!activeGoal) return null;
+
     return (
       <Modal
         id="promptpage__linkedinpost-modal"
@@ -154,19 +138,27 @@ const Roadmap = () => {
         overlayClassName="modalOverlay"
         shouldCloseOnOverlayClick={false}
       >
-        <>
-          <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
-            <GoalComponent
-              goalNumber={activeGoal}
-              goalPrompt={activeGoal && goalsData[activeGoal - 1].goal}
-              subtasks={activeGoal && goalsData[activeGoal - 1].subtasks}
-            ></GoalComponent>
-          </PopUpModal>
-        </>
+        <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
+          <GoalComponent
+            goalNumber={activeGoal}
+            goalPrompt={goalsData[activeGoal - 1].goal}
+            subtasks={goalsData[activeGoal - 1].subtasks}
+            onSaveChanges={handleSaveChanges}
+            savedProgress={savedGoals[activeGoal]}
+            onClose={handleCloseGoalClickModal}
+          />
+        </PopUpModal>
       </Modal>
     );
   };
 
+  // if (loadingPage) {
+  //   return (
+  //     <div className="roadmap-container">
+  //       <LoadingPage />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="roadmap-container">
@@ -177,6 +169,7 @@ const Roadmap = () => {
             {user1Name}'s and {user2Name}'s partnership:
           </div>
           <div className="goals-progress-percentage">
+            {isExploding && <ConfettiExplosion particleCount={120} />}
             {completionPercentage}% completed
           </div>
         </div>
@@ -184,12 +177,12 @@ const Roadmap = () => {
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">
             <img
-              src={user1Pic}
+              src={user1Picture}
               alt="user1 avatar "
               className="svg-container__matched__user"
             />
             <img
-              src={user2Pic}
+              src={user2Picture}
               alt="user2 avatar "
               className="svg-container__matched__user"
             />
@@ -197,143 +190,57 @@ const Roadmap = () => {
         </div>
 
         {renderModalComponent()}
-        <button
-          onMouseEnter={() => {
-            setHovering(1);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal1"
-          onClick={() => handleGoalClickModal(1)}
-        >
-          {hovering === 1 && (
-            <GoalPopup
-              offsetX={"8.4rem"}
-              offsetY={"8.4rem"}
-              number={1}
-              task={mockMatchData.goal1Task}
-              locked={false}
-              user1Complete={true}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal1Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(2);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal2"
-          onClick={() => handleGoalClickModal(2)}
-        >
-          {hovering === 2 && (
-            <GoalPopup
-              offsetX={"7.3rem"}
-              offsetY={"7.3rem"}
-              number={2}
-              task={mockMatchData.goal2Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal2Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(3);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal3"
-          onClick={() => handleGoalClickModal(3)}
-        >
-          {hovering === 3 && (
-            <GoalPopup
-              offsetX={"6.1rem"}
-              offsetY={"6.1rem"}
-              number={3}
-              task={mockMatchData.goal3Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal3Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(4);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal4"
-          onClick={() => handleGoalClickModal(4)}
-        >
-          {hovering === 4 && (
-            <GoalPopup
-              offsetX={"4.95rem"}
-              offsetY={"4.95rem"}
-              number={4}
-              task={mockMatchData.goal4Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal4Icon />
-          </div>
-        </button>
-        <button
-          onMouseEnter={() => {
-            setHovering(5);
-          }}
-          onMouseLeave={() => {
-            setHovering(null);
-          }}
-          className="goal-button goal5"
-          onClick={() => handleGoalClickModal(5)}
-        >
-          {hovering === 5 && (
-            <GoalPopup
-              offsetX={"3.7rem"}
-              offsetY={"3.7rem"}
-              number={5}
-              task={mockMatchData.goal5Task}
-              locked={true}
-              user1Complete={false}
-              user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
-            />
-          )}
-          <div className="goal-icon-container">
-            <Goal5Icon />
-          </div>
-        </button>
+
+        {goalsData.map((goalNumber) => (
+          <button
+            key={goalNumber.goal_num}
+            onMouseEnter={() => {
+              setHovering(goalNumber.goal_num);
+            }}
+            onMouseLeave={() => {
+              setHovering(null);
+            }}
+            className={`goal-button goal${goalNumber.goal_num} ${
+              goalNumber.goal_num <= activeGoalNumber ? "clickable" : "locked"
+            }`}
+            onClick={() => handleGoalClickModal(goalNumber.goal_num)}
+          >
+            {hovering === goalNumber.goal_num && (
+              <GoalPopup
+                offsetX={`${9.5 - goalNumber.goal_num * 1.1}rem`}
+                offsetY={`${9.5 - goalNumber.goal_num * 1.1}rem`}
+                number={goalNumber.goal_num}
+                task={goalNumber.goalTask}
+                locked={!(goalNumber.goal_num <= activeGoalNumber)}
+                user1Complete={goalNumber.goal_num < activeGoalNumber}
+                user2Complete={goalNumber.goal_num < activeGoalNumber}
+                user1Picture={user1Picture}
+                user2Picture={user2Picture}
+              />
+            )}
+            <div
+              className={`goal-icon-container ${getGoalClassName(
+                goalNumber.goal_num
+              )}`}
+            >
+              {goalNumber.goal_num === 1 && <Goal1Icon />}
+              {goalNumber.goal_num === 2 && <Goal2Icon />}
+              {goalNumber.goal_num === 3 && <Goal3Icon />}
+              {goalNumber.goal_num === 4 && <Goal4Icon />}
+              {goalNumber.goal_num === 5 && <Goal5Icon />}
+            </div>
+          </button>
+        ))}
       </div>
-      {/* <div className="active-goal-container">{renderActiveComponent()}</div> */}
+
+      {showGoalAchieved && (
+        <div className="goal-achieved-overlay">
+          <GoalAchieved
+            onClose={handleCloseGoalAchieved}
+            onRetakeQuiz={handleRetakeQuiz}
+          />
+        </div>
+      )}
     </div>
   );
 };

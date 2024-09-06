@@ -1,16 +1,52 @@
 @import "../../styles/partials/typography.scss";
 
+
+.goalachieved-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+}
+
 .goalachieved {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 70vh;
+    width: 146vh;
     padding-top: 20px;
-    padding-right: 10px;
-    padding-bottom: 0;
-    padding-left: 10px;
-    width: 100%;
+    padding-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    .goalachieved__close-button,
+    .goalachieved__retake-quiz-button {
+        position: relative;
+        z-index: 1001;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
 
     &__title {
         font-size: 3rem;
@@ -26,7 +62,6 @@
         width: 100%;
         max-width: 800px;
         margin-bottom: 2rem;
-        // background-color: aliceblue;
     }
 
     &__user {
@@ -55,23 +90,34 @@
     &__svgs {
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 40vh;
+        max-height: 400px;
+
     }
 
     &__svg {
-        // background-color: antiquewhite;
         position: absolute;
         width: 100%;
         height: 100%;
+        max-width: 700px;
+        max-height: 400px;
+        left: 50%;
+        transform: translateX(-50%);
+
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
         &--1 {
 
-            bottom: 100px;
             z-index: 2;
         }
 
         &--2 {
-            top: 100px;
+            top: 80px;
             z-index: 1;
         }
     }

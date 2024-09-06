@@ -2,7 +2,7 @@ import "./NoMatch.scss";
 import Button from "../Button/Button.jsx";
 import { useEffect, useState } from "react";
 // temporary user1 placeholder:
-import user1 from "../../assets/images/user1.png";
+import user1 from "../../assets/images/user1.svg";
 
 //need to define props on main single page: need "handleBackToQuiz" function and pass to NoMatch component
 const NoMatch = ({ handleBackToQuiz }) => {
