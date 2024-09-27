@@ -81,12 +81,12 @@ const Roadmap = () => {
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">
             <img
-              src={user1Pic}
+              src={user1Pic || user1Picture}
               alt="user1 avatar "
               className="svg-container__matched__user"
             />
             <img
-              src={user2Pic}
+              src={user2Pic || user2Picture}
               alt="user2 avatar "
               className="svg-container__matched__user"
             />
