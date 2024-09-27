@@ -14,7 +14,7 @@ import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import { goalsData, mockMatchData } from "../../mock-data/roadmapMockData";
+import { GOALS_DATA, MOCK_MATCH_DATA } from "../../mock-data/roadmapMockData";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -22,74 +22,13 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
-  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
+  const [user1Pic, setUser1Pic] = useState(null); 
+  const [user2Pic, setUser2Pic] = useState(null); 
 
 
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
-
-useEffect(() => {
-  // Prompt confirmation when reload page is triggered
-  window.onbeforeunload = () => {
-    return "";
-  };
-
-  // Unmount the window.onbeforeunload event
-  return () => {
-    window.onbeforeunload = null;
-  };
-}, []);
-  // useEffect(() => {
-  //   console.log("aicall");
-  //   const aiApiCallData = async () => {
-  //     console.log("aicall111");
-
-  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
-  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
-  //     const project = "building a web application";
-
-  //     try {
-  //       console.log("aicall122");
-
-  //       const data = await callOpenAiApi(userA, userB, project);
-  //       console.log(data.goals);
-  //       setGoals(data.goals);
-  //       setLoadingPage(false);
-  //       // console.log("loading");
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   }
-  //   aiApiCallData();
-  // }, []);
-
-  // CALL BACKEND FUNCTION: Get Matches
-  // Use the data of only the most recent match
-
-  // CALL BACKEND FUNCTION: Get User
-  // Get both users based on user id from the match table
-
-  // CALL BACKEND FUNCTION: Get UserGoalCompletion
-  // Get UserGoalCompletion data with match id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Goals
-  // Get Goals from UserGoalCompletion goal id
-
-  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
-  // Get UserSubtaskCompletion data with goal id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Subtasks
-  // Get Goals from UserSubtaskCompletion subtask id
-
-  //mock roadmap data
- 
-  console.log(goalsData[0].subtasks);
-
-  // This object is temporary and only here to provide mock data to show the functionality of the popup
-  
-
 
 
   const handleGoalClickModal = (goalNumber) => {
@@ -116,8 +55,8 @@ useEffect(() => {
           <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
             <GoalComponent
               goalNumber={activeGoal}
-              goalPrompt={activeGoal && goalsData[activeGoal - 1].goal}
-              subtasks={activeGoal && goalsData[activeGoal - 1].subtasks}
+              goalPrompt={activeGoal && GOALS_DATA[activeGoal - 1].goal}
+              subtasks={activeGoal && GOALS_DATA[activeGoal - 1].subtasks}
             ></GoalComponent>
           </PopUpModal>
         </>
@@ -125,7 +64,7 @@ useEffect(() => {
     );
   };
 
-
+  var i = 1;
   return (
     <div className="roadmap-container">
       <div className="svg-container">
@@ -170,12 +109,12 @@ useEffect(() => {
               offsetX={"8.4rem"}
               offsetY={"8.4rem"}
               number={1}
-              task={mockMatchData.goal1Task}
+              task={MOCK_MATCH_DATA.goal1Task}
               locked={false}
               user1Complete={true}
               user2Complete={false}
-              user1Picture={user1Pic}
-              user2Picture={user2Pic}
+              user1Picture={user1Pic || user1Picture}
+              user2Picture={user2Pic || user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -197,12 +136,12 @@ useEffect(() => {
               offsetX={"7.3rem"}
               offsetY={"7.3rem"}
               number={2}
-              task={mockMatchData.goal2Task}
+              task={MOCK_MATCH_DATA.goal2Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic}
-              user2Picture={user2Pic}
+              user1Picture={user1Pic || user1Picture}
+              user2Picture={user2Pic || user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -224,12 +163,12 @@ useEffect(() => {
               offsetX={"6.1rem"}
               offsetY={"6.1rem"}
               number={3}
-              task={mockMatchData.goal3Task}
+              task={MOCK_MATCH_DATA.goal3Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic}
-              user2Picture={user2Pic}
+              user1Picture={user1Pic || user1Picture}
+              user2Picture={user2Pic || user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -251,12 +190,12 @@ useEffect(() => {
               offsetX={"4.95rem"}
               offsetY={"4.95rem"}
               number={4}
-              task={mockMatchData.goal4Task}
+              task={MOCK_MATCH_DATA.goal4Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic}
-              user2Picture={user2Pic}
+              user1Picture={user1Pic || user1Picture}
+              user2Picture={user2Pic || user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -278,12 +217,12 @@ useEffect(() => {
               offsetX={"3.7rem"}
               offsetY={"3.7rem"}
               number={5}
-              task={mockMatchData.goal5Task}
+              task={MOCK_MATCH_DATA.goal5Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic}
-              user2Picture={user2Pic}
+              user1Picture={user1Pic || user1Picture}
+              user2Picture={user2Pic || user2Picture}
             />
           )}
           <div className="goal-icon-container">
