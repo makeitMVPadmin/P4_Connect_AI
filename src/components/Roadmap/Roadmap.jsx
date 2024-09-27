@@ -14,6 +14,7 @@ import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import { goalsData } from "../../mock-data/roadmapMockData";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -21,8 +22,10 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
-  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
+  const [user1Pic, setUser1Pic] = useState(null); //replace user1 with null instead of image placeholder
+  const [user2Pic, setUser2Pic] = useState(null); //replace user2 with null instead of image placeholder
+
+  
 
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
@@ -72,53 +75,7 @@ const Roadmap = () => {
   // Get Goals from UserSubtaskCompletion subtask id
 
   //mock roadmap data
-  const goalsData = [
-    {
-      goal: "Attend 4 meetings",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-    {
-      goal: "Design and implement the frontend of the web application using JavaScript and React",
-      subtasks: [
-        "Discuss and finalize the UI/UX design for the application",
-        "Break down the design into reusable React components",
-        "Implement the React components using JavaScript",
-        "Test the components individually and as a whole to ensure they work as expected",
-      ],
-    },
-    {
-      goal: "Develop the backend of the web application using Python and Django",
-      subtasks: [
-        "Design the database schema and establish the necessary Django models",
-        "Implement the necessary views and templates in Django",
-        "Integrate the Django backend with the React frontend",
-        "Test the backend functionality and ensure it works with the frontend",
-      ],
-    },
-    {
-      goal: "Deploy the web application",
-      subtasks: [
-        "Choose a suitable hosting platform for the application",
-        "Configure the deployment settings for both frontend and backend",
-        "Deploy the application and test it in the production environment",
-        "Monitor the application performance and fix any issues that arise",
-      ],
-    },
-    {
-      goal: "Attend 4 meetings to go over what you’ve learned",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-  ];
+ 
   console.log(goalsData[0].subtasks);
 
   // This object is temporary and only here to provide mock data to show the functionality of the popup
