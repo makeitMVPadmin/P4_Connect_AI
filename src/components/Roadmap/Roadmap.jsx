@@ -14,7 +14,7 @@ import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import { goalsData } from "../../mock-data/roadmapMockData";
+import { goalsData, mockMatchData } from "../../mock-data/roadmapMockData";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -22,16 +22,25 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
-  const [user1Pic, setUser1Pic] = useState(null); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(null); //replace user2 with null instead of image placeholder
+  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
+  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
 
-  
 
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
 
+useEffect(() => {
+  // Prompt confirmation when reload page is triggered
+  window.onbeforeunload = () => {
+    return "";
+  };
 
+  // Unmount the window.onbeforeunload event
+  return () => {
+    window.onbeforeunload = null;
+  };
+}, []);
   // useEffect(() => {
   //   console.log("aicall");
   //   const aiApiCallData = async () => {
@@ -79,15 +88,7 @@ const Roadmap = () => {
   console.log(goalsData[0].subtasks);
 
   // This object is temporary and only here to provide mock data to show the functionality of the popup
-  const mockMatchData = {
-    goal1Task: "Goal 1 task",
-    goal2Task: "Goal 2 task",
-    goal3Task: "Goal 3 task",
-    goal4Task: "Goal 4 task",
-    goal5Task: "Goal 5 task",
-    user1Picture: user1Picture,
-    user2Picture: user2Picture,
-  };
+  
 
 
 
@@ -173,8 +174,8 @@ const Roadmap = () => {
               locked={false}
               user1Complete={true}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Pic}
+              user2Picture={user2Pic}
             />
           )}
           <div className="goal-icon-container">
@@ -200,8 +201,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Pic}
+              user2Picture={user2Pic}
             />
           )}
           <div className="goal-icon-container">
@@ -227,8 +228,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Pic}
+              user2Picture={user2Pic}
             />
           )}
           <div className="goal-icon-container">
@@ -254,8 +255,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Pic}
+              user2Picture={user2Pic}
             />
           )}
           <div className="goal-icon-container">
@@ -281,8 +282,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Pic}
+              user2Picture={user2Pic}
             />
           )}
           <div className="goal-icon-container">

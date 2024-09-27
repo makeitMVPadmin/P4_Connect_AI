@@ -44,4 +44,12 @@
         "Attend all 4 accountability meetings",
       ],
     },
-  ];
+];
+  
+export const mockMatchData = {
+  goal1Task: "Goal 1 task",
+  goal2Task: "Goal 2 task",
+  goal3Task: "Goal 3 task",
+  goal4Task: "Goal 4 task",
+  goal5Task: "Goal 5 task",
+};
