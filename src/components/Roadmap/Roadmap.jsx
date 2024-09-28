@@ -22,9 +22,6 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
-  const [user1Pic, setUser1Pic] = useState(null); 
-  const [user2Pic, setUser2Pic] = useState(null); 
-
 
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
@@ -64,7 +61,6 @@ const Roadmap = () => {
     );
   };
 
-  var i = 1;
   return (
     <div className="roadmap-container">
       <div className="svg-container">
@@ -81,12 +77,12 @@ const Roadmap = () => {
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">
             <img
-              src={user1Pic || user1Picture}
+              src={user1Picture}
               alt="user1 avatar "
               className="svg-container__matched__user"
             />
             <img
-              src={user2Pic || user2Picture}
+              src={user2Picture}
               alt="user2 avatar "
               className="svg-container__matched__user"
             />
@@ -113,8 +109,8 @@ const Roadmap = () => {
               locked={false}
               user1Complete={true}
               user2Complete={false}
-              user1Picture={user1Pic || user1Picture}
-              user2Picture={user2Pic || user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -140,8 +136,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic || user1Picture}
-              user2Picture={user2Pic || user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -167,8 +163,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic || user1Picture}
-              user2Picture={user2Pic || user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -194,8 +190,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic || user1Picture}
-              user2Picture={user2Pic || user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -221,8 +217,8 @@ const Roadmap = () => {
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={user1Pic || user1Picture}
-              user2Picture={user2Pic || user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
