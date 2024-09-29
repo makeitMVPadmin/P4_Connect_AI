@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import DashboardNavbar from "./components/DashboardNavbar/DashboardNavbar";
 import CoffeeMugWithHat_happy from "./assets/images/coffeeMugWithHat_happy.svg";
 
 import "./styles/partials/_global.scss";
