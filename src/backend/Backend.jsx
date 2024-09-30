@@ -12,36 +12,36 @@ const BackEndTest = () => {
   const [error, setError] = useState(null);
   const collectionName = "Users";
 
+  // fetch data and update state when component mounts
+  const fetchDataAndUpdateState = async () => {
+    setError(null);
+    try {
+      const result = await readData(collectionName);
+      setData(result);
+      console.log(result);
+    } catch (error) {
+      setError("Error fetching data");
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      setError(null);
-      try {
-        const result = await readData(collectionName);
-        setData(result);
-        console.log(result);
-      } catch (error) {
-        setError("Error fetching data");
-        console.error(error);
-      }
-    };
-    fetchData();
+    fetchDataAndUpdateState();
   }, []);
-  if (data.length > 0) {
-    console.log(data);
-  }
 
   const handleCreate = async () => {
     setError(null);
     try {
       const newData = { name: "New Item", description: "Description" };
       await createData(collectionName, newData);
+      fetchDataAndUpdateState();
     } catch (error) {
       setError("Error creating data");
       console.error(error);
     }
     // Refresh the data
-    const updatedData = await readData(collectionName);
-    setData(updatedData);
+    // const updatedData = await readData(collectionName);
+    // setData(updatedData);
   };
 
   const handleUpdate = async (id) => {
@@ -52,26 +52,28 @@ const BackEndTest = () => {
         description: "Updated Description",
       };
       await updateData(collectionName, id, updatedData);
+      fetchDataAndUpdateState();
     } catch (error) {
       setError("Error updating data");
       console.error(error);
     }
     // Refresh the data
-    const updatedDataList = await readData(collectionName);
-    setData(updatedDataList);
+    // const updatedDataList = await readData(collectionName);
+    // setData(updatedDataList);
   };
 
   const handleDelete = async (id) => {
     setError(null);
     try {
       await deleteData(collectionName, id);
+      fetchDataAndUpdateState();
     } catch (error) {
       setError("Error deleting data");
       console.error(error);
     }
     // Refresh the data
-    const updatedDataList = await readData(collectionName);
-    setData(updatedDataList);
+    // const updatedDataList = await readData(collectionName);
+    // setData(updatedDataList);
   };
 
   return (
