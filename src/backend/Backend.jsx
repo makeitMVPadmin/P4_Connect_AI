@@ -1,4 +1,3 @@
-// src/components/SomeComponent.js
 import React, { useState, useEffect } from "react";
 import {
   createData,
@@ -12,13 +11,11 @@ const BackEndTest = () => {
   const [error, setError] = useState(null);
   const collectionName = "Users";
 
-  // fetch data and update state when component mounts
   const fetchDataAndUpdateState = async () => {
     setError(null);
     try {
       const result = await readData(collectionName);
       setData(result);
-      console.log(result);
     } catch (error) {
       setError("Error fetching data");
       console.error(error);
@@ -39,9 +36,6 @@ const BackEndTest = () => {
       setError("Error creating data");
       console.error(error);
     }
-    // Refresh the data
-    // const updatedData = await readData(collectionName);
-    // setData(updatedData);
   };
 
   const handleUpdate = async (id) => {
@@ -57,9 +51,6 @@ const BackEndTest = () => {
       setError("Error updating data");
       console.error(error);
     }
-    // Refresh the data
-    // const updatedDataList = await readData(collectionName);
-    // setData(updatedDataList);
   };
 
   const handleDelete = async (id) => {
@@ -71,9 +62,6 @@ const BackEndTest = () => {
       setError("Error deleting data");
       console.error(error);
     }
-    // Refresh the data
-    // const updatedDataList = await readData(collectionName);
-    // setData(updatedDataList);
   };
 
   return (
