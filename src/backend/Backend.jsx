@@ -27,15 +27,9 @@ const BackEndTest = () => {
   }, []);
 
   const handleCreate = async () => {
-    setError(null);
-    try {
-      const newData = { name: "New Item", description: "Description" };
-      await createData(collectionName, newData);
-      fetchDataAndUpdateState();
-    } catch (error) {
-      setError("Error creating data");
-      console.error(error);
-    }
+    const newData = { name: "New Item", description: "Description" };
+    await createData(collectionName, newData);
+    setData((prevData) => [...prevData, newData]);
   };
 
   const handleUpdate = async (id) => {
