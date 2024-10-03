@@ -70,19 +70,22 @@ const BackEndTest = () => {
       <button type="button" onClick={handleCreate}>
         Create
       </button>
-      {console.log(data)}
-      {data.map((item) => (
-        <div key={item.id}>
-          <h2>{item.firstName}</h2>
-          <p>{item.description}</p>
-          <button type="button" onClick={() => handleUpdate(item.id)}>
-            Update
-          </button>
-          <button type="button" onClick={() => handleDelete(item.id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+      {data.length > 0 ? (
+        data.map((item) => (
+          <div key={item.id}>
+            <h2>{item.firstName}</h2>
+            <p>{item.description}</p>
+            <button type="button" onClick={() => handleUpdate(item.id)}>
+              Update
+            </button>
+            <button type="button" onClick={() => handleDelete(item.id)}>
+              Delete
+            </button>
+          </div>
+        ))
+      ) : (
+        <p>No data</p>
+      )}
     </div>
   );
 };
