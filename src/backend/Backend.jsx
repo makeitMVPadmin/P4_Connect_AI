@@ -71,14 +71,14 @@ const BackEndTest = () => {
         Create
       </button>
       {data.length > 0 ? (
-        data.map((item) => (
-          <div key={item.id}>
-            <h2>{item.firstName}</h2>
-            <p>{item.description}</p>
-            <button type="button" onClick={() => handleUpdate(item.id)}>
+        data.map(({ id, firstName, description }) => (
+          <div key={id}>
+            <h2>{firstName}</h2>
+            <p>{description}</p>
+            <button type="button" onClick={() => handleUpdate(id)}>
               Update
             </button>
-            <button type="button" onClick={() => handleDelete(item.id)}>
+            <button type="button" onClick={() => handleDelete(id)}>
               Delete
             </button>
           </div>
