@@ -12,14 +12,8 @@ const BackEndTest = () => {
   const collectionName = "Users";
 
   const fetchDataAndUpdateState = async () => {
-    setError(null);
-    try {
-      const result = await readData(collectionName);
-      setData(result);
-    } catch (error) {
-      setError("Error fetching data");
-      console.error(error);
-    }
+    const result = await readData(collectionName);
+    setData(result);
   };
 
   useEffect(() => {
