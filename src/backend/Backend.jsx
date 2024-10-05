@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { COLLECTIONS } from "../constants.js";
 import {
   createData,
   readData,
@@ -9,7 +10,7 @@ import {
 const BackEndTest = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const collectionName = "Users";
+  const collectionName = COLLECTIONS.USERS;
 
   const fetchDataAndUpdateState = async () => {
     const result = await readData(collectionName);
