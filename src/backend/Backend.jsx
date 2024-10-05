@@ -33,18 +33,14 @@ const BackEndTest = () => {
   };
 
   const handleUpdate = async (id) => {
-    setError(null);
-    try {
-      const updatedData = {
-        name: "Updated Item",
-        description: "Updated Description",
-      };
-      await updateData(collectionName, id, updatedData);
-      fetchDataAndUpdateState();
-    } catch (error) {
-      setError("Error updating data");
-      console.error(error);
-    }
+    const updatedData = {
+      name: "Updated Item",
+      description: "Updated Description",
+    };
+    await updateData(collectionName, id, updatedData);
+    setData((prevData) =>
+      prevData.map((item) => (item.id === id ? updatedData : item))
+    );
   };
 
   const handleDelete = async (id) => {
