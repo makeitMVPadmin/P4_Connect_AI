@@ -64,21 +64,24 @@
     font-size: 1.875rem;
     font-weight: 700;
   }
+
   .welcome-text {
     font-family: Gilroy;
+
     &--main {
       font-size: 1.25rem;
     }
   }
 
-  .text-container > * {
+  .text-container>* {
     padding-top: 25px;
   }
 
   .button-container {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    align-items: flex-start;
+    gap: 16px;
     padding-top: 50px;
   }
 

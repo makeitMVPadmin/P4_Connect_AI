@@ -58,14 +58,15 @@ const PromptPage = () => {
                   <div className="button-container">
                     <Button
                       text="Continue"
-                      color="white"
+                      color="blue"
                       className="back"
+                      border="none"
                       eventListener={handleBack}
                     />
 
                     <Button
                       text="Back to home"
-                      color="dark-blue"
+                      color="white"
                       className="next"
                       eventListener={handleClick}
                     />
