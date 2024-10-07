@@ -2,7 +2,7 @@ import "./PromptPage.scss";
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
-import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
+// import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import { useEffect, useState } from "react";
 import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
@@ -40,11 +40,11 @@ const PromptPage = () => {
               <div className="promptpage__middle-container">
                 <div className="promptpage__middle-container__sub-container">
                   <div className="promptpage__middle-container__coffeemug-container">
-                    <img
+                    {/* <img
                       className="promptpage__middle-container__coffeemug-img"
                       alt=""
                       src={CoffeeMugWithHat_happy}
-                    />
+                    /> */}
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
