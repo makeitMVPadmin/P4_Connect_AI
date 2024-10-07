@@ -48,7 +48,8 @@ const PromptPage = () => {
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
-                      Welcome to AccountaPair
+                      <span>Welcome to</span> <br />
+                      <span>AccountaPair</span>
                     </div>
                     <div className="welcome-text">
                       Set your preferences and skills before moving to the
