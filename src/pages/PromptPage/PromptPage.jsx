@@ -48,30 +48,23 @@ const PromptPage = () => {
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
-                      Welcome to AccountaBuddy!
+                      Welcome to AccountaPair
                     </div>
                     <div className="welcome-text">
-                      Our AI feature empowers you to achieve your professional
-                      goals through personalized accountability partnerships. By
-                      taking our quick matching quiz, you’ll be paired with a
-                      peer who complements your skills, and you both will work
-                      towards a common goal.
-                    </div>
-                    <div className="welcome-text">
-                      Click "Next" to get started on your journey to effective
-                      peer-to-peer accountability.
+                      Set your preferences and skills before moving to the
+                      dashboard
                     </div>
                   </div>
                   <div className="button-container">
                     <Button
-                      text="Back"
+                      text="Continue"
                       color="white"
                       className="back"
                       eventListener={handleBack}
                     />
 
                     <Button
-                      text="Next"
+                      text="Back to home"
                       color="dark-blue"
                       className="next"
                       eventListener={handleClick}
@@ -93,7 +86,7 @@ const PromptPage = () => {
           )}
           {currentPage === "roadmap" && <Roadmap />}
           {currentPage === "goalachieved" && <GoalAchieved />}
-          {(currentPage === "loading"||currentPage==="loading1") && (
+          {(currentPage === "loading" || currentPage === "loading1") && (
             <LoadingPage
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
