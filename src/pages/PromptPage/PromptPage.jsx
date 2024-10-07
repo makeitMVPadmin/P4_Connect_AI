@@ -62,14 +62,14 @@ const PromptPage = () => {
                       color="blue"
                       className="back"
                       border="none"
-                      eventListener={handleBack}
+                      eventListener={handleClick}
                     />
 
                     <Button
                       text="Back to home"
                       color="white"
                       className="next"
-                      eventListener={handleClick}
+                      eventListener={handleBack}
                     />
                   </div>
                 </div>
