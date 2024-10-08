@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./main.js";
 import PromptPage from "./pages/PromptPage/PromptPage";
-import BackEndTest from "./pages/BackEnd/Backend.jsx";
-import AiBackendTest from "./pages/BackEnd/AiBackendTest.js";
+import BackEndTest from "./backend/Backend.jsx";
+import AiBackendTest from "./backend/AiBackendTest.js";
 import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route path="/prompt" element={<PromptPage />} />
         <Route path="/test" element={<BackEndTest />} />
         <Route path="/aitest" element={<AiBackendTest />} />
-        <Route path="/Testa" element={<LoadingPage/>}/>
+        <Route path="/Testa" element={<LoadingPage />} />
       </Routes>
     </>
   );
