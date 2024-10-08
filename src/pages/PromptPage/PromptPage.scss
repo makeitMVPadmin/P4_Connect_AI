@@ -65,9 +65,11 @@
   }
 
   .welcome-message {
-    font-family: Corben-Bold;
-    font-size: 1.875rem;
+    font-family: Corben;
+    font-size: 3rem;
     font-weight: 700;
+    font-style: normal;
+    line-height: 3.25rem;
   }
 
   .welcome-text {
@@ -89,13 +91,4 @@
     gap: 16px;
     padding-top: 50px;
   }
-
-  // &__bottom-bar {
-  //   margin-top: auto;
-  //   border-radius: 0px 0px 16px 16px;
-  //   background-color: #ffd22f;
-  //   width: 100%;
-  //   min-height: 5.5vh;
-  //   border-top: 4px solid #000;
-  // }
 }
