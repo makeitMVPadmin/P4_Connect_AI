@@ -8,6 +8,8 @@ import QuizPage from "../../components/QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
+import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
 const PromptPage = () => {
   const navigate = useNavigate();
@@ -39,13 +41,13 @@ const PromptPage = () => {
               <div className="promptpage__top-bar" />
               <div className="promptpage__middle-container">
                 <div className="promptpage__middle-container__sub-container">
-                  <div className="promptpage__middle-container__coffeemug-container">
-                    {/* <img
+                  {/* <div className="promptpage__middle-container__coffeemug-container"> */}
+                  {/* <img
                       className="promptpage__middle-container__coffeemug-img"
                       alt=""
                       src={CoffeeMugWithHat_happy}
                     /> */}
-                  </div>
+                  {/* </div> */}
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
                       Welcome to AccountaPair
@@ -68,6 +70,28 @@ const PromptPage = () => {
                       className="back"
                       border="none"
                       eventListener={handleClick}
+                    />
+                  </div>
+                  <div className="loading-icon-container">
+                    <img
+                      src={loadingActiveIcon}
+                      alt="loadingActiveIcon"
+                      className="loading-active-icon"
+                    />
+                    <img
+                      src={loadingInactiveIcon}
+                      alt="loadingInactiveIcon"
+                      className="loading-inactive-icon"
+                    />
+                    <img
+                      src={loadingInactiveIcon}
+                      alt="loadingInactiveIcon"
+                      className="loading-inactive-icon"
+                    />
+                    <img
+                      src={loadingInactiveIcon}
+                      alt="loadingInactiveIcon"
+                      className="loading-inactive-icon"
                     />
                   </div>
                 </div>
