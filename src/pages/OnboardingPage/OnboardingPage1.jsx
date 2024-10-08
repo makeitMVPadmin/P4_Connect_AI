@@ -4,7 +4,7 @@ import Button from "../../components/Button/Button";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
-const OnboardingPage = () => {
+const OnboardingPage1 = () => {
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
@@ -46,4 +46,4 @@ const OnboardingPage = () => {
   );
 };
 
-export default OnboardingPage;
+export default OnboardingPage1;
