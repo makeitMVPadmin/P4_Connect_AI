@@ -84,7 +84,6 @@ const PromptPage = () => {
                   className="loading-inactive-icon"
                 />
               </div>
-              <div className="promptpage__bottom-bar" />{" "}
             </>
           )}
           {/* other pages */}
