@@ -4,7 +4,7 @@ import "./PromptPage.scss";
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
-import OnboardingPage from "../OnboardingPage/OnboardingPage";
+import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
@@ -80,7 +80,7 @@ const PromptPage = () => {
 
           {/* show OnboardingPage when currentPage is 'onboarding-sequence' */}
 
-          {currentPage === "onboarding-sequence" && <OnboardingPage />}
+          {currentPage === "onboarding-sequence" && <OnboardingPage1 />}
 
           {/* handle loading page */}
 
