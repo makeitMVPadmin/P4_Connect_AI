@@ -1,13 +1,10 @@
+import { useEffect, useState } from "react";
 import "./PromptPage.scss";
 
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
-
-import { useEffect, useState } from "react";
-import QuizPage from "../QuizPage/QuizPage";
-import Roadmap from "../../components/Roadmap/Roadmap";
-import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
+import OnboardingPage from "../OnboardingPage/OnboardingPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
@@ -16,18 +13,12 @@ const PromptPage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("prompt");
 
-  // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
-  const [matchResults, setMatchResults] = useState(null);
-
   useEffect(() => {
     setCurrentPage("prompt");
-    sessionStorage.removeItem("formData");
-    sessionStorage.removeItem("answeredQuestions");
-    sessionStorage.removeItem("selectedAnswerIdsJSON");
   }, []);
 
   const handleClick = () => {
-    setCurrentPage("quiz");
+    setCurrentPage("onboarding-sequence");
   };
 
   const handleBack = () => {
@@ -86,17 +77,13 @@ const PromptPage = () => {
               </div>
             </>
           )}
-          {/* other pages */}
-          {(currentPage === "quiz" ||
-            currentPage === "new-match" ||
-            currentPage === "no-match") && (
-            <QuizPage
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
-          )}
-          {currentPage === "roadmap" && <Roadmap />}
-          {currentPage === "goalachieved" && <GoalAchieved />}
+
+          {/* show OnboardingPage when currentPage is 'onboarding-sequence' */}
+
+          {currentPage === "onboarding-sequence" && <OnboardingPage />}
+
+          {/* handle loading page */}
+
           {(currentPage === "loading" || currentPage === "loading1") && (
             <LoadingPage
               currentPage={currentPage}
