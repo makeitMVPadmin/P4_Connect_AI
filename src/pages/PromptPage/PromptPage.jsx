@@ -48,8 +48,7 @@ const PromptPage = () => {
                   </div>
                   <div className="promptpage__middle-container__sub-container text-container">
                     <div className="welcome-message">
-                      <span>Welcome to</span> <br />
-                      <span>AccountaPair</span>
+                      Welcome to AccountaPair
                     </div>
                     <div className="welcome-text">
                       Set your preferences and skills before moving to the
@@ -58,18 +57,17 @@ const PromptPage = () => {
                   </div>
                   <div className="button-container">
                     <Button
+                      text="Back to home"
+                      color="white"
+                      className="next"
+                      eventListener={handleBack}
+                    />
+                    <Button
                       text="Continue"
                       color="blue"
                       className="back"
                       border="none"
                       eventListener={handleClick}
-                    />
-
-                    <Button
-                      text="Back to home"
-                      color="white"
-                      className="next"
-                      eventListener={handleBack}
                     />
                   </div>
                 </div>
