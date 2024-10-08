@@ -3,7 +3,7 @@ import Home from "./main.js";
 import PromptPage from "./pages/PromptPage/PromptPage";
 import BackEndTest from "./backend/Backend.jsx";
 import AiBackendTest from "./backend/AiBackendTest.js";
-import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
+import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 
 function App() {
   return (

@@ -3,8 +3,8 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import React, { useState, Suspense } from "react";
 import QuizQuestions from "../../components/QuizQuestions/QuizQuestions";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import NoMatch from "../NoMatch/NoMatch";
-import NewMatchedUsers from "../NewMatchedUsers/NewMatchedUsers";
+import NoMatch from "../../components/NoMatch/NoMatch";
+import NewMatchedUsers from "../../components/NewMatchedUsers/NewMatchedUsers";
 
 const QuizPage = ({ currentPage, setCurrentPage }) => {
   // ADD match response prop if match algo happens after sending questions

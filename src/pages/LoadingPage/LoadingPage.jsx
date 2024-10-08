@@ -1,5 +1,5 @@
 import "./LoadingPage.scss";
-import LoadingBar from "../LoadingBar/LoadingBar";
+import LoadingBar from "../../components/LoadingBar/LoadingBar";
 import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
 import connectAiIcon from "../../assets/images/connectAiIcon.svg";
 import { useEffect, useState } from "react";
@@ -13,8 +13,7 @@ const LoadingPage = ({ currentPage, setCurrentPage }) => {
       }, 2000);
       setPage(currentPage);
     }
-    if(page==="loading1")
-    {
+    if (page === "loading1") {
       setTimeout(() => {
         setCurrentPage("roadmap");
       }, 2000);

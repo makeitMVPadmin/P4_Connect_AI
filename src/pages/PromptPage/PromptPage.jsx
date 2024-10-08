@@ -5,10 +5,10 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 
 import { useEffect, useState } from "react";
-import QuizPage from "../../components/QuizPage/QuizPage";
+import QuizPage from "../QuizPage/QuizPage";
 import Roadmap from "../../components/Roadmap/Roadmap";
 import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 

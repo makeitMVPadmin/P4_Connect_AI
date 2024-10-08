@@ -6,12 +6,17 @@ import user2 from "../../assets/images/user2.png";
 import email from "../../assets/icons/mage_email.svg";
 import linkedin from "../../assets/icons/linkedin.svg";
 import { readData } from "../../utils/Functions/functions.js";
-import LoadingPage from "../LoadingPage/LoadingPage.jsx";
+import LoadingPage from "../../pages/LoadingPage/LoadingPage.jsx";
 //need to import function to retrieve matches from firebase:
 //ex. import {getMatches} from "../../utils/firebaseMatches";
 
 //need to define props on main single page: need "handleBackToQuiz" function, "handleGoToGoal" function and pass to MatchedUsers component
-const NewMatchedUsers = ({ handleBackToQuiz, handleGoToGoal, currentPage, setCurrentPage }) => {
+const NewMatchedUsers = ({
+  handleBackToQuiz,
+  handleGoToGoal,
+  currentPage,
+  setCurrentPage,
+}) => {
   const [matchedUsername, setMatchedUsername] = useState("Kerry");
   const [matchedUserTitle, setMatchedUserTitle] = useState(
     "UX/UI Designer in training"

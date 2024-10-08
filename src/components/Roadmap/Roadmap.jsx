@@ -13,7 +13,7 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
-import LoadingPage from "../LoadingPage/LoadingPage";
+import LoadingPage from "../../pages/LoadingPage/LoadingPage";
 
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
@@ -27,7 +27,6 @@ const Roadmap = () => {
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
-
 
   // useEffect(() => {
   //   console.log("aicall");
@@ -132,8 +131,6 @@ const Roadmap = () => {
     user2Picture: user2Picture,
   };
 
-
-
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
     setmodalOpen(true);
@@ -166,7 +163,6 @@ const Roadmap = () => {
       </Modal>
     );
   };
-
 
   return (
     <div className="roadmap-container">
