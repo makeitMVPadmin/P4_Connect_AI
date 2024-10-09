@@ -3,6 +3,7 @@ import "./OnboardingPage.scss";
 import Button from "../../components/Button/Button";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
+import arrowLeft from "../../assets/images/arrowLeft.svg";
 
 const OnboardingPage1 = ({ onNext }) => {
   return (
