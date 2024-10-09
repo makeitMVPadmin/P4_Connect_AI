@@ -4,7 +4,7 @@ import Button from "../../components/Button/Button";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
-const OnboardingPage3 = () => {
+const OnboardingPage3 = ({ onNext }) => {
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
@@ -15,8 +15,8 @@ const OnboardingPage3 = () => {
             </div>
           </div>
           <div className="button-container">
-            <Button text="Front End" color="white" />
-            <Button text="Back End" color="white" />
+            <Button text="Front End" color="white" eventlistener={onNext} />
+            <Button text="Back End" color="white" eventlistener={onNext} />
           </div>
           <div className="loading-icon-container">
             <img

@@ -20,11 +20,23 @@ const PromptPage = () => {
   }, []);
 
   const handleNext = () => {
-    setCurrentPage("onboarding-sequence");
+    if (currentPage === "prompt") {
+      setCurrentPage("onboarding1");
+    } else if (currentPage === "onboarding1") {
+      setCurrentPage("onboarding2");
+    } else if (currentPage === "onboarding2") {
+      setCurrentPage("onboarding3");
+    }
   };
 
   const handleBack = () => {
-    navigate("/");
+    if (currentPage === "onboarding2") {
+      setCurrentPage("onboarding1");
+    } else if (currentPage === "onboarding3") {
+      setCurrentPage("onboarding2");
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -80,10 +92,17 @@ const PromptPage = () => {
             </>
           )}
 
-          {/* show OnboardingPage when currentPage is 'onboarding-sequence' */}
+          {currentPage === "onboarding1" && (
+            <OnboardingPage1 onNext={handleNext} onBack={handleBack} />
+          )}
 
-          {currentPage === "onboarding-sequence" && <OnboardingPage1 />}
+          {currentPage === "onboarding2" && (
+            <OnboardingPage2 onNext={handleNext} onBack={handleBack} />
+          )}
 
+          {currentPage === "onboarding3" && (
+            <OnboardingPage3 onNext={handleNext} onBack={handleBack} />
+          )}
           {/* handle loading page */}
 
           {(currentPage === "loading" || currentPage === "loading1") && (
