@@ -12,6 +12,7 @@ import { useState } from "react";
 import Modal from 'react-modal';
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
 
 const style = {
   position: 'absolute',
@@ -73,6 +74,8 @@ const TestPage = () => {
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
+      <ChallengeCard></ChallengeCard>
+
     </div>
   );
 };
