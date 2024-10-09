@@ -14,9 +14,7 @@ const OnboardingPage2 = ({ onNext, onBack }) => {
             <img src={arrowLeft} alt="arrowLeft" className="arrow-left" />
           </div>
           <div className="onboarding-page__text-container">
-            <div className="welcome-message">
-              How good are you at development?{" "}
-            </div>
+            <div className="welcome-message">How good are you at field?</div>
           </div>
           <div className="button-container">
             <Button text="Beginner" color="white" eventListener={onNext} />

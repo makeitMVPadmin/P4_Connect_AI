@@ -30,7 +30,9 @@ const PromptPage = () => {
   };
 
   const handleBack = () => {
-    if (currentPage === "onboarding2") {
+    if (currentPage === "onboarding1") {
+      setCurrentPage("prompt");
+    } else if (currentPage === "onboarding2") {
       setCurrentPage("onboarding1");
     } else if (currentPage === "onboarding3") {
       setCurrentPage("onboarding2");
