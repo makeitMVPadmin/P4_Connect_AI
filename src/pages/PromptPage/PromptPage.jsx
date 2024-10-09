@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
+import OnboardingPage2 from "../OnboardingPage/OnboardingPage2";
+import OnboardingPage3 from "../OnboardingPage/OnboardingPage3";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
@@ -17,7 +19,7 @@ const PromptPage = () => {
     setCurrentPage("prompt");
   }, []);
 
-  const handleClick = () => {
+  const handleNext = () => {
     setCurrentPage("onboarding-sequence");
   };
 
@@ -50,7 +52,7 @@ const PromptPage = () => {
                   color="blue"
                   className="back"
                   border="none"
-                  eventListener={handleClick}
+                  eventListener={handleNext}
                 />
               </div>
               <div className="loading-icon-container">
