@@ -5,11 +5,14 @@ import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
-const OnboardingPage3 = ({ onNext }) => {
+const OnboardingPage3 = ({ onNext, onBack }) => {
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
         <>
+          <div className="left-arrow-container" onClick={onBack}>
+            <img src={arrowLeft} alt="arrowLeft" className="arrow-left" />
+          </div>
           <div className="onboarding-page__text-container">
             <div className="welcome-message">
               What are some skills you want to work on?{" "}

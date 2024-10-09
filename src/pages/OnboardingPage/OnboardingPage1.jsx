@@ -5,11 +5,14 @@ import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
-const OnboardingPage1 = ({ onNext }) => {
+const OnboardingPage1 = ({ onNext, onBack }) => {
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
         <>
+          <div className="left-arrow-container" onClick={onBack}>
+            <img src={arrowLeft} alt="arrowLeft" className="arrow-left" />
+          </div>
           <div className="onboarding-page__text-container">
             <div className="welcome-message">
               What field are you looking to work on?{" "}
