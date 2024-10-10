@@ -19,8 +19,9 @@ const OnboardingPage3 = ({ onNext, onBack }) => {
             </div>
           </div>
           <div className="button-container">
-            <Button text="Front End" color="white" eventlistener={onNext} />
-            <Button text="Back End" color="white" eventlistener={onNext} />
+            <Button text="DSA" color="white" eventlistener={onNext} />
+            <Button text="Python" color="white" eventlistener={onNext} />
+            <Button text="Frontend" color="white" eventlistener={onNext} />
           </div>
           <div className="loading-icon-container">
             <img

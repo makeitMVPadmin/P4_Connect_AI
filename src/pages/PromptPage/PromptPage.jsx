@@ -56,13 +56,13 @@ const PromptPage = () => {
               </div>
               <div className="button-container">
                 <Button
-                  text="Back to home"
+                  text="Back to Home"
                   color="white"
                   className="next"
                   eventListener={handleBack}
                 />
                 <Button
-                  text="Continue"
+                  text="Let's start up"
                   color="blue"
                   className="back"
                   border="none"

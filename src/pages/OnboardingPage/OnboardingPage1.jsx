@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./OnboardingPage.scss";
 import Button from "../../components/Button/Button";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
@@ -6,6 +6,13 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
 const OnboardingPage1 = ({ onNext, onBack }) => {
+  const [selectedButton, setSelectedButton] = useState(null);
+
+  const handleClick = (button) => {
+    setSelectedButton(button);
+    onNext();
+  };
+
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
@@ -19,8 +26,23 @@ const OnboardingPage1 = ({ onNext, onBack }) => {
             </div>
           </div>
           <div className="button-container">
-            <Button text="Design" color="white" eventListener={onNext} />
-            <Button text="Development" color="white" eventListener={onNext} />
+            <Button
+              text="Design"
+              color="white"
+              eventListener={() => handleClick("design")}
+              style={{
+                backgroundColor: selectedButton === "design" ? "#FFD22F" : "",
+              }}
+            />
+            <Button
+              text="Development"
+              color="white"
+              eventListener={() => handleClick("development")}
+              style={{
+                backgroundColor:
+                  selectedButton === "development" ? "#FFD22F" : "",
+              }}
+            />
           </div>
           <div className="loading-icon-container">
             <img
