@@ -2,20 +2,6 @@
 @import "../../styles/partials/variables.scss";
 @import "../../styles/partials/typography.scss";
 
-.onboarding-page {
-    min-height: calc(100vh - 80px);
-    padding: 40px 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: stretch;
-    overflow: hidden;
-    flex-shrink: 0;
-    gap: 40px;
-    box-sizing: border-box;
-}
-
 .onboarding-page__container {
     background-color: $MVP-White;
     border-radius: 12px;
@@ -38,6 +24,10 @@
     top: 36px;
 }
 
+.arrow-left {
+    cursor: pointer;
+}
+
 .onboarding-page__text-container {
     display: flex;
     flex-direction: column;
@@ -48,12 +38,10 @@
 
 .welcome-message {
     font-family: Corben;
-    font-size: 32px;
-    font-style: normal;
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 40px;
-    text-align: center;
-
+    font-style: normal;
+    line-height: 3.25rem;
 }
 
 .button-container {
@@ -63,4 +51,13 @@
     align-self: stretch;
     gap: 16px;
     padding: 64px;
+
+    button {
+        background-color: white;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #FFD22F;
+        }
+    }
 }

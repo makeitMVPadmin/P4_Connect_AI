@@ -30,18 +30,11 @@ const OnboardingPage1 = ({ onNext, onBack }) => {
               text="Design"
               color="white"
               eventListener={() => handleClick("design")}
-              style={{
-                backgroundColor: selectedButton === "design" ? "#FFD22F" : "",
-              }}
             />
             <Button
               text="Development"
               color="white"
               eventListener={() => handleClick("development")}
-              style={{
-                backgroundColor:
-                  selectedButton === "development" ? "#FFD22F" : "",
-              }}
             />
           </div>
           <div className="loading-icon-container">
