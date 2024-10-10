@@ -1,0 +1,97 @@
+@import "../../styles/partials/mixins.scss";
+@import "../../styles/partials/variables.scss";
+@import "../../styles/partials/typography.scss";
+
+.filterboard {
+    width: 380px; // Adjusted width based on the screenshot
+  border: 1px solid $Light-Gray;
+  display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  background-color: $MVP-White;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); // Subtle shadow for depth
+  font-family: Corben-Bold;
+
+  h2 {
+    font-family: Corben;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 28px; 
+    margin-bottom: 24px; // Increase margin for better spacing
+    text-align: left;
+  }
+
+  &__sections {
+    margin-bottom: 32px;
+
+    h3 {
+      font-family: Corben-Bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: $MVP-Dark-Blue;
+    }
+
+    &__button{
+      margin: 5px;
+      padding: 10px 15px;
+      border: 1px solid $MVP-black;
+      border-radius: 5px;
+      background-color: $MVP-White;
+      cursor: pointer;
+      font-family: Gilroy;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: $MVP-Yellow;
+        color: $MVP-White;
+        border-color: $MVP-Yellow;
+        font-family: Corben-Bold;
+      }
+
+      &:hover {
+        background-color: $MVP-Light-Blue;
+        color: $MVP-White;
+      }
+    }
+  }
+
+  .filter-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .clear-button {
+      padding: 10px 20px;
+      background-color: $MVP-faded;
+      border: none;
+      font-family: "Gilroy-Light", sans-serif;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $MVP-Red;
+        color: $MVP-White;
+      }
+    }
+
+    .show-button {
+      padding: 10px 20px;
+      background-color: $MVP-Light-Blue;
+      border: none;
+      color: $MVP-White;
+      font-family: "Gilroy-ExtraBold", sans-serif;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $MVP-Dark-Blue;
+      }
+    }
+  }
+}
+
