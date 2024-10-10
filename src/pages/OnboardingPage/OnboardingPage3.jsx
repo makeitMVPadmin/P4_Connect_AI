@@ -18,7 +18,7 @@ const OnboardingPage3 = ({ onNext, onBack }) => {
               What are some skills you want to work on?{" "}
             </div>
           </div>
-          <div className="button-container">
+          <div className="onboarding-button-container">
             <Button text="DSA" color="white" eventlistener={onNext} />
             <Button text="Python" color="white" eventlistener={onNext} />
             <Button text="Frontend" color="white" eventlistener={onNext} />

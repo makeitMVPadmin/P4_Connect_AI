@@ -25,7 +25,7 @@ const OnboardingPage1 = ({ onNext, onBack }) => {
               What field are you looking to work on?{" "}
             </div>
           </div>
-          <div className="button-container">
+          <div className="onboarding-button-container">
             <Button
               text="Design"
               color="white"
