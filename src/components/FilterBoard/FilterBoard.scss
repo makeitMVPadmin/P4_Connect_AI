@@ -24,7 +24,7 @@ line-height: 28px;
     margin-bottom: 24px; // Increase margin for better spacing
     text-align: left;
   }
-
+&__choice {
   &__sections {
     margin-bottom: 32px;
 
@@ -58,8 +58,8 @@ line-height: 28px;
       }
     }
   }
-
-  .filter-actions {
+}
+  &__actions {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -92,6 +92,7 @@ line-height: 28px;
         background-color: $MVP-Dark-Blue;
       }
     }
-  }
+  
+}
 }
 

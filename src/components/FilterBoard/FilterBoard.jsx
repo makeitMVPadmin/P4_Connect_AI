@@ -44,70 +44,64 @@ const FilterBoard = () => {
         style={{
           backgroundColor: "black",
           height: "1px",
-                  border: "none",
-                  width: "100%",
-                  position: "",
-                  top: "88px",
+          border: "none",
+          width: "100%",
+          position: "",
+          top: "88px",
         }}
       />
-      <div
-        style={{
-          borderTop: "2px solid #fff ",
-          marginLeft: 20,
-          marginRight: 20,
-        }}
-      ></div>
-      <div className="filterboard__sections">
-        <h3>Industry</h3>
-        <button
-          className={`filterboard__sections__button ${
-            industry === "Design" ? "active" : ""
-          }`}
-          onClick={() => handleIndustryChange("Design")}
-        >
-          Design
-        </button>
-        <button
-          className={`filterboard__sections__button ${
-            industry === "Development" ? "active" : ""
-          }`}
-          onClick={() => handleIndustryChange("Development")}
-        >
-          Development
-        </button>
-      </div>
-
-      <div className="filterboard__sections">
-        <h3>Difficulty</h3>
-        {difficulties.map((level) => (
+      <div className="filterboard__choice">
+        <div className="filterboard__choice__sections">
+          <h3>Industry</h3>
           <button
-            key={level}
-            className={`filterboard__sections__button ${
-              difficulty === level ? "active" : ""
+            className={`filterboard__choice__sections__button ${
+              industry === "Design" ? "active" : ""
             }`}
-            onClick={() => handleDifficultyChange(level)}
+            onClick={() => handleIndustryChange("Design")}
           >
-            {level}
+            Design
           </button>
-        ))}
-      </div>
-
-      <div className="filterboard__sections">
-        <h3>Technology</h3>
-        {technologies.map((tech) => (
           <button
-            key={tech}
-            className={`filterboard__sections__button ${
-              technology.includes(tech) ? "active" : ""
+            className={`filterboard__choice__sections__button ${
+              industry === "Development" ? "active" : ""
             }`}
-            onClick={() => handleTechnologyChange(tech)}
+            onClick={() => handleIndustryChange("Development")}
           >
-            {tech}
+            Development
           </button>
-        ))}
-      </div>
+        </div>
 
-      <div className="filter-actions">
+        <div className="filterboard__choice__sections">
+          <h3>Difficulty</h3>
+          {difficulties.map((level) => (
+            <button
+              key={level}
+              className={`filterboard__choice__sections__button ${
+                difficulty === level ? "active" : ""
+              }`}
+              onClick={() => handleDifficultyChange(level)}
+            >
+              {level}
+            </button>
+          ))}
+        </div>
+
+        <div className="filterboard__choice__sections">
+          <h3>Technology</h3>
+          {technologies.map((tech) => (
+            <button
+              key={tech}
+              className={`filterboard__choice__sections__button ${
+                technology.includes(tech) ? "active" : ""
+              }`}
+              onClick={() => handleTechnologyChange(tech)}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="filterboard__actions">
         <button className="clear-button" onClick={handleClearAll}>
           Clear all
         </button>
