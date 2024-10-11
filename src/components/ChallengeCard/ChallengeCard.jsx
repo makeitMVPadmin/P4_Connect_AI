@@ -1,7 +1,7 @@
 import React from "react";
 import "./ChallengeCard.scss";
 import ChallengeCardBanner from "../../assets/images/ChallengeCardBanner.png";
-import Pen from "../../assets/images/Pen.png";
+import Pen from "../../assets/images/Pen.svg";
 import Clock from "../../assets/images/Clock.png";
 import Idea from "../../assets/images/Idea.png";
 
