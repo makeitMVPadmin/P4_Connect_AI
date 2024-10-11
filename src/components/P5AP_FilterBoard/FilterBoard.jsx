@@ -126,7 +126,7 @@ const FilterBoard = () => {
             Clear all
           </button>
           <button className="show-button" onClick={handleSubmit}>
-            Show all
+            Submit
           </button>
         </div>
       </div>
