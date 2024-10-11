@@ -3,13 +3,13 @@
 @import "../../styles/partials/typography.scss";
 
 .filterboard {
-    width: 380px; // Adjusted width based on the screenshot
+  width: 480px; // Adjusted width based on the screenshot
   border: 1px solid $Light-Gray;
   display: flex;
-    padding: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 7px;
   background-color: $MVP-White;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); // Subtle shadow for depth
@@ -17,14 +17,29 @@
 
   h2 {
     font-family: Corben;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: 28px; 
-    margin-bottom: 24px; // Increase margin for better spacing
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px; // Increase margin for better spacing
     text-align: left;
   }
+
+  // First and last divider lines
+  &__divider {
+    width: calc(100% + 48px); // Expand the line beyond padding
+    height: 1px;
+    background-color: $MVP-black;
+    border: none;
+    margin-left: -24px;  // Pull the line to the left to touch the border
+    margin-right: -24px; // Ensure the line touches the right border
+    margin-bottom: 24px;  // Space after the line
+  }
+
+  &__divider--bottom {
+    margin-top: 24px;  // Adjust top margin for space between the last section and the bottom line
+  }
+
 &__choice {
+  width: 100%; // Ensure full width for internal sections
   &__sections {
     margin-bottom: 32px;
 
@@ -58,18 +73,26 @@ line-height: 28px;
       }
     }
   }
+
+   // Add horizontal lines between sections
+    &__sections:not(:last-child) {
+      border-bottom: 1px solid $Light-Gray;
+      padding-bottom: 20px;
+    }
 }
   &__actions {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    //border-top: 1px solid $Light-Gray; // Top border for the action section
+    padding-top: 20px;
 
     .clear-button {
       padding: 10px 20px;
       background-color: $MVP-faded;
       border: none;
-      font-family: "Gilroy-Light", sans-serif;
+      font-family: Gilroy-Light;
       cursor: pointer;
       border-radius: 5px;
 
@@ -96,3 +119,11 @@ line-height: 28px;
 }
 }
 
+// Center the filterboard container on the page
+.filterboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $MVP-Cream; // Optional background for visibility
+}

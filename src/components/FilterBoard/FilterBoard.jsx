@@ -38,74 +38,70 @@ const FilterBoard = () => {
   };
 
   return (
-    <div className="filterboard">
-      <h2>Filters</h2>
-      <hr
-        style={{
-          backgroundColor: "black",
-          height: "1px",
-          border: "none",
-          width: "100%",
-          position: "",
-          top: "88px",
-        }}
-      />
-      <div className="filterboard__choice">
-        <div className="filterboard__choice__sections">
-          <h3>Industry</h3>
-          <button
-            className={`filterboard__choice__sections__button ${
-              industry === "Design" ? "active" : ""
-            }`}
-            onClick={() => handleIndustryChange("Design")}
-          >
-            Design
-          </button>
-          <button
-            className={`filterboard__choice__sections__button ${
-              industry === "Development" ? "active" : ""
-            }`}
-            onClick={() => handleIndustryChange("Development")}
-          >
-            Development
-          </button>
+    <div className="filterboard-container">
+      <div className="filterboard">
+        <h2>Filters</h2>
+        <hr className="filterboard__divider" />
+
+        <div className="filterboard__choice">
+          <div className="filterboard__choice__sections">
+            <h3>Industry</h3>
+            <button
+              className={`filterboard__choice__sections__button ${
+                industry === "Design" ? "active" : ""
+              }`}
+              onClick={() => handleIndustryChange("Design")}
+            >
+              Design
+            </button>
+            <button
+              className={`filterboard__choice__sections__button ${
+                industry === "Development" ? "active" : ""
+              }`}
+              onClick={() => handleIndustryChange("Development")}
+            >
+              Development
+            </button>
+          </div>
+
+          <div className="filterboard__choice__sections">
+            <h3>Difficulty</h3>
+            {difficulties.map((level) => (
+              <button
+                key={level}
+                className={`filterboard__choice__sections__button ${
+                  difficulty === level ? "active" : ""
+                }`}
+                onClick={() => handleDifficultyChange(level)}
+              >
+                {level}
+              </button>
+            ))}
+          </div>
+
+          <div className="filterboard__choice__sections">
+            <h3>Technology</h3>
+            {technologies.map((tech) => (
+              <button
+                key={tech}
+                className={`filterboard__choice__sections__button ${
+                  technology.includes(tech) ? "active" : ""
+                }`}
+                onClick={() => handleTechnologyChange(tech)}
+              >
+                {tech}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="filterboard__choice__sections">
-          <h3>Difficulty</h3>
-          {difficulties.map((level) => (
-            <button
-              key={level}
-              className={`filterboard__choice__sections__button ${
-                difficulty === level ? "active" : ""
-              }`}
-              onClick={() => handleDifficultyChange(level)}
-            >
-              {level}
-            </button>
-          ))}
+        <hr className="filterboard__divider" />
+        <div className="filterboard__actions">
+          <button className="clear-button" onClick={handleClearAll}>
+            Clear all
+          </button>
+          <button className="show-button">Show all</button>
         </div>
-
-        <div className="filterboard__choice__sections">
-          <h3>Technology</h3>
-          {technologies.map((tech) => (
-            <button
-              key={tech}
-              className={`filterboard__choice__sections__button ${
-                technology.includes(tech) ? "active" : ""
-              }`}
-              onClick={() => handleTechnologyChange(tech)}
-            >
-              {tech}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className="filterboard__actions">
-        <button className="clear-button" onClick={handleClearAll}>
-          Clear all
-        </button>
-        <button className="show-button">Show all</button>
       </div>
     </div>
   );
