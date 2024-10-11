@@ -1,24 +1,36 @@
 import React, { useState } from "react";
 import "./FilterBoard.scss";
+import { ReactComponent as Exit } from "../../assets/images/exit.svg";
 
 const FilterBoard = () => {
   // State for filters
-  const [industry, setIndustry] = useState("");
-  const [difficulty, setDifficulty] = useState("");
+  const [industry, setIndustry] = useState([]);
+  const [difficulty, setDifficulty] = useState([]);
   const [technology, setTechnology] = useState([]);
 
   // Data for filters
+  const industries = ["Design", "Development"];
   const difficulties = ["Easy", "Intermediate", "Hard"];
   const technologies = ["Python", "Java", "React", "DSA", "jQuery"];
 
   // Handle industry change
   const handleIndustryChange = (selectedIndustry) => {
-    setIndustry(selectedIndustry);
+    if (industry.includes(selectedIndustry)) {
+      setIndustry(
+        industry.filter((selected) => selected !== selectedIndustry)
+      );
+    } else {
+      setIndustry([...industry, selectedIndustry]);
+    }
   };
 
   // Handle difficulty change
-  const handleDifficultyChange = (selectedDifficulty) => {
-    setDifficulty(selectedDifficulty);
+  const handleDifficultyChange = (level) => {
+    if (difficulty.includes(level)) {
+      setDifficulty(difficulty.filter((l) => l !== level));
+    } else {
+      setDifficulty([...difficulty, level]);
+    }
   };
 
   // Handle technology change
@@ -28,40 +40,53 @@ const FilterBoard = () => {
     } else {
       setTechnology([...technology, tech]);
     }
+   
   };
 
   // Handle clearing all filters
   const handleClearAll = () => {
-    setIndustry("");
-    setDifficulty("");
+    setIndustry([]);
+    setDifficulty([]);
     setTechnology([]);
   };
 
+  const handleSubmit = () => {
+    console.log("submit");
+  };
+
+  //just closes the 
+  const handleExit = () => {
+    handleClearAll();
+    console.log("close")
+  }
   return (
     <div className="filterboard-container">
       <div className="filterboard">
-        <h2>Filters</h2>
+        <div className="filterboard__header">
+          <h2>Filters</h2>
+          <button
+            className="filterboard__header__close"
+            onClick={() => handleExit()}
+          >
+            <Exit />
+          </button>
+        </div>
         <hr className="filterboard__divider" />
 
         <div className="filterboard__choice">
           <div className="filterboard__choice__sections">
             <h3>Industry</h3>
-            <button
-              className={`filterboard__choice__sections__button ${
-                industry === "Design" ? "active" : ""
-              }`}
-              onClick={() => handleIndustryChange("Design")}
-            >
-              Design
-            </button>
-            <button
-              className={`filterboard__choice__sections__button ${
-                industry === "Development" ? "active" : ""
-              }`}
-              onClick={() => handleIndustryChange("Development")}
-            >
-              Development
-            </button>
+            {industries.map((level) => (
+              <button
+                key={level}
+                className={`filterboard__choice__sections__button ${
+                  industry.includes(level) ? "active" : ""
+                }`}
+                onClick={() => handleIndustryChange(level)}
+              >
+                {level}
+              </button>
+            ))}
           </div>
 
           <div className="filterboard__choice__sections">
@@ -70,7 +95,7 @@ const FilterBoard = () => {
               <button
                 key={level}
                 className={`filterboard__choice__sections__button ${
-                  difficulty === level ? "active" : ""
+                  difficulty.includes(level) ? "active" : ""
                 }`}
                 onClick={() => handleDifficultyChange(level)}
               >
@@ -95,12 +120,14 @@ const FilterBoard = () => {
           </div>
         </div>
 
-        <hr className="filterboard__divider" />
+        <hr className="filterboard__divider filterboard__divider--bottom" />
         <div className="filterboard__actions">
           <button className="clear-button" onClick={handleClearAll}>
             Clear all
           </button>
-          <button className="show-button">Show all</button>
+          <button className="show-button" onClick={handleSubmit}>
+            Show all
+          </button>
         </div>
       </div>
     </div>
