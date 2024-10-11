@@ -12,7 +12,7 @@ const ChallengeCard = () => {
       <div
         style={{
           width: "100%",
-          maxWidth: "300px", // Maximum width for larger screens
+          maxWidth: "350px", // Use maxWidth for larger screens, but flexible on smaller ones
           background: "white",
           boxShadow: "0px 0px 12px 2px rgba(82, 82, 82, 0.16)",
           borderRadius: "12px",
@@ -22,44 +22,41 @@ const ChallengeCard = () => {
           alignItems: "center",
           display: "flex",
           margin: "0 auto", // Center the card
-          position: "relative", // Make the parent relative for absolute positioning of the "Hard" button
         }}
       >
         {/* Image Container */}
         <div
           style={{
             width: "100%",
-            height: "auto",
-            aspectRatio: "4 / 3", // Maintain aspect ratio for responsiveness
             borderTopLeftRadius: "12px",
             borderTopRightRadius: "12px",
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "relative", // Set to relative for absolute positioning of the tag
+            position: "relative",
           }}
         >
           <img
             style={{
               width: "100%",
-              height: "100%",
+              height: "auto",
               objectFit: "cover",
             }}
             src={ChallengeCardBanner}
             alt="Challenge Card Banner"
           />
 
-          {/* Corrected Position for the "Hard" Button */}
+          {/* "Hard" Button */}
           <div
             style={{
               backgroundColor: "#37AFFF",
               borderRadius: "40px",
               padding: "4px 12px",
-              position: "absolute", // Position the tag absolutely
-              top: "10px", // Adjust the position from the top of the image
-              left: "10px", // Adjust the position from the left side of the image
-              zIndex: 2, // Ensure the button is above the image
+              position: "absolute", // Position absolutely over the image
+              top: "10px",
+              left: "10px",
+              zIndex: 2,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -196,6 +193,7 @@ const ChallengeCard = () => {
           }
           img {
             height: auto;
+            max-width: 100%;
           }
           .card-content {
             font-size: 16px;
@@ -204,7 +202,7 @@ const ChallengeCard = () => {
         @media (max-width: 480px) {
           div {
             width: 100%;
-            max-width: 100%; // Full width for smaller devices
+            max-width: 100%;
           }
           .card-content {
             font-size: 14px;
