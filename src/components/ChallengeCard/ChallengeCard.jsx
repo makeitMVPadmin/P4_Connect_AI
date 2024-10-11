@@ -5,7 +5,7 @@ import Pen from "../../assets/images/Pen.svg";
 import Clock from "../../assets/images/Clock.png";
 import Idea from "../../assets/images/Idea.png";
 
-const ChallengeCard = ({ data }) => {
+const ChallengeCard = () => {
   return (
     <>
       <div
@@ -42,7 +42,7 @@ const ChallengeCard = ({ data }) => {
               height: "auto",
               objectFit: "cover",
             }}
-            src={data.image}
+            src={ChallengeCardBanner}
             alt="Challenge Card Banner"
           />
 
@@ -70,7 +70,7 @@ const ChallengeCard = ({ data }) => {
                 letterSpacing: "0.36px",
               }}
             >
-              {data.difficulty}
+              Hard
             </div>
           </div>
         </div>
