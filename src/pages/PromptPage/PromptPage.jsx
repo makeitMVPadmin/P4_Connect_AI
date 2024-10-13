@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./PromptPage.scss";
 
 import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
+import { PageContext } from "../../contexts/PageContext";
 import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
 import OnboardingPage2 from "../OnboardingPage/OnboardingPage2";
 import OnboardingPage3 from "../OnboardingPage/OnboardingPage3";
