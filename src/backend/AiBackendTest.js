@@ -1,6 +1,6 @@
 // src/components/AiBackendTest.jsx
 import React, { useState } from "react";
-import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
+import { callOpenAiApi } from "../utils/Functions/openaiFunctions";
 
 const AiBackendTest = () => {
   const [goals, setGoals] = useState(null);
