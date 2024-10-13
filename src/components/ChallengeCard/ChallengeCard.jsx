@@ -6,6 +6,18 @@ import Clock from "../../assets/images/Clock.png";
 import Idea from "../../assets/images/Idea.png";
 
 const ChallengeCard = ({ challenge }) => {
+  const getDifficultyColor = (difficulty) => {
+    switch (difficulty.toLowerCase()) {
+      case "easy":
+        return "#37AFFF"; // Blue for easy
+      case "intermediate":
+        return "#4CAF50"; // Green for intermediate
+      case "hard":
+        return "#FF5733"; // Red for hard
+      default:
+        return "#37AFFF"; // Default to blue
+    }
+  };
   return (
     <>
       <div
@@ -49,7 +61,7 @@ const ChallengeCard = ({ challenge }) => {
           {/* "Hard" Button */}
           <div
             style={{
-              backgroundColor: "#37AFFF",
+              backgroundColor: getDifficultyColor(challenge.difficulty),
               borderRadius: "40px",
               padding: "4px 12px",
               position: "absolute",
