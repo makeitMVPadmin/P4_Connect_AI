@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import "./PromptPage.scss";
 
 import { useNavigate } from "react-router-dom";
@@ -14,12 +14,12 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
 const PromptPage = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("prompt");
-  const [progressBarIndex, setProgressBarIndex] = useState(0);
 
+  const { currentPage, setCurrentPage, progressBarIndex, setProgressBarIndex } =
+    useContext(PageContext);
   useEffect(() => {
     setCurrentPage("prompt");
-  }, []);
+  }, [setCurrentPage]);
 
   const handleNext = () => {
     if (progressBarIndex < 3) {
