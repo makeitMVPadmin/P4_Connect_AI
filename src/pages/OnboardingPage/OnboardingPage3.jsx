@@ -5,7 +5,7 @@ import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
-const OnboardingPage3 = ({ onNext, onBack }) => {
+const OnboardingPage3 = ({ onNext, onBack, progressBarIndex }) => {
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
@@ -25,24 +25,28 @@ const OnboardingPage3 = ({ onNext, onBack }) => {
           </div>
           <div className="loading-icon-container">
             <img
-              src={loadingActiveIcon}
+              src={
+                progressBarIndex === 0 ? loadingActiveIcon : loadingInactiveIcon
+              }
               alt="loadingActiveIcon"
-              className="loading-active-icon"
             />
             <img
-              src={loadingInactiveIcon}
+              src={
+                progressBarIndex === 1 ? loadingActiveIcon : loadingInactiveIcon
+              }
               alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
             />
             <img
-              src={loadingInactiveIcon}
+              src={
+                progressBarIndex === 2 ? loadingActiveIcon : loadingInactiveIcon
+              }
               alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
             />
             <img
-              src={loadingInactiveIcon}
+              src={
+                progressBarIndex === 3 ? loadingActiveIcon : loadingInactiveIcon
+              }
               alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
             />
           </div>
         </>

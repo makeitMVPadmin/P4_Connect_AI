@@ -14,28 +14,43 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 const PromptPage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("prompt");
+  const [progressBarIndex, setProgressBarIndex] = useState(0);
 
   useEffect(() => {
     setCurrentPage("prompt");
   }, []);
 
   const handleNext = () => {
+    if (progressBarIndex < 3) {
+      setProgressBarIndex((prevIndex) => prevIndex + 1);
+    }
+
     if (currentPage === "prompt") {
       setCurrentPage("onboarding1");
+      setProgressBarIndex(1);
     } else if (currentPage === "onboarding1") {
       setCurrentPage("onboarding2");
+      setProgressBarIndex(2);
     } else if (currentPage === "onboarding2") {
       setCurrentPage("onboarding3");
+      setProgressBarIndex(3);
     }
   };
 
   const handleBack = () => {
+    if (progressBarIndex > 0) {
+      setProgressBarIndex((prevIndex) => prevIndex - 1);
+    }
+
     if (currentPage === "onboarding1") {
       setCurrentPage("prompt");
+      setProgressBarIndex(0);
     } else if (currentPage === "onboarding2") {
       setCurrentPage("onboarding1");
+      setProgressBarIndex(1);
     } else if (currentPage === "onboarding3") {
       setCurrentPage("onboarding2");
+      setProgressBarIndex(2);
     } else {
       navigate("/");
     }
@@ -71,39 +86,63 @@ const PromptPage = () => {
               </div>
               <div className="loading-icon-container">
                 <img
-                  src={loadingActiveIcon}
-                  alt="loadingActiveIcon"
-                  className="loading-active-icon"
+                  src={
+                    progressBarIndex === 0
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
                 />
                 <img
-                  src={loadingInactiveIcon}
-                  alt="loadingInactiveIcon"
-                  className="loading-inactive-icon"
+                  src={
+                    progressBarIndex === 1
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
                 />
                 <img
-                  src={loadingInactiveIcon}
-                  alt="loadingInactiveIcon"
-                  className="loading-inactive-icon"
+                  src={
+                    progressBarIndex === 2
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
                 />
                 <img
-                  src={loadingInactiveIcon}
-                  alt="loadingInactiveIcon"
-                  className="loading-inactive-icon"
+                  src={
+                    progressBarIndex === 3
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
                 />
               </div>
             </>
           )}
 
           {currentPage === "onboarding1" && (
-            <OnboardingPage1 onNext={handleNext} onBack={handleBack} />
+            <OnboardingPage1
+              onNext={handleNext}
+              onBack={handleBack}
+              progressBarIndex={progressBarIndex}
+            />
           )}
 
           {currentPage === "onboarding2" && (
-            <OnboardingPage2 onNext={handleNext} onBack={handleBack} />
+            <OnboardingPage2
+              onNext={handleNext}
+              onBack={handleBack}
+              progressBarIndex={progressBarIndex}
+            />
           )}
 
           {currentPage === "onboarding3" && (
-            <OnboardingPage3 onNext={handleNext} onBack={handleBack} />
+            <OnboardingPage3
+              onNext={handleNext}
+              onBack={handleBack}
+              progressBarIndex={progressBarIndex}
+            />
           )}
           {/* handle loading page */}
 

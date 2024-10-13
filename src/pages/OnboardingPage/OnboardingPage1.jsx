@@ -5,7 +5,7 @@ import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
-const OnboardingPage1 = ({ onNext, onBack }) => {
+const OnboardingPage1 = ({ onNext, onBack, progressBarIndex }) => {
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleClick = (button) => {
@@ -39,24 +39,28 @@ const OnboardingPage1 = ({ onNext, onBack }) => {
           </div>
           <div className="loading-icon-container">
             <img
-              src={loadingActiveIcon}
-              alt="loadingActiveIcon"
-              className="loading-active-icon"
+              src={
+                progressBarIndex === 0 ? loadingActiveIcon : loadingInactiveIcon
+              }
+              alt="loadingIcon"
             />
             <img
-              src={loadingInactiveIcon}
-              alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
+              src={
+                progressBarIndex === 1 ? loadingActiveIcon : loadingInactiveIcon
+              }
+              alt="loadingIcon"
             />
             <img
-              src={loadingInactiveIcon}
-              alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
+              src={
+                progressBarIndex === 2 ? loadingActiveIcon : loadingInactiveIcon
+              }
+              alt="loadingIcon"
             />
             <img
-              src={loadingInactiveIcon}
-              alt="loadingInactiveIcon"
-              className="loading-inactive-icon"
+              src={
+                progressBarIndex === 3 ? loadingActiveIcon : loadingInactiveIcon
+              }
+              alt="loadingIcon"
             />
           </div>
         </>
