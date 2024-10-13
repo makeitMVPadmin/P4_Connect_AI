@@ -5,13 +5,13 @@ import Pen from "../../assets/images/Pen.svg";
 import Clock from "../../assets/images/Clock.png";
 import Idea from "../../assets/images/Idea.png";
 
-const ChallengeCard = () => {
+const ChallengeCard = ({ challenge }) => {
   return (
     <>
       <div
         style={{
           width: "100%",
-          maxWidth: "350px", // Use maxWidth for larger screens, but flexible on smaller ones
+          maxWidth: "450px", // Use maxWidth for larger screens, but flexible on smaller ones
           background: "white",
           boxShadow: "0px 0px 12px 2px rgba(82, 82, 82, 0.16)",
           borderRadius: "12px",
@@ -52,7 +52,7 @@ const ChallengeCard = () => {
               backgroundColor: "#37AFFF",
               borderRadius: "40px",
               padding: "4px 12px",
-              position: "absolute", // Position absolutely over the image
+              position: "absolute",
               top: "10px",
               left: "10px",
               zIndex: 2,
@@ -70,7 +70,7 @@ const ChallengeCard = () => {
                 letterSpacing: "0.36px",
               }}
             >
-              Hard
+              {challenge.difficulty}
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ const ChallengeCard = () => {
                 fontWeight: 400,
               }}
             >
-              Design
+              {challenge.category}
             </div>
           </div>
 
@@ -129,7 +129,7 @@ const ChallengeCard = () => {
                 fontWeight: 400,
               }}
             >
-              Lorem ipsum dolor sit amet
+              {challenge.duration}
             </div>
           </div>
 
@@ -153,7 +153,7 @@ const ChallengeCard = () => {
                 lineHeight: "20px",
               }}
             >
-              Lorem ipsum dolor sit amet consectetur. Erat habitant quis erat
+              {challenge.task}
             </div>
           </div>
 

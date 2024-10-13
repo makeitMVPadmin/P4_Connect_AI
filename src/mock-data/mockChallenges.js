@@ -2,7 +2,7 @@ export const mockChallenges = {
   challenges: [
     {
       category: "Python",
-      difficulty: "easy",
+      difficulty: "Easy",
       duration: "60 mins",
       task: "Sum even numbers",
       details:
@@ -43,7 +43,7 @@ export const mockChallenges = {
     },
     {
       category: "Python",
-      difficulty: "intermediate",
+      difficulty: "Intermediate",
       duration: "60 mins",
       task: "Anagram check",
       details:
@@ -84,7 +84,7 @@ export const mockChallenges = {
     },
     {
       category: "Python",
-      difficulty: "hard",
+      difficulty: "Hard",
       duration: "60 mins",
       task: "Matrix rotation",
       details:
@@ -119,7 +119,7 @@ export const mockChallenges = {
     },
     {
       category: "React",
-      difficulty: "easy",
+      difficulty: "Easy",
       duration: "60 mins",
       task: "Simple counter component",
       details:
@@ -149,7 +149,7 @@ export const mockChallenges = {
     },
     {
       category: "React",
-      difficulty: "intermediate",
+      difficulty: "Intermediate",
       duration: "60 mins",
       task: "Interactive card component",
       details:
@@ -175,7 +175,7 @@ export const mockChallenges = {
     },
     {
       category: "React",
-      difficulty: "hard",
+      difficulty: "Hard",
       duration: "60 mins",
       task: "Todo list with React and Local Storage",
       details:
@@ -201,7 +201,7 @@ export const mockChallenges = {
     },
     {
       category: "DSA",
-      difficulty: "easy",
+      difficulty: "Easy",
       duration: "60 mins",
       task: "Reverse a string",
       details: "Write a function to reverse a given string.",
@@ -230,7 +230,7 @@ export const mockChallenges = {
     },
     {
       category: "DSA",
-      difficulty: "intermediate",
+      difficulty: "Intermediate",
       duration: "60 mins",
       task: "Longest palindrome substring",
       details: "Find the longest palindromic substring in a given string.",
@@ -258,7 +258,7 @@ export const mockChallenges = {
     },
     {
       category: "DSA",
-      difficulty: "hard",
+      difficulty: "Hard",
       duration: "60 mins",
       task: "Find shortest path in a maze",
       details:
@@ -285,7 +285,7 @@ export const mockChallenges = {
     },
     {
       category: "Java",
-      difficulty: "easy",
+      difficulty: "Easy",
       duration: "60 mins",
       task: "Factorial of a number",
       details: "Write a Java program to calculate the factorial of a number.",
@@ -313,7 +313,7 @@ export const mockChallenges = {
     },
     {
       category: "Java",
-      difficulty: "intermediate",
+      difficulty: "Intermediate",
       duration: "60 mins",
       task: "Check balanced parentheses",
       details:
@@ -342,7 +342,7 @@ export const mockChallenges = {
     },
     {
       category: "Java",
-      difficulty: "hard",
+      difficulty: "Hard",
       duration: "60 mins",
       task: "Serialize and deserialize binary tree",
       details:
