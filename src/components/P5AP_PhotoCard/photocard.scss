@@ -1,0 +1,83 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.photocard {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 320px;
+  
+    aspect-ratio: 8 / 10;
+    display:flex;
+    flex-direction:column;
+    text-align: left;
+    font-family: "Corben-Bold";
+  
+    &__header {
+      position: relative;
+      flex-basis:70%;
+      overflow: hidden;
+  
+      .photocard__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+          border-top-left-radius: 10px;
+        border-top-right-radius: 10px; 
+      }
+  
+      .photocard__level {
+        font-family: "Corben-Bold";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: whitesmoke;
+        padding: 2px 1rem;
+        border-radius: 15px;
+        font-size: 0.6rem;
+        color: #333;
+        font-weight: bold;
+      }
+    }
+  
+    &__info {
+      padding: 1rem;
+      padding-top:0;
+  
+      .photocard__name {
+        font-family: "Corben-Bold";
+        font-size: 1rem;
+        padding-top: 0.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+  
+      .photocard__role {
+        font-family: "Corben-Regular";
+        font-size: 0.9rem;
+        color: #555;
+  
+      }
+  
+      .photocard_briefcase {
+        width: 1.2rem;
+        margin-right: 8px;
+        color: #555;
+      }
+   
+      .photocard__skills {
+        font-family: "Corben-Regular";
+        font-size: 0.9rem;
+        color: #777;
+  
+        .photocard_idea {
+          width: 1.2rem;
+          margin-right: 8px;
+          color: #ff9900;
+        }
+      }
+    }
+  }
