@@ -1,7 +1,6 @@
 import { useEffect, useContext } from "react";
 import "./PromptPage.scss";
 
-import { useNavigate } from "react-router-dom";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
 import { PageContext } from "../../contexts/PageContext";
@@ -13,49 +12,16 @@ import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
 const PromptPage = () => {
-  const navigate = useNavigate();
-
-  const { currentPage, setCurrentPage, progressBarIndex, setProgressBarIndex } =
-    useContext(PageContext);
+  const {
+    currentPage,
+    setCurrentPage,
+    progressBarIndex,
+    handleNext,
+    handleBack,
+  } = useContext(PageContext);
   useEffect(() => {
     setCurrentPage("prompt");
   }, [setCurrentPage]);
-
-  const handleNext = () => {
-    if (progressBarIndex < 3) {
-      setProgressBarIndex((prevIndex) => prevIndex + 1);
-    }
-
-    if (currentPage === "prompt") {
-      setCurrentPage("onboarding1");
-      setProgressBarIndex(1);
-    } else if (currentPage === "onboarding1") {
-      setCurrentPage("onboarding2");
-      setProgressBarIndex(2);
-    } else if (currentPage === "onboarding2") {
-      setCurrentPage("onboarding3");
-      setProgressBarIndex(3);
-    }
-  };
-
-  const handleBack = () => {
-    if (progressBarIndex > 0) {
-      setProgressBarIndex((prevIndex) => prevIndex - 1);
-    }
-
-    if (currentPage === "onboarding1") {
-      setCurrentPage("prompt");
-      setProgressBarIndex(0);
-    } else if (currentPage === "onboarding2") {
-      setCurrentPage("onboarding1");
-      setProgressBarIndex(1);
-    } else if (currentPage === "onboarding3") {
-      setCurrentPage("onboarding2");
-      setProgressBarIndex(2);
-    } else {
-      navigate("/");
-    }
-  };
 
   return (
     <div>
@@ -122,29 +88,11 @@ const PromptPage = () => {
             </>
           )}
 
-          {currentPage === "onboarding1" && (
-            <OnboardingPage1
-              onNext={handleNext}
-              onBack={handleBack}
-              progressBarIndex={progressBarIndex}
-            />
-          )}
+          {currentPage === "onboarding1" && <OnboardingPage1 />}
 
-          {currentPage === "onboarding2" && (
-            <OnboardingPage2
-              onNext={handleNext}
-              onBack={handleBack}
-              progressBarIndex={progressBarIndex}
-            />
-          )}
+          {currentPage === "onboarding2" && <OnboardingPage2 />}
 
-          {currentPage === "onboarding3" && (
-            <OnboardingPage3
-              onNext={handleNext}
-              onBack={handleBack}
-              progressBarIndex={progressBarIndex}
-            />
-          )}
+          {currentPage === "onboarding3" && <OnboardingPage3 />}
           {/* handle loading page */}
 
           {(currentPage === "loading" || currentPage === "loading1") && (

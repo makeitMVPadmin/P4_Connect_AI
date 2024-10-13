@@ -1,16 +1,19 @@
-import React from "react";
+import { useContext } from "react";
 import "./OnboardingPage.scss";
 import Button from "../../components/Button/Button";
+import { PageContext } from "../../contexts/PageContext";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
-const OnboardingPage3 = ({ onNext, onBack, progressBarIndex }) => {
+const OnboardingPage3 = () => {
+  const { handleNext, handleBack, progressBarIndex } = useContext(PageContext);
+
   return (
     <div className="onboarding-page">
       <div className="onboarding-page__container">
         <>
-          <div className="left-arrow-container" onClick={onBack}>
+          <div className="left-arrow-container" onClick={handleBack}>
             <img src={arrowLeft} alt="arrowLeft" className="arrow-left" />
           </div>
           <div className="onboarding-page__text-container">
@@ -19,9 +22,9 @@ const OnboardingPage3 = ({ onNext, onBack, progressBarIndex }) => {
             </div>
           </div>
           <div className="onboarding-button-container">
-            <Button text="DSA" color="white" eventlistener={onNext} />
-            <Button text="Python" color="white" eventlistener={onNext} />
-            <Button text="Frontend" color="white" eventlistener={onNext} />
+            <Button text="DSA" color="white" eventlistener={handleNext} />
+            <Button text="Python" color="white" eventlistener={handleNext} />
+            <Button text="Frontend" color="white" eventlistener={handleNext} />
           </div>
           <div className="loading-icon-container">
             <img
