@@ -10,7 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     gap: 1rem;
     padding: 6em;
     position: relative;
@@ -51,6 +50,12 @@
     padding: 4rem;
 
     button {
+        display: flex;
+        width: 16.9375rem;
+        padding: 0.625rem 3rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
         background-color: white;
         transition: background-color 0.2s ease;
 

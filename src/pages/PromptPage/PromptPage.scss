@@ -13,11 +13,11 @@
   overflow: hidden;
   flex-shrink: 0;
   gap: 2.5rem;
-  box-sizing: border-box;
 }
 
 .promptpage__container {
   background-color: $MVP-White;
+  // box-shadow: 0px 0px 12px 2px rgba(82, 82, 82, 0.16);
   border-radius: 0.75rem;
   min-width: 64rem;
   max-width: 64rem;
@@ -25,8 +25,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   gap: 1rem;
+  // padding: 6rem;
 }
 
 .promptpage__text-container {
@@ -65,6 +65,15 @@
   align-self: stretch;
   gap: 1rem;
   padding: 4rem;
+
+  button {
+    display: flex;
+    padding: 0.625rem 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
 }
 
 .loading-icon-container {
