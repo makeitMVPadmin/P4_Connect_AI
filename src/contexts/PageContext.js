@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const PageContext = createContext();
@@ -45,18 +45,19 @@ export const PageProvider = ({ children }) => {
     }
   };
 
+  const contextValue = useMemo(
+    () => ({
+      currentPage,
+      setCurrentPage,
+      progressBarIndex,
+      setProgressBarIndex,
+      handleNext,
+      handleBack,
+    }),
+    [currentPage, progressBarIndex]
+  );
+
   return (
-    <PageContext.Provider
-      value={{
-        currentPage,
-        setCurrentPage,
-        progressBarIndex,
-        setProgressBarIndex,
-        handleNext,
-        handleBack,
-      }}
-    >
-      {children}
-    </PageContext.Provider>
+    <PageContext.Provider value={contextValue}>{children}</PageContext.Provider>
   );
 };
