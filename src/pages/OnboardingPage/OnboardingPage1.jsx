@@ -24,7 +24,7 @@ const OnboardingPage1 = () => {
           </div>
           <div className="onboarding-page__text-container">
             <div className="welcome-message">
-              What field are you looking to work on?{" "}
+              What field are you looking to work on?
             </div>
           </div>
           <div className="onboarding-button-container">

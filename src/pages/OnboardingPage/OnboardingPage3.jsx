@@ -18,7 +18,7 @@ const OnboardingPage3 = () => {
           </div>
           <div className="onboarding-page__text-container">
             <div className="welcome-message">
-              What are some skills you want to work on?{" "}
+              What are some skills you want to work on?
             </div>
           </div>
           <div className="onboarding-button-container">
