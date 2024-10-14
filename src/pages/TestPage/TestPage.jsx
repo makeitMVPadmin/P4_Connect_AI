@@ -14,6 +14,7 @@ import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 import ChallengePage from "../../components/ChallengePage/ChallengePage";
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -76,6 +77,8 @@ const TestPage = () => {
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
+      <ChallengeCard></ChallengeCard>
+
     </div>
   );
 };

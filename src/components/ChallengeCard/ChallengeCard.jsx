@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./ChallengeCard.scss";
 import ChallengeCardBanner from "../../assets/images/ChallengeCardBanner.png";
@@ -18,6 +19,7 @@ const ChallengeCard = ({ challenge }) => {
         return "#37AFFF"; // Default to blue
     }
   };
+
   return (
     <>
       <div
@@ -83,6 +85,7 @@ const ChallengeCard = ({ challenge }) => {
               }}
             >
               {challenge.difficulty}
+
             </div>
           </div>
         </div>
@@ -119,6 +122,7 @@ const ChallengeCard = ({ challenge }) => {
               }}
             >
               {challenge.category}
+
             </div>
           </div>
 
@@ -142,6 +146,7 @@ const ChallengeCard = ({ challenge }) => {
               }}
             >
               {challenge.duration}
+
             </div>
           </div>
 
@@ -166,6 +171,7 @@ const ChallengeCard = ({ challenge }) => {
               }}
             >
               {challenge.task}
+
             </div>
           </div>
 

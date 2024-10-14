@@ -18,6 +18,7 @@ function App() {
         <Route path="/Testa" element={<LoadingPage />} />
         {/* <Route path="/TestPage" element={<ChallengeCard />} /> */}
         <Route path="/TestPage" element={<ChallengePage />} />
+
       </Routes>
     </>
   );
