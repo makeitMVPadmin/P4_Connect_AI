@@ -1,0 +1,52 @@
+@import "../../styles/partials/mixins.scss";
+@import "../../styles/partials/variables.scss";
+@import "../../styles/partials/typography.scss";
+
+
+.pairup-board {
+    display: flex;
+    flex-direction: column;
+    font-family: "Corben-Bold";
+    align-items: center;
+    padding: 32px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+
+  .pairup-board_text{
+    font-family:"Corben-Bold" ;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  
+  .pairup-board__actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .pairup-board_text-bottom{
+    font-family:"Corben-Bold" ;
+    font-size: 1.6rem;
+    margin-top:3rem;
+  }
+  
+  .btn {
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Corben-Bold";
+    width: 15rem;
+    height: 2.5rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: whitesmoke;
+    border: 2px solid #007bff;
+  }
+  
+  .btn-secondary {
+    background-color: whitesmoke;
+    color: black;
+  }

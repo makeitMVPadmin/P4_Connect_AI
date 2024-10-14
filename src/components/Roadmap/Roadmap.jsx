@@ -15,14 +15,13 @@ import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
 import LoadingPage from "../../pages/LoadingPage/LoadingPage";
 
+import { GOALS_DATA, MOCK_MATCH_DATA } from "../../mock-data/roadmapMockData";
+
 const Roadmap = () => {
   const [activeGoal, setActiveGoal] = useState(null);
   const [isModalOpen, setmodalOpen] = useState(false);
 
   const [hovering, setHovering] = useState(null);
-
-  const [user1Pic, setUser1Pic] = useState(user1Picture); //replace user1 with null instead of image placeholder
-  const [user2Pic, setUser2Pic] = useState(user2Picture); //replace user2 with null instead of image placeholder
 
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
@@ -155,8 +154,8 @@ const Roadmap = () => {
           <PopUpModal title={{}} closeButtonAction={handleCloseGoalClickModal}>
             <GoalComponent
               goalNumber={activeGoal}
-              goalPrompt={activeGoal && goalsData[activeGoal - 1].goal}
-              subtasks={activeGoal && goalsData[activeGoal - 1].subtasks}
+              goalPrompt={activeGoal && GOALS_DATA[activeGoal - 1].goal}
+              subtasks={activeGoal && GOALS_DATA[activeGoal - 1].subtasks}
             ></GoalComponent>
           </PopUpModal>
         </>
@@ -180,12 +179,12 @@ const Roadmap = () => {
         <div className="svg-container__matched">
           <div className="svg-container__matched__images">
             <img
-              src={user1Pic}
+              src={user1Picture}
               alt="user1 avatar "
               className="svg-container__matched__user"
             />
             <img
-              src={user2Pic}
+              src={user2Picture}
               alt="user2 avatar "
               className="svg-container__matched__user"
             />
@@ -208,12 +207,12 @@ const Roadmap = () => {
               offsetX={"8.4rem"}
               offsetY={"8.4rem"}
               number={1}
-              task={mockMatchData.goal1Task}
+              task={MOCK_MATCH_DATA.goal1Task}
               locked={false}
               user1Complete={true}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -235,12 +234,12 @@ const Roadmap = () => {
               offsetX={"7.3rem"}
               offsetY={"7.3rem"}
               number={2}
-              task={mockMatchData.goal2Task}
+              task={MOCK_MATCH_DATA.goal2Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -262,12 +261,12 @@ const Roadmap = () => {
               offsetX={"6.1rem"}
               offsetY={"6.1rem"}
               number={3}
-              task={mockMatchData.goal3Task}
+              task={MOCK_MATCH_DATA.goal3Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -289,12 +288,12 @@ const Roadmap = () => {
               offsetX={"4.95rem"}
               offsetY={"4.95rem"}
               number={4}
-              task={mockMatchData.goal4Task}
+              task={MOCK_MATCH_DATA.goal4Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
@@ -316,12 +315,12 @@ const Roadmap = () => {
               offsetX={"3.7rem"}
               offsetY={"3.7rem"}
               number={5}
-              task={mockMatchData.goal5Task}
+              task={MOCK_MATCH_DATA.goal5Task}
               locked={true}
               user1Complete={false}
               user2Complete={false}
-              user1Picture={mockMatchData.user1Picture}
-              user2Picture={mockMatchData.user2Picture}
+              user1Picture={user1Picture}
+              user2Picture={user2Picture}
             />
           )}
           <div className="goal-icon-container">
