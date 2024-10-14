@@ -13,8 +13,7 @@ import GoalPopup from "../GoalPopup/GoalPopup";
 import user1Picture from "../../assets/images/user1.png";
 import user2Picture from "../../assets/images/user2.png";
 import { callOpenAiApi } from "../../utils/Functions/openaiFunctions";
-import LoadingPage from "../../pages/LoadingPage/LoadingPage";
-
+import LoadingPage from "../LoadingPage/LoadingPage";
 import { GOALS_DATA, MOCK_MATCH_DATA } from "../../mock-data/roadmapMockData";
 
 const Roadmap = () => {
@@ -26,83 +25,6 @@ const Roadmap = () => {
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
-
-  // CALL BACKEND FUNCTION: Get Matches
-  // Use the data of only the most recent match
-
-  // CALL BACKEND FUNCTION: Get User
-  // Get both users based on user id from the match table
-
-  // CALL BACKEND FUNCTION: Get UserGoalCompletion
-  // Get UserGoalCompletion data with match id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Goals
-  // Get Goals from UserGoalCompletion goal id
-
-  // CALL BACKEND FUNCTION: Get UserSubtaskCompletion
-  // Get UserSubtaskCompletion data with goal id (all 5 records)
-
-  // CALL BACKEND FUNCTION: Get Subtasks
-  // Get Goals from UserSubtaskCompletion subtask id
-
-  //mock roadmap data
-  const goalsData = [
-    {
-      goal: "Attend 4 meetings",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-    {
-      goal: "Design and implement the frontend of the web application using JavaScript and React",
-      subtasks: [
-        "Discuss and finalize the UI/UX design for the application",
-        "Break down the design into reusable React components",
-        "Implement the React components using JavaScript",
-        "Test the components individually and as a whole to ensure they work as expected",
-      ],
-    },
-    {
-      goal: "Develop the backend of the web application using Python and Django",
-      subtasks: [
-        "Design the database schema and establish the necessary Django models",
-        "Implement the necessary views and templates in Django",
-        "Integrate the Django backend with the React frontend",
-        "Test the backend functionality and ensure it works with the frontend",
-      ],
-    },
-    {
-      goal: "Deploy the web application",
-      subtasks: [
-        "Choose a suitable hosting platform for the application",
-        "Configure the deployment settings for both frontend and backend",
-        "Deploy the application and test it in the production environment",
-        "Monitor the application performance and fix any issues that arise",
-      ],
-    },
-    {
-      goal: "Attend 4 meetings to go over what you’ve learned",
-      subtasks: [
-        "Schedule & attend 1 accountability meeting",
-        "Attend 2 accountability meetings",
-        "Attend 3 accountability meetings",
-        "Attend all 4 accountability meetings",
-      ],
-    },
-  ];
-
-  const mockMatchData = {
-    goal1Task: "Goal 1 task",
-    goal2Task: "Goal 2 task",
-    goal3Task: "Goal 3 task",
-    goal4Task: "Goal 4 task",
-    goal5Task: "Goal 5 task",
-    user1Picture: user1Picture,
-    user2Picture: user2Picture,
-  };
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);
