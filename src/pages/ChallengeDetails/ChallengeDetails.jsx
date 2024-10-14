@@ -8,44 +8,16 @@ import challenges from "./challenges.json";
 
 export function ChallengeDetails() {
 
-
-    const params = useParams()
-    const challengeId = params.challengeId
-
-    // TODO lookup challenge from DB?
-    // currently just importing mock data array from challenges.json
+    const {challengeId} = useParams()
 
     const challengeData = challenges.challenges[challengeId]
-    const placeholderData = {
-        imgSrc: "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
-        title: "Interactive Card component with JavaScript",
-        difficulty: "Easy",
-        type: "Code",
-        time: "60 - 90 min",
-        tech: "HTML - CSS - JavaScript",
-        overview: "In this challenge, you will create an interactive card component that displays additional information when clicked. You will be paired with a partner to review each other's code and provide suggestions for improvement. The focus is on writing clean, modular code and improving your understanding of DOM manipulation.",
-        objectives: [
-            "Build a card component that reveals hidden content upon clicking.",
-            "Use JavaScript to toggle visibility of the card's details",
-            "Write Modular, reusable code for future component scalability.",
-            "Provide constructive feedback to your partner's code and suggest improvements"
-        ],
-        steps: [
-            ["Build the card component", ["Use the HTML to structure the card, with an image, title, description, and hidden section for additional text."]],
-            ["Submit your code", ["After building your component, input your code into the designated User Code section and click Submit."]],
-            ["Review you partners code", ["After submitting your code, your partner’s code will appear in the Partner’s Code section. Review their component and provide feedback on areas for improvement."]],
-            ["Finalize component", ["Discuss and apply any feedback with your partner to refine your components. Make sure everything works smoothly", "Click Complete once both of you are satisfied with the final version."]]
-        ]
-
-
-    }
 
     return (
         <>
             <DashboardNavbar />
             <main className="main">
 
-                <img src={placeholderData.imgSrc} className="image" alt="computer on a desk" />
+                <img src={challengeData.imgSrc} className="image" alt="computer on a desk" />
 
                 <section className="challenge">
 
@@ -74,9 +46,9 @@ export function ChallengeDetails() {
                         <div className="objectives">
                             <h2 className="objectives__title">Constraints</h2>
                             <ul className="objectives__list">
-                                {challengeData.detailedProblem.constraints.map(constraint => {
+                                {challengeData.detailedProblem.constraints.map((constraint, index) => {
                                     return (
-                                        <li className="objectives__item" key={constraint}>{constraint}</li>
+                                        <li className="objectives__item" key={index}>{constraint}</li>
                                     )
                                 })}
                             </ul>
@@ -85,9 +57,9 @@ export function ChallengeDetails() {
                         <div className="examples">
                             <h2 className="examples__title">Examples</h2>
                             <ul className="examples__list">
-                                {challengeData.detailedProblem.examples.map(example => {
+                                {challengeData.detailedProblem.examples.map((example, index) => {
                                     return (
-                                        <code className="examples__item" key={example.input}>
+                                        <code className="examples__item" key={index}>
                                             Input: {example.input} <br /> Output: {example.output}
                                         </code>
                                     )
@@ -98,9 +70,9 @@ export function ChallengeDetails() {
                         <div className="solutions">
                             <h2 className="solutions__title">Solution Approach</h2>
                             <ul className="solutions__list">
-                                {challengeData.detailedProblem.solutionApproach.map(example => {
+                                {challengeData.detailedProblem.solutionApproach.map((example, index) => {
                                     return (
-                                        <li className="solutions__item" key={example}>
+                                        <li className="solutions__item" key={index}>
                                             {example}
                                         </li>
                                     )

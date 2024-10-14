@@ -1,6 +1,8 @@
 {
   "challenges": [
     {
+      "id": 1,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Python",
       "difficulty": "easy",
       "duration": "60 mins",
@@ -37,6 +39,8 @@
       }
     },
     {
+      "id": 2,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Python",
       "difficulty": "intermediate",
       "duration": "60 mins",
@@ -73,6 +77,8 @@
       }
     },
     {
+      "id": 3,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Python",
       "difficulty": "hard",
       "duration": "60 mins",
@@ -104,6 +110,8 @@
       }
     },
     {
+      "id": 4,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "React",
       "difficulty": "easy",
       "duration": "60 mins",
@@ -132,6 +140,8 @@
       }
     },
     {
+      "id": 5,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "React",
       "difficulty": "intermediate",
       "duration": "60 mins",
@@ -156,6 +166,8 @@
       }
     },
     {
+      "id": 6,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "React",
       "difficulty": "hard",
       "duration": "60 mins",
@@ -179,7 +191,9 @@
         ]
       }
     },
-    {
+  {
+      "id": 7,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "DSA",
       "difficulty": "easy",
       "duration": "60 mins",
@@ -208,6 +222,8 @@
       }
     },
     {
+      "id": 8,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "DSA",
       "difficulty": "intermediate",
       "duration": "60 mins",
@@ -235,6 +251,8 @@
       }
     },
     {
+      "id": 9,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "DSA",
       "difficulty": "hard",
       "duration": "60 mins",
@@ -259,6 +277,8 @@
       }
     },
     {
+      "id": 10,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Java",
       "difficulty": "easy",
       "duration": "60 mins",
@@ -286,6 +306,8 @@
       }
     },
     {
+      "id": 11,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Java",
       "difficulty": "intermediate",
       "duration": "60 mins",
@@ -313,6 +335,8 @@
       }
     },
     {
+      "id": 12,
+      "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
       "category": "Java",
       "difficulty": "hard",
       "duration": "60 mins",
@@ -335,5 +359,20 @@
         ]
       }
     }
-  ]
+  ],
+  "placeholderData": {
+    "imgSrc": "https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg",
+    "title": "Interactive Card component with JavaScript",
+    "difficulty": "Easy",
+    "type": "Code",
+    "time": "60 - 90 min",
+    "tech": "HTML - CSS - JavaScript",
+    "overview": "In this challenge, you will create an interactive card component that displays additional information when clicked. You will be paired with a partner to review each other's code and provide suggestions for improvement. The focus is on writing clean, modular code and improving your understanding of DOM manipulation.",
+    "objectives": [
+      "Build a card component that reveals hidden content upon clicking.",
+      "Use JavaScript to toggle visibility of the card's details",
+      "Write Modular, reusable code for future component scalability.",
+      "Provide constructive feedback to your partner's code and suggest improvements"
+    ]
+  }
 }
