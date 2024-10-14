@@ -4,7 +4,6 @@ import PromptPage from "./pages/PromptPage/PromptPage";
 import BackEndTest from "./backend/Backend.jsx";
 import AiBackendTest from "./backend/AiBackendTest.js";
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
-import { PageProvider } from "./contexts/PageContext";
 import TestPage from "./pages/TestPage/TestPage.jsx";
 import ChallengeCard from "./components/ChallengeCard/ChallengeCard.jsx";
 
@@ -13,14 +12,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/prompt"
-          element={
-            <PageProvider>
-              <PromptPage />
-            </PageProvider>
-          }
-        />
+        <Route path="/prompt" element={<PromptPage />} />
         <Route path="/test" element={<BackEndTest />} />
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/Testa" element={<LoadingPage />} />
