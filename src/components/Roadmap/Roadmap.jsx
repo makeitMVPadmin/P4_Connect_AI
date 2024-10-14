@@ -27,30 +27,6 @@ const Roadmap = () => {
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
 
-  // useEffect(() => {
-  //   console.log("aicall");
-  //   const aiApiCallData = async () => {
-  //     console.log("aicall111");
-
-  //     const userA = { firstName: "Alice", skills: ["JavaScript", "React"] };
-  //     const userB = { firstName: "Bob", skills: ["Python", "Django"] };
-  //     const project = "building a web application";
-
-  //     try {
-  //       console.log("aicall122");
-
-  //       const data = await callOpenAiApi(userA, userB, project);
-  //       console.log(data.goals);
-  //       setGoals(data.goals);
-  //       setLoadingPage(false);
-  //       // console.log("loading");
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   }
-  //   aiApiCallData();
-  // }, []);
-
   // CALL BACKEND FUNCTION: Get Matches
   // Use the data of only the most recent match
 
@@ -117,9 +93,7 @@ const Roadmap = () => {
       ],
     },
   ];
-  console.log(goalsData[0].subtasks);
 
-  // This object is temporary and only here to provide mock data to show the functionality of the popup
   const mockMatchData = {
     goal1Task: "Goal 1 task",
     goal2Task: "Goal 2 task",
