@@ -7,28 +7,30 @@ import { PageProvider, PageContext } from "../../contexts/PageContext";
 import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
 import OnboardingPage2 from "../OnboardingPage/OnboardingPage2";
 import OnboardingPage3 from "../OnboardingPage/OnboardingPage3";
-import LoadingPage from "../LoadingPage/LoadingPage";
+// import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
 const PromptPage = () => {
   const {
-    currentPage,
-    setCurrentPage,
+    currentPageIndex,
+    setCurrentPageIndex,
     progressBarIndex,
     handleNext,
     handleBack,
+    progressArray,
   } = useContext(PageContext);
   useEffect(() => {
-    setCurrentPage("prompt");
-  }, [setCurrentPage]);
+    setCurrentPageIndex(0);
+  }, [setCurrentPageIndex]);
+  console.log("Rendering PromptPage, currentPageIndex:", currentPageIndex);
 
   return (
     <div>
       <DashboardNavbar />
       <div className="promptpage">
         <div className="promptpage__container">
-          {currentPage === "prompt" && (
+          {currentPageIndex === 0 && (
             <>
               <div className="promptpage__text-container">
                 <div className="welcome-message">Welcome to AccountaPair</div>
@@ -48,7 +50,7 @@ const PromptPage = () => {
                   color="blue"
                   className="back"
                   border="none"
-                  eventListener={handleNext}
+                  eventListener={() => handleNext(progressArray.length - 1)}
                 />
               </div>
               <div className="loading-icon-container">
@@ -88,19 +90,19 @@ const PromptPage = () => {
             </>
           )}
 
-          {currentPage === "onboarding1" && <OnboardingPage1 />}
+          {currentPageIndex === 1 && <OnboardingPage1 />}
 
-          {currentPage === "onboarding2" && <OnboardingPage2 />}
+          {currentPageIndex === 2 && <OnboardingPage2 />}
 
-          {currentPage === "onboarding3" && <OnboardingPage3 />}
+          {currentPageIndex === 3 && <OnboardingPage3 />}
           {/* handle loading page */}
 
-          {(currentPage === "loading" || currentPage === "loading1") && (
+          {/* {(currentPageIndex === 4 || currentPageIndex === 5) && (
             <LoadingPage
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
+              currentPage={progressArray[currentPageIndex]}
+              setCurrentPage={setCurrentPageIndex}
             />
-          )}
+          )} */}
         </div>
       </div>
     </div>
