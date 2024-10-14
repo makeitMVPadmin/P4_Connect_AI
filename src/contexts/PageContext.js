@@ -9,8 +9,8 @@ export const PageProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState("prompt");
   const [progressBarIndex, setProgressBarIndex] = useState(0);
 
-  const handleNext = () => {
-    if (progressBarIndex < 3) {
+  const handleNext = (maxPages) => {
+    if (progressBarIndex < maxPages) {
       setProgressBarIndex((prevIndex) => prevIndex + 1);
     }
 
