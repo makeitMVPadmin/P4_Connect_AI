@@ -6,40 +6,24 @@ export const PageContext = createContext();
 export const PageProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const [currentPage, setCurrentPage] = useState("prompt");
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [progressBarIndex, setProgressBarIndex] = useState(0);
 
-  const handleNext = (maxPages) => {
-    if (progressBarIndex < maxPages) {
-      setProgressBarIndex((prevIndex) => prevIndex + 1);
-    }
+  const progressArray = ["prompt", "onboarding1", "onboarding2", "onboarding3"];
 
-    if (currentPage === "prompt") {
-      setCurrentPage("onboarding1");
-      setProgressBarIndex(1);
-    } else if (currentPage === "onboarding1") {
-      setCurrentPage("onboarding2");
-      setProgressBarIndex(2);
-    } else if (currentPage === "onboarding2") {
-      setCurrentPage("onboarding3");
-      setProgressBarIndex(3);
+  const handleNext = () => {
+    const maxPages = progressArray.length - 1;
+
+    if (currentPageIndex < maxPages) {
+      setProgressBarIndex((prevIndex) => prevIndex + 1);
+      setCurrentPageIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   const handleBack = () => {
-    if (progressBarIndex > 0) {
+    if (progressBarIndex > 0 && currentPageIndex > 0) {
       setProgressBarIndex((prevIndex) => prevIndex - 1);
-    }
-
-    if (currentPage === "onboarding1") {
-      setCurrentPage("prompt");
-      setProgressBarIndex(0);
-    } else if (currentPage === "onboarding2") {
-      setCurrentPage("onboarding1");
-      setProgressBarIndex(1);
-    } else if (currentPage === "onboarding3") {
-      setCurrentPage("onboarding2");
-      setProgressBarIndex(2);
+      setCurrentPageIndex((prevIndex) => prevIndex - 1);
     } else {
       navigate("/");
     }
@@ -47,14 +31,15 @@ export const PageProvider = ({ children }) => {
 
   const contextValue = useMemo(
     () => ({
-      currentPage,
-      setCurrentPage,
+      currentPageIndex,
+      setCurrentPageIndex,
       progressBarIndex,
       setProgressBarIndex,
       handleNext,
       handleBack,
+      progressArray,
     }),
-    [currentPage, progressBarIndex]
+    [currentPageIndex, progressBarIndex]
   );
 
   return (
