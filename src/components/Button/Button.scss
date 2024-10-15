@@ -1,30 +1,36 @@
-@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/typography"as *;
 // @use "../../styles/partials/global" as *;
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins"as *;
+@use "../../styles/partials/variables"as *;
 
 .button {
-  font-family: "Gilroy-ExtraBold";
-  font-size: 1.1rem;
+  font-family: "Corben";
+  font-size: 1.25rem;
   display: flex;
-  width: 13.5rem;
-  height: 3.75rem;
-  padding: 0.625rem;
+  width: auto;
+  height: 3rem;
+  padding: 0.625rem 3rem;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  border-radius: 0.3125rem;
-  border: 2px solid #000;
+  border-radius: 0.25rem;
+  line-height: 1.75rem;
+  border: 2px solid $MVP-black;
+  cursor: pointer;
 
   &--blue {
     color: $MVP-White;
     background-color: $MVP-Light-Blue;
+
     &:hover {
       background-color: $Faded-Blue;
     }
   }
+
   &--dark-blue {
     color: $MVP-White;
     background-color: $MVP-Dark-Blue;
+
     &:hover {
       background-color: $MVP-Dark-Blue-faded;
     }
@@ -33,6 +39,7 @@
   &--white {
     background-color: $MVP-White;
     color: $MVP-black;
+
     &:hover {
       background-color: $MVP-Cream;
     }
