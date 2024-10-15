@@ -22,11 +22,9 @@ const Roadmap = () => {
 
   const [hovering, setHovering] = useState(null);
 
-
   const [user1Name, setUser1Name] = useState("User1");
   const [user2Name, setUser2Name] = useState("User2");
   const [completionPercentage, setCompletionPercentage] = useState(0);
-
 
   const handleGoalClickModal = (goalNumber) => {
     setActiveGoal(goalNumber);

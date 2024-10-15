@@ -1,108 +1,120 @@
+import { useEffect, useContext } from "react";
 import "./PromptPage.scss";
-import { useNavigate } from "react-router-dom";
+
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
-import CoffeeMugWithHat_happy from "../../assets/images/coffeeMugWithHat_happy.svg";
-import { useEffect, useState } from "react";
-import QuizPage from "../../components/QuizPage/QuizPage";
-import Roadmap from "../../components/Roadmap/Roadmap";
-import GoalAchieved from "../../components/GoalAchieved/GoalAchieved";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import { PageProvider, PageContext } from "../../contexts/PageContext";
+import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
+import OnboardingPage2 from "../OnboardingPage/OnboardingPage2";
+import OnboardingPage3 from "../OnboardingPage/OnboardingPage3";
+// import LoadingPage from "../LoadingPage/LoadingPage";
+import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
+import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
 const PromptPage = () => {
-  const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState("prompt");
-
-  // ACCESS MATCH ALGO RESULTS through a state passed into quizPage
-  const [matchResults, setMatchResults] = useState(null);
-
+  const {
+    currentPageIndex,
+    setCurrentPageIndex,
+    progressBarIndex,
+    handleNext,
+    handleBack,
+    progressArray,
+  } = useContext(PageContext);
   useEffect(() => {
-    setCurrentPage("prompt");
-    sessionStorage.removeItem("formData");
-    sessionStorage.removeItem("answeredQuestions");
-    sessionStorage.removeItem("selectedAnswerIdsJSON");
-  }, []);
+    setCurrentPageIndex(0);
+  }, [setCurrentPageIndex]);
+  console.log("Rendering PromptPage, currentPageIndex:", currentPageIndex);
 
-  const handleClick = () => {
-    setCurrentPage("quiz");
-  };
-  const handleBack = () => {
-    navigate("/");
-  };
   return (
     <div>
       <DashboardNavbar />
       <div className="promptpage">
         <div className="promptpage__container">
-          {currentPage === "prompt" && (
+          {currentPageIndex === 0 && (
             <>
-              <div className="promptpage__top-bar" />
-              <div className="promptpage__middle-container">
-                <div className="promptpage__middle-container__sub-container">
-                  <div className="promptpage__middle-container__coffeemug-container">
-                    <img
-                      className="promptpage__middle-container__coffeemug-img"
-                      alt=""
-                      src={CoffeeMugWithHat_happy}
-                    />
-                  </div>
-                  <div className="promptpage__middle-container__sub-container text-container">
-                    <div className="welcome-message">
-                      Welcome to AccountaBuddy!
-                    </div>
-                    <div className="welcome-text">
-                      Our AI feature empowers you to achieve your professional
-                      goals through personalized accountability partnerships. By
-                      taking our quick matching quiz, you’ll be paired with a
-                      peer who complements your skills, and you both will work
-                      towards a common goal.
-                    </div>
-                    <div className="welcome-text">
-                      Click "Next" to get started on your journey to effective
-                      peer-to-peer accountability.
-                    </div>
-                  </div>
-                  <div className="button-container">
-                    <Button
-                      text="Back"
-                      color="white"
-                      className="back"
-                      eventListener={handleBack}
-                    />
-
-                    <Button
-                      text="Next"
-                      color="dark-blue"
-                      className="next"
-                      eventListener={handleClick}
-                    />
-                  </div>
+              <div className="promptpage__text-container">
+                <div className="welcome-message">Welcome to AccountaPair</div>
+                <div className="welcome-text">
+                  Set your preferences and skills before moving to the dashboard
                 </div>
               </div>
-              <div className="promptpage__bottom-bar" />
+              <div className="button-container">
+                <Button
+                  text="Back to Home"
+                  color="white"
+                  className="next"
+                  eventListener={handleBack}
+                />
+                <Button
+                  text="Let's start up"
+                  color="blue"
+                  className="back"
+                  border="none"
+                  eventListener={() => handleNext(progressArray.length - 1)}
+                />
+              </div>
+              <div className="loading-icon-container">
+                <img
+                  src={
+                    progressBarIndex === 0
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
+                />
+                <img
+                  src={
+                    progressBarIndex === 1
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
+                />
+                <img
+                  src={
+                    progressBarIndex === 2
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
+                />
+                <img
+                  src={
+                    progressBarIndex === 3
+                      ? loadingActiveIcon
+                      : loadingInactiveIcon
+                  }
+                  alt="loadingIcon"
+                />
+              </div>
             </>
           )}
-          {/* other pages */}
-          {(currentPage === "quiz" ||
-            currentPage === "new-match" ||
-            currentPage === "no-match") && (
-            <QuizPage
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
-          )}
-          {currentPage === "roadmap" && <Roadmap />}
-          {currentPage === "goalachieved" && <GoalAchieved />}
-          {(currentPage === "loading"||currentPage==="loading1") && (
+
+          {currentPageIndex === 1 && <OnboardingPage1 />}
+
+          {currentPageIndex === 2 && <OnboardingPage2 />}
+
+          {currentPageIndex === 3 && <OnboardingPage3 />}
+          {/* handle loading page */}
+
+          {/* {(currentPageIndex === 4 || currentPageIndex === 5) && (
             <LoadingPage
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
+              currentPage={progressArray[currentPageIndex]}
+              setCurrentPage={setCurrentPageIndex}
             />
-          )}
+          )} */}
         </div>
       </div>
     </div>
   );
 };
 
-export default PromptPage;
+const PromptPageProvider = () => {
+  return (
+    <PageProvider>
+      <PromptPage />
+    </PageProvider>
+  );
+};
+
+export default PromptPageProvider;

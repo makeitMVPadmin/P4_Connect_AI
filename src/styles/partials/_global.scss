@@ -1,6 +1,6 @@
-@use "./mixins" as *;
-@use "./variables" as *;
-@use "./typography" as *;
+@use "./mixins"as *;
+@use "./variables"as *;
+@use "./typography"as *;
 
 * {
   box-sizing: border-box;
@@ -22,15 +22,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Gilroy", sans-serif;
+  font-family: "Corben", sans-serif;
 }
 
-p, button {
+p,
+button {
   font-family: "Gilroy", sans-serif;
 }
 
 .home {
-  // font-family: "Corben-Regular";
   background-color: $Powder-Blue;
   min-width: 100%;
   position: absolute;
@@ -46,12 +46,10 @@ p, button {
     background-color: $MVP-White;
     position: absolute;
     top: 9.5514rem;
-    // top: 75px;
     border-radius: 20px;
     border: 4px solid #000;
     box-sizing: border-box;
     width: 30%;
-    //min-height: 70vh;
     flex-direction: column;
     overflow: hidden;
     display: flex;
@@ -62,7 +60,6 @@ p, button {
   &__top-bar {
     border-radius: 16px 16px 0px 0px;
     background-color: $MVP-Yellow;
-    // border: 0px 0px 4px 0px solid #000;
     width: 100%;
     min-height: 5.5vh;
     border-bottom: 4px solid #000;
@@ -91,14 +88,16 @@ p, button {
     font-size: 1.875rem;
     font-weight: 700;
   }
+
   .welcome-text {
     font-family: Gilroy;
+
     &--main {
       font-size: 1.25rem;
     }
   }
 
-  .text-container > * {
+  .text-container>* {
     padding-top: 25px;
   }
 
@@ -110,40 +109,44 @@ p, button {
   }
 
   .button {
-  font-family: "Gilroy-ExtraBold";
-  font-size: 1.1rem;
-  display: flex;
-  width: 13.5rem;
-  height: 3.75rem;
-  padding: 0.625rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.3125rem;
-  border: 2px solid #000;
+    font-family: "Gilroy-ExtraBold";
+    font-size: 1.1rem;
+    display: flex;
+    width: 13.5rem;
+    height: 3.75rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3125rem;
+    border: 2px solid #000;
 
-  &--blue {
-    color: $MVP-White;
-    background-color: $MVP-Light-Blue;
-    &:hover {
-      background-color: $Faded-Blue;
-    }
-  }
-  &--dark-blue {
-    color: $MVP-White;
-    background-color: $MVP-Dark-Blue;
-    &:hover {
-      background-color: $MVP-Dark-Blue-faded;
-    }
-  }
+    &--blue {
+      color: $MVP-White;
+      background-color: $MVP-Light-Blue;
 
-  &--white {
-    background-color: $MVP-White;
-    color: $MVP-black;
-    &:hover {
-      background-color: $MVP-Cream;
+      &:hover {
+        background-color: $Faded-Blue;
+      }
+    }
+
+    &--dark-blue {
+      color: $MVP-White;
+      background-color: $MVP-Dark-Blue;
+
+      &:hover {
+        background-color: $MVP-Dark-Blue-faded;
+      }
+    }
+
+    &--white {
+      background-color: $MVP-White;
+      color: $MVP-black;
+
+      &:hover {
+        background-color: $MVP-Cream;
+      }
     }
   }
-}
 
   &__bottom-bar {
     margin-top: auto;
@@ -153,4 +156,5 @@ p, button {
     min-height: 5.5vh;
     border-top: 4px solid #000;
   }
+
 }
