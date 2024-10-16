@@ -11,9 +11,8 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import LoadingPage from "../LoadingPage/LoadingPage";
 import ChallengePage from "../../components/ChallengePage/ChallengePage";
-
 
 const style = {
   position: "absolute",
@@ -77,7 +76,6 @@ const TestPage = () => {
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
-
     </div>
   );
 };
