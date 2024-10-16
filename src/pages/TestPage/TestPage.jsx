@@ -1,18 +1,10 @@
 import "./TestPage.scss";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import ListWithCheckbox from "../../components/ListWithCheckbox/ListWithCheckbox";
-import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
-import PromptPage from "../PromptPage/PromptPage";
-import NoMatch from "../../components/NoMatch/NoMatch";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 // import Modal from '@mui/material/Modal';
 import { useState } from "react";
 import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import ChallengePage from "../../components/ChallengePage/ChallengePage";
 
 const style = {
   position: "absolute",
@@ -41,11 +33,6 @@ const TestPage = () => {
   };
   return (
     <div>
-      {/* <Dropdown />
-      <DropdownCheckbox /> */}
-      {/* <ListWithCheckbox /> */}
-      {/* <PromptPage />
-      <NoMatch /> */}
       <LoadingPage />
       <Modal
         id="promptpage__linkedinpost-modal"
