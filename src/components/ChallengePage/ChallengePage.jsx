@@ -6,18 +6,8 @@ import filterIcon from "../../assets/images/filterIcon.svg";
 import "./ChallengePage.scss";
 
 const ChallengePage = () => {
-  const [selectedCategories, setSelectedCategories] = useState([
-    "Development",
-    "Python",
-    "React",
-    "Java",
-    "DSA",
-  ]);
-  const [selectedDifficulties, setSelectedDifficulties] = useState([
-    "Easy",
-    "Intermediate",
-    "Hard",
-  ]);
+  const selectedCategories = ["Development", "Python", "React", "Java", "DSA"];
+  const selectedDifficulties = ["Easy", "Intermediate", "Hard"];
 
   // Filter challenges based on selected categories and difficulties
   const filteredChallenges = mockChallenges.challenges.filter(
@@ -54,7 +44,10 @@ const ChallengePage = () => {
 
         <div className="card-container">
           {filteredChallenges.map((challenge, index) => (
-            <ChallengeCard key={index} challenge={challenge} />
+            <ChallengeCard
+              key={`${challenge.category}-${challenge.task}`}
+              challenge={challenge}
+            />
           ))}
         </div>
       </div>
