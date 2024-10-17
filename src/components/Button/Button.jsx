@@ -7,13 +7,16 @@ const Button = ({
   className = "",
   type = "button",
   disabled,
-  children
+  border,
+  children,
 }) => {
   return (
     <button
       className={`button button--${color} ${className}`}
       onClick={eventListener}
-      type={type} disabled={disabled}
+      type={type}
+      disabled={disabled}
+      style={{ border: border }}
     >
       <h3 className="button__text">{text}</h3>
       {children}

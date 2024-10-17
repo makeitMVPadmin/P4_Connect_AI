@@ -1,0 +1,66 @@
+@import "../../styles/partials/mixins.scss";
+@import "../../styles/partials/variables.scss";
+@import "../../styles/partials/typography.scss";
+
+.onboarding-page__container {
+    background-color: $MVP-White;
+    border-radius: 0.75rem;
+    box-shadow: 0px 0px 12px 2px rgba(82, 82, 82, 0.16);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 6em;
+    position: relative;
+}
+
+.left-arrow-container {
+    position: absolute;
+    left: 2.25rem;
+    top: 2.25rem;
+}
+
+.arrow-left {
+    cursor: pointer;
+}
+
+.onboarding-page__text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    align-self: stretch;
+}
+
+.welcome-message {
+    font-family: Corben;
+    font-size: 2rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 2.5rem;
+}
+
+.onboarding-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 1rem;
+    padding: 4rem;
+
+    button {
+        display: flex;
+        width: 16.9375rem;
+        padding: 0.625rem 3rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: white;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #FFD22F;
+        }
+    }
+}
