@@ -4,7 +4,6 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import clock from "../../assets/icons/clock.svg";
 import pen from "../../assets/icons/pen.svg";
 import bulb from "../../assets/icons/lightbulb.svg";
-// import challenges from "./challenges.json";
 import { mockChallenges } from "../../mock-data/mockChallenges";
 
 export function ChallengeDetails() {
@@ -12,8 +11,6 @@ export function ChallengeDetails() {
     const {challengeId} = useParams()
 
     const challengeData = mockChallenges.challenges[challengeId - 1]
-
-    console.log(challengeData)
 
     return (
         <>
