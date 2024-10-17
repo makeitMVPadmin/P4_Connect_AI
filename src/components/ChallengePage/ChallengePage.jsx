@@ -5,6 +5,7 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import filterIcon from "../../assets/images/filterIcon.svg";
 import "./ChallengePage.scss";
 
+
 const ChallengePage = () => {
   const selectedCategories = ["Development", "Python", "React", "Java", "DSA"];
   const selectedDifficulties = ["Easy", "Intermediate", "Hard"];

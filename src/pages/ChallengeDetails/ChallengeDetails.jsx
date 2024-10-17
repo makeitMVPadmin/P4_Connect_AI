@@ -4,20 +4,23 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import clock from "../../assets/icons/clock.svg";
 import pen from "../../assets/icons/pen.svg";
 import bulb from "../../assets/icons/lightbulb.svg";
-import challenges from "./challenges.json";
+// import challenges from "./challenges.json";
+import { mockChallenges } from "../../mock-data/mockChallenges";
 
 export function ChallengeDetails() {
 
     const {challengeId} = useParams()
 
-    const challengeData = challenges.challenges[challengeId]
+    const challengeData = mockChallenges.challenges[challengeId - 1]
+
+    console.log(challengeData)
 
     return (
         <>
             <DashboardNavbar />
             <main className="main">
 
-                <img src={challengeData.imgSrc} className="image" alt="computer on a desk" />
+                <img src="https://png.pngtree.com/background/20230517/original/pngtree-what-can-a-home-computer-desk-look-like-picture-image_2625455.jpg" className="image" alt="computer on a desk" />
 
                 <section className="challenge">
 
@@ -84,7 +87,7 @@ export function ChallengeDetails() {
                             <Link to="/pair">
                                 <button className="action__button">Pair Up</button>
                             </Link>
-                            <Link to="/dashboard">
+                            <Link to="/testPage">
                                 <button className="action__button action__button--secondary">Dashboard</button>
                             </Link>
                         </div>
