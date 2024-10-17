@@ -1,4 +1,4 @@
-export const mockChallenges = {
+export const MOCK_CHALLENGES = {
   challenges: [
     {
       id: 1,

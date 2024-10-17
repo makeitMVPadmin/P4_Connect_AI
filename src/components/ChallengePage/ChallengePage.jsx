@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { mockChallenges } from "../../mock-data/mockChallenges";
+import { MOCK_CHALLENGES } from "../../mock-data/mockChallenges";
 import ChallengeCard from "../ChallengeCard/ChallengeCard";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import filterIcon from "../../assets/images/filterIcon.svg";
@@ -11,7 +11,7 @@ const ChallengePage = () => {
   const selectedDifficulties = ["Easy", "Intermediate", "Hard"];
 
   // Filter challenges based on selected categories and difficulties
-  const filteredChallenges = mockChallenges.challenges.filter(
+  const filteredChallenges = MOCK_CHALLENGES.challenges.filter(
     (challenge) =>
       selectedCategories.includes(challenge.category) &&
       selectedDifficulties.includes(challenge.difficulty)

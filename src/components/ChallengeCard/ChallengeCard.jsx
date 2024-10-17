@@ -44,7 +44,7 @@ const ChallengeCard = ({ challenge }) => {
           <img src={Idea} alt="Idea Icon" />
           <div className="task-text">{challenge.task}</div>
         </div>
-        <Link to={"/challenge/" + challenge.id} className="learn-more-button">
+        <Link to={`/challenge/${challenge.id}`} className="learn-more-button">
           <div className="button-text">Learn more</div>
         </Link>
       </div>
