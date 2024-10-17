@@ -7,7 +7,7 @@ import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
 import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx";
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 import TestPage from "./pages/TestPage/TestPage.jsx";
-import ChallengeCard from "./components/ChallengeCard/ChallengeCard.jsx";
+import ChallengePage from "./components/ChallengePage/ChallengePage.jsx";
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/challenge/:challengeId" element={<ChallengeDetails/>}/>
         <Route path="/Testa" element={<LoadingPage />} />
-        <Route path="/TestPage" element={<ChallengeCard />} />
+        <Route path="/TestPage" element={<ChallengePage />} />
+
       </Routes>
     </>
   );
