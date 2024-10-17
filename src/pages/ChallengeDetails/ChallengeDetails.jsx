@@ -10,7 +10,7 @@ export function ChallengeDetails() {
 
     const {challengeId} = useParams()
 
-    const challengeData = MOCK_CHALLENGES.challenges.find((challenge) => challenge.id === parseInt(challengeId))
+    const challengeData = MOCK_CHALLENGES.challenges.find((challenge) => challenge.id === challengeId)
 
     return (
         <>
