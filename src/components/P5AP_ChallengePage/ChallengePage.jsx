@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MOCK_CHALLENGES } from "../../mock-data/mockChallenges";
-import ChallengeCard from "../P5AP_ChallengeCard/ChallengeCard";
+import ChallengeCard from "../ChallengeCard/ChallengeCard";
 import DashboardNavbar from "../DashboardNavbar/DashboardNavbar";
 import filterIcon from "../../assets/images/filterIcon.svg";
 import FilterBoard from "../P5AP_FilterBoard/FilterBoard";
