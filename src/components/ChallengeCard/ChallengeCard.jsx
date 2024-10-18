@@ -4,6 +4,7 @@ import ChallengeCardBanner from "../../assets/images/ChallengeCardBanner.png";
 import Pen from "../../assets/images/Pen.svg";
 import Clock from "../../assets/images/Clock.png";
 import Idea from "../../assets/images/Idea.png";
+import { Link } from "react-router-dom";
 
 const ChallengeCard = ({ challenge }) => {
   const getDifficultyColor = (difficulty) => {
@@ -43,9 +44,9 @@ const ChallengeCard = ({ challenge }) => {
           <img src={Idea} alt="Idea Icon" />
           <div className="task-text">{challenge.task}</div>
         </div>
-        <div className="learn-more-button">
+        <Link to={`/challenge/${challenge.id}`} className="learn-more-button">
           <div className="button-text">Learn more</div>
-        </div>
+        </Link>
       </div>
     </div>
   );

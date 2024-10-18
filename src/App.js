@@ -3,9 +3,8 @@ import Home from "./main.js";
 import PromptPage from "./pages/PromptPage/PromptPage";
 import BackEndTest from "./backend/Backend.jsx";
 import AiBackendTest from "./backend/AiBackendTest.js";
-import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
-import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx";
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
+import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx";
 import TestPage from "./pages/TestPage/TestPage.jsx";
 import ChallengePage from "./components/ChallengePage/ChallengePage.jsx";
 
