@@ -1,6 +1,8 @@
-export const mockChallenges = {
+export const MOCK_CHALLENGES = {
   challenges: [
     {
+      id: 1,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Easy",
       duration: "60 mins",
@@ -143,6 +145,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 2,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -184,6 +188,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 3,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -489,6 +495,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 4,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
       duration: "45 mins",
@@ -890,6 +898,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 5,
+      technology: ["React", "conditional rendering"],
       category: "React",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -916,6 +926,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 6,
+      technology: ["React", "localStorage"],
       category: "React",
       difficulty: "Hard",
       duration: "60 mins",
@@ -1330,6 +1342,8 @@ export const mockChallenges = {
     },
 
     {
+      id: 7,
+      technology: ["Python", "JavaScript"],
       category: "DSA",
       difficulty: "Easy",
       duration: "60 mins",
@@ -1359,6 +1373,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 8,
+      technology: ["Python", "JavaScript"],
       category: "DSA",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1387,6 +1403,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 9,
+      technology: ["Python", "JavaScript"],
       category: "DSA",
       difficulty: "Hard",
       duration: "60 mins",
@@ -1801,6 +1819,8 @@ export const mockChallenges = {
     },
 
     {
+      id: 10,
+      technology: ["Java"],
       category: "Java",
       difficulty: "Easy",
       duration: "60 mins",
@@ -1829,6 +1849,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 11,
+      technology: ["Java"],
       category: "Java",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1858,6 +1880,8 @@ export const mockChallenges = {
       },
     },
     {
+      id: 12,
+      technology: ["Java"],
       category: "Java",
       difficulty: "Hard",
       duration: "60 mins",
