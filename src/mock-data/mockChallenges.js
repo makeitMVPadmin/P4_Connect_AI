@@ -45,6 +45,8 @@ export const MOCK_CHALLENGES = {
     },
 
     {
+      id: 2,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Easy",
       duration: "45 mins",
@@ -77,6 +79,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 3,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Easy",
       duration: "30 mins",
@@ -111,6 +115,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 4,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Easy",
       duration: "40 mins",
@@ -145,7 +151,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 2,
+      id: 5,
       technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
@@ -188,7 +194,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 3,
+      id: 6,
       technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
@@ -222,6 +228,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 7,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
       duration: "75 mins",
@@ -258,6 +266,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 8,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
       duration: "90 mins",
@@ -293,6 +303,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 9,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -327,6 +339,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 10,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Hard",
       duration: "120 mins",
@@ -361,6 +375,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 11,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Hard",
       duration: "90 mins",
@@ -394,6 +410,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 12,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Hard",
       duration: "150 mins",
@@ -426,6 +444,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 13,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Hard",
       duration: "120 mins",
@@ -460,6 +480,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 14,
+      technology: ["Python"],
       category: "Python",
       difficulty: "Hard",
       duration: "60 mins",
@@ -495,7 +517,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 4,
+      id: 15,
       technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
@@ -528,6 +550,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 16,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
       duration: "30 mins",
@@ -563,6 +587,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 17,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
       duration: "40 mins",
@@ -591,6 +617,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 18,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
       duration: "50 mins",
@@ -621,6 +649,8 @@ export const MOCK_CHALLENGES = {
 
     // Intermediate React Challenges
     {
+      id: 19,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Intermediate",
       duration: "75 mins",
@@ -650,6 +680,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 20,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Intermediate",
       duration: "90 mins",
@@ -680,6 +712,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 21,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -710,6 +744,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 22,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Intermediate",
       duration: "80 mins",
@@ -743,6 +779,8 @@ export const MOCK_CHALLENGES = {
 
     // Hard React Challenges
     {
+      id: 23,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Hard",
       duration: "120 mins",
@@ -774,6 +812,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 24,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Hard",
       duration: "150 mins",
@@ -806,6 +846,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 25,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Hard",
       duration: "180 mins",
@@ -837,6 +879,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 26,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Hard",
       duration: "140 mins",
@@ -868,6 +912,8 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 27,
+      technology: ["React", "useState"],
       category: "React",
       difficulty: "Easy",
       duration: "60 mins",
@@ -898,7 +944,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 5,
+      id: 28,
       technology: ["React", "conditional rendering"],
       category: "React",
       difficulty: "Intermediate",
@@ -926,7 +972,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 6,
+      id: 29,
       technology: ["React", "localStorage"],
       category: "React",
       difficulty: "Hard",
@@ -955,6 +1001,7 @@ export const MOCK_CHALLENGES = {
     },
 
     {
+      id: 30,
       category: "DSA",
       difficulty: "Easy",
       duration: "30 mins",
@@ -986,6 +1033,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 31,
       category: "DSA",
       difficulty: "Easy",
       duration: "45 mins",
@@ -1021,6 +1069,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 32,
       category: "DSA",
       difficulty: "Easy",
       duration: "40 mins",
@@ -1056,6 +1105,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 33,
       category: "DSA",
       difficulty: "Easy",
       duration: "35 mins",
@@ -1088,6 +1138,7 @@ export const MOCK_CHALLENGES = {
 
     // Intermediate DSA Challenges
     {
+      id: 34,
       category: "DSA",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1121,6 +1172,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 35,
       category: "DSA",
       difficulty: "Intermediate",
       duration: "75 mins",
@@ -1152,6 +1204,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 36,
       category: "DSA",
       difficulty: "Intermediate",
       duration: "70 mins",
@@ -1182,6 +1235,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 37,
       category: "DSA",
       difficulty: "Intermediate",
       duration: "65 mins",
@@ -1214,6 +1268,7 @@ export const MOCK_CHALLENGES = {
 
     // Hard DSA Challenges
     {
+      id: 38,
       category: "DSA",
       difficulty: "Hard",
       duration: "90 mins",
@@ -1246,6 +1301,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 39,
       category: "DSA",
       difficulty: "Hard",
       duration: "120 mins",
@@ -1278,6 +1334,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 40,
       category: "DSA",
       difficulty: "Hard",
       duration: "150 mins",
@@ -1309,6 +1366,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 41,
       category: "DSA",
       difficulty: "Hard",
       duration: "180 mins",
@@ -1342,8 +1400,7 @@ export const MOCK_CHALLENGES = {
     },
 
     {
-      id: 7,
-      technology: ["Python", "JavaScript"],
+      id: 42,
       category: "DSA",
       difficulty: "Easy",
       duration: "60 mins",
@@ -1373,8 +1430,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 8,
-      technology: ["Python", "JavaScript"],
+      id: 43,
       category: "DSA",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1403,8 +1459,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 9,
-      technology: ["Python", "JavaScript"],
+      id: 44,
       category: "DSA",
       difficulty: "Hard",
       duration: "60 mins",
@@ -1433,6 +1488,7 @@ export const MOCK_CHALLENGES = {
     },
 
     {
+      id: 45,
       category: "Java",
       difficulty: "Easy",
       duration: "45 mins",
@@ -1465,6 +1521,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 46,
       category: "Java",
       difficulty: "Easy",
       duration: "30 mins",
@@ -1500,6 +1557,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 47,
       category: "Java",
       difficulty: "Easy",
       duration: "40 mins",
@@ -1535,6 +1593,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 48,
       category: "Java",
       difficulty: "Easy",
       duration: "35 mins",
@@ -1571,6 +1630,7 @@ export const MOCK_CHALLENGES = {
 
     // Intermediate Java Challenges
     {
+      id: 49,
       category: "Java",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1601,6 +1661,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 50,
       category: "Java",
       difficulty: "Intermediate",
       duration: "75 mins",
@@ -1632,6 +1693,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 51,
       category: "Java",
       difficulty: "Intermediate",
       duration: "70 mins",
@@ -1663,6 +1725,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 52,
       category: "Java",
       difficulty: "Intermediate",
       duration: "65 mins",
@@ -1695,6 +1758,7 @@ export const MOCK_CHALLENGES = {
 
     // Hard Java Challenges
     {
+      id: 53,
       category: "Java",
       difficulty: "Hard",
       duration: "90 mins",
@@ -1725,6 +1789,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 54,
       category: "Java",
       difficulty: "Hard",
       duration: "120 mins",
@@ -1756,6 +1821,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 55,
       category: "Java",
       difficulty: "Hard",
       duration: "150 mins",
@@ -1786,6 +1852,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
+      id: 56,
       category: "Java",
       difficulty: "Hard",
       duration: "180 mins",
@@ -1819,8 +1886,7 @@ export const MOCK_CHALLENGES = {
     },
 
     {
-      id: 10,
-      technology: ["Java"],
+      id: 57,
       category: "Java",
       difficulty: "Easy",
       duration: "60 mins",
@@ -1849,8 +1915,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 11,
-      technology: ["Java"],
+      id: 58,
       category: "Java",
       difficulty: "Intermediate",
       duration: "60 mins",
@@ -1880,8 +1945,7 @@ export const MOCK_CHALLENGES = {
       },
     },
     {
-      id: 12,
-      technology: ["Java"],
+      id: 59,
       category: "Java",
       difficulty: "Hard",
       duration: "60 mins",

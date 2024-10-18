@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { mockChallenges } from "../../mock-data/mockChallenges";
+import { MOCK_CHALLENGES } from "../../mock-data/mockChallenges";
 import ChallengeCard from "../P5AP_ChallengeCard/ChallengeCard";
 import DashboardNavbar from "../DashboardNavbar/DashboardNavbar";
 import filterIcon from "../../assets/images/filterIcon.svg";
@@ -13,7 +13,7 @@ const ChallengePage = () => {
   const [isFilterBoardOpen, setIsFilterBoardOpen] = useState(false);
 
   // Filter challenges based on selected difficulties and technologies
-  const filteredChallenges = mockChallenges.challenges.filter(
+  const filteredChallenges = MOCK_CHALLENGES.challenges.filter(
     (challenge) =>
       (selectedDifficulties.length === 0 ||
         selectedDifficulties.includes(challenge.difficulty)) &&

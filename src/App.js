@@ -6,7 +6,6 @@ import AiBackendTest from "./backend/AiBackendTest.js";
 import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx";
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 import ChallengePage from "./components/P5AP_ChallengePage/ChallengePage.jsx";
-import TestPage from "./pages/TestPage/TestPage.jsx";
 
 function App() {
   return (
