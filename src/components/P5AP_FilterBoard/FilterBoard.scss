@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: auto;
+  border-radius: 20px;
   background-color: $MVP-Cream; // Optional background for visibility
 }
 
@@ -23,99 +24,103 @@
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); // Subtle shadow for depth
   font-family: Corben-Bold;
-&__header{
-display: flex;
+
+  &__header {
+    display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 
 
-  h2 {
-    font-family: Corben;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px; // Increase margin for better spacing
-    text-align: left;
-  }
-
-   &__close {
- 
-    top: 16px; // Adjust based on padding and positioning needs
-    right: 16px; // Adjust for alignment with the border
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    svg {
-      width: 24px; // Adjust size of the SVG
-      height: 24px; // Adjust size of the SVG
-      fill: $MVP-black; // Change the fill color to match the design
+    h2 {
+      font-family: Corben;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px; // Increase margin for better spacing
+      text-align: left;
     }
 
-    &:hover {
+    &__close {
+
+      top: 16px; // Adjust based on padding and positioning needs
+      right: 16px; // Adjust for alignment with the border
+      background: none;
+      border: none;
+      cursor: pointer;
+
       svg {
-        fill: $MVP-Red; // Optional: Change color on hover
+        width: 24px; // Adjust size of the SVG
+        height: 24px; // Adjust size of the SVG
+        fill: $MVP-black; // Change the fill color to match the design
+      }
+
+      &:hover {
+        svg {
+          fill: $MVP-Red; // Optional: Change color on hover
+        }
       }
     }
   }
-}
+
   // First and last divider lines
   &__divider {
     width: calc(100% + 48px); // Expand the line beyond padding
     height: 1px;
     background-color: $MVP-black;
     border: none;
-    margin-left: -24px;  // Pull the line to the left to touch the border
+    margin-left: -24px; // Pull the line to the left to touch the border
     margin-right: -24px; // Ensure the line touches the right border
-    margin-bottom: 24px;  // Space after the line
+    margin-bottom: 24px; // Space after the line
   }
 
   &__divider--bottom {
-    margin-top: 24px;  // Adjust top margin for space between the last section and the bottom line
+    margin-top: 24px; // Adjust top margin for space between the last section and the bottom line
   }
 
-&__choice {
-  width: 100%; // Ensure full width for internal sections
-  &__sections {
-    margin-bottom: 32px;
+  &__choice {
+    width: 100%; // Ensure full width for internal sections
 
-    h3 {
-      font-family: Corben-Bold;
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: $MVP-Dark-Blue;
-    }
+    &__sections {
+      margin-bottom: 32px;
 
-    &__button{
-      margin: 5px;
-      padding: 10px 15px;
-      border: 1px solid $MVP-black;
-      border-radius: 5px;
-      background-color: $MVP-White;
-      cursor: pointer;
-      font-family: Gilroy;
-      transition: background-color 0.3s ease;
-
-      &.active {
-        background-color: $MVP-Yellow;
-        color: $MVP-White;
-        border-color: $MVP-Yellow;
+      h3 {
         font-family: Corben-Bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: $MVP-Dark-Blue;
       }
 
-      &:hover {
-        background-color: $MVP-Light-Blue;
-        color: $MVP-White;
+      &__button {
+        margin: 5px;
+        padding: 10px 15px;
+        border: 1px solid $MVP-black;
+        border-radius: 5px;
+        background-color: $MVP-White;
+        cursor: pointer;
+        font-family: Gilroy;
+        transition: background-color 0.3s ease;
+
+        &.active {
+          background-color: $MVP-Yellow;
+          color: $MVP-White;
+          border-color: $MVP-Yellow;
+          font-family: Corben-Bold;
+        }
+
+        &:hover {
+          background-color: $MVP-Light-Blue;
+          color: $MVP-White;
+        }
       }
     }
-  }
 
-   // Add horizontal lines between sections
+    // Add horizontal lines between sections
     &__sections:not(:last-child) {
       border-bottom: 1px solid $Light-Gray;
       padding-bottom: 20px;
     }
-}
+  }
+
   &__actions {
     display: flex;
     width: 100%;
@@ -151,8 +156,6 @@ display: flex;
         background-color: $MVP-Dark-Blue;
       }
     }
-  
-}
-}
 
-// Center the filterboard container on the page
+  }
+}

@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import "./FilterBoard.scss";
 import { ReactComponent as Exit } from "../../assets/images/exit.svg";
 
-const FilterBoard = () => {
-  // State for filters
-  const [industry, setIndustry] = useState([]);
-  const [difficulty, setDifficulty] = useState([]);
-  const [technology, setTechnology] = useState([]);
+const FilterBoard = ({
+  onApplyFilters,
+  onClose,
+  initialDifficulty,
+  initialTechnology,
+}) => {
+  const [industry, setIndustry] = useState(["Development"]);
+  const [difficulty, setDifficulty] = useState(initialDifficulty || []);
+  const [technology, setTechnology] = useState(initialTechnology || []);
 
-  // Data for filters
   const industries = ["Design", "Development"];
   const difficulties = ["Easy", "Intermediate", "Hard"];
-  const technologies = ["Python", "Java", "React", "DSA", "jQuery"];
+  const technologies = ["Python", "React", "DSA", "Java"];
 
-  // Handle industry change
   const handleIndustryChange = (selectedIndustry) => {
+    if (selectedIndustry === "Development") return; // Prevent deselecting Development
     if (industry.includes(selectedIndustry)) {
-      setIndustry(
-        industry.filter((selected) => selected !== selectedIndustry)
-      );
+      setIndustry(industry.filter((selected) => selected !== selectedIndustry));
     } else {
       setIndustry([...industry, selectedIndustry]);
     }
   };
 
-  // Handle difficulty change
   const handleDifficultyChange = (level) => {
     if (difficulty.includes(level)) {
       setDifficulty(difficulty.filter((l) => l !== level));
@@ -33,62 +33,53 @@ const FilterBoard = () => {
     }
   };
 
-  // Handle technology change
   const handleTechnologyChange = (tech) => {
     if (technology.includes(tech)) {
       setTechnology(technology.filter((t) => t !== tech));
     } else {
       setTechnology([...technology, tech]);
     }
-   
   };
 
-  // Handle clearing all filters
   const handleClearAll = () => {
-    setIndustry([]);
+    setIndustry(["Development"]);
     setDifficulty([]);
     setTechnology([]);
   };
 
   const handleSubmit = () => {
-    console.log("submit");
+    onApplyFilters({ industry, difficulty, technology });
   };
 
-  //just closes the 
-  const handleExit = () => {
-    handleClearAll();
-    console.log("close")
-  }
   return (
     <div className="filterboard-container">
       <div className="filterboard">
         <div className="filterboard__header">
           <h2>Filters</h2>
-          <button
-            className="filterboard__header__close"
-            onClick={() => handleExit()}
-          >
+          <button className="filterboard__header__close" onClick={onClose}>
             <Exit />
           </button>
         </div>
         <hr className="filterboard__divider" />
 
         <div className="filterboard__choice">
+          {/* Industry Section */}
           <div className="filterboard__choice__sections">
             <h3>Industry</h3>
-            {industries.map((level) => (
+            {industries.map((ind) => (
               <button
-                key={level}
+                key={ind}
                 className={`filterboard__choice__sections__button ${
-                  industry.includes(level) ? "active" : ""
+                  industry.includes(ind) ? "active" : ""
                 }`}
-                onClick={() => handleIndustryChange(level)}
+                onClick={() => handleIndustryChange(ind)}
               >
-                {level}
+                {ind}
               </button>
             ))}
           </div>
 
+          {/* Difficulty Section */}
           <div className="filterboard__choice__sections">
             <h3>Difficulty</h3>
             {difficulties.map((level) => (
@@ -104,6 +95,7 @@ const FilterBoard = () => {
             ))}
           </div>
 
+          {/* Technology Section */}
           <div className="filterboard__choice__sections">
             <h3>Technology</h3>
             {technologies.map((tech) => (
