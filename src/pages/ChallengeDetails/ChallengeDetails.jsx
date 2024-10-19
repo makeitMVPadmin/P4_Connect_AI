@@ -25,7 +25,6 @@ export function ChallengeDetails() {
 
             if (docSnap.exists()) {
                 const data = docSnap.data()
-                console.log(data)
                 setChallengeData(data);
             } else {
                 navigate("/testPage")
