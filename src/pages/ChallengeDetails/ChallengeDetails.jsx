@@ -137,7 +137,7 @@ export function ChallengeDetails() {
 
                     <div className="instructions">
                         <div className="instructions__step">
-                            <div className="instructions__chip  instructions__chip--green">
+                            <div className="instructions__chip">
                                 Complete the challenge
                             </div>
                             <ul className="instructions__list">
@@ -148,7 +148,7 @@ export function ChallengeDetails() {
                             </ul>
                         </div>
                         <div className="instructions__step">
-                            <div className="instructions__chip  instructions__chip--yellow">
+                            <div className="instructions__chip">
                                 Submit Your Code
                             </div>
                             <ul className="instructions__list">
@@ -159,7 +159,7 @@ export function ChallengeDetails() {
                             </ul>
                         </div>
                         <div className="instructions__step">
-                            <div className="instructions__chip instructions__chip--blue">
+                            <div className="instructions__chip">
                                 Finalize your solution
                             </div>
                             <ul className="instructions__list">
