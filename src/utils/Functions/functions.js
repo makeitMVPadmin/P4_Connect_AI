@@ -1,4 +1,3 @@
-// src/components/functions/functions.js
 import {
   collection,
   addDoc,
@@ -29,7 +28,6 @@ function throttle(func, limit) {
   };
 }
 
-
 // Create
 export const createData = async (collectionName, data) => {
   try {
@@ -44,11 +42,13 @@ export const createData = async (collectionName, data) => {
 // Read
 export const readData = async (collectionName) => {
   try {
+    console.log(`Attempting to read data from collection: ${collectionName}`);
     const querySnapshot = await getDocs(collection(db, collectionName));
     const dataList = [];
     querySnapshot.forEach((doc) => {
       dataList.push({ id: doc.id, ...doc.data() });
     });
+    console.log(`Read ${dataList.length} documents from ${collectionName}`);
     return dataList;
   } catch (e) {
     console.error("Error reading documents: ", e);
@@ -93,7 +93,7 @@ export const getAllQuestions = async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}
+};
 
 //Get all UserAnswers
 export const getAllUserAnswers = throttle(async () => {
@@ -105,7 +105,6 @@ export const getAllUserAnswers = throttle(async () => {
     });
     return dataList;
   } catch (e) {
-    console.error("Error reading documents: ", e);
     throw e;
   }
 }, 1000);

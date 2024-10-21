@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterBoard.scss";
 import { ReactComponent as Exit } from "../../assets/images/exit.svg";
 
 const FilterBoard = ({
   onApplyFilters,
   onClose,
+  initialIndustry,
   initialDifficulty,
   initialTechnology,
 }) => {
-  const [industry, setIndustry] = useState(["Development"]);
+  const [industry, setIndustry] = useState(initialIndustry || []);
   const [difficulty, setDifficulty] = useState(initialDifficulty || []);
   const [technology, setTechnology] = useState(initialTechnology || []);
 
   const industries = ["Design", "Development"];
   const difficulties = ["Easy", "Intermediate", "Hard"];
   const technologies = ["Python", "React", "DSA", "Java"];
+
+  // Ensure "Development" is always selected
+  useEffect(() => {
+    if (!industry.includes("Development")) {
+      setIndustry((prev) => [...prev, "Development"]);
+    }
+  }, [industry]);
 
   const handleIndustryChange = (selectedIndustry) => {
     if (selectedIndustry === "Development") return; // Prevent deselecting Development
@@ -48,7 +56,13 @@ const FilterBoard = ({
   };
 
   const handleSubmit = () => {
-    onApplyFilters({ industry, difficulty, technology });
+    // Remove "Development" from the industry array before applying filters
+    const filteredIndustry = industry.filter((ind) => ind !== "Development");
+    onApplyFilters({
+      industry: filteredIndustry,
+      difficulty,
+      technology,
+    });
   };
 
   return (
@@ -71,8 +85,9 @@ const FilterBoard = ({
                 key={ind}
                 className={`filterboard__choice__sections__button ${
                   industry.includes(ind) ? "active" : ""
-                }`}
+                } ${ind === "Development" ? "always-active" : ""}`}
                 onClick={() => handleIndustryChange(ind)}
+                disabled={ind === "Development"}
               >
                 {ind}
               </button>
