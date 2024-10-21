@@ -1,13 +1,11 @@
 import { useEffect, useContext } from "react";
 import "./PromptPage.scss";
-
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import Button from "../../components/Button/Button";
-import { PageProvider, PageContext } from "../../contexts/PageContext";
+import { PageContext } from "../../contexts/PageContext";
 import OnboardingPage1 from "../OnboardingPage/OnboardingPage1";
 import OnboardingPage2 from "../OnboardingPage/OnboardingPage2";
 import OnboardingPage3 from "../OnboardingPage/OnboardingPage3";
-// import LoadingPage from "../LoadingPage/LoadingPage";
 import loadingInactiveIcon from "../../assets/images/loadingInactiveIcon.svg";
 import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 
@@ -109,12 +107,4 @@ const PromptPage = () => {
   );
 };
 
-const PromptPageProvider = () => {
-  return (
-    <PageProvider>
-      <PromptPage />
-    </PageProvider>
-  );
-};
-
-export default PromptPageProvider;
+export default PromptPage;

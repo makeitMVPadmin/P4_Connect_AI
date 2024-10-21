@@ -7,7 +7,21 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
 const OnboardingPage3 = () => {
-  const { handleNext, handleBack, progressBarIndex } = useContext(PageContext);
+  const {
+    handleNext,
+    handleBack,
+    progressBarIndex,
+    updateUserFeedback,
+    userFeedback,
+  } = useContext(PageContext);
+
+  const handleSkillSelection = (skill) => {
+    console.log("Skill selected:", skill);
+    updateUserFeedback("skillToImprove", skill);
+    console.log("updateUserFeedback called with:", skill);
+    console.log("Current userFeedback:", userFeedback);
+    handleNext();
+  };
 
   return (
     <div className="onboarding-page">
@@ -18,13 +32,31 @@ const OnboardingPage3 = () => {
           </div>
           <div className="onboarding-page__text-container">
             <div className="welcome-message">
-              What are some skills you want to work on?
+              What skill do you want to work on in{" "}
+              {userFeedback.field || "your field"}?
             </div>
           </div>
           <div className="onboarding-button-container">
-            <Button text="DSA" color="white" eventlistener={handleNext} />
-            <Button text="Python" color="white" eventlistener={handleNext} />
-            <Button text="Frontend" color="white" eventlistener={handleNext} />
+            <Button
+              text="DSA"
+              color="white"
+              eventListener={() => handleSkillSelection("DSA")}
+            />
+            <Button
+              text="Python"
+              color="white"
+              eventListener={() => handleSkillSelection("Python")}
+            />
+            <Button
+              text="Java"
+              color="white"
+              eventListener={() => handleSkillSelection("Java")}
+            />
+            <Button
+              text="React"
+              color="white"
+              eventListener={() => handleSkillSelection("React")}
+            />
           </div>
           <div className="loading-icon-container">
             <img

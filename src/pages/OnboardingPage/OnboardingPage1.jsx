@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./OnboardingPage.scss";
 import Button from "../../components/Button/Button";
 import { PageContext } from "../../contexts/PageContext";
@@ -7,11 +7,11 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
 const OnboardingPage1 = () => {
-  const [selectedButton, setSelectedButton] = useState(null);
-  const { handleNext, handleBack, progressBarIndex } = useContext(PageContext);
+  const { handleNext, handleBack, progressBarIndex, updateUserFeedback } =
+    useContext(PageContext);
 
-  const handleClick = (button) => {
-    setSelectedButton(button);
+  const handleClick = (field) => {
+    // updateUserFeedback("field", field);
     handleNext();
   };
 
