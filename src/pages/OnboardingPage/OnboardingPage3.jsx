@@ -16,10 +16,7 @@ const OnboardingPage3 = () => {
   } = useContext(PageContext);
 
   const handleSkillSelection = (skill) => {
-    console.log("Skill selected:", skill);
     updateUserFeedback("skillToImprove", skill);
-    console.log("updateUserFeedback called with:", skill);
-    console.log("Current userFeedback:", userFeedback);
     handleNext();
   };
 

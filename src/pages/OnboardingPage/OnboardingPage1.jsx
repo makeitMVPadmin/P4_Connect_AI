@@ -7,11 +7,9 @@ import loadingActiveIcon from "../../assets/images/loadingActiveIcon.svg";
 import arrowLeft from "../../assets/images/arrowLeft.svg";
 
 const OnboardingPage1 = () => {
-  const { handleNext, handleBack, progressBarIndex, updateUserFeedback } =
-    useContext(PageContext);
+  const { handleNext, handleBack, progressBarIndex } = useContext(PageContext);
 
   const handleClick = (field) => {
-    // updateUserFeedback("field", field);
     handleNext();
   };
 

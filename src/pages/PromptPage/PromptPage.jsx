@@ -21,7 +21,6 @@ const PromptPage = () => {
   useEffect(() => {
     setCurrentPageIndex(0);
   }, [setCurrentPageIndex]);
-  console.log("Rendering PromptPage, currentPageIndex:", currentPageIndex);
 
   return (
     <div>

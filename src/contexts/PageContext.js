@@ -18,7 +18,6 @@ export const PageProvider = ({ children }) => {
   const updateUserFeedback = useCallback((key, value) => {
     setUserFeedback((prevFeedback) => {
       const newFeedback = { ...prevFeedback, [key]: value };
-      console.log("UserFeedback updated in context:", newFeedback);
       return newFeedback;
     });
   }, []);

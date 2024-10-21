@@ -105,7 +105,6 @@ export const getAllUserAnswers = throttle(async () => {
     });
     return dataList;
   } catch (e) {
-    console.error("Error reading documents: ", e);
     throw e;
   }
 }, 1000);
