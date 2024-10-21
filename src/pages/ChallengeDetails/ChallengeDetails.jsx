@@ -124,7 +124,7 @@ export function ChallengeDetails() {
                         </div>
 
                         <div className="action">
-                            <Link to="/testPage">
+                            <Link to="/ChallengePage">
                                 <button className="action__button action__button--secondary">
                                     Dashboard
                                 </button>
