@@ -148,13 +148,12 @@
         width: 33%;
         border-left: 1px solid #757575;
     }
-    
+
 
     &__chip {
-        background: blue;
+        background: #0954B0;
         display: inline-block;
         border-radius: 50px;
-        background: #09F;
         border-radius: 50px;
         font-size: 12px;
         padding: 2.5px 16px 5.5px 16px;
@@ -167,23 +166,6 @@
         text-transform: capitalize;
         letter-spacing: 1px;
         margin-top: 1rem;
-
-        &--yellow {
-            background-color: #BA9200;
-        }
-
-        &--red {
-            background-color: #FF7070;
-        }
-
-        &--green {
-            background-color: #018C06;
-        }
-
-        &--blue {
-            background-color: #0099FF;
-        }
-
     }
 
     &__list {
@@ -210,7 +192,7 @@
         flex-direction: row;
     }
 
-    
+
 
     &__button {
         background-color: #09F;
@@ -224,19 +206,25 @@
         @include Mobile {
             width: 100%;
         }
-        
+
         @include Desktop {
             width: auto;
         }
+
+        &:hover {
+            background: #0954B0;
+        }
+
 
         &--secondary {
             background-color: white;
             color: black;
             border: 1px solid black;
+
+            &:hover {
+                color: white
+            }
         }
-
-
-        
     }
 }
 
