@@ -6,13 +6,14 @@ import filterIcon from "../../assets/images/filterIcon.svg";
 import FilterBoard from "../P5AP_FilterBoard/FilterBoard";
 import { PageContext } from "../../contexts/PageContext";
 import "./ChallengePage.scss";
+import closeIcon from "../../assets/icons/close_icon.svg";
 
 const ChallengePage = () => {
   const { userFeedback } = useContext(PageContext);
   const [challenges, setChallenges] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedIndustry, setSelectedIndustry] = useState(["Development"]);
+  const [selectedIndustry, setSelectedIndustry] = useState(["Development"]); // Development is always selected since we dont have any data for design in firestore
   const [selectedDifficulties, setSelectedDifficulties] = useState([]);
   const [selectedTechnologies, setSelectedTechnologies] = useState([]);
   const [isFilterBoardOpen, setIsFilterBoardOpen] = useState(false);
@@ -36,6 +37,7 @@ const ChallengePage = () => {
 
   useEffect(() => {
     if (userFeedback.field && userFeedback.field !== "Development") {
+      // Development is always selected since we dont have any data for design in firestore
       setSelectedIndustry(["Development", userFeedback.field]);
     }
     if (userFeedback.skillLevel) {
@@ -84,24 +86,56 @@ const ChallengePage = () => {
           </div>
         </div>
 
-        <div className="selected-filters">
-          {selectedIndustry.map((industry) => (
-            <span key={industry} className="filter-tab">
-              {industry}
-            </span>
-          ))}
-          {selectedDifficulties.map((difficulty) => (
-            <span key={difficulty} className="filter-tab">
-              {difficulty}
-            </span>
-          ))}
-          {selectedTechnologies.map((technology) => (
-            <span key={technology} className="filter-tab">
-              {technology}
-            </span>
-          ))}
+        <div className="selected-filters-container">
+          <span className="filter-name">Filter:</span>
+          <div className="selected-filters">
+            {selectedIndustry.map((industry) => (
+              <div key={industry} className="filter-tab">
+                <span className="filter-text">{industry}</span>
+                <img
+                  src={closeIcon}
+                  alt="Remove filter"
+                  className="close-icon"
+                  onClick={() =>
+                    setSelectedIndustry(
+                      selectedIndustry.filter((i) => i !== industry)
+                    )
+                  }
+                />
+              </div>
+            ))}
+            {selectedDifficulties.map((difficulty) => (
+              <div key={difficulty} className="filter-tab">
+                <span className="filter-text">{difficulty}</span>
+                <img
+                  src={closeIcon}
+                  alt="Remove filter"
+                  className="close-icon"
+                  onClick={() =>
+                    setSelectedDifficulties(
+                      selectedDifficulties.filter((d) => d !== difficulty)
+                    )
+                  }
+                />
+              </div>
+            ))}
+            {selectedTechnologies.map((technology) => (
+              <div key={technology} className="filter-tab">
+                <span className="filter-text">{technology}</span>
+                <img
+                  src={closeIcon}
+                  alt="Remove filter"
+                  className="close-icon"
+                  onClick={() =>
+                    setSelectedTechnologies(
+                      selectedTechnologies.filter((t) => t !== technology)
+                    )
+                  }
+                />
+              </div>
+            ))}
+          </div>
         </div>
-
         <div className="card-container">
           {filteredChallenges.length > 0 ? (
             filteredChallenges.map((challenge) => (
