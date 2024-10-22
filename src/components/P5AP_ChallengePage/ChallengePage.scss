@@ -1,6 +1,6 @@
 .challenge-page {
     padding: 20px 20px;
-    max-width: 1500px;
+    max-width: 1300px;
     margin: auto;
 
     .modal-overlay {
@@ -9,7 +9,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.6); // Semi-transparent overlay
+        background: rgba(0, 0, 0, 0.6);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,22 +40,52 @@
             span {
                 font-family: 'Corben', sans-serif;
                 font-weight: bold;
+                font-size: larger;
             }
         }
     }
 
+    .selected-filters-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .filter-name {
+        font-size: larger;
+        font-family: 'Corben', sans-serif;
+        margin-right: 15px;
+    }
+
     .selected-filters {
         display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
+        // flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
 
-        .filter-tab {
-            border: 2px solid #000000;
-            background-color: #FFD700;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
+    .filter-tab {
+        display: inline-flex;
+        align-items: center;
+        // margin-right: 10px;
+        border: 2px solid #000000;
+        background-color: #FFD700;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: large;
+        font-weight: 800;
+    }
+
+    .filter-text {
+        display: flex;
+        margin-right: 5px;
+        padding-bottom: 1px;
+    }
+
+    .close-icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
     }
 
     .card-container {
