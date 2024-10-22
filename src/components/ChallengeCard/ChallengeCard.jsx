@@ -33,15 +33,15 @@ const ChallengeCard = ({ challenge }) => {
       </div>
       <div className="content-section">
         <div className="info-row">
-          <img src={Pen} alt="Pen Icon" />
+          <img className="pen-icon" src={Pen} alt="Pen Icon" />
           <div className="category-text">{challenge.category}</div>
         </div>
         <div className="info-row">
-          <img src={Clock} alt="Clock Icon" />
+          <img className="clock-icon" src={Clock} alt="Clock Icon" />
           <div className="duration-text">{challenge.duration}</div>
         </div>
         <div className="info-row">
-          <img src={Idea} alt="Idea Icon" />
+          <img className="idea-icon" src={Idea} alt="Idea Icon" />
           <div className="task-text">{challenge.task}</div>
         </div>
         <Link to={`/challenge/${challenge.id}`} className="learn-more-button">
