@@ -46,7 +46,6 @@ const PromptPage = () => {
                   text="Let's start up"
                   color="blue"
                   className="back"
-                  border="none"
                   eventListener={() => handleNext(progressArray.length - 1)}
                 />
               </div>

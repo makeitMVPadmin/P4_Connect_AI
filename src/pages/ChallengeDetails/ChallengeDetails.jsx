@@ -4,6 +4,7 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import clock from "../../assets/icons/clock.svg";
 import pen from "../../assets/icons/pen.svg";
 import bulb from "../../assets/icons/lightbulb.svg";
+import backIcon from "../../assets/images/back.svg";
 import { db } from "../../firebase";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -126,7 +127,8 @@ export function ChallengeDetails() {
                         <div className="action">
                             <Link to="/ChallengePage">
                                 <button className="action__button action__button--secondary">
-                                    Dashboard
+                                    <img src={backIcon} className="action__back-icon" alt="back icon" />
+                                    <span className="action__button-text">Back</span>
                                 </button>
                             </Link>
                             <Link to="/pair">
