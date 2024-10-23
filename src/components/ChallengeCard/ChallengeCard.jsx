@@ -28,7 +28,12 @@ const ChallengeCard = ({ challenge }) => {
           className="difficulty-button"
           style={{ backgroundColor: getDifficultyColor(challenge.difficulty) }}
         >
-          <div className="difficulty-text">{challenge.difficulty}</div>
+          <div
+            className="difficulty-text"
+            style={{ color: challenge.difficulty === "Hard" ? "#fff" : "#000" }}
+          >
+            {challenge.difficulty}
+          </div>
         </div>
       </div>
       <div className="content-section">
