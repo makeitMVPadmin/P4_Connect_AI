@@ -23,7 +23,7 @@ function App() {
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/challenge/:challengeId" element={<ChallengeDetails />} />
         <Route path="/Testa" element={<LoadingPage />} />
-
+        
         <Route path="/PairupBoard" element={<PairupBoard/>}/>
         <Route path="/Photocard" element={<PhotoCard/>}/>
         

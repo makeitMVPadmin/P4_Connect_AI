@@ -1,15 +1,14 @@
 import React from 'react';
-import './photocard.scss';
+import './photocard.scss'; 
 import ideaIcon from '../../assets/icons/ideaIcon.svg'
 import brifcaseIcon from '../../assets/icons/brifcaseIcon.svg'
 import ButtonWithPanel from '../../components/P5AP_ButtonWithPanel/ButtonWithPanel'
-
 
 const PhotoCard = ({ profilePicture, name, level, role, skills }) => {
   return (
     <div className="photocard">
       <div className="photocard__header">
-        <img src={profilePicture} alt={`${name}`} className="photocard__image" />
+        <img src={profilePicture} alt={`${name}`} className="photocard__image" /> 
           <ButtonWithPanel classNme="photocard__level"/>
       </div>
       <div className="photocard__info">
@@ -27,5 +26,8 @@ const PhotoCard = ({ profilePicture, name, level, role, skills }) => {
   );
 };
 
-
 export default PhotoCard;
+
+
+
+
