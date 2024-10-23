@@ -6,6 +6,9 @@ import AiBackendTest from "./backend/AiBackendTest.js";
 import LoadingPage from "./components/LoadingPage/LoadingPage.jsx";
 import TestPage from "./pages/TestPage/TestPage.jsx";
 import ChallengeCard from "./components/ChallengeCard/ChallengeCard.jsx";
+import PairupBoard from "./pages/P5AP_PairupBoard/PairupBoard.jsx"
+import PhotoCard from "./components/P5AP_PhotoCard/photocard.jsx"
+
 
 function App() {
   return (
@@ -17,6 +20,12 @@ function App() {
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/Testa" element={<LoadingPage />} />
         <Route path="/TestPage" element={<ChallengeCard/>}/>
+
+        <Route path="/PairupBoard" element={<PairupBoard/>}/>
+        <Route path="/Photocard" element={<PhotoCard/>}/>
+
+
+
       </Routes>
     </>
   );

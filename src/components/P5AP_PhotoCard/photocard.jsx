@@ -1,27 +1,25 @@
 import React from 'react';
-import './PhotoCard.scss'; 
-import idea from '../../assets/icons/idea.svg'
-import briefcase from '../../assets/icons/briefcase.svg'
-import Vector from '../../assets/icons/Vector.svg'
+import './photocard.scss'; 
+import ideaIcon from '../../assets/icons/ideaIcon.svg'
+import brifcaseIcon from '../../assets/icons/brifcaseIcon.svg'
+import ButtonWithPanel from '../../components/P5AP_ButtonWithPanel/ButtonWithPanel'
 
-const PhotoCard = ({ user }) => {
+const PhotoCard = ({ profilePicture, name, level, role, skills }) => {
   return (
     <div className="photocard">
       <div className="photocard__header">
-          <img src={user.profilePicture} alt={`${user.name}`} className="photocard__image" />
-          <span className="photocard__level">
-            <img src={Vector} alt="Level Icon" className="photocard__icon" />  
-            {user.level}</span>
+        <img src={profilePicture} alt={`${name}`} className="photocard__image" /> 
+          <ButtonWithPanel classNme="photocard__level"/>
       </div>
       <div className="photocard__info">
-          <h2 className="photocard__name">{user.name}</h2>
+      <h2 className="photocard__name">{name}</h2>
           <p className="photocard__role">
-              <img src={briefcase} alt="briefcase Icon" className="photocard_briefcase"/>      
-              {user.role}
+              <img src={brifcaseIcon} alt="briefcase Icon" className="photocard_briefcase"/>      
+              {role}
           </p>
           <p className="photocard__skills">
-              <img src={idea} alt="idea Icon" className="photocard_idea"/>
-              {user.skills.join(' · ')}
+              <img src={ideaIcon} alt="idea Icon" className="photocard_idea"/>
+              {Array.isArray(skills) ? skills.join(' · ') : 'No skills listed'}
           </p>
       </div>
     </div>
@@ -29,3 +27,7 @@ const PhotoCard = ({ user }) => {
 };
 
 export default PhotoCard;
+
+
+
+
