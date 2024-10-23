@@ -220,12 +220,21 @@
 
         &--secondary {
             background-color: $MVP-White;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: flex-start;
+            padding-left: 2rem;
             
 
             &:hover {
                 background-color: $MVP-Yellow;
             }
         }
+    }
+
+    &__back-icon {
+        height: 24px;
     }
 }
 
