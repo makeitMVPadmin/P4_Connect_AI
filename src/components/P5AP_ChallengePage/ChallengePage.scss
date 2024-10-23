@@ -61,6 +61,11 @@
     .card-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        row-gap: 42px;
+        column-gap: 48px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0 24px;
     }
 }
