@@ -1,0 +1,21 @@
+.main-layout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 40px;
+}
+
+.left-section {
+    width: 60%; /* Adjust according to how much space you want to allocate to the left side */
+    display: flex;
+    flex-direction: column;
+    // gap: 40px;
+}
+
+.right-section {
+    width: 35%; /* Adjust width accordingly */
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
