@@ -8,6 +8,7 @@ const TaskBar = () => {
         { id: 3, completed: false }
     ]);
 
+// Handle Step Click
 const handleStepClick = (id) => {
     setSteps(prevSteps => prevSteps.map(step => step.id === id ? { ...step, completed: !step.completed } : step));
 };
