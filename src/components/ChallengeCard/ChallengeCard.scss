@@ -4,7 +4,7 @@
 .challenge-card {
     width: 24.875rem;
     height: 28.5rem;
-    background: #fff;
+    background: $MVP-White;
     box-shadow: 0px 0px 12px 2px rgba(82, 82, 82, 0.16);
     border-radius: 0.75rem;
     border-top: 3px solid var(--colors-neutrals-800, #131313);
@@ -44,7 +44,7 @@
             justify-content: center;
 
             .difficulty-text {
-                color: #000;
+                color: $MVP-black;
                 font-size: 0.75rem;
                 font-style: normal;
                 font-family: Corben;
@@ -95,20 +95,20 @@
             width: 22.8125rem;
             height: 3rem;
             padding: 0.625rem 3rem;
-            background-color: #0099FF;
+            background-color: $MVP-Light-Blue;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
-            
+
             &:hover {
-                background-color: #3473be;
+                background-color: $MVP-Dark-Blue-faded;
             }
 
             .button-text {
                 font-size: 1.25rem;
-                color: #000;
+                color: $MVP-black;
                 font-family: Corben;
                 font-style: normal;
                 font-weight: 700;
