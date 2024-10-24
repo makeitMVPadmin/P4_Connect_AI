@@ -28,7 +28,7 @@ const PromptPage = () => {
       <div className="promptpage">
         <div className="promptpage__container">
           {currentPageIndex === 0 && (
-            <>
+            <div className="promptpage__home-container">
               <div className="promptpage__text-container">
                 <div className="welcome-message">Welcome to AccountaPair</div>
                 <div className="welcome-text">
@@ -46,6 +46,7 @@ const PromptPage = () => {
                   text="Let's start up"
                   color="blue"
                   className="back"
+
                   eventListener={() => handleNext(progressArray.length - 1)}
                 />
               </div>
@@ -83,7 +84,7 @@ const PromptPage = () => {
                   alt="loadingIcon"
                 />
               </div>
-            </>
+            </div>
           )}
 
           {currentPageIndex === 1 && <OnboardingPage1 />}
