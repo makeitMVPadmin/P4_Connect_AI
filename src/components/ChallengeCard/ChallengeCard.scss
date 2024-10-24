@@ -1,4 +1,5 @@
 @import "../../styles/partials/typography.scss";
+@import "../../styles/partials/variables.scss";
 
 .challenge-card {
     width: 24.875rem;
@@ -100,10 +101,14 @@
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
+            
+            &:hover {
+                background-color: #3473be;
+            }
 
             .button-text {
-                color: #000;
                 font-size: 1.25rem;
+                color: #000;
                 font-family: Corben;
                 font-style: normal;
                 font-weight: 700;

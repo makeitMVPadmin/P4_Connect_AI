@@ -132,7 +132,7 @@ const FilterBoard = ({
           <button className="clear-button" onClick={handleClearAll}>
             Clear all
           </button>
-          <button className="show-button" onClick={handleSubmit}>
+          <button className="submit-button" onClick={handleSubmit}>
             Submit
           </button>
         </div>
