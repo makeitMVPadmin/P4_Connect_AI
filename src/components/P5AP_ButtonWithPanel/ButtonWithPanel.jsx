@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import levelIcon from '../../assets/icons/levelIcon.svg';
+import infoIcon from '../../assets/icons/infoIcon.svg'
 import './ButtonWithPanel.scss';
 
 const ButtonWithPanel = ({ level, className }) => {
@@ -14,6 +15,7 @@ const ButtonWithPanel = ({ level, className }) => {
       <button className="userLevel" onClick={togglePanel}>
         <img src={levelIcon} alt="level Icon" className="userLevel_levelIcon" />
         {level}
+        <img src={infoIcon} alt="infor Icon" className="userLevel_infoIcon" />
       </button>
 
       {isOpen && (
