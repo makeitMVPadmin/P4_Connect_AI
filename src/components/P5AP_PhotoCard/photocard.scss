@@ -1,8 +1,4 @@
 
-
-
-
-
 .photocard {
   position: relative;
   background-color: white;
@@ -26,20 +22,19 @@
     border-radius: 1.2rem;
     font-size: 0.6rem;
     color: #333;
-    z-index: 10; /* 提高 z-index，确保在图片之上 */
+    z-index: 10; 
   }
 
   &__header {
 
     flex-basis: 70%;
-    /* 保持 overflow: hidden 来裁剪图片 */
     overflow: hidden;
-    z-index: 1; /* 设置图片的 z-index 低一些 */
+    z-index: 1; 
     
     .photocard__image {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* 让图片保持比例裁剪 */
+      object-fit: cover;
       border-top-left-radius: 0.625rem;
       border-top-right-radius: 0.625rem;
     }

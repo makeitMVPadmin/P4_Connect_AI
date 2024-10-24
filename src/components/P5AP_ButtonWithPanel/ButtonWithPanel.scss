@@ -1,8 +1,8 @@
 .button-with-panel {
-  position: absolute; /* 相对图片定位 */
+  position: absolute; 
   top: 0;
   left: 0;
-  z-index: 10; /* 提高 z-index，确保在图片之上 */
+  z-index: 10; 
 
   .userLevel {
     background-color: white;
@@ -34,7 +34,7 @@
     border-radius: 0.375rem;
     box-shadow: 0 3px 0.5rem rgba(0, 0, 0, 0.1);
     padding: 0.6rem 1.1rem;
-    z-index: 100; /* 提高 z-index，确保在图片之上 */
+    z-index: 100; 
 
     .info-panel_title {
       font-family: "Corben-Bold";
