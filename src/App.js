@@ -10,7 +10,7 @@ import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 import ChallengePage from "./components/P5AP_ChallengePage/ChallengePage.jsx";
 
 import PairupBoard from "./pages/P5AP_PairupBoard/PairupBoard.jsx"
-import PhotoCard from "./components/P5AP_PhotoCard/photocard.jsx"
+
 
 function App() {
   return (
@@ -25,7 +25,8 @@ function App() {
         <Route path="/Testa" element={<LoadingPage />} />
         
         <Route path="/PairupBoard" element={<PairupBoard/>}/>
-        <Route path="/Photocard" element={<PhotoCard/>}/>
+
+        
         
       </Routes>
     </PageProvider>

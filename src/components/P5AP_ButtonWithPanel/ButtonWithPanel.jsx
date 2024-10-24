@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import levelIcon from '../../assets/icons/levelIcon.svg';
 import './ButtonWithPanel.scss';
+import  mockMatchedUser from "../../mockDataForPhotocard"
 
-const ButtonWithPanel = (props) => {
+const ButtonWithPanel = ({ level, className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePanel = () => {
@@ -10,10 +11,10 @@ const ButtonWithPanel = (props) => {
   };
 
   return (
-    <div className="button-with-panel">
+    <div className={`button-with-panel ${className}`}> {/* Include the className here */}
       <button className="userLevel" onClick={togglePanel}>
         <img src={levelIcon} alt="level Icon" className="userLevel_levelIcon" />
-        {props.level}
+        {level}
       </button>
 
       {isOpen && (
