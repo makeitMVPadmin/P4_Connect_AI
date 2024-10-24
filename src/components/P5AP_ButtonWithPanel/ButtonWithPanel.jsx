@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import levelIcon from '../../assets/icons/levelIcon.svg';
 import infoIcon from '../../assets/icons/infoIcon.svg'
 import './ButtonWithPanel.scss';
+import close_Icon from '../../assets/icons/close_icon.svg';
 
 const ButtonWithPanel = ({ level, className }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,10 @@ const ButtonWithPanel = ({ level, className }) => {
   const togglePanel = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleClose = () => { 
+    setIsOpen(false); 
+  }; 
 
   return (
     <div className={`button-with-panel ${className}`}> 
@@ -31,6 +36,11 @@ const ButtonWithPanel = ({ level, className }) => {
             This helps users identify the experience level of their challenge partners,
             particularly when using the AccountaPair feature.
           </div>
+
+          <button className="close-button" onClick={handleClose}> 
+              <img src={close_Icon} alt="Close" className="closeIcon" /> 
+          </button>
+
         </div>
       )}
     </div>
