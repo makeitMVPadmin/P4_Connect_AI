@@ -9,6 +9,7 @@ import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx"
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 import ChallengePage from "./components/P5AP_ChallengePage/ChallengePage.jsx";
 import P5ChallenegeTaskMainLayout from "../src/components/P5ChallenegeTaskMainLayout/P5ChallenegeTaskMainLayout"
+import PairupBoard from "./pages/P5AP_PairupBoard/PairupBoard.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/challenge/:challengeId" element={<ChallengeDetails />} />
         <Route path="/Testa" element={<LoadingPage />} />
         <Route path="/TestPage" element={<P5ChallenegeTaskMainLayout />} />
+        <Route path="/PairupBoard" element={<PairupBoard />} />
       </Routes>
     </PageProvider>
   );

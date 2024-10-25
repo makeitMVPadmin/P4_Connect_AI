@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
 .challenge-page {
     padding: 20px 20px;
     max-width: 1300px;
@@ -89,8 +91,19 @@
     }
 
     .card-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include Tablet {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include Desktop {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }

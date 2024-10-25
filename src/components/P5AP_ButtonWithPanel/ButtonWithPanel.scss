@@ -1,0 +1,84 @@
+.button-with-panel {
+  position: absolute; 
+  top: 0;
+  left: 50%;
+  z-index: 10; 
+
+  .userLevel {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 0.7rem;
+    display: flex;
+    padding: 0.1rem 0.3rem 0.1rem 0.4rem;
+    align-items: center;
+    gap: 0.1rem;
+    font-family: "Corben-Bold";
+    font-size: 0.5rem;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+
+    .userLevel_levelIcon {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+  }
+
+  .userLevel_infoIcon{
+    color:black;
+    width:0.8rem;
+    padding-top: 0.05rem;
+  }
+
+  .userLevel_levelIcon{
+    color:black;
+  }
+
+  .info-panel {
+    position: absolute;
+    top: 1.5rem;
+    left: -1.25rem;
+    width: 29rem;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0.6rem;
+    box-shadow: 2px 3px 0 black;
+    padding: 0.6rem 1.1rem;
+    z-index: 100; 
+    
+
+    .info-panel_title {
+      font-family: "Corben-Bold";
+      font-size: 0.75rem;
+      padding-bottom: 0.8rem;
+      color: #0954a3;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .info-panel_subtitle {
+      font-family: "Corben-Regular";
+      font-size: 0.6rem;
+      color: #22b4ee;
+      margin-bottom: 0.5rem;
+    }
+  
+
+    .info-panel_text {
+      font-family: "Corben-Regular";
+      font-size: 0.7rem;
+      color: #333;
+      line-height: 1.2;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 0.625rem;
+      right: 0.625rem;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+}
