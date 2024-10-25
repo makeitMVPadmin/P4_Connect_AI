@@ -35,24 +35,14 @@
     background-color: green; /* Green when step is completed */
     color: white;
   }
-  &.current{
-    background-color:#0954B0; 
+  &.active {
+    background-color: #0954b0;
     color: white;
   }
-  &.inactive{
+  &.inactive {
     background-color: #dadada;
-    color:black;
+    color: black;
   }
-//   .button-text {
-//     text-align: center;
-//     color: black;
-//     font-size: 12px;
-//     font-family: "Corben", sans-serif;
-//     font-weight: 700;
-//     line-height: 24px;
-//     letter-spacing: 0.36px;
-//     word-wrap: break-word;
-//   }
 
   @media (max-width: 768px) {
     padding: 6px 14px;
@@ -70,7 +60,7 @@
 }
 
 .task-details {
-  width: 80%;
+  width: 100%;
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
@@ -165,6 +155,14 @@
     word-wrap: break-word;
     font-size: 20px;
     text-align: center;
+
+    &.active {
+      background-color: #0954b0; /* Green when step is completed */
+    }
+    &.completed{
+      background-color: green; /* Green when step is completed */
+
+    }
   }
 
   .dashboard-button {
