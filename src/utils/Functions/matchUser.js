@@ -8,11 +8,5 @@ export const findMatchedUser = (currentUser) => {
     user.skills.some(skill => currentUser.skills.includes(skill))
   );
 
-  if (matchedCandidates.length) {
-    matchedCandidates = matchedCandidates.filter(user =>
-      user.level === currentUser.level
-    );
-  }
-
   return matchedCandidates.length ? matchedCandidates[Math.floor(Math.random() * matchedCandidates.length)] : null;
 };

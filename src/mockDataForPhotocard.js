@@ -10,7 +10,7 @@ const mockMatchedUser = [
   },
   {
     id: 'B002',
-    profilePicture: 'https://www.pexels.com/photo/stylish-black-and-white-portrait-of-a-young-woman-28855598/',
+    profilePicture: 'https://th.bing.com/th/id/R.b5c998820a169bc5c45ba540192e35a0?rik=Bjmft1IBcCuKmA&pid=ImgRaw&r=0',
     name: 'Ava Wilson',
     role: 'Developer',
     skills: ['JavaScript', 'PHP', 'Swift', 'Firbase'],
@@ -90,7 +90,7 @@ const mockMatchedUser = [
   },
   {
     id: 'B012',
-    profilePicture: 'https://images.unsplash.com/photo-1532074205216-d0e1f6b53d77?crop=faces&fit=crop&w=500&h=500&q=80',
+    profilePicture: 'https://tw.canon/media/image/2020/12/16/8b65251f84be41fea7de8ab8ad0989f7_0003.jpg',
     name: 'Sophia Allen',
     role: 'Developer',
     skills: ['Java', 'Python'],
@@ -282,7 +282,7 @@ const mockMatchedUser = [
   },
   {
     id: 'B036',
-    profilePicture: 'https://images.unsplash.com/photo-1521335629792-8bfb92e07eaf?crop=faces&fit=crop&w=500&h=500&q=80',
+    profilePicture: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=faces&fit=crop&w=500&h=500&q=80',
     name: 'Emily Davis',
     role: 'Developer',
     skills: ['JavaScript', 'PHP', 'Ruby'],

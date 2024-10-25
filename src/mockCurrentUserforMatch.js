@@ -5,7 +5,7 @@ const MockCurrentUser = [
       name: 'Emily Harris',
       role: 'Developer',
       skills: ['JavaScript', 'Python', 'React', 'Firbase'],
-      level: 'Intermediate',
+      level: 'Beginner',
     },
     {
       id: 'U002',
