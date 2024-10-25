@@ -21,14 +21,14 @@ const Home = () => {
                 </div>
                 <div className="home__middle-container__sub-container text-container">
                   <div className="welcome-message">
-                    Welcome to AccountaBuddy!
+                    Welcome to AccountaPair!
                   </div>
                 </div>
                 <div className="button-container">
                   
                   <Link to="/prompt">
                     <button className={"button button--blue"} type="button">
-                      Click to go to AccountaBuddy
+                      Click to go to AccountaPair
                     </button>
                   </Link>
                 </div>
