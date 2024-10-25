@@ -1,4 +1,3 @@
-// utils/matchUser.js
 
 import mockMatchedUser from '../../mockDataForPhotocard'; 
 

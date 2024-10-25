@@ -10,10 +10,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 
-//---------------------------for match--------------------------------
-import { findMatchedUser } from '../../utils/Functions/matchUser'; // Import the matching function
+
+import { findMatchedUser } from '../../utils/Functions/matchUser'; 
 import MockCurrentUser from '../../mockCurrentUserforMatch'; 
-//-----------------------------------------------------------------------
+
 export function ChallengeDetails() {
 
     const { challengeId } = useParams();
@@ -41,15 +41,12 @@ export function ChallengeDetails() {
         getChallengeData()
     }, [challengeId, navigate])
 
-    //--------------------------for match-------------------------------
     const handlePairUp = () => {
         const currentUser = MockCurrentUser[0]; 
         const matchedUser = findMatchedUser(currentUser);
-
-        navigate('/PairupBoard', { state: { matchedUser } });   //check this router
+        navigate('/PairupBoard', { state: { matchedUser } });  
     };
-//----------------------------------------------------------------------        
-
+   
     if (!challengeData) {
         return <div>Loading</div>;
     }
@@ -145,12 +142,11 @@ export function ChallengeDetails() {
                                     <span className="action__button-text">Back</span>
                                 </button>
                             </Link>
-              {/*  ---------------------------------------------------------------------------------------*/}
-                                {/* original-- <Link to="/pair">*/}  
-                                <button className="action__button" onClick={handlePairUp}>
-                                 Pair Up
-                                </button>
-              {/*  --------------------------------------------------------------------------------------- */}       
+  
+                            <button className="action__button" onClick={handlePairUp}>
+                                  Pair Up
+                            </button>
+  
                         </div>
                     </div>
 

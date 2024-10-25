@@ -26,7 +26,6 @@ const PairupBoard = () => {
     navigate('/challengePage');
   };
 
-  //----------------------------this update above for match--------------------------------------------------
   return (
     <div className="pairup-board">
       {loading && <div className="pairup-board__loading">Loading...</div>}
