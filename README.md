@@ -133,9 +133,24 @@ Our team comprises two mains teams, developers and designers. Designers are resp
 
 ## Screenshots
 
+
 ### Home page
 
-![Placeholder Image](https://imgs.search.brave.com/Af9nLQu6WYkYGyoud4-5FhHFaaJFyLZzOgCnSW941bM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMy/MDQ3MDQyOC92ZWN0/b3IvY29taW5nLXNv/b24uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPVctd2ZXc21o/VE1ueEpnZzcyd2pi/bVV2bDdtWVJYYW9H/dm82XzBud3BYdVU9)
+![Screenshot 2024-10-24 183737](https://github.com/user-attachments/assets/2514ea5f-eb48-481e-b4b1-bbf698183b03)
+
+
+### Prompt sequence 
+![Screenshot 2024-10-24 183756](https://github.com/user-attachments/assets/0a7a7742-aae2-49c1-b64d-6476663ed914)
+![Screenshot 2024-10-24 183828](https://github.com/user-attachments/assets/4929e0b0-cdbf-44db-bbd8-15d68db36fc1)
+![Screenshot 2024-10-24 183853](https://github.com/user-attachments/assets/5718b5d0-d27f-4c59-988b-58f654d9ffc4)
+![Screenshot 2024-10-24 183916](https://github.com/user-attachments/assets/c5cf97d8-adba-47ed-81dc-41b934ce759c)
+
+### Challenge Page and filter board
+![Screenshot 2024-10-24 183934](https://github.com/user-attachments/assets/942a8d54-09f8-49be-a892-c37ca798c001)
+![Screenshot 2024-10-24 184006](https://github.com/user-attachments/assets/d33cc599-f1c0-4251-bf3c-72070f1141b9)
+
+### Challenge details page
+![ScreenRecording2024-10-24184638](https://github.com/user-attachments/assets/0a6ba326-a794-4526-949f-46f9e7cfd941)
 
 
 This project is licensed under the [MIT License](LICENSE).
