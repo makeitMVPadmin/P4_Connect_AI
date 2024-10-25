@@ -6,7 +6,7 @@ import './PairupBoard.scss';
 
 const PairupBoard = () => {
   const [matchedUser, setMatchedUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const PairupBoard = () => {
           <div className="pairup-board_text-bottom">What are you waiting for?</div>
           <div className="pairup-board__actions">
             <button className="btn btn-secondary" onClick={handleGoBack}>Go Back</button>
-            <button className="btn btn-primary" onClick={handleBeginChallenge}>Begin Challenge</button>
+            <button className="btn btn-primary btn-default" onClick={handleBeginChallenge}>Begin Challenge</button>
           </div>
         </>
       )}

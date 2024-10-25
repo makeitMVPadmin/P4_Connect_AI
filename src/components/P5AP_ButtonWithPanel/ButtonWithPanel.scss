@@ -1,7 +1,7 @@
 .button-with-panel {
   position: absolute; 
   top: 0;
-  left: 0;
+  left: 50%;
   z-index: 10; 
 
   .userLevel {
@@ -45,6 +45,7 @@
     box-shadow: 2px 3px 0 black;
     padding: 0.6rem 1.1rem;
     z-index: 100; 
+    
 
     .info-panel_title {
       font-family: "Corben-Bold";
@@ -58,7 +59,7 @@
     .info-panel_subtitle {
       font-family: "Corben-Regular";
       font-size: 0.6rem;
-      color: #27b9e6;
+      color: #22b4ee;
       margin-bottom: 0.5rem;
     }
   
