@@ -1,31 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import  mockMatchedUser  from '../../mockDataForPhotocard';
+import { useNavigate, useLocation } from 'react-router-dom'; 
+import mockMatchedUser from '../../mockDataForPhotocard'; 
 import PhotoCard from '../../components/P5AP_PhotoCard/photocard';
 import './PairupBoard.scss';
 
 const PairupBoard = () => {
-  const [matchedUser, setMatchedUser] = useState(null);
+  const location = useLocation();
   const [loading, setLoading] = useState(false); 
+  const [matchedUser, setMatchedUser] = useState(location.state?.matchedUser || null); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setMatchedUser(mockMatchedUser);
-      setLoading(false);
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, []);
+ 
+    if (!matchedUser) {
+  
+      setMatchedUser(mockMatchedUser[0]); 
+    }
+  }, [matchedUser]);
 
   const handleBeginChallenge = () => {
-    navigate('/challenge');
+    navigate('/taskPage');
   };
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate('/challengePage');
   };
 
+  //----------------------------this update above for match--------------------------------------------------
   return (
     <div className="pairup-board">
       {loading && <div className="pairup-board__loading">Loading...</div>}
