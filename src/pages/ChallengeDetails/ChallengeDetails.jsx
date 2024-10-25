@@ -10,6 +10,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 
+
+import { findMatchedUser } from '../../utils/Functions/matchUser'; 
+import MockCurrentUser from '../../mockCurrentUserforMatch'; 
+
 export function ChallengeDetails() {
   const { challengeId } = useParams();
 
@@ -17,25 +21,33 @@ export function ChallengeDetails() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getChallengeData() {
-      const docRef = doc(db, "Challenges", challengeId);
-      const docSnap = await getDoc(docRef);
+    useEffect(() => {
+        async function getChallengeData() {
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        setChallengeData(data);
-      } else {
-        navigate("/testPage");
-      }
+            const docRef = doc(db, "Challenges", challengeId);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data()
+                setChallengeData(data);
+            } else {
+                navigate("/testPage")
+            }
+        }
+
+        getChallengeData()
+    }, [challengeId, navigate])
+
+    const handlePairUp = () => {
+        const currentUser = MockCurrentUser[0]; 
+        const matchedUser = findMatchedUser(currentUser);
+        navigate('/PairupBoard', { state: { matchedUser } });  
+    };
+   
+    if (!challengeData) {
+        return <div>Loading</div>;
     }
 
-    getChallengeData();
-  }, [challengeId, navigate]);
-
-  if (!challengeData) {
-    return <div>Loading</div>;
-  }
 
   return (
     <>
@@ -93,20 +105,21 @@ export function ChallengeDetails() {
               </ul>
             </div>
 
-            <div className="examples">
-              <h2 className="examples__title">Examples</h2>
-              <ul className="examples__list">
-                {challengeData.detailedProblem.examples.map(
-                  (example, index) => {
-                    return (
-                      <code className="examples__item" key={index}>
-                        Input: {example.input} <br /> Output: {example.output}
-                      </code>
-                    );
-                  }
-                )}
-              </ul>
-            </div>
+                        <div className="examples">
+                            <h2 className="examples__title">Examples</h2>
+                            <ul className="examples__list">
+                                {challengeData.detailedProblem.examples.map(
+                                    (example, index) => {
+                                        return (
+                                            <code className="examples__item" key={index}>
+                                                Input: {example.input} <br /> Output: {example.output}
+                                            </code>
+                                        );
+                                    }
+                                )}
+                            </ul>
+                        </div>
+
 
             <div className="solutions">
               <h2 className="solutions__title">Solution Approach</h2>
@@ -134,9 +147,9 @@ export function ChallengeDetails() {
                   <span className="action__button-text">Back</span>
                 </button>
               </Link>
-              <Link to="/PairupBoard">
-                <button className="action__button">Pair Up</button>
-              </Link>
+              <button className="action__button" onClick={handlePairUp}>
+                  Pair Up
+              </button>
             </div>
           </div>
 
