@@ -4,7 +4,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Emily Harris',
       role: 'Developer',
-      skills: ['JavaScript', 'Python'],
+      skills: ['JavaScript', 'Python', 'React', 'Firbase'],
       level: 'Intermediate',
     },
     {
@@ -12,7 +12,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1600180758895-177ad3c473cf?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'James Carter',
       role: 'Developer',
-      skills: ['Java', 'C#', 'JavaScript'],
+      skills: ['Java', 'C#', 'JavaScript', 'Firbase'],
       level: 'Expert',
     },
     {
@@ -20,7 +20,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Natalie Robinson',
       role: 'Developer',
-      skills: ['JavaScript', 'Swift', 'PHP'],
+      skills: ['JavaScript', 'Swift', 'PHP', 'React'],
       level: 'Intermediate',
     },
     {
@@ -28,7 +28,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1503437313881-503a912264eb?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Ryan Phillips',
       role: 'Developer',
-      skills: ['Python', 'Go', 'Java'],
+      skills: ['Python', 'Go', 'Java', 'React'],
       level: 'Expert',
     },
     {
@@ -36,7 +36,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Sophia Collins',
       role: 'Developer',
-      skills: ['Python', 'Go', 'Java'],
+      skills: ['Python', 'Go', 'Java', 'React'],
       level: 'Expert',
     },
     {
@@ -44,7 +44,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Jack Evans',
       role: 'Developer',
-      skills: ['Java', 'C++'],
+      skills: ['Java', 'C++', 'Firbase', 'HTML'],
       level: 'Intermediate',
     },
     {
@@ -52,7 +52,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Grace Lopez',
       role: 'Developer',
-      skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
+      skills: ['HTML', 'CSS', 'JavaScript', 'Python', 'Firbase'],
       level: 'Intermediate',
     },
     {
@@ -60,7 +60,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Oliver Perez',
       role: 'Developer',
-      skills: ['Python', 'Java'],
+      skills: ['Python', 'Java', 'DSA', 'React', 'Firebase'],
       level: 'Beginner',
     },
     {
@@ -68,7 +68,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Charlotte Lee',
       role: 'Developer',
-      skills: ['C#', 'Go', 'PHP'],
+      skills: ['C#', 'Go', 'PHP', 'DSA'],
       level: 'Expert',
     },
     {
@@ -84,7 +84,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Mia Davis',
       role: 'Developer',
-      skills: ['JavaScript', 'PHP'],
+      skills: ['JavaScript', 'PHP', 'React'],
       level: 'Beginner',
     },
     {
@@ -92,7 +92,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1532074205216-d0e1f6b53d77?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Daniel Lewis',
       role: 'Developer',
-      skills: ['Go', 'Python'],
+      skills: ['Go', 'Python', 'DSA', 'React'],
       level: 'Expert',
     },
     {
@@ -100,7 +100,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Amelia Young',
       role: 'Developer',
-      skills: ['Python', 'Java'],
+      skills: ['Python', 'Java', 'HTML', 'Firbase'],
       level: 'Intermediate',
     },
     {
@@ -108,7 +108,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1544717305-996b815c338c?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Michael Thompson',
       role: 'Developer',
-      skills: ['Java', 'C#'],
+      skills: ['Java', 'C#', 'Firbase', 'React'],
       level: 'Expert',
     },
     {
@@ -124,7 +124,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Alexander King',
       role: 'Developer',
-      skills: ['C++', 'Java'],
+      skills: ['C++', 'Java', 'Firbase'],
       level: 'Intermediate',
     },
     {
@@ -132,7 +132,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Chloe Martinez',
       role: 'Developer',
-      skills: ['JavaScript', 'PHP', 'Swift'],
+      skills: ['JavaScript', 'PHP', 'Swift', 'Firbase'],
       level: 'Beginner',
     },
     {
@@ -148,7 +148,7 @@ const MockCurrentUser = [
       profilePicture: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=faces&fit=crop&w=500&h=500&q=80',
       name: 'Ryan Phillips',
       role: 'Developer',
-      skills: ['Python', 'Go', 'Java'],
+      skills: ['Python', 'Go', 'Java', 'Firbase', 'HTML'],
       level: 'Expert',
     },
     {
