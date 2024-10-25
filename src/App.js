@@ -9,6 +9,9 @@ import { ChallengeDetails } from "./pages/ChallengeDetails/ChallengeDetails.jsx"
 import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 import ChallengePage from "./components/P5AP_ChallengePage/ChallengePage.jsx";
 
+import PairupBoard from "./pages/P5AP_PairupBoard/PairupBoard.jsx"
+
+
 function App() {
   return (
     <PageProvider>
@@ -20,6 +23,11 @@ function App() {
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/challenge/:challengeId" element={<ChallengeDetails />} />
         <Route path="/Testa" element={<LoadingPage />} />
+        
+        <Route path="/PairupBoard" element={<PairupBoard/>}/>
+
+        
+        
       </Routes>
     </PageProvider>
   );
