@@ -1,0 +1,38 @@
+@use "../../styles/partials/variables" as *;
+
+.details-modal {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+
+    &__overview {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        border-top: 3px solid $MVP-black;
+        border-right: 6px solid $MVP-black;
+        border-bottom: 6px solid $MVP-black;
+        border-left: 3px solid $MVP-black;
+        padding: 4rem;
+        position: relative;
+    }
+
+    &__close-icon {
+        position: absolute;
+        top: 3rem;
+        right: 3.5rem;
+        height: 2rem;
+
+        &:hover {
+            transform: scale(1.1)
+        }
+
+    }
+}

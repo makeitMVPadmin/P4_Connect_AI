@@ -1,6 +1,6 @@
-@use "./mixins" as *;
-@use "./variables" as *;
-@use "./typography" as *;
+@use "./mixins"as *;
+@use "./variables"as *;
+@use "./typography"as *;
 
 * {
   box-sizing: border-box;
@@ -22,9 +22,139 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Corben", sans-serif;
+}
+
+p,
+button {
   font-family: "Gilroy", sans-serif;
 }
 
-p, button {
-  font-family: "Gilroy", sans-serif;
+.home {
+  background-color: $Powder-Blue;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  &__container {
+    background-color: $MVP-White;
+    position: absolute;
+    top: 9.5514rem;
+    border-radius: 20px;
+    border: 4px solid #000;
+    box-sizing: border-box;
+    width: 30%;
+    flex-direction: column;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__top-bar {
+    border-radius: 16px 16px 0px 0px;
+    background-color: $MVP-Yellow;
+    width: 100%;
+    min-height: 5.5vh;
+    border-bottom: 4px solid #000;
+  }
+
+  &__middle-container {
+    padding: 3%;
+    background-color: $MVP-White;
+    width: 100%;
+    min-height: 10vh;
+    flex-direction: column;
+
+    &__sub-container {
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    &__coffeemug-img {
+      width: 15%;
+    }
+  }
+
+  .welcome-message {
+    font-family: Corben-Bold;
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+
+  .welcome-text {
+    font-family: Gilroy;
+
+    &--main {
+      font-size: 1.25rem;
+    }
+  }
+
+  .text-container>* {
+    padding-top: 25px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 50px;
+  }
+
+  .button {
+    font-family: "Gilroy-ExtraBold";
+    font-size: 1.1rem;
+    display: flex;
+    width: 13.5rem;
+    height: 3.75rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3125rem;
+    border: 2px solid #000;
+
+    &--blue {
+      color: $MVP-White;
+      background-color: $MVP-Light-Blue;
+
+      &:hover {
+        background-color: $Faded-Blue;
+      }
+    }
+
+    &--dark-blue {
+      color: $MVP-White;
+      background-color: $MVP-Dark-Blue;
+
+      &:hover {
+        background-color: $MVP-Dark-Blue-faded;
+      }
+    }
+
+    &--white {
+      background-color: $MVP-White;
+      color: $MVP-black;
+
+      &:hover {
+        background-color: $MVP-Cream;
+      }
+    }
+  }
+
+  &__bottom-bar {
+    margin-top: auto;
+    border-radius: 0px 0px 16px 16px;
+    background-color: #ffd22f;
+    width: 100%;
+    min-height: 5.5vh;
+    border-top: 4px solid #000;
+  }
+
 }
