@@ -1,0 +1,36 @@
+.status-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Adjusts the spacing between the "Status" title and the status box */
+}
+
+.status-title {
+    color: #131313;
+    font-size: 18px;
+    font-family: 'Corben';
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.54px;
+}
+
+.status-container {
+    padding: 8px 16px;
+    background-color: #018C06;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 92px; /* Ensure this matches with the size of the "Kate Turner" box */
+}
+
+.status-text {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-family: 'Corben';
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.36px;
+    word-wrap: break-word;
+}
+

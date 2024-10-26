@@ -1,0 +1,76 @@
+.partner-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.partner-title {
+    color: #131313;
+    font-size: 18px;
+    font-family: 'Corben-regular';
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.54px;
+}
+
+.partner-info-container {
+    display: flex;
+    flex-direction: column; /* Ensures vertical stacking */
+    gap: 8px;
+}
+
+.partner-badge {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+    gap: 8px;
+}
+
+.primary-badge {
+    background-color: #0954B0;
+}
+
+.partner-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.partner-name {
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Corben';
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.36px;
+}
+
+.partner-badge-container {
+    display: flex;
+    flex-direction: column; /* Ensures badges stack vertically */
+    gap: 8px;
+}
+
+.secondary-badge {
+    background-color: #EFEFEF;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.badge-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.badge-text {
+    color: #343434;
+    font-size: 12px;
+    font-family: 'Corben';
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.36px;
+}

@@ -1,0 +1,25 @@
+.task-timer-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 8px; /* Adjust gap between items */
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adjust spacing between icon and text */
+}
+
+.task-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.task-text {
+    color: #343434;
+    font-size: 18px;
+    font-family: 'Corben';
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.54px;
+}
